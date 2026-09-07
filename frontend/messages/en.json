@@ -1,0 +1,116 @@
+{
+  "Header": {
+    "siteTitle": "Carmine — Real estate services",
+    "account": "My account",
+    "login": "Sign in"
+  },
+  "Footer": {
+    "copyright": "© {year} Carmine — Real estate services in Switzerland"
+  },
+  "Configurator": {
+    "title": "Sell your property the right way",
+    "subtitle": "Choose from our professional services — listing, photography, documentation and more — and build the package that's right for your sale. No strings attached: pick only what you need, and the total updates instantly at the bottom of the page."
+  },
+  "ServiceList": {
+    "loading": "Loading services...",
+    "error": "Unable to load services: {error}"
+  },
+  "ServiceCard": {
+    "add": "Add",
+    "remove": "Remove"
+  },
+  "CartBar": {
+    "itemSingular": "service selected",
+    "itemPlural": "services selected"
+  },
+  "CartDrawer": {
+    "title": "Your cart",
+    "close": "Close",
+    "empty": "No service selected.",
+    "total": "Total",
+    "goToCart": "Go to cart"
+  },
+  "CartItemRow": {
+    "remove": "Remove",
+    "removeAria": "Remove {name}"
+  },
+  "CartPage": {
+    "title": "Your cart",
+    "empty": "Your cart is empty.",
+    "backToConfigurator": "Back to configurator",
+    "total": "Total",
+    "loginRequiredPrefix": "You need to",
+    "loginRequiredLink": "sign in",
+    "loginRequiredSuffix": "to proceed to payment.",
+    "checkout": "Proceed to payment",
+    "checkoutLoading": "Redirecting to payment...",
+    "genericError": "Unexpected error during payment"
+  },
+  "Login": {
+    "signInTitle": "Sign in",
+    "signUpTitle": "Create an account",
+    "email": "Email",
+    "password": "Password",
+    "submitSignIn": "Sign in",
+    "submitSignUp": "Sign up",
+    "submitting": "Please wait...",
+    "toggleToSignUp": "Don't have an account? Sign up",
+    "toggleToSignIn": "Already have an account? Sign in"
+  },
+  "Account": {
+    "title": "My account",
+    "email": "Email",
+    "myOrders": "My purchases",
+    "logout": "Log out",
+    "loading": "Loading..."
+  },
+  "Orders": {
+    "title": "My purchases",
+    "loading": "Loading orders...",
+    "error": "Unable to load orders: {error}",
+    "empty": "You haven't made any purchases yet.",
+    "status": {
+      "pending": "Awaiting payment",
+      "paid": "Paid",
+      "processing": "In progress",
+      "completed": "Completed",
+      "cancelled": "Cancelled"
+    }
+  },
+  "Admin": {
+    "title": "Catalog management",
+    "subtitle": "Create, edit, hide and reorder the items sold on the site.",
+    "newItem": "New item",
+    "edit": "Edit",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "deleteConfirm": "Permanently delete this item?",
+    "active": "Visible on the site",
+    "inactive": "Hidden",
+    "slug": "Identifier (slug)",
+    "category": "Category",
+    "price": "Price (CHF)",
+    "moveUp": "Move up",
+    "moveDown": "Move down",
+    "name": "Name",
+    "description": "Description",
+    "accessDenied": "Access restricted to administrators.",
+    "loading": "Loading...",
+    "createError": "Unable to create the item",
+    "updateError": "Unable to save changes",
+    "deleteError": "Unable to delete the item",
+    "inUseError": "This item is used in existing orders: deactivate it instead of deleting.",
+    "images": "Photos",
+    "addPhoto": "Add photo",
+    "removePhoto": "Remove photo",
+    "uploading": "Uploading...",
+    "saveBeforePhotos": "Save the item first to add photos."
+  },
+  "Locale": {
+    "it": "Italiano",
+    "en": "English",
+    "de": "Deutsch",
+    "fr": "Français"
+  }
+}

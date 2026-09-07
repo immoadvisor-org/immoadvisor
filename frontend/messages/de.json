@@ -1,0 +1,116 @@
+{
+  "Header": {
+    "siteTitle": "Carmine — Immobiliendienstleistungen",
+    "account": "Mein Konto",
+    "login": "Anmelden"
+  },
+  "Footer": {
+    "copyright": "© {year} Carmine — Immobiliendienstleistungen in der Schweiz"
+  },
+  "Configurator": {
+    "title": "Verkaufen Sie Ihre Immobilie von Anfang an richtig",
+    "subtitle": "Wählen Sie aus unseren professionellen Dienstleistungen — Inserat, Fotografie, Unterlagen und mehr — und stellen Sie sich Ihr massgeschneidertes Verkaufspaket zusammen. Ganz ohne Verpflichtung: Sie wählen nur, was Sie wirklich brauchen, und die Summe wird sofort unten auf der Seite aktualisiert."
+  },
+  "ServiceList": {
+    "loading": "Dienstleistungen werden geladen...",
+    "error": "Dienstleistungen konnten nicht geladen werden: {error}"
+  },
+  "ServiceCard": {
+    "add": "Hinzufügen",
+    "remove": "Entfernen"
+  },
+  "CartBar": {
+    "itemSingular": "ausgewählte Dienstleistung",
+    "itemPlural": "ausgewählte Dienstleistungen"
+  },
+  "CartDrawer": {
+    "title": "Ihr Warenkorb",
+    "close": "Schliessen",
+    "empty": "Keine Dienstleistung ausgewählt.",
+    "total": "Gesamt",
+    "goToCart": "Zum Warenkorb"
+  },
+  "CartItemRow": {
+    "remove": "Entfernen",
+    "removeAria": "{name} entfernen"
+  },
+  "CartPage": {
+    "title": "Ihr Warenkorb",
+    "empty": "Ihr Warenkorb ist leer.",
+    "backToConfigurator": "Zurück zum Konfigurator",
+    "total": "Gesamt",
+    "loginRequiredPrefix": "Sie müssen sich",
+    "loginRequiredLink": "anmelden",
+    "loginRequiredSuffix": "um mit der Zahlung fortzufahren.",
+    "checkout": "Zur Zahlung",
+    "checkoutLoading": "Weiterleitung zur Zahlung...",
+    "genericError": "Unerwarteter Fehler bei der Zahlung"
+  },
+  "Login": {
+    "signInTitle": "Anmelden",
+    "signUpTitle": "Konto erstellen",
+    "email": "E-Mail",
+    "password": "Passwort",
+    "submitSignIn": "Anmelden",
+    "submitSignUp": "Registrieren",
+    "submitting": "Bitte warten...",
+    "toggleToSignUp": "Noch kein Konto? Registrieren",
+    "toggleToSignIn": "Bereits ein Konto? Anmelden"
+  },
+  "Account": {
+    "title": "Mein Konto",
+    "email": "E-Mail",
+    "myOrders": "Meine Käufe",
+    "logout": "Abmelden",
+    "loading": "Wird geladen..."
+  },
+  "Orders": {
+    "title": "Meine Käufe",
+    "loading": "Bestellungen werden geladen...",
+    "error": "Bestellungen konnten nicht geladen werden: {error}",
+    "empty": "Sie haben noch keine Käufe getätigt.",
+    "status": {
+      "pending": "Zahlung ausstehend",
+      "paid": "Bezahlt",
+      "processing": "In Bearbeitung",
+      "completed": "Abgeschlossen",
+      "cancelled": "Storniert"
+    }
+  },
+  "Admin": {
+    "title": "Katalogverwaltung",
+    "subtitle": "Erstellen, bearbeiten, ausblenden und ordnen Sie die auf der Website verkauften Posten.",
+    "newItem": "Neuer Posten",
+    "edit": "Bearbeiten",
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "delete": "Löschen",
+    "deleteConfirm": "Diesen Posten endgültig löschen?",
+    "active": "Auf der Website sichtbar",
+    "inactive": "Ausgeblendet",
+    "slug": "Kennung (Slug)",
+    "category": "Kategorie",
+    "price": "Preis (CHF)",
+    "moveUp": "Nach oben",
+    "moveDown": "Nach unten",
+    "name": "Name",
+    "description": "Beschreibung",
+    "accessDenied": "Zugriff nur für Administratoren.",
+    "loading": "Wird geladen...",
+    "createError": "Posten konnte nicht erstellt werden",
+    "updateError": "Änderungen konnten nicht gespeichert werden",
+    "deleteError": "Posten konnte nicht gelöscht werden",
+    "inUseError": "Dieser Posten wird in bestehenden Bestellungen verwendet: deaktivieren Sie ihn, anstatt ihn zu löschen.",
+    "images": "Fotos",
+    "addPhoto": "Foto hinzufügen",
+    "removePhoto": "Foto entfernen",
+    "uploading": "Wird hochgeladen...",
+    "saveBeforePhotos": "Speichern Sie den Posten, um Fotos hinzufügen zu können."
+  },
+  "Locale": {
+    "it": "Italiano",
+    "en": "English",
+    "de": "Deutsch",
+    "fr": "Français"
+  }
+}

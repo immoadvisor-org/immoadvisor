@@ -1,0 +1,83 @@
+"use client";
+
+import { useTranslations } from "next-intl";
+
+import { PriceTag } from "@/components/ui/PriceTag";
+import { Button } from "@/components/ui/Button";
+import type { AdminService } from "@/features/admin/types";
+
+interface ServiceRowProps {
+  service: AdminService;
+  isFirst: boolean;
+  isLast: boolean;
+  onEdit: () => void;
+  onDelete: () => void;
+  onToggleActive: (active: boolean) => void;
+  onMove: (direction: "up" | "down") => void;
+}
+
+export function ServiceRow({
+  service,
+  isFirst,
+  isLast,
+  onEdit,
+  onDelete,
+  onToggleActive,
+  onMove,
+}: ServiceRowProps) {
+  const t = useTranslations("Admin");
+  const label = service.translations.it?.name || service.translations.en?.name || service.slug;
+
+  return (
+    <div className="flex items-center justify-between gap-4 border-b border-slate-100 py-3">
+      <div className="flex flex-col gap-1">
+        <button
+          onClick={() => onMove("up")}
+          disabled={isFirst}
+          className="text-xs text-slate-400 hover:text-slate-700 disabled:opacity-30"
+          aria-label={t("moveUp")}
+        >
+          ▲
+        </button>
+        <button
+          onClick={() => onMove("down")}
+          disabled={isLast}
+          className="text-xs text-slate-400 hover:text-slate-700 disabled:opacity-30"
+          aria-label={t("moveDown")}
+        >
+          ▼
+        </button>
+      </div>
+
+      <div className="min-w-0 flex-1">
+        <p className="truncate text-sm font-medium text-slate-900">{label}</p>
+        <p className="text-xs text-slate-500">{service.slug}</p>
+      </div>
+
+      <PriceTag amountChf={Number(service.price_chf)} className="text-sm text-slate-700" />
+
+      <label className="flex items-center gap-1 text-xs text-slate-600">
+        <input
+          type="checkbox"
+          checked={service.active}
+          onChange={(e) => onToggleActive(e.target.checked)}
+        />
+        {service.active ? t("active") : t("inactive")}
+      </label>
+
+      <div className="flex gap-2">
+        <Button variant="secondary" onClick={onEdit}>
+          {t("edit")}
+        </Button>
+        <Button
+          variant="ghost"
+          onClick={() => {
+            if (window.confirm(t("deleteConfirm"))) onDelete();
+          }}
+        >
+          {t("delete")}
+        </Button>
+      </div>
+    </div>
+  );
+}

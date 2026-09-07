@@ -1,0 +1,18 @@
+class DomainError(Exception):
+    """Errore di business, mappato a una risposta HTTP dal layer API."""
+
+
+class ServiceNotFoundError(DomainError):
+    pass
+
+
+class OrderNotFoundError(DomainError):
+    pass
+
+
+class ServiceInUseError(DomainError):
+    pass
+
+
+class InvalidImageError(DomainError):
+    pass

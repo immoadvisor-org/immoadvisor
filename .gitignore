@@ -1,0 +1,20 @@
+# Node / frontend
+node_modules/
+.next/
+out/
+frontend/.env.local
+*.tsbuildinfo
+
+# Python / backend
+__pycache__/
+*.pyc
+.venv/
+venv/
+backend/.env
+*.egg-info/
+
+# General
+.DS_Store
+*.log
+.idea/
+.vscode/

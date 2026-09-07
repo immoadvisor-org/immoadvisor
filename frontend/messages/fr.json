@@ -1,0 +1,116 @@
+{
+  "Header": {
+    "siteTitle": "Carmine — Services immobiliers",
+    "account": "Mon compte",
+    "login": "Se connecter"
+  },
+  "Footer": {
+    "copyright": "© {year} Carmine — Services immobiliers en Suisse"
+  },
+  "Configurator": {
+    "title": "Vendez votre bien du bon pied",
+    "subtitle": "Choisissez parmi nos services professionnels — annonce, photographie, documentation et plus encore — et composez le pack sur mesure pour votre vente. Sans engagement : vous ne sélectionnez que ce dont vous avez besoin, et le total se met à jour instantanément en bas de page."
+  },
+  "ServiceList": {
+    "loading": "Chargement des services...",
+    "error": "Impossible de charger les services : {error}"
+  },
+  "ServiceCard": {
+    "add": "Ajouter",
+    "remove": "Retirer"
+  },
+  "CartBar": {
+    "itemSingular": "service sélectionné",
+    "itemPlural": "services sélectionnés"
+  },
+  "CartDrawer": {
+    "title": "Votre panier",
+    "close": "Fermer",
+    "empty": "Aucun service sélectionné.",
+    "total": "Total",
+    "goToCart": "Aller au panier"
+  },
+  "CartItemRow": {
+    "remove": "Retirer",
+    "removeAria": "Retirer {name}"
+  },
+  "CartPage": {
+    "title": "Votre panier",
+    "empty": "Votre panier est vide.",
+    "backToConfigurator": "Retour au configurateur",
+    "total": "Total",
+    "loginRequiredPrefix": "Vous devez",
+    "loginRequiredLink": "vous connecter",
+    "loginRequiredSuffix": "pour procéder au paiement.",
+    "checkout": "Procéder au paiement",
+    "checkoutLoading": "Redirection vers le paiement...",
+    "genericError": "Erreur inattendue lors du paiement"
+  },
+  "Login": {
+    "signInTitle": "Se connecter",
+    "signUpTitle": "Créer un compte",
+    "email": "E-mail",
+    "password": "Mot de passe",
+    "submitSignIn": "Se connecter",
+    "submitSignUp": "S'inscrire",
+    "submitting": "Veuillez patienter...",
+    "toggleToSignUp": "Pas de compte ? Inscrivez-vous",
+    "toggleToSignIn": "Déjà un compte ? Connectez-vous"
+  },
+  "Account": {
+    "title": "Mon compte",
+    "email": "E-mail",
+    "myOrders": "Mes achats",
+    "logout": "Se déconnecter",
+    "loading": "Chargement..."
+  },
+  "Orders": {
+    "title": "Mes achats",
+    "loading": "Chargement des commandes...",
+    "error": "Impossible de charger les commandes : {error}",
+    "empty": "Vous n'avez pas encore effectué d'achat.",
+    "status": {
+      "pending": "En attente de paiement",
+      "paid": "Payée",
+      "processing": "En cours de traitement",
+      "completed": "Terminée",
+      "cancelled": "Annulée"
+    }
+  },
+  "Admin": {
+    "title": "Gestion du catalogue",
+    "subtitle": "Créez, modifiez, masquez et réordonnez les éléments vendus sur le site.",
+    "newItem": "Nouvel élément",
+    "edit": "Modifier",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "delete": "Supprimer",
+    "deleteConfirm": "Supprimer définitivement cet élément ?",
+    "active": "Visible sur le site",
+    "inactive": "Masqué",
+    "slug": "Identifiant (slug)",
+    "category": "Catégorie",
+    "price": "Prix (CHF)",
+    "moveUp": "Monter",
+    "moveDown": "Descendre",
+    "name": "Nom",
+    "description": "Description",
+    "accessDenied": "Accès réservé aux administrateurs.",
+    "loading": "Chargement...",
+    "createError": "Impossible de créer l'élément",
+    "updateError": "Impossible d'enregistrer les modifications",
+    "deleteError": "Impossible de supprimer l'élément",
+    "inUseError": "Cet élément est utilisé dans des commandes existantes : désactivez-le plutôt que de le supprimer.",
+    "images": "Photos",
+    "addPhoto": "Ajouter une photo",
+    "removePhoto": "Retirer la photo",
+    "uploading": "Téléchargement...",
+    "saveBeforePhotos": "Enregistrez l'élément pour pouvoir ajouter des photos."
+  },
+  "Locale": {
+    "it": "Italiano",
+    "en": "English",
+    "de": "Deutsch",
+    "fr": "Français"
+  }
+}
