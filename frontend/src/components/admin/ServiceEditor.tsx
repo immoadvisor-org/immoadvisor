@@ -93,25 +93,25 @@ export function ServiceEditor({ initial, accessToken, onSave, onCancel }: Servic
   }
 
   return (
-    <div className="rounded-xl border border-brand-500 bg-white p-5">
+    <div className="rounded-xl border border-brand-500 bg-white p-5 dark:bg-slate-900">
       <div className="grid grid-cols-2 gap-4">
-        <label className="text-sm text-slate-700">
+        <label className="text-sm text-slate-700 dark:text-slate-300">
           {t("slug")}
           <input
             value={slug}
             onChange={(e) => setSlug(e.target.value)}
-            className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm"
+            className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
           />
         </label>
-        <label className="text-sm text-slate-700">
+        <label className="text-sm text-slate-700 dark:text-slate-300">
           {t("category")}
           <input
             value={category}
             onChange={(e) => setCategory(e.target.value)}
-            className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm"
+            className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
           />
         </label>
-        <label className="text-sm text-slate-700">
+        <label className="text-sm text-slate-700 dark:text-slate-300">
           {t("price")}
           <input
             type="number"
@@ -119,24 +119,24 @@ export function ServiceEditor({ initial, accessToken, onSave, onCancel }: Servic
             min="0"
             value={priceChf}
             onChange={(e) => setPriceChf(e.target.value)}
-            className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm"
+            className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
           />
         </label>
-        <label className="flex items-center gap-2 self-end text-sm text-slate-700">
+        <label className="flex items-center gap-2 self-end text-sm text-slate-700 dark:text-slate-300">
           <input type="checkbox" checked={active} onChange={(e) => setActive(e.target.checked)} />
           {t("active")}
         </label>
       </div>
 
-      <div className="mt-4 flex gap-2 border-b border-slate-200">
+      <div className="mt-4 flex gap-2 border-b border-slate-200 dark:border-slate-700">
         {routing.locales.map((locale) => (
           <button
             key={locale}
             onClick={() => setActiveTab(locale)}
             className={`px-3 py-2 text-sm font-medium uppercase ${
               activeTab === locale
-                ? "border-b-2 border-brand-500 text-brand-600"
-                : "text-slate-400 hover:text-slate-700"
+                ? "border-b-2 border-brand-500 text-brand-600 dark:text-brand-200"
+                : "text-slate-400 hover:text-slate-700 dark:text-slate-500 dark:hover:text-slate-200"
             }`}
           >
             {locale}
@@ -145,33 +145,36 @@ export function ServiceEditor({ initial, accessToken, onSave, onCancel }: Servic
       </div>
 
       <div className="mt-3 space-y-3">
-        <label className="block text-sm text-slate-700">
+        <label className="block text-sm text-slate-700 dark:text-slate-300">
           {t("name")}
           <input
             value={translations[activeTab]?.name ?? ""}
             onChange={(e) => updateTranslation(activeTab, "name", e.target.value)}
-            className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm"
+            className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
           />
         </label>
-        <label className="block text-sm text-slate-700">
+        <label className="block text-sm text-slate-700 dark:text-slate-300">
           {t("description")}
           <textarea
             value={translations[activeTab]?.description ?? ""}
             onChange={(e) => updateTranslation(activeTab, "description", e.target.value)}
             rows={5}
-            className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm"
+            className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
           />
         </label>
       </div>
 
       <div className="mt-5">
-        <p className="text-sm text-slate-700">{t("images")}</p>
+        <p className="text-sm text-slate-700 dark:text-slate-300">{t("images")}</p>
         {!initial ? (
-          <p className="mt-1 text-xs text-slate-500">{t("saveBeforePhotos")}</p>
+          <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">{t("saveBeforePhotos")}</p>
         ) : (
           <div className="mt-2 flex flex-wrap gap-3">
             {imageUrls.map((url) => (
-              <div key={url} className="group relative h-20 w-20 overflow-hidden rounded-lg border border-slate-200">
+              <div
+                key={url}
+                className="group relative h-20 w-20 overflow-hidden rounded-lg border border-slate-200 dark:border-slate-700"
+              >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src={url} alt="" className="h-full w-full object-cover" />
                 <button
@@ -184,7 +187,7 @@ export function ServiceEditor({ initial, accessToken, onSave, onCancel }: Servic
                 </button>
               </div>
             ))}
-            <label className="flex h-20 w-20 cursor-pointer flex-col items-center justify-center rounded-lg border border-dashed border-slate-300 text-xs text-slate-500 hover:border-brand-500 hover:text-brand-600">
+            <label className="flex h-20 w-20 cursor-pointer flex-col items-center justify-center rounded-lg border border-dashed border-slate-300 text-xs text-slate-500 hover:border-brand-500 hover:text-brand-600 dark:border-slate-600 dark:text-slate-400">
               {isUploadingImage ? t("uploading") : `+ ${t("addPhoto")}`}
               <input
                 type="file"
@@ -196,10 +199,10 @@ export function ServiceEditor({ initial, accessToken, onSave, onCancel }: Servic
             </label>
           </div>
         )}
-        {imageError && <p className="mt-2 text-sm text-red-600">{imageError}</p>}
+        {imageError && <p className="mt-2 text-sm text-red-600 dark:text-red-400">{imageError}</p>}
       </div>
 
-      {error && <p className="mt-3 text-sm text-red-600">{error}</p>}
+      {error && <p className="mt-3 text-sm text-red-600 dark:text-red-400">{error}</p>}
 
       <div className="mt-4 flex justify-end gap-2">
         <Button variant="ghost" onClick={onCancel} disabled={isSaving}>

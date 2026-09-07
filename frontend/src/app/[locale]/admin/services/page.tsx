@@ -43,11 +43,13 @@ export default function AdminServicesPage() {
   }, [isAdmin, accessToken, loadServices]);
 
   if (isLoadingUser) {
-    return <p className="text-sm text-slate-500">{t("loading")}</p>;
+    return <p className="mx-auto max-w-6xl px-4 py-12 text-sm text-slate-500 dark:text-slate-400">{t("loading")}</p>;
   }
 
   if (!user || !isAdmin) {
-    return <p className="text-sm text-slate-600">{t("accessDenied")}</p>;
+    return (
+      <p className="mx-auto max-w-6xl px-4 py-12 text-sm text-slate-600 dark:text-slate-300">{t("accessDenied")}</p>
+    );
   }
 
   async function handleCreate(payload: AdminServicePayload) {
@@ -106,16 +108,16 @@ export default function AdminServicesPage() {
   }
 
   return (
-    <div>
+    <div className="mx-auto max-w-4xl px-4 py-12">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-medium text-slate-900">{t("title")}</h1>
-          <p className="mt-1 text-sm text-slate-600">{t("subtitle")}</p>
+          <h1 className="text-2xl font-medium text-slate-900 dark:text-slate-50">{t("title")}</h1>
+          <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">{t("subtitle")}</p>
         </div>
         <Button onClick={() => setEditingId("new")}>{t("newItem")}</Button>
       </div>
 
-      {error && <p className="mt-4 text-sm text-red-600">{error}</p>}
+      {error && <p className="mt-4 text-sm text-red-600 dark:text-red-400">{error}</p>}
 
       {editingId === "new" && (
         <div className="mt-6">
@@ -123,9 +125,9 @@ export default function AdminServicesPage() {
         </div>
       )}
 
-      <div className="mt-6 rounded-xl border border-slate-200 bg-white px-5">
+      <div className="mt-6 rounded-xl border border-slate-200 bg-white px-5 dark:border-slate-800 dark:bg-slate-900">
         {isLoading ? (
-          <p className="py-4 text-sm text-slate-500">{t("loading")}</p>
+          <p className="py-4 text-sm text-slate-500 dark:text-slate-400">{t("loading")}</p>
         ) : (
           services.map((service, index) =>
             editingId === service.id ? (

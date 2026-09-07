@@ -23,6 +23,8 @@ export function useOrders(accessToken: string | undefined): UseOrdersResult {
     }
 
     let isMounted = true;
+    setIsLoading(true);
+    setError(null);
 
     apiFetch<Order[]>("/api/v1/orders", { accessToken })
       .then((data) => {

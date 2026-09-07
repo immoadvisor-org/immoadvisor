@@ -1,15 +1,11 @@
-import { useTranslations } from "next-intl";
-
+import { Hero } from "@/components/home/Hero";
 import { ServiceList } from "@/components/configurator/ServiceList";
 
 export default function ConfiguratorPage() {
-  const t = useTranslations("Configurator");
-
   return (
     <div>
-      <h1 className="text-2xl font-medium text-slate-900">{t("title")}</h1>
-      <p className="mt-2 text-slate-600">{t("subtitle")}</p>
-      <div className="mt-8">
+      <Hero />
+      <div className="mx-auto max-w-6xl px-4 py-12">
         <ServiceList />
       </div>
     </div>

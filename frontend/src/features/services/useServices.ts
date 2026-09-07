@@ -21,6 +21,7 @@ export function useServices(): UseServicesResult {
   useEffect(() => {
     let isMounted = true;
     setIsLoading(true);
+    setError(null);
 
     apiFetch<Service[]>(`/api/v1/services?locale=${locale}`)
       .then((data) => {

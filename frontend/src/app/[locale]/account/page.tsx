@@ -22,7 +22,7 @@ export default function AccountPage() {
   }, [isLoading, user, router]);
 
   if (isLoading || !user) {
-    return <p className="text-sm text-slate-500">{t("loading")}</p>;
+    return <p className="mx-auto max-w-6xl px-4 py-12 text-sm text-slate-500 dark:text-slate-400">{t("loading")}</p>;
   }
 
   async function handleLogout() {
@@ -31,21 +31,21 @@ export default function AccountPage() {
   }
 
   return (
-    <div className="mx-auto max-w-xl">
-      <h1 className="text-2xl font-medium text-slate-900">{t("title")}</h1>
+    <div className="mx-auto max-w-xl px-4 py-12">
+      <h1 className="text-2xl font-medium text-slate-900 dark:text-slate-50">{t("title")}</h1>
 
-      <div className="mt-6 rounded-xl border border-slate-200 bg-white p-6">
-        <p className="text-sm text-slate-500">{t("email")}</p>
-        <p className="text-slate-900">{user.email}</p>
+      <div className="mt-6 rounded-xl border border-slate-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900">
+        <p className="text-sm text-slate-500 dark:text-slate-400">{t("email")}</p>
+        <p className="text-slate-900 dark:text-slate-50">{user.email}</p>
       </div>
 
       <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
         <div className="flex flex-col gap-1">
-          <Link href="/account/orders" className="text-brand-600 hover:underline">
+          <Link href="/account/orders" className="text-brand-600 hover:underline dark:text-brand-100">
             {t("myOrders")}
           </Link>
           {isAdmin && (
-            <Link href="/admin/services" className="text-brand-600 hover:underline">
+            <Link href="/admin/services" className="text-brand-600 hover:underline dark:text-brand-100">
               Admin
             </Link>
           )}

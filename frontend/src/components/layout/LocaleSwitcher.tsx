@@ -21,7 +21,7 @@ export function LocaleSwitcher() {
       value={locale}
       onChange={handleChange}
       aria-label="Language"
-      className="rounded-lg border border-slate-300 bg-white px-2 py-1 text-sm text-slate-700"
+      className="rounded-lg border border-slate-300 bg-white px-2 py-1 text-sm text-slate-700 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
     >
       {routing.locales.map((code) => (
         <option key={code} value={code}>

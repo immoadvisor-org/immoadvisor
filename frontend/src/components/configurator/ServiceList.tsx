@@ -10,11 +10,11 @@ export function ServiceList() {
   const { services, isLoading, error } = useServices();
 
   if (isLoading) {
-    return <p className="text-sm text-slate-500">{t("loading")}</p>;
+    return <p className="text-sm text-slate-500 dark:text-slate-400">{t("loading")}</p>;
   }
 
   if (error) {
-    return <p className="text-sm text-red-600">{t("error", { error })}</p>;
+    return <p className="text-sm text-red-600 dark:text-red-400">{t("error", { error })}</p>;
   }
 
   return (

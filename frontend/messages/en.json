@@ -1,11 +1,15 @@
 {
   "Header": {
-    "siteTitle": "Carmine — Real estate services",
     "account": "My account",
-    "login": "Sign in"
+    "login": "Sign in",
+    "cart": "Cart"
   },
   "Footer": {
-    "copyright": "© {year} Carmine — Real estate services in Switzerland"
+    "tagline": "Real estate services in Switzerland"
+  },
+  "Theme": {
+    "toLight": "Switch to light theme",
+    "toDark": "Switch to dark theme"
   },
   "Configurator": {
     "title": "Sell your property the right way",
@@ -18,6 +22,11 @@
   "ServiceCard": {
     "add": "Add",
     "remove": "Remove"
+  },
+  "ServiceDetail": {
+    "loading": "Loading...",
+    "notFound": "Service not found.",
+    "back": "Back to configurator"
   },
   "CartBar": {
     "itemSingular": "service selected",

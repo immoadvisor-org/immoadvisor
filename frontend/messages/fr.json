@@ -1,11 +1,15 @@
 {
   "Header": {
-    "siteTitle": "Carmine — Services immobiliers",
     "account": "Mon compte",
-    "login": "Se connecter"
+    "login": "Se connecter",
+    "cart": "Panier"
   },
   "Footer": {
-    "copyright": "© {year} Carmine — Services immobiliers en Suisse"
+    "tagline": "Services immobiliers en Suisse"
+  },
+  "Theme": {
+    "toLight": "Activer le thème clair",
+    "toDark": "Activer le thème sombre"
   },
   "Configurator": {
     "title": "Vendez votre bien du bon pied",
@@ -18,6 +22,11 @@
   "ServiceCard": {
     "add": "Ajouter",
     "remove": "Retirer"
+  },
+  "ServiceDetail": {
+    "loading": "Chargement...",
+    "notFound": "Service introuvable.",
+    "back": "Retour au configurateur"
   },
   "CartBar": {
     "itemSingular": "service sélectionné",

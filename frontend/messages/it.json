@@ -1,11 +1,15 @@
 {
   "Header": {
-    "siteTitle": "Carmine — Servizi immobiliari",
     "account": "Il mio account",
-    "login": "Accedi"
+    "login": "Accedi",
+    "cart": "Carrello"
   },
   "Footer": {
-    "copyright": "© {year} Carmine — Servizi immobiliari in Svizzera"
+    "tagline": "Servizi immobiliari in Svizzera"
+  },
+  "Theme": {
+    "toLight": "Attiva tema chiaro",
+    "toDark": "Attiva tema scuro"
   },
   "Configurator": {
     "title": "Vendi il tuo immobile con il piede giusto",
@@ -18,6 +22,11 @@
   "ServiceCard": {
     "add": "Aggiungi",
     "remove": "Rimuovi"
+  },
+  "ServiceDetail": {
+    "loading": "Caricamento...",
+    "notFound": "Servizio non trovato.",
+    "back": "Torna al configuratore"
   },
   "CartBar": {
     "itemSingular": "servizio selezionato",

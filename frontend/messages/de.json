@@ -1,11 +1,15 @@
 {
   "Header": {
-    "siteTitle": "Carmine — Immobiliendienstleistungen",
     "account": "Mein Konto",
-    "login": "Anmelden"
+    "login": "Anmelden",
+    "cart": "Warenkorb"
   },
   "Footer": {
-    "copyright": "© {year} Carmine — Immobiliendienstleistungen in der Schweiz"
+    "tagline": "Immobiliendienstleistungen in der Schweiz"
+  },
+  "Theme": {
+    "toLight": "Helles Design aktivieren",
+    "toDark": "Dunkles Design aktivieren"
   },
   "Configurator": {
     "title": "Verkaufen Sie Ihre Immobilie von Anfang an richtig",
@@ -18,6 +22,11 @@
   "ServiceCard": {
     "add": "Hinzufügen",
     "remove": "Entfernen"
+  },
+  "ServiceDetail": {
+    "loading": "Wird geladen...",
+    "notFound": "Dienstleistung nicht gefunden.",
+    "back": "Zurück zum Konfigurator"
   },
   "CartBar": {
     "itemSingular": "ausgewählte Dienstleistung",
