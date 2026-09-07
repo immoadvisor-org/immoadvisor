@@ -87,3 +87,11 @@ def mark_order_paid(db: Session, order: Order, stripe_payment_intent: str) -> Or
     db.commit()
     db.refresh(order)
     return order
+
+
+def mark_order_cancelled(db: Session, order: Order) -> Order:
+    order.status = OrderStatus.CANCELLED
+    order.updated_at = datetime.now(timezone.utc)
+    db.commit()
+    db.refresh(order)
+    return order

@@ -1,3 +1,4 @@
+import time
 import uuid
 
 import stripe
@@ -7,6 +8,10 @@ from app.models.order import Order
 
 settings = get_settings()
 stripe.api_key = settings.stripe_secret_key
+
+# Dopo questo tempo la sessione Stripe scade e l'ordine "in attesa" collegato
+# viene marcato come annullato (vedi webhooks.py, evento checkout.session.expired).
+CHECKOUT_SESSION_EXPIRY_SECONDS = 2 * 60 * 60
 
 
 def create_checkout_session(order: Order) -> stripe.checkout.Session:
@@ -32,6 +37,7 @@ def create_checkout_session(order: Order) -> stripe.checkout.Session:
         cancel_url=f"{settings.frontend_url}/cart?checkout=cancelled",
         client_reference_id=str(order.id),
         metadata={"order_id": str(order.id)},
+        expires_at=int(time.time()) + CHECKOUT_SESSION_EXPIRY_SECONDS,
     )
 
 
