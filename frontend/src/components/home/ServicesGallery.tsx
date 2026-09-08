@@ -83,7 +83,7 @@ export function ServicesGallery() {
 
       <div className="mt-10 text-center">
         <Link href="/configuratore">
-          <Button>{t("servicesGalleryCta")}</Button>
+          <Button variant="secondary">{t("servicesGalleryCta")}</Button>
         </Link>
       </div>
     </section>
