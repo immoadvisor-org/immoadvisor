@@ -1,24 +1,35 @@
 "use client";
 
 import { useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 
 import { useRouter } from "@/i18n/navigation";
 import { useUser } from "@/features/auth/useUser";
 import { useOrders } from "@/features/orders/useOrders";
+import { useCartStore } from "@/features/cart/cartStore";
 import { PriceTag } from "@/components/ui/PriceTag";
 
 export default function OrdersPage() {
   const t = useTranslations("Orders");
   const router = useRouter();
+  const searchParams = useSearchParams();
   const { user, session, isLoading: isLoadingUser } = useUser();
   const { orders, isLoading: isLoadingOrders, error } = useOrders(session?.access_token);
+  const clearCart = useCartStore((state) => state.clearCart);
 
   useEffect(() => {
     if (!isLoadingUser && !user) {
       router.replace("/login");
     }
   }, [isLoadingUser, user, router]);
+
+  useEffect(() => {
+    if (searchParams.get("checkout") === "success") {
+      clearCart();
+      router.replace("/account/orders");
+    }
+  }, [searchParams, clearCart, router]);
 
   if (isLoadingUser || isLoadingOrders) {
     return <p className="mx-auto max-w-6xl px-4 py-12 text-sm text-slate-500 dark:text-slate-400">{t("loading")}</p>;
