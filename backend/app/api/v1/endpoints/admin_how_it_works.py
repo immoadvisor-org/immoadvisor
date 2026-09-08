@@ -1,10 +1,9 @@
-from fastapi import APIRouter, Depends, File, HTTPException, UploadFile, status
+from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
 from app.api.deps import get_current_admin_user, get_db
 from app.schemas.how_it_works import HowItWorksContentAdminRead, HowItWorksContentAdminUpdate
 from app.services import how_it_works_service
-from app.services.exceptions import InvalidImageError
 
 router = APIRouter(
     prefix="/admin/how-it-works",
@@ -14,10 +13,7 @@ router = APIRouter(
 
 
 def _to_admin_read(content) -> HowItWorksContentAdminRead:
-    return HowItWorksContentAdminRead(
-        translations=content.translations or {},
-        background_image_url=content.background_image_url,
-    )
+    return HowItWorksContentAdminRead(translations=content.translations or {})
 
 
 @router.get("", response_model=HowItWorksContentAdminRead)
@@ -32,23 +28,3 @@ def update_how_it_works(
 ) -> HowItWorksContentAdminRead:
     content = how_it_works_service.update_content(db, payload)
     return _to_admin_read(content)
-
-
-@router.post("/image", response_model=HowItWorksContentAdminRead)
-async def upload_background_image(
-    file: UploadFile = File(...), db: Session = Depends(get_db)
-) -> HowItWorksContentAdminRead:
-    content = await file.read()
-    try:
-        row = how_it_works_service.set_background_image(
-            db, content, file.content_type or "application/octet-stream", file.filename or "image.jpg"
-        )
-    except InvalidImageError as exc:
-        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
-    return _to_admin_read(row)
-
-
-@router.delete("/image", response_model=HowItWorksContentAdminRead)
-def remove_background_image(db: Session = Depends(get_db)) -> HowItWorksContentAdminRead:
-    row = how_it_works_service.clear_background_image(db)
-    return _to_admin_read(row)

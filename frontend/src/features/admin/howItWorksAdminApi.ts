@@ -5,7 +5,6 @@ const BASE = "/api/v1/admin/how-it-works";
 
 export interface HowItWorksContentAdmin {
   translations: Record<string, HowItWorksTranslation>;
-  background_image_url: string | null;
 }
 
 export function getAdminHowItWorksContent(accessToken: string): Promise<HowItWorksContentAdmin> {
@@ -20,25 +19,5 @@ export function updateAdminHowItWorksContent(
     method: "PUT",
     accessToken,
     body: JSON.stringify({ translations }),
-  });
-}
-
-export function uploadHowItWorksBackgroundImage(
-  file: File,
-  accessToken: string
-): Promise<HowItWorksContentAdmin> {
-  const formData = new FormData();
-  formData.append("file", file);
-  return apiFetch<HowItWorksContentAdmin>(`${BASE}/image`, {
-    method: "POST",
-    accessToken,
-    body: formData,
-  });
-}
-
-export function deleteHowItWorksBackgroundImage(accessToken: string): Promise<HowItWorksContentAdmin> {
-  return apiFetch<HowItWorksContentAdmin>(`${BASE}/image`, {
-    method: "DELETE",
-    accessToken,
   });
 }

@@ -416,10 +416,11 @@
     "saved": "Enregistré",
     "saveError": "Impossible d'enregistrer",
     "loading": "Chargement...",
-    "backgroundImageLabel": "Image de fond",
-    "backgroundImageHint": "Affichée derrière le texte de cette section sur la page d'accueil. Facultatif.",
-    "noBackgroundImage": "Aucune image",
-    "changeBackgroundImage": "Changer l'image"
+    "stepsLabel": "Les trois étapes",
+    "stepsHint": "Affichées sur la page d'accueil sous le texte d'introduction, dans l'ordre.",
+    "stepNumber": "Étape {number}",
+    "stepTitleLabel": "Titre de l'étape",
+    "stepTextLabel": "Texte de l'étape"
   },
   "PasswordInput": {
     "show": "Afficher le mot de passe",

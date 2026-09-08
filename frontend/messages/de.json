@@ -416,10 +416,11 @@
     "saved": "Gespeichert",
     "saveError": "Speichern nicht möglich",
     "loading": "Wird geladen...",
-    "backgroundImageLabel": "Hintergrundbild",
-    "backgroundImageHint": "Wird hinter dem Text dieses Bereichs auf der Startseite angezeigt. Optional.",
-    "noBackgroundImage": "Kein Bild",
-    "changeBackgroundImage": "Bild ändern"
+    "stepsLabel": "Die drei Schritte",
+    "stepsHint": "Werden auf der Startseite unter dem Einleitungstext angezeigt, in dieser Reihenfolge.",
+    "stepNumber": "Schritt {number}",
+    "stepTitleLabel": "Titel des Schritts",
+    "stepTextLabel": "Text des Schritts"
   },
   "PasswordInput": {
     "show": "Passwort anzeigen",

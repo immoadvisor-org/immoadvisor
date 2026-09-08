@@ -416,10 +416,11 @@
     "saved": "Salvato",
     "saveError": "Impossibile salvare",
     "loading": "Caricamento...",
-    "backgroundImageLabel": "Immagine di sfondo",
-    "backgroundImageHint": "Mostrata dietro il testo di questa sezione in home. Facoltativa.",
-    "noBackgroundImage": "Nessuna immagine",
-    "changeBackgroundImage": "Cambia immagine"
+    "stepsLabel": "I tre step",
+    "stepsHint": "Mostrati in home sotto al testo introduttivo, in ordine.",
+    "stepNumber": "Step {number}",
+    "stepTitleLabel": "Titolo dello step",
+    "stepTextLabel": "Testo dello step"
   },
   "PasswordInput": {
     "show": "Mostra password",
