@@ -372,6 +372,7 @@
     "titleLabel": "Titel",
     "shortDescription": "Kurzbeschreibung (in der Vorschau angezeigt)",
     "fullDescription": "Ausführliche Beschreibung (beim Öffnen des Inserats angezeigt)",
-    "roomsValue": "{rooms} Zimmer"
+    "roomsValue": "{rooms} Zimmer",
+    "sectionEnabled": "Inserate-Bereich auf der Website anzeigen (Menü und Startseite)"
   }
 }

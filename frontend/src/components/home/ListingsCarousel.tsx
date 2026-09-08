@@ -5,11 +5,13 @@ import { useTranslations } from "next-intl";
 
 import { Link } from "@/i18n/navigation";
 import { useListings } from "@/features/listings/useListings";
+import { useListingsEnabled } from "@/features/listings/useListingsEnabled";
 import { ListingCard } from "@/components/listings/ListingCard";
 import { Button } from "@/components/ui/Button";
 
 export function ListingsCarousel() {
   const t = useTranslations("Home");
+  const listingsEnabled = useListingsEnabled();
   const { listings, isLoading } = useListings({ limit: 8 });
   const scrollerRef = useRef<HTMLDivElement>(null);
 
@@ -28,7 +30,7 @@ export function ListingsCarousel() {
     return () => clearInterval(interval);
   }, [listings]);
 
-  if (!isLoading && listings.length === 0) return null;
+  if (!listingsEnabled || (!isLoading && listings.length === 0)) return null;
 
   return (
     <section className="mx-auto max-w-6xl px-4 py-16">

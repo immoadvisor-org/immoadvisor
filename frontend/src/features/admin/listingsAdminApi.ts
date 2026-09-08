@@ -7,6 +7,21 @@ export function listAdminListings(accessToken: string): Promise<AdminListing[]> 
   return apiFetch<AdminListing[]>(BASE, { accessToken });
 }
 
+export function getAdminListingsSettings(accessToken: string): Promise<{ enabled: boolean }> {
+  return apiFetch<{ enabled: boolean }>(`${BASE}/settings`, { accessToken });
+}
+
+export function updateAdminListingsSettings(
+  enabled: boolean,
+  accessToken: string
+): Promise<{ enabled: boolean }> {
+  return apiFetch<{ enabled: boolean }>(`${BASE}/settings`, {
+    method: "PATCH",
+    accessToken,
+    body: JSON.stringify({ enabled }),
+  });
+}
+
 export function createAdminListing(
   payload: AdminListingPayload,
   accessToken: string

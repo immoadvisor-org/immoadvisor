@@ -5,7 +5,8 @@ from sqlalchemy.orm import Session
 
 from app.api.deps import get_db
 from app.schemas.listing import ListingRead
-from app.services import listing_catalog_service
+from app.schemas.listing_settings import ListingsSettingsRead
+from app.services import listing_catalog_service, listings_settings_service
 from app.services.i18n import resolve_locale
 
 router = APIRouter(prefix="/listings", tags=["listings"])
@@ -33,6 +34,12 @@ def list_listings(
         limit=limit,
     )
     return [ListingRead.from_model(listing, resolved_locale) for listing in listings]
+
+
+@router.get("/settings", response_model=ListingsSettingsRead)
+def get_listings_settings(db: Session = Depends(get_db)) -> ListingsSettingsRead:
+    settings = listings_settings_service.get_settings(db)
+    return ListingsSettingsRead.model_validate(settings)
 
 
 @router.get("/{slug}", response_model=ListingRead)

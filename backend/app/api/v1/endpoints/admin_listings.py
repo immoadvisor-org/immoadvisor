@@ -11,7 +11,8 @@ from app.schemas.admin_listing import (
     ListingReorderRequest,
     RemoveListingImageRequest,
 )
-from app.services import admin_listing_service
+from app.schemas.listing_settings import ListingsSettingsRead, ListingsSettingsUpdate
+from app.services import admin_listing_service, listings_settings_service
 from app.services.exceptions import InvalidImageError, ListingNotFoundError
 
 router = APIRouter(
@@ -25,6 +26,20 @@ router = APIRouter(
 def list_listings(db: Session = Depends(get_db)) -> list[AdminListingRead]:
     listings = admin_listing_service.list_all_listings(db)
     return [AdminListingRead.model_validate(listing) for listing in listings]
+
+
+@router.get("/settings", response_model=ListingsSettingsRead)
+def get_listings_settings(db: Session = Depends(get_db)) -> ListingsSettingsRead:
+    settings = listings_settings_service.get_settings(db)
+    return ListingsSettingsRead.model_validate(settings)
+
+
+@router.patch("/settings", response_model=ListingsSettingsRead)
+def update_listings_settings(
+    payload: ListingsSettingsUpdate, db: Session = Depends(get_db)
+) -> ListingsSettingsRead:
+    settings = listings_settings_service.update_settings(db, payload.enabled)
+    return ListingsSettingsRead.model_validate(settings)
 
 
 @router.post("", response_model=AdminListingRead, status_code=status.HTTP_201_CREATED)

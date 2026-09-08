@@ -4,16 +4,18 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 
 import { Link } from "@/i18n/navigation";
+import { useListingsEnabled } from "@/features/listings/useListingsEnabled";
 
 export function NavMenu() {
   const t = useTranslations("Header");
   const tNav = useTranslations("Nav");
   const [isOpen, setIsOpen] = useState(false);
+  const listingsEnabled = useListingsEnabled();
 
   const links = [
     { href: "/", label: tNav("home") },
     { href: "/configuratore", label: tNav("configurator") },
-    { href: "/annunci", label: tNav("listings") },
+    ...(listingsEnabled ? [{ href: "/annunci", label: tNav("listings") }] : []),
     { href: "/about", label: tNav("about") },
     { href: "/contact", label: tNav("contact") },
   ];

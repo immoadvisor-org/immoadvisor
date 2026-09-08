@@ -372,6 +372,7 @@
     "titleLabel": "Titolo",
     "shortDescription": "Descrizione breve (mostrata nell'anteprima)",
     "fullDescription": "Descrizione estesa (mostrata aprendo l'annuncio)",
-    "roomsValue": "{rooms} locali"
+    "roomsValue": "{rooms} locali",
+    "sectionEnabled": "Mostra la sezione Annunci sul sito (menu e home)"
   }
 }

@@ -372,6 +372,7 @@
     "titleLabel": "Title",
     "shortDescription": "Short description (shown in the preview)",
     "fullDescription": "Full description (shown when opening the listing)",
-    "roomsValue": "{rooms} rooms"
+    "roomsValue": "{rooms} rooms",
+    "sectionEnabled": "Show the Listings section on the site (menu and home)"
   }
 }
