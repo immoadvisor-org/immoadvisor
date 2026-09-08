@@ -2,7 +2,44 @@
   "Header": {
     "account": "Mein Konto",
     "login": "Anmelden",
-    "cart": "Warenkorb"
+    "cart": "Warenkorb",
+    "menu": "Menü"
+  },
+  "Nav": {
+    "home": "Konfigurator",
+    "about": "Über uns",
+    "contact": "Kontakt"
+  },
+  "About": {
+    "title": "Über uns",
+    "intro": "ImmoAdvisor entstand aus der praktischen Erfahrung von Carmine, seit Jahren als Immobilienprofi in der Schweiz tätig, der zu oft sah, wie Eigentümer für aufgeblähte, intransparente Servicepakete beim Hausverkauf bezahlten. Daraus entstand die Idee: eine Plattform, auf der Sie genau die Dienstleistungen wählen, die Sie brauchen — Inserat, Fotografie, Unterlagen, Bewertung — ganz ohne Verpflichtung und mit stets sichtbarer Summe.",
+    "valuesTitle": "Unsere Werte",
+    "value1Title": "Transparenz",
+    "value1Text": "Jede Dienstleistung hat einen klaren Preis, festgelegt vor dem Kauf. Keine Überraschungen auf der Rechnung.",
+    "value2Title": "Massgeschneidert",
+    "value2Text": "Wählen Sie nur, was Sie wirklich brauchen: keine vorgefertigten Pakete, sondern ein Konfigurator rund um Ihren Verkauf.",
+    "value3Title": "Lokale Erfahrung",
+    "value3Text": "Jahrelange Erfahrung auf dem Schweizer Immobilienmarkt, für einen Service, der die lokalen Bedürfnisse wirklich kennt.",
+    "ctaTitle": "Haben Sie Fragen?",
+    "ctaText": "Schreiben Sie uns, wir helfen Ihnen gerne, die richtigen Dienstleistungen für Ihren Verkauf zu wählen.",
+    "ctaButton": "Kontaktieren Sie uns"
+  },
+  "Contact": {
+    "title": "Kontaktieren Sie uns",
+    "subtitle": "Haben Sie eine Frage zu unseren Dienstleistungen oder möchten Sie sich vor dem Start beraten lassen? Schreiben Sie uns, wir antworten so schnell wie möglich.",
+    "firstName": "Vorname",
+    "lastName": "Nachname",
+    "email": "E-Mail",
+    "phone": "Telefon (optional)",
+    "message": "Nachricht",
+    "submit": "Nachricht senden",
+    "submitting": "Wird gesendet...",
+    "successTitle": "Nachricht gesendet!",
+    "successText": "Vielen Dank für Ihre Kontaktaufnahme, wir melden uns in Kürze bei Ihnen.",
+    "backHome": "Zurück zur Startseite",
+    "errorRequired": "Pflichtfeld",
+    "errorEmail": "Ungültige E-Mail",
+    "genericError": "Unerwarteter Fehler beim Senden der Nachricht, bitte versuchen Sie es erneut."
   },
   "Footer": {
     "tagline": "Immobiliendienstleistungen in der Schweiz"
@@ -110,11 +147,23 @@
     "updateError": "Änderungen konnten nicht gespeichert werden",
     "deleteError": "Posten konnte nicht gelöscht werden",
     "inUseError": "Dieser Posten wird in bestehenden Bestellungen verwendet: deaktivieren Sie ihn, anstatt ihn zu löschen.",
+    "contactLink": "Kontaktnachrichten",
     "images": "Fotos",
     "addPhoto": "Foto hinzufügen",
     "removePhoto": "Foto entfernen",
     "uploading": "Wird hochgeladen...",
     "saveBeforePhotos": "Speichern Sie den Posten, um Fotos hinzufügen zu können."
+  },
+  "AdminContact": {
+    "catalogLink": "Katalog",
+    "settingsTitle": "E-Mail-Benachrichtigungen",
+    "notificationEmailLabel": "E-Mail für Benachrichtigungen",
+    "save": "Speichern",
+    "saved": "Gespeichert",
+    "saveError": "Speichern fehlgeschlagen",
+    "messagesTitle": "Erhaltene Nachrichten",
+    "noMessages": "Noch keine Nachrichten erhalten.",
+    "loading": "Wird geladen..."
   },
   "Locale": {
     "it": "Italiano",

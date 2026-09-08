@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 
+import { Link } from "@/i18n/navigation";
 import { useUser } from "@/features/auth/useUser";
 import { useIsAdmin } from "@/features/profile/useIsAdmin";
 import {
@@ -114,7 +115,12 @@ export default function AdminServicesPage() {
           <h1 className="text-2xl font-medium text-slate-900 dark:text-slate-50">{t("title")}</h1>
           <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">{t("subtitle")}</p>
         </div>
-        <Button onClick={() => setEditingId("new")}>{t("newItem")}</Button>
+        <div className="flex items-center gap-4">
+          <Link href="/admin/contact" className="text-sm text-brand-600 hover:underline dark:text-brand-100">
+            {t("contactLink")} →
+          </Link>
+          <Button onClick={() => setEditingId("new")}>{t("newItem")}</Button>
+        </div>
       </div>
 
       {error && <p className="mt-4 text-sm text-red-600 dark:text-red-400">{error}</p>}

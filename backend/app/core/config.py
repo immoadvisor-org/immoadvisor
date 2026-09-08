@@ -33,6 +33,11 @@ class Settings(BaseSettings):
     immoscout_api_key: str = ""
     immoscout_api_base_url: str = ""
 
+    # Resend (resend.com) per l'invio della notifica email dei messaggi di
+    # contatto. Se vuota, il messaggio viene comunque salvato nel database
+    # ma la notifica email viene saltata.
+    resend_api_key: str = ""
+
 
 @lru_cache
 def get_settings() -> Settings:

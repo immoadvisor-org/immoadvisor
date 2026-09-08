@@ -7,6 +7,7 @@ import { BRAND_NAME } from "@/lib/constants";
 import { useUser } from "@/features/auth/useUser";
 import { useCartStore } from "@/features/cart/cartStore";
 import { LocaleSwitcher } from "@/components/layout/LocaleSwitcher";
+import { NavMenu } from "@/components/layout/NavMenu";
 
 export function Header() {
   const t = useTranslations("Header");
@@ -53,6 +54,7 @@ export function Header() {
               </span>
             )}
           </button>
+          <NavMenu />
         </nav>
       </div>
     </header>

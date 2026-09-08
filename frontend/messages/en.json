@@ -2,7 +2,44 @@
   "Header": {
     "account": "My account",
     "login": "Sign in",
-    "cart": "Cart"
+    "cart": "Cart",
+    "menu": "Menu"
+  },
+  "Nav": {
+    "home": "Configurator",
+    "about": "About us",
+    "contact": "Contact"
+  },
+  "About": {
+    "title": "About us",
+    "intro": "ImmoAdvisor was born from the hands-on experience of Carmine, a real estate professional active in Switzerland for years, who saw too many property owners pay for bloated, opaque service packages when selling their home. That's where the idea came from: a platform where you choose exactly the services you need — listing, photography, documentation, valuation — with no strings attached and the total always visible.",
+    "valuesTitle": "Our values",
+    "value1Title": "Transparency",
+    "value1Text": "Every service has a clear price, set before you buy. No surprises on the invoice.",
+    "value2Title": "Tailored to you",
+    "value2Text": "Choose only what you really need: not pre-packaged bundles, but a configurator built around your sale.",
+    "value3Title": "Local expertise",
+    "value3Text": "Years of experience in the Swiss real estate market, for a service that truly understands local needs.",
+    "ctaTitle": "Have questions?",
+    "ctaText": "Write to us, we're happy to help you choose the right services for your sale.",
+    "ctaButton": "Contact us"
+  },
+  "Contact": {
+    "title": "Contact us",
+    "subtitle": "Have a question about our services, or want advice before you start? Write to us, we'll get back to you as soon as possible.",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "email": "Email",
+    "phone": "Phone (optional)",
+    "message": "Message",
+    "submit": "Send message",
+    "submitting": "Sending...",
+    "successTitle": "Message sent!",
+    "successText": "Thank you for contacting us, we'll get back to you shortly.",
+    "backHome": "Back to home",
+    "errorRequired": "Required field",
+    "errorEmail": "Invalid email",
+    "genericError": "Unexpected error sending the message, please try again."
   },
   "Footer": {
     "tagline": "Real estate services in Switzerland"
@@ -110,11 +147,23 @@
     "updateError": "Unable to save changes",
     "deleteError": "Unable to delete the item",
     "inUseError": "This item is used in existing orders: deactivate it instead of deleting.",
+    "contactLink": "Contact messages",
     "images": "Photos",
     "addPhoto": "Add photo",
     "removePhoto": "Remove photo",
     "uploading": "Uploading...",
     "saveBeforePhotos": "Save the item first to add photos."
+  },
+  "AdminContact": {
+    "catalogLink": "Catalog",
+    "settingsTitle": "Email notifications",
+    "notificationEmailLabel": "Email to receive notifications",
+    "save": "Save",
+    "saved": "Saved",
+    "saveError": "Unable to save",
+    "messagesTitle": "Received messages",
+    "noMessages": "No messages received yet.",
+    "loading": "Loading..."
   },
   "Locale": {
     "it": "Italiano",

@@ -2,7 +2,44 @@
   "Header": {
     "account": "Mon compte",
     "login": "Se connecter",
-    "cart": "Panier"
+    "cart": "Panier",
+    "menu": "Menu"
+  },
+  "Nav": {
+    "home": "Configurateur",
+    "about": "À propos",
+    "contact": "Contact"
+  },
+  "About": {
+    "title": "À propos",
+    "intro": "ImmoAdvisor est né de l'expérience de terrain de Carmine, professionnel de l'immobilier actif en Suisse depuis des années, qui a vu trop de propriétaires payer des forfaits de services gonflés et peu transparents pour vendre leur bien. D'où l'idée : une plateforme où c'est vous qui choisissez exactement les services dont vous avez besoin — annonce, photographie, documentation, évaluation — sans engagement et avec le total toujours visible.",
+    "valuesTitle": "Nos valeurs",
+    "value1Title": "Transparence",
+    "value1Text": "Chaque service a un prix clair, défini avant l'achat. Aucune surprise sur la facture.",
+    "value2Title": "Sur mesure",
+    "value2Text": "Choisissez uniquement ce dont vous avez vraiment besoin : pas de forfaits préconçus, mais un configurateur pensé autour de votre vente.",
+    "value3Title": "Expertise locale",
+    "value3Text": "Des années d'expérience sur le marché immobilier suisse, pour un service qui connaît vraiment les besoins locaux.",
+    "ctaTitle": "Des questions ?",
+    "ctaText": "Écrivez-nous, nous serons heureux de vous aider à choisir les bons services pour votre vente.",
+    "ctaButton": "Contactez-nous"
+  },
+  "Contact": {
+    "title": "Contactez-nous",
+    "subtitle": "Une question sur nos services, ou envie d'un conseil avant de commencer ? Écrivez-nous, nous vous répondrons dès que possible.",
+    "firstName": "Prénom",
+    "lastName": "Nom",
+    "email": "E-mail",
+    "phone": "Téléphone (facultatif)",
+    "message": "Message",
+    "submit": "Envoyer le message",
+    "submitting": "Envoi en cours...",
+    "successTitle": "Message envoyé !",
+    "successText": "Merci de nous avoir contactés, nous vous répondrons sous peu.",
+    "backHome": "Retour à l'accueil",
+    "errorRequired": "Champ obligatoire",
+    "errorEmail": "E-mail invalide",
+    "genericError": "Erreur inattendue lors de l'envoi du message, veuillez réessayer."
   },
   "Footer": {
     "tagline": "Services immobiliers en Suisse"
@@ -110,11 +147,23 @@
     "updateError": "Impossible d'enregistrer les modifications",
     "deleteError": "Impossible de supprimer l'élément",
     "inUseError": "Cet élément est utilisé dans des commandes existantes : désactivez-le plutôt que de le supprimer.",
+    "contactLink": "Messages de contact",
     "images": "Photos",
     "addPhoto": "Ajouter une photo",
     "removePhoto": "Retirer la photo",
     "uploading": "Téléchargement...",
     "saveBeforePhotos": "Enregistrez l'élément pour pouvoir ajouter des photos."
+  },
+  "AdminContact": {
+    "catalogLink": "Catalogue",
+    "settingsTitle": "Notifications par e-mail",
+    "notificationEmailLabel": "E-mail pour recevoir les notifications",
+    "save": "Enregistrer",
+    "saved": "Enregistré",
+    "saveError": "Impossible d'enregistrer",
+    "messagesTitle": "Messages reçus",
+    "noMessages": "Aucun message reçu pour le moment.",
+    "loading": "Chargement..."
   },
   "Locale": {
     "it": "Italiano",
