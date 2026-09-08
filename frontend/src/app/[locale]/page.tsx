@@ -53,8 +53,6 @@ export default function HomePage() {
         </section>
       )}
 
-      <ListingsCarousel />
-
       {about && (
         <section className="mx-auto max-w-6xl px-4 py-16">
           <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2">
@@ -74,6 +72,8 @@ export default function HomePage() {
           </div>
         </section>
       )}
+
+      <ListingsCarousel />
 
       <section className="mx-auto max-w-3xl px-4 py-16 text-center">
         <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-slate-50 sm:text-3xl">
