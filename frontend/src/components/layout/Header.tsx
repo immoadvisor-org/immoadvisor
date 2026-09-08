@@ -8,6 +8,7 @@ import { useUser } from "@/features/auth/useUser";
 import { useCartStore } from "@/features/cart/cartStore";
 import { LocaleSwitcher } from "@/components/layout/LocaleSwitcher";
 import { NavMenu } from "@/components/layout/NavMenu";
+import { UserMenu } from "@/components/layout/UserMenu";
 
 export function Header() {
   const t = useTranslations("Header");
@@ -25,13 +26,11 @@ export function Header() {
           {BRAND_NAME}
         </Link>
 
-        <nav className="flex items-center gap-4 text-sm text-slate-600 dark:text-slate-300">
+        <nav className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300 sm:gap-4">
           {user ? (
-            <Link href="/account" className="hidden hover:text-slate-900 dark:hover:text-slate-50 sm:inline">
-              {t("account")}
-            </Link>
+            <UserMenu user={user} />
           ) : (
-            <Link href="/login" className="hidden hover:text-slate-900 dark:hover:text-slate-50 sm:inline">
+            <Link href="/login" className="hover:text-slate-900 dark:hover:text-slate-50">
               {t("login")}
             </Link>
           )}
