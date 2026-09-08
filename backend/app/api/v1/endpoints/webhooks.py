@@ -5,9 +5,9 @@ from fastapi import APIRouter, Depends, HTTPException, Request, status
 from sqlalchemy.orm import Session
 
 from app.api.deps import get_db
-from app.integrations.email_client import send_customer_order_status_email, send_order_notification
+from app.integrations.email_client import send_customer_payment_status_email, send_order_notification
 from app.integrations.stripe_client import construct_webhook_event, extract_order_id_from_session
-from app.models.order import OrderStatus
+from app.models.order import OrderPaymentStatus
 from app.services import notification_service, order_service
 from app.services.exceptions import OrderNotFoundError
 from app.services.fulfillment_service import orchestrate_post_payment
@@ -44,7 +44,7 @@ async def stripe_webhook(request: Request, db: Session = Depends(get_db)) -> dic
             order = order_service.mark_order_paid(db, order, session["payment_intent"])
             orchestrate_post_payment(db, order)
             outcome_changed = True
-        elif order.status == OrderStatus.PENDING:
+        elif order.payment_status == OrderPaymentStatus.PENDING:
             # Solo un ordine ancora "in attesa" va annullato: se nel frattempo è
             # già stato pagato (evento arrivato in ordine diverso), non toccarlo.
             order = order_service.mark_order_cancelled(db, order)
@@ -53,6 +53,20 @@ async def stripe_webhook(request: Request, db: Session = Depends(get_db)) -> dic
         if outcome_changed:
             recipients = notification_service.list_recipient_emails(db, "order")
             send_order_notification(order, recipients)
-            send_customer_order_status_email(order)
+            send_customer_payment_status_email(order)
+
+    elif event["type"] == "charge.refunded":
+        charge = event["data"]["object"]
+        payment_intent = charge.get("payment_intent")
+        order = order_service.get_order_by_payment_intent(db, payment_intent) if payment_intent else None
+        if order is None:
+            logger.error("Webhook Stripe charge.refunded per payment_intent sconosciuto: %s", payment_intent)
+            return {"received": True}
+
+        if order.payment_status == OrderPaymentStatus.REFUND_PENDING:
+            order = order_service.mark_refunded(db, order)
+            recipients = notification_service.list_recipient_emails(db, "order")
+            send_order_notification(order, recipients)
+            send_customer_payment_status_email(order)
 
     return {"received": True}

@@ -3,28 +3,26 @@
 import { useEffect, useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
 
+import { Link } from "@/i18n/navigation";
 import { useUser } from "@/features/auth/useUser";
 import { useIsAdmin } from "@/features/profile/useIsAdmin";
-import {
-  listAllOrders,
-  updateOrderItemStatus,
-  updateOrderStatus,
-  type AdminOrder,
-} from "@/features/admin/ordersAdminApi";
+import { listAllOrders, type AdminOrder } from "@/features/admin/ordersAdminApi";
 import { AdminLayout } from "@/components/admin/AdminLayout";
 import { NotificationEmailList } from "@/components/admin/NotificationEmailList";
 import { PriceTag } from "@/components/ui/PriceTag";
-import type { OrderItemStatus, OrderStatus } from "@/types/order";
 
 type SortField = "date" | "email";
 
-const ORDER_STATUSES: OrderStatus[] = ["pending", "paid", "processing", "completed", "cancelled"];
-const ITEM_STATUSES: OrderItemStatus[] = ["pending", "processing", "completed"];
-
-const STATUS_STYLES: Record<string, string> = {
+const PAYMENT_STATUS_STYLES: Record<string, string> = {
   paid: "bg-brand-50 text-brand-600 dark:bg-brand-500/20 dark:text-brand-100",
   pending: "bg-amber-50 text-amber-700 dark:bg-amber-500/20 dark:text-amber-200",
   cancelled: "bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300",
+  refund_pending: "bg-amber-50 text-amber-700 dark:bg-amber-500/20 dark:text-amber-200",
+  refunded: "bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300",
+};
+
+const FULFILLMENT_STATUS_STYLES: Record<string, string> = {
+  pending: "bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300",
   processing: "bg-amber-50 text-amber-700 dark:bg-amber-500/20 dark:text-amber-200",
   completed: "bg-brand-50 text-brand-600 dark:bg-brand-500/20 dark:text-brand-100",
 };
@@ -44,8 +42,6 @@ export default function AdminOrdersPage() {
   const [dateTo, setDateTo] = useState("");
   const [sortField, setSortField] = useState<SortField>("date");
   const [sortDirection, setSortDirection] = useState<"asc" | "desc">("desc");
-  const [updatingKey, setUpdatingKey] = useState<string | null>(null);
-  const [statusError, setStatusError] = useState<string | null>(null);
 
   useEffect(() => {
     if (!isAdmin || !accessToken) return;
@@ -54,34 +50,6 @@ export default function AdminOrdersPage() {
       .then(setOrders)
       .finally(() => setIsLoading(false));
   }, [isAdmin, accessToken]);
-
-  async function handleOrderStatusChange(orderId: string, newStatus: OrderStatus) {
-    if (!accessToken) return;
-    setUpdatingKey(orderId);
-    setStatusError(null);
-    try {
-      const updated = await updateOrderStatus(orderId, newStatus, accessToken);
-      setOrders((prev) => prev.map((order) => (order.id === orderId ? updated : order)));
-    } catch (err) {
-      setStatusError(err instanceof Error ? err.message : t("statusUpdateError"));
-    } finally {
-      setUpdatingKey(null);
-    }
-  }
-
-  async function handleItemStatusChange(orderId: string, itemId: string, newStatus: OrderItemStatus) {
-    if (!accessToken) return;
-    setUpdatingKey(itemId);
-    setStatusError(null);
-    try {
-      const updated = await updateOrderItemStatus(orderId, itemId, newStatus, accessToken);
-      setOrders((prev) => prev.map((order) => (order.id === orderId ? updated : order)));
-    } catch (err) {
-      setStatusError(err instanceof Error ? err.message : t("statusUpdateError"));
-    } finally {
-      setUpdatingKey(null);
-    }
-  }
 
   const filteredAndSorted = useMemo(() => {
     let result = orders;
@@ -174,8 +142,6 @@ export default function AdminOrdersPage() {
         </label>
       </div>
 
-      {statusError && <p className="mt-4 text-sm text-red-600 dark:text-red-400">{statusError}</p>}
-
       <div className="mt-4 overflow-x-auto rounded-xl border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900">
         {isLoading ? (
           <p className="p-6 text-sm text-slate-500 dark:text-slate-400">{t("loading")}</p>
@@ -193,9 +159,11 @@ export default function AdminOrdersPage() {
                   {t("columnEmail")}
                   {sortIndicator("email")}
                 </th>
-                <th className="px-4 py-3">{t("columnStatus")}</th>
+                <th className="px-4 py-3">{t("columnPaymentStatus")}</th>
+                <th className="px-4 py-3">{t("columnFulfillmentStatus")}</th>
                 <th className="px-4 py-3">{t("columnServices")}</th>
                 <th className="px-4 py-3 text-right">{t("columnTotal")}</th>
+                <th className="px-4 py-3" />
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
@@ -206,46 +174,36 @@ export default function AdminOrdersPage() {
                   </td>
                   <td className="px-4 py-3 text-slate-900 dark:text-slate-50">{order.email ?? "—"}</td>
                   <td className="px-4 py-3">
-                    <select
-                      value={order.status}
-                      disabled={updatingKey === order.id}
-                      onChange={(e) => handleOrderStatusChange(order.id, e.target.value as OrderStatus)}
-                      className={`rounded-full border-0 px-2.5 py-0.5 text-xs font-medium ${
-                        STATUS_STYLES[order.status] ?? STATUS_STYLES.cancelled
+                    <span
+                      className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${
+                        PAYMENT_STATUS_STYLES[order.payment_status] ?? PAYMENT_STATUS_STYLES.cancelled
                       }`}
                     >
-                      {ORDER_STATUSES.map((s) => (
-                        <option key={s} value={s}>
-                          {tOrders(`status.${s}`)}
-                        </option>
-                      ))}
-                    </select>
+                      {tOrders(`paymentStatus.${order.payment_status}`)}
+                    </span>
+                  </td>
+                  <td className="px-4 py-3">
+                    <span
+                      className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${
+                        FULFILLMENT_STATUS_STYLES[order.fulfillment_status] ?? FULFILLMENT_STATUS_STYLES.pending
+                      }`}
+                    >
+                      {tOrders(`fulfillmentStatus.${order.fulfillment_status}`)}
+                    </span>
                   </td>
                   <td className="px-4 py-3 text-slate-600 dark:text-slate-300">
-                    <ul className="space-y-1">
-                      {order.items.map((item) => (
-                        <li key={item.id} className="flex items-center gap-2">
-                          <span>{item.service_name_snapshot}</span>
-                          <select
-                            value={item.status}
-                            disabled={updatingKey === item.id}
-                            onChange={(e) =>
-                              handleItemStatusChange(order.id, item.id, e.target.value as OrderItemStatus)
-                            }
-                            className="rounded border border-slate-300 bg-transparent px-1.5 py-0.5 text-xs dark:border-slate-700"
-                          >
-                            {ITEM_STATUSES.map((s) => (
-                              <option key={s} value={s}>
-                                {tOrders(`status.${s}`)}
-                              </option>
-                            ))}
-                          </select>
-                        </li>
-                      ))}
-                    </ul>
+                    {order.items.map((item) => item.service_name_snapshot).join(", ")}
                   </td>
                   <td className="px-4 py-3 text-right font-medium text-slate-900 dark:text-slate-50">
                     <PriceTag amountChf={Number(order.total_chf)} />
+                  </td>
+                  <td className="px-4 py-3 text-right">
+                    <Link
+                      href={`/admin/orders/${order.id}`}
+                      className="text-brand-600 hover:underline dark:text-brand-100"
+                    >
+                      {t("edit")}
+                    </Link>
                   </td>
                 </tr>
               ))}

@@ -174,12 +174,17 @@
     "loading": "Bestellungen werden geladen...",
     "error": "Bestellungen konnten nicht geladen werden: {error}",
     "empty": "Sie haben noch keine Käufe getätigt.",
-    "status": {
+    "paymentStatus": {
       "pending": "Zahlung ausstehend",
       "paid": "Bezahlt",
+      "cancelled": "Storniert",
+      "refund_pending": "Rückerstattung läuft",
+      "refunded": "Rückerstattet"
+    },
+    "fulfillmentStatus": {
+      "pending": "Nicht begonnen",
       "processing": "In Bearbeitung",
-      "completed": "Abgeschlossen",
-      "cancelled": "Storniert"
+      "completed": "Abgeschlossen"
     }
   },
   "AdminNav": {
@@ -223,12 +228,13 @@
     "filterDateTo": "Bis",
     "columnDate": "Datum",
     "columnEmail": "E-Mail",
-    "columnStatus": "Status",
     "columnServices": "Dienstleistungen",
     "columnTotal": "Gesamt",
     "noOrders": "Keine Bestellungen gefunden.",
     "loading": "Wird geladen...",
-    "statusUpdateError": "Status konnte nicht aktualisiert werden"
+    "columnPaymentStatus": "Zahlungsstatus",
+    "columnFulfillmentStatus": "Bearbeitungsstatus",
+    "edit": "Bearbeiten"
   },
   "NotificationEmails": {
     "loading": "Wird geladen...",
@@ -305,5 +311,23 @@
     "en": "English",
     "de": "Deutsch",
     "fr": "Français"
+  },
+  "AdminOrderDetail": {
+    "title": "Bestellung",
+    "back": "Zurück zu den Bestellungen",
+    "loading": "Wird geladen...",
+    "notFound": "Bestellung nicht gefunden.",
+    "dateLabel": "Datum",
+    "customerLabel": "Kunde",
+    "itemsLabel": "Gekaufte Dienstleistungen",
+    "totalLabel": "Gesamt",
+    "paymentStatusLabel": "Zahlungsstatus",
+    "fulfillmentStatusLabel": "Bearbeitungsstatus",
+    "refundButton": "Bestellung rückerstatten",
+    "refunding": "Rückerstattung läuft...",
+    "refundConfirm": "Rückerstattung für diese Bestellung bestätigen? Der Betrag wird dem Kunden über Stripe zurückerstattet.",
+    "refundError": "Rückerstattung konnte nicht gestartet werden",
+    "refundPendingNote": "Rückerstattung läuft, Bestätigung von Stripe ausstehend.",
+    "fulfillmentUpdateError": "Bearbeitungsstatus konnte nicht aktualisiert werden"
   }
 }

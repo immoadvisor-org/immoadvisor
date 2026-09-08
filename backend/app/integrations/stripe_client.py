@@ -41,6 +41,10 @@ def create_checkout_session(order: Order) -> stripe.checkout.Session:
     )
 
 
+def create_refund(payment_intent: str) -> stripe.Refund:
+    return stripe.Refund.create(payment_intent=payment_intent)
+
+
 def construct_webhook_event(payload: bytes, signature_header: str) -> stripe.Event:
     return stripe.Webhook.construct_event(
         payload, signature_header, settings.stripe_webhook_secret

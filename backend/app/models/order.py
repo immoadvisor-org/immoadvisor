@@ -11,15 +11,16 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 from app.db.base import Base
 
 
-class OrderStatus(str, enum.Enum):
+class OrderPaymentStatus(str, enum.Enum):
     PENDING = "pending"
     PAID = "paid"
-    PROCESSING = "processing"
-    COMPLETED = "completed"
     CANCELLED = "cancelled"
+    # Rimborso richiesto su Stripe, in attesa di conferma via webhook.
+    REFUND_PENDING = "refund_pending"
+    REFUNDED = "refunded"
 
 
-class OrderItemStatus(str, enum.Enum):
+class OrderFulfillmentStatus(str, enum.Enum):
     PENDING = "pending"
     PROCESSING = "processing"
     COMPLETED = "completed"
@@ -38,13 +39,29 @@ class Order(Base):
     # elencare gli ordini in admin senza dover interrogare lo schema auth,
     # e resta corretta anche se l'utente cambia poi la propria email.
     email: Mapped[str | None] = mapped_column(String, nullable=True)
-    status: Mapped[OrderStatus] = mapped_column(
-        SAEnum(OrderStatus, name="order_status", values_callable=lambda e: [i.value for i in e]),
-        default=OrderStatus.PENDING,
+    # Stato del pagamento (gestito dal sistema via Stripe: checkout e
+    # rimborsi) e stato di lavorazione dell'ordine (gestito manualmente
+    # dall'admin) sono concetti separati: un ordine pagato può essere "in
+    # lavorazione" o "completato" indipendentemente da un eventuale rimborso
+    # successivo.
+    payment_status: Mapped[OrderPaymentStatus] = mapped_column(
+        SAEnum(
+            OrderPaymentStatus, name="order_payment_status", values_callable=lambda e: [i.value for i in e]
+        ),
+        default=OrderPaymentStatus.PENDING,
+    )
+    fulfillment_status: Mapped[OrderFulfillmentStatus] = mapped_column(
+        SAEnum(
+            OrderFulfillmentStatus,
+            name="order_fulfillment_status",
+            values_callable=lambda e: [i.value for i in e],
+        ),
+        default=OrderFulfillmentStatus.PENDING,
     )
     total_chf: Mapped[Decimal] = mapped_column(Numeric(10, 2))
     stripe_session_id: Mapped[str | None] = mapped_column(String, nullable=True)
     stripe_payment_intent: Mapped[str | None] = mapped_column(String, nullable=True)
+    stripe_refund_id: Mapped[str | None] = mapped_column(String, nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
     updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
 
@@ -63,12 +80,6 @@ class OrderItem(Base):
     service_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), ForeignKey("services.id"))
     service_name_snapshot: Mapped[str] = mapped_column(String)
     price_chf_snapshot: Mapped[Decimal] = mapped_column(Numeric(10, 2))
-    status: Mapped[OrderItemStatus] = mapped_column(
-        SAEnum(
-            OrderItemStatus, name="order_item_status", values_callable=lambda e: [i.value for i in e]
-        ),
-        default=OrderItemStatus.PENDING,
-    )
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
 
     order: Mapped[Order] = relationship(back_populates="items")

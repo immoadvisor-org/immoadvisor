@@ -4,7 +4,7 @@ from decimal import Decimal
 
 from pydantic import BaseModel, ConfigDict, Field
 
-from app.models.order import OrderItemStatus, OrderStatus
+from app.models.order import OrderFulfillmentStatus, OrderPaymentStatus
 
 
 class OrderItemRead(BaseModel):
@@ -14,14 +14,14 @@ class OrderItemRead(BaseModel):
     service_id: uuid.UUID
     service_name_snapshot: str
     price_chf_snapshot: Decimal
-    status: OrderItemStatus
 
 
 class OrderRead(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
     id: uuid.UUID
-    status: OrderStatus
+    payment_status: OrderPaymentStatus
+    fulfillment_status: OrderFulfillmentStatus
     total_chf: Decimal
     created_at: datetime
     items: list[OrderItemRead]
@@ -31,12 +31,8 @@ class AdminOrderRead(OrderRead):
     email: str | None
 
 
-class OrderStatusUpdate(BaseModel):
-    status: OrderStatus
-
-
-class OrderItemStatusUpdate(BaseModel):
-    status: OrderItemStatus
+class FulfillmentStatusUpdate(BaseModel):
+    status: OrderFulfillmentStatus
 
 
 class CheckoutSessionCreate(BaseModel):

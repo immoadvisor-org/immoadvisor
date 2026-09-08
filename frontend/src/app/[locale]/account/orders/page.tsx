@@ -64,25 +64,26 @@ function OrdersPageContent() {
               key={order.id}
               className="rounded-xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900"
             >
-              <div className="flex items-center justify-between">
+              <div className="flex items-center justify-between gap-2">
                 <p className="text-sm text-slate-500 dark:text-slate-400">
                   {new Date(order.created_at).toLocaleDateString()}
                 </p>
-                <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700 dark:bg-slate-800 dark:text-slate-200">
-                  {t(`status.${order.status}`)}
-                </span>
+                <div className="flex gap-2">
+                  <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700 dark:bg-slate-800 dark:text-slate-200">
+                    {t(`paymentStatus.${order.payment_status}`)}
+                  </span>
+                  {order.payment_status === "paid" && (
+                    <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700 dark:bg-slate-800 dark:text-slate-200">
+                      {t(`fulfillmentStatus.${order.fulfillment_status}`)}
+                    </span>
+                  )}
+                </div>
               </div>
 
               <ul className="mt-3 space-y-1">
                 {order.items.map((item) => (
-                  <li
-                    key={item.id}
-                    className="flex items-center justify-between gap-2 text-sm text-slate-700 dark:text-slate-300"
-                  >
-                    <span>{item.service_name_snapshot}</span>
-                    <span className="rounded-full bg-slate-100 px-2 py-0.5 text-xs font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-300">
-                      {t(`status.${item.status}`)}
-                    </span>
+                  <li key={item.id} className="text-sm text-slate-700 dark:text-slate-300">
+                    {item.service_name_snapshot}
                   </li>
                 ))}
               </ul>

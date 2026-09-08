@@ -174,12 +174,17 @@
     "loading": "Loading orders...",
     "error": "Unable to load orders: {error}",
     "empty": "You haven't made any purchases yet.",
-    "status": {
+    "paymentStatus": {
       "pending": "Awaiting payment",
       "paid": "Paid",
+      "cancelled": "Cancelled",
+      "refund_pending": "Refund in progress",
+      "refunded": "Refunded"
+    },
+    "fulfillmentStatus": {
+      "pending": "Not started",
       "processing": "In progress",
-      "completed": "Completed",
-      "cancelled": "Cancelled"
+      "completed": "Completed"
     }
   },
   "AdminNav": {
@@ -223,12 +228,13 @@
     "filterDateTo": "To",
     "columnDate": "Date",
     "columnEmail": "Email",
-    "columnStatus": "Status",
     "columnServices": "Services",
     "columnTotal": "Total",
     "noOrders": "No orders found.",
     "loading": "Loading...",
-    "statusUpdateError": "Unable to update the status"
+    "columnPaymentStatus": "Payment status",
+    "columnFulfillmentStatus": "Fulfillment status",
+    "edit": "Edit"
   },
   "NotificationEmails": {
     "loading": "Loading...",
@@ -305,5 +311,23 @@
     "en": "English",
     "de": "Deutsch",
     "fr": "Français"
+  },
+  "AdminOrderDetail": {
+    "title": "Order",
+    "back": "Back to orders",
+    "loading": "Loading...",
+    "notFound": "Order not found.",
+    "dateLabel": "Date",
+    "customerLabel": "Customer",
+    "itemsLabel": "Purchased services",
+    "totalLabel": "Total",
+    "paymentStatusLabel": "Payment status",
+    "fulfillmentStatusLabel": "Fulfillment status",
+    "refundButton": "Refund order",
+    "refunding": "Refunding...",
+    "refundConfirm": "Confirm refund for this order? The amount will be returned to the customer via Stripe.",
+    "refundError": "Unable to start the refund",
+    "refundPendingNote": "Refund in progress, waiting for confirmation from Stripe.",
+    "fulfillmentUpdateError": "Unable to update the fulfillment status"
   }
 }

@@ -4,7 +4,7 @@ import httpx
 
 from app.core.config import get_settings
 from app.models.contact import ContactMessage
-from app.models.order import Order, OrderItem
+from app.models.order import Order
 
 logger = logging.getLogger(__name__)
 
@@ -54,26 +54,35 @@ def send_contact_notification(message: ContactMessage, recipients: list[str]) ->
     )
 
 
-ORDER_STATUS_LABELS = {
+PAYMENT_STATUS_LABELS = {
+    "pending": "In attesa di pagamento",
     "paid": "Pagato",
-    "cancelled": "Annullato / non completato",
-    "pending": "In attesa",
+    "cancelled": "Annullato / pagamento non riuscito",
+    "refund_pending": "Rimborso in corso",
+    "refunded": "Rimborsato",
+}
+
+FULFILLMENT_STATUS_LABELS = {
+    "pending": "Da lavorare",
     "processing": "In lavorazione",
     "completed": "Completato",
 }
 
 
-def send_order_notification(order: Order, recipients: list[str]) -> None:
-    status_label = ORDER_STATUS_LABELS.get(order.status.value, order.status.value)
-    items_html = "".join(
+def _order_items_html(order: Order) -> str:
+    return "".join(
         f"<li>{item.service_name_snapshot} — CHF {item.price_chf_snapshot}</li>" for item in order.items
     )
+
+
+def send_order_notification(order: Order, recipients: list[str]) -> None:
+    status_label = PAYMENT_STATUS_LABELS.get(order.payment_status.value, order.payment_status.value)
     body = (
-        f"<p><strong>Stato:</strong> {status_label}</p>"
+        f"<p><strong>Stato pagamento:</strong> {status_label}</p>"
         f"<p><strong>Cliente:</strong> {order.email or '-'}</p>"
         f"<p><strong>Totale:</strong> CHF {order.total_chf}</p>"
         f"<p><strong>Servizi:</strong></p>"
-        f"<ul>{items_html}</ul>"
+        f"<ul>{_order_items_html(order)}</ul>"
     )
     _send_email(
         to=recipients,
@@ -82,10 +91,10 @@ def send_order_notification(order: Order, recipients: list[str]) -> None:
     )
 
 
-# Messaggio mostrato al cliente per ogni stato dell'ordine: a differenza della
-# notifica admin (sintetica), qui il tono è rivolto a chi ha acquistato e
-# spiega cosa aspettarsi.
-CUSTOMER_ORDER_STATUS_MESSAGES = {
+# Messaggio mostrato al cliente per ogni stato di pagamento dell'ordine: a
+# differenza della notifica admin (sintetica), qui il tono è rivolto a chi
+# ha acquistato e spiega cosa aspettarsi.
+CUSTOMER_PAYMENT_STATUS_MESSAGES = {
     "paid": (
         "Pagamento confermato",
         "Grazie per il tuo acquisto! Abbiamo ricevuto il pagamento e a breve il nostro team prenderà in carico i servizi richiesti. Ti aggiorneremo via email man mano che procediamo.",
@@ -94,6 +103,21 @@ CUSTOMER_ORDER_STATUS_MESSAGES = {
         "Pagamento non riuscito",
         "Il pagamento per il tuo ordine non è andato a buon fine (sessione scaduta o annullata). Nessun addebito è stato effettuato. Puoi riprovare in qualsiasi momento dal carrello; se pensi si tratti di un errore, contattaci pure.",
     ),
+    "refund_pending": (
+        "Rimborso in corso",
+        "Abbiamo avviato il rimborso del tuo ordine. L'accredito sul tuo metodo di pagamento richiede in genere alcuni giorni lavorativi; ti confermeremo via email al completamento.",
+    ),
+    "refunded": (
+        "Rimborso completato",
+        "Il rimborso del tuo ordine è stato completato. L'importo è stato accreditato sul tuo metodo di pagamento originale.",
+    ),
+    "pending": (
+        "Ordine in attesa di pagamento",
+        "Il tuo ordine è stato creato ed è in attesa di conferma del pagamento.",
+    ),
+}
+
+CUSTOMER_FULFILLMENT_STATUS_MESSAGES = {
     "processing": (
         "Ordine preso in carico",
         "Il tuo ordine è stato preso in carico dal nostro team e siamo al lavoro sui servizi richiesti.",
@@ -103,40 +127,38 @@ CUSTOMER_ORDER_STATUS_MESSAGES = {
         "Tutti i servizi del tuo ordine sono stati completati. Grazie per aver scelto ImmoAdvisor!",
     ),
     "pending": (
-        "Ordine in attesa di pagamento",
-        "Il tuo ordine è stato creato ed è in attesa di conferma del pagamento.",
+        "Ordine ricevuto",
+        "Il tuo ordine è stato ricevuto e sarà presto preso in carico dal nostro team.",
     ),
 }
 
 
-def send_customer_order_status_email(order: Order) -> None:
+def send_customer_payment_status_email(order: Order) -> None:
     if not order.email:
         return
 
-    title, message = CUSTOMER_ORDER_STATUS_MESSAGES.get(
-        order.status.value, ("Aggiornamento ordine", "Lo stato del tuo ordine è cambiato.")
-    )
-    items_html = "".join(
-        f"<li>{item.service_name_snapshot} — CHF {item.price_chf_snapshot}</li>" for item in order.items
+    title, message = CUSTOMER_PAYMENT_STATUS_MESSAGES.get(
+        order.payment_status.value, ("Aggiornamento ordine", "Lo stato del pagamento del tuo ordine è cambiato.")
     )
     body = (
         f"<p>{message}</p>"
         f"<p><strong>Totale:</strong> CHF {order.total_chf}</p>"
         f"<p><strong>Servizi:</strong></p>"
-        f"<ul>{items_html}</ul>"
+        f"<ul>{_order_items_html(order)}</ul>"
     )
     _send_email(to=[order.email], subject=f"ImmoAdvisor — {title}", html=body)
 
 
-def send_customer_item_status_email(order: Order, item: OrderItem) -> None:
+def send_customer_fulfillment_status_email(order: Order) -> None:
     if not order.email:
         return
 
-    title, message = CUSTOMER_ORDER_STATUS_MESSAGES.get(
-        item.status.value, ("Aggiornamento servizio", "Lo stato di un servizio del tuo ordine è cambiato.")
+    title, message = CUSTOMER_FULFILLMENT_STATUS_MESSAGES.get(
+        order.fulfillment_status.value, ("Aggiornamento ordine", "Lo stato di lavorazione del tuo ordine è cambiato.")
     )
     body = (
-        f"<p>Il servizio <strong>{item.service_name_snapshot}</strong> del tuo ordine è stato aggiornato:</p>"
         f"<p>{message}</p>"
+        f"<p><strong>Servizi:</strong></p>"
+        f"<ul>{_order_items_html(order)}</ul>"
     )
-    _send_email(to=[order.email], subject=f"ImmoAdvisor — {item.service_name_snapshot}: {title.lower()}", html=body)
+    _send_email(to=[order.email], subject=f"ImmoAdvisor — {title}", html=body)

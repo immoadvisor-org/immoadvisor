@@ -4,10 +4,12 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 
 from app.api.deps import get_current_admin_user, get_db
-from app.integrations.email_client import send_customer_item_status_email, send_customer_order_status_email
-from app.schemas.order import AdminOrderRead, OrderItemStatusUpdate, OrderStatusUpdate
+from app.integrations.email_client import send_customer_payment_status_email, send_customer_fulfillment_status_email
+from app.integrations.stripe_client import create_refund
+from app.models.order import OrderPaymentStatus
+from app.schemas.order import AdminOrderRead, FulfillmentStatusUpdate
 from app.services import order_service
-from app.services.exceptions import OrderItemNotFoundError, OrderNotFoundError
+from app.services.exceptions import OrderNotFoundError
 
 router = APIRouter(
     prefix="/admin/orders",
@@ -22,35 +24,43 @@ def list_orders(db: Session = Depends(get_db)) -> list[AdminOrderRead]:
     return [AdminOrderRead.model_validate(order) for order in orders]
 
 
-@router.patch("/{order_id}/status", response_model=AdminOrderRead)
-def update_order_status(
-    order_id: uuid.UUID, payload: OrderStatusUpdate, db: Session = Depends(get_db)
+@router.get("/{order_id}", response_model=AdminOrderRead)
+def get_order(order_id: uuid.UUID, db: Session = Depends(get_db)) -> AdminOrderRead:
+    try:
+        order = order_service.get_order(db, order_id)
+    except OrderNotFoundError as exc:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=str(exc)) from exc
+    return AdminOrderRead.model_validate(order)
+
+
+@router.patch("/{order_id}/fulfillment-status", response_model=AdminOrderRead)
+def update_fulfillment_status(
+    order_id: uuid.UUID, payload: FulfillmentStatusUpdate, db: Session = Depends(get_db)
 ) -> AdminOrderRead:
     try:
         order = order_service.get_order(db, order_id)
     except OrderNotFoundError as exc:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=str(exc)) from exc
 
-    order = order_service.update_order_status(db, order, payload.status)
-    send_customer_order_status_email(order)
+    order = order_service.update_fulfillment_status(db, order, payload.status)
+    send_customer_fulfillment_status_email(order)
     return AdminOrderRead.model_validate(order)
 
 
-@router.patch("/{order_id}/items/{item_id}/status", response_model=AdminOrderRead)
-def update_order_item_status(
-    order_id: uuid.UUID,
-    item_id: uuid.UUID,
-    payload: OrderItemStatusUpdate,
-    db: Session = Depends(get_db),
-) -> AdminOrderRead:
+@router.post("/{order_id}/refund", response_model=AdminOrderRead)
+def refund_order(order_id: uuid.UUID, db: Session = Depends(get_db)) -> AdminOrderRead:
     try:
-        item = order_service.get_order_item(db, item_id)
-    except OrderItemNotFoundError as exc:
+        order = order_service.get_order(db, order_id)
+    except OrderNotFoundError as exc:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=str(exc)) from exc
 
-    if item.order_id != order_id:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Servizio d'ordine non trovato")
+    if order.payment_status != OrderPaymentStatus.PAID or not order.stripe_payment_intent:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Solo un ordine pagato può essere rimborsato",
+        )
 
-    item = order_service.update_order_item_status(db, item, payload.status)
-    send_customer_item_status_email(item.order, item)
-    return AdminOrderRead.model_validate(item.order)
+    refund = create_refund(order.stripe_payment_intent)
+    order = order_service.mark_refund_pending(db, order, refund.id)
+    send_customer_payment_status_email(order)
+    return AdminOrderRead.model_validate(order)

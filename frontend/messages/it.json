@@ -174,12 +174,17 @@
     "loading": "Caricamento degli ordini...",
     "error": "Impossibile caricare gli ordini: {error}",
     "empty": "Non hai ancora effettuato acquisti.",
-    "status": {
+    "paymentStatus": {
       "pending": "In attesa di pagamento",
       "paid": "Pagato",
+      "cancelled": "Annullato",
+      "refund_pending": "Rimborso in corso",
+      "refunded": "Rimborsato"
+    },
+    "fulfillmentStatus": {
+      "pending": "Da lavorare",
       "processing": "In lavorazione",
-      "completed": "Completato",
-      "cancelled": "Annullato"
+      "completed": "Completato"
     }
   },
   "AdminNav": {
@@ -223,12 +228,13 @@
     "filterDateTo": "A",
     "columnDate": "Data",
     "columnEmail": "Email",
-    "columnStatus": "Stato",
     "columnServices": "Servizi",
     "columnTotal": "Totale",
     "noOrders": "Nessun ordine trovato.",
     "loading": "Caricamento...",
-    "statusUpdateError": "Impossibile aggiornare lo stato"
+    "columnPaymentStatus": "Stato pagamento",
+    "columnFulfillmentStatus": "Stato lavorazione",
+    "edit": "Modifica"
   },
   "NotificationEmails": {
     "loading": "Caricamento...",
@@ -305,5 +311,23 @@
     "en": "English",
     "de": "Deutsch",
     "fr": "Français"
+  },
+  "AdminOrderDetail": {
+    "title": "Ordine",
+    "back": "Torna agli ordini",
+    "loading": "Caricamento...",
+    "notFound": "Ordine non trovato.",
+    "dateLabel": "Data",
+    "customerLabel": "Cliente",
+    "itemsLabel": "Servizi acquistati",
+    "totalLabel": "Totale",
+    "paymentStatusLabel": "Stato pagamento",
+    "fulfillmentStatusLabel": "Stato lavorazione",
+    "refundButton": "Rimborsa ordine",
+    "refunding": "Rimborso in corso...",
+    "refundConfirm": "Confermi il rimborso di questo ordine? L'importo verrà restituito al cliente tramite Stripe.",
+    "refundError": "Impossibile avviare il rimborso",
+    "refundPendingNote": "Rimborso in corso, in attesa di conferma da Stripe.",
+    "fulfillmentUpdateError": "Impossibile aggiornare lo stato di lavorazione"
   }
 }

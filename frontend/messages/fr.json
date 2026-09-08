@@ -174,12 +174,17 @@
     "loading": "Chargement des commandes...",
     "error": "Impossible de charger les commandes : {error}",
     "empty": "Vous n'avez pas encore effectué d'achat.",
-    "status": {
+    "paymentStatus": {
       "pending": "En attente de paiement",
-      "paid": "Payée",
-      "processing": "En cours de traitement",
-      "completed": "Terminée",
-      "cancelled": "Annulée"
+      "paid": "Payé",
+      "cancelled": "Annulé",
+      "refund_pending": "Remboursement en cours",
+      "refunded": "Remboursé"
+    },
+    "fulfillmentStatus": {
+      "pending": "Non commencé",
+      "processing": "En cours",
+      "completed": "Terminé"
     }
   },
   "AdminNav": {
@@ -223,12 +228,13 @@
     "filterDateTo": "Au",
     "columnDate": "Date",
     "columnEmail": "E-mail",
-    "columnStatus": "Statut",
     "columnServices": "Services",
     "columnTotal": "Total",
     "noOrders": "Aucune commande trouvée.",
     "loading": "Chargement...",
-    "statusUpdateError": "Impossible de mettre à jour le statut"
+    "columnPaymentStatus": "Statut du paiement",
+    "columnFulfillmentStatus": "Statut de traitement",
+    "edit": "Modifier"
   },
   "NotificationEmails": {
     "loading": "Chargement...",
@@ -305,5 +311,23 @@
     "en": "English",
     "de": "Deutsch",
     "fr": "Français"
+  },
+  "AdminOrderDetail": {
+    "title": "Commande",
+    "back": "Retour aux commandes",
+    "loading": "Chargement...",
+    "notFound": "Commande introuvable.",
+    "dateLabel": "Date",
+    "customerLabel": "Client",
+    "itemsLabel": "Services achetés",
+    "totalLabel": "Total",
+    "paymentStatusLabel": "Statut du paiement",
+    "fulfillmentStatusLabel": "Statut de traitement",
+    "refundButton": "Rembourser la commande",
+    "refunding": "Remboursement en cours...",
+    "refundConfirm": "Confirmer le remboursement de cette commande ? Le montant sera restitué au client via Stripe.",
+    "refundError": "Impossible de lancer le remboursement",
+    "refundPendingNote": "Remboursement en cours, en attente de confirmation de Stripe.",
+    "fulfillmentUpdateError": "Impossible de mettre à jour le statut de traitement"
   }
 }

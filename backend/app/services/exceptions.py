@@ -10,7 +10,7 @@ class OrderNotFoundError(DomainError):
     pass
 
 
-class OrderItemNotFoundError(DomainError):
+class OrderNotRefundableError(DomainError):
     pass
 
 
