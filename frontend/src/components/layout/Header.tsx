@@ -19,12 +19,15 @@ export function Header() {
   return (
     <header className="sticky top-0 z-30 border-b border-slate-200 bg-white/90 backdrop-blur dark:border-slate-800 dark:bg-slate-950/90">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
-        <Link
-          href="/"
-          className="font-display text-xl font-bold tracking-tight text-slate-900 dark:text-slate-50"
-        >
-          {BRAND_NAME}
-        </Link>
+        <div className="flex items-baseline gap-1.5">
+          <Link
+            href="/"
+            className="font-display text-xl font-bold tracking-tight text-slate-900 dark:text-slate-50"
+          >
+            {BRAND_NAME}
+          </Link>
+          <LocaleSwitcher />
+        </div>
 
         <nav className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300 sm:gap-4">
           {user ? (
@@ -34,7 +37,6 @@ export function Header() {
               {t("login")}
             </Link>
           )}
-          <LocaleSwitcher />
           <button
             type="button"
             onClick={toggleDrawer}

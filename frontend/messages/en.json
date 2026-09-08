@@ -169,7 +169,12 @@
     "deleteAccountButton": "Delete my account",
     "deleteAccountLoading": "Deleting...",
     "deleteAccountConfirm": "Are you sure you want to delete your account? This action cannot be undone.",
-    "deleteAccountError": "Unable to delete the account, please try again."
+    "deleteAccountError": "Unable to delete the account, please try again.",
+    "fullName": "Full name",
+    "phone": "Phone",
+    "address": "Address",
+    "canton": "Canton",
+    "avsNumber": "AVS number"
   },
   "Orders": {
     "title": "My purchases",

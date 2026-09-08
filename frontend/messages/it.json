@@ -169,7 +169,12 @@
     "deleteAccountButton": "Elimina il mio account",
     "deleteAccountLoading": "Eliminazione in corso...",
     "deleteAccountConfirm": "Sei sicuro di voler eliminare il tuo account? L'azione non è reversibile.",
-    "deleteAccountError": "Impossibile eliminare l'account, riprova."
+    "deleteAccountError": "Impossibile eliminare l'account, riprova.",
+    "fullName": "Nome e cognome",
+    "phone": "Telefono",
+    "address": "Indirizzo",
+    "canton": "Cantone",
+    "avsNumber": "Numero AVS"
   },
   "Orders": {
     "title": "I miei acquisti",

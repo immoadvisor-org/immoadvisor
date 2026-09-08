@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl";
 import { useRouter, Link } from "@/i18n/navigation";
 import { useUser } from "@/features/auth/useUser";
 import { useIsAdmin } from "@/features/profile/useIsAdmin";
+import { useProfile } from "@/features/profile/useProfile";
 import { supabase } from "@/features/auth/supabaseClient";
 import { deleteMyAccount } from "@/features/auth/accountApi";
 import { Button } from "@/components/ui/Button";
@@ -15,6 +16,7 @@ export default function AccountPage() {
   const router = useRouter();
   const { user, session, isLoading } = useUser();
   const isAdmin = useIsAdmin(user);
+  const { profile } = useProfile(user);
   const [isDeleting, setIsDeleting] = useState(false);
   const [deleteError, setDeleteError] = useState<string | null>(null);
 
@@ -53,9 +55,41 @@ export default function AccountPage() {
     <div className="mx-auto max-w-xl px-4 py-12">
       <h1 className="text-2xl font-medium text-slate-900 dark:text-slate-50">{t("title")}</h1>
 
-      <div className="mt-6 rounded-xl border border-slate-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900">
-        <p className="text-sm text-slate-500 dark:text-slate-400">{t("email")}</p>
-        <p className="text-slate-900 dark:text-slate-50">{user.email}</p>
+      <div className="mt-6 grid grid-cols-1 gap-4 rounded-xl border border-slate-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900 sm:grid-cols-2">
+        <div>
+          <p className="text-sm text-slate-500 dark:text-slate-400">{t("email")}</p>
+          <p className="text-slate-900 dark:text-slate-50">{user.email}</p>
+        </div>
+        <div>
+          <p className="text-sm text-slate-500 dark:text-slate-400">{t("fullName")}</p>
+          <p className="text-slate-900 dark:text-slate-50">
+            {[profile?.first_name, profile?.last_name].filter(Boolean).join(" ") || "—"}
+          </p>
+        </div>
+        <div>
+          <p className="text-sm text-slate-500 dark:text-slate-400">{t("phone")}</p>
+          <p className="text-slate-900 dark:text-slate-50">{profile?.phone || "—"}</p>
+        </div>
+        <div>
+          <p className="text-sm text-slate-500 dark:text-slate-400">{t("address")}</p>
+          <p className="text-slate-900 dark:text-slate-50">
+            {profile?.address_line || "—"}
+            {profile?.postal_code || profile?.city ? (
+              <>
+                <br />
+                {[profile?.postal_code, profile?.city].filter(Boolean).join(" ")}
+              </>
+            ) : null}
+          </p>
+        </div>
+        <div>
+          <p className="text-sm text-slate-500 dark:text-slate-400">{t("canton")}</p>
+          <p className="text-slate-900 dark:text-slate-50">{profile?.canton || "—"}</p>
+        </div>
+        <div>
+          <p className="text-sm text-slate-500 dark:text-slate-400">{t("avsNumber")}</p>
+          <p className="text-slate-900 dark:text-slate-50">{profile?.avs_number || "—"}</p>
+        </div>
       </div>
 
       <div className="mt-4 flex flex-wrap items-center justify-between gap-3">

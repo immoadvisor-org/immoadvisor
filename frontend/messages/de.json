@@ -169,7 +169,12 @@
     "deleteAccountButton": "Mein Konto löschen",
     "deleteAccountLoading": "Wird gelöscht...",
     "deleteAccountConfirm": "Sind Sie sicher, dass Sie Ihr Konto löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden.",
-    "deleteAccountError": "Konto konnte nicht gelöscht werden, bitte versuchen Sie es erneut."
+    "deleteAccountError": "Konto konnte nicht gelöscht werden, bitte versuchen Sie es erneut.",
+    "fullName": "Name",
+    "phone": "Telefon",
+    "address": "Adresse",
+    "canton": "Kanton",
+    "avsNumber": "AHV-Nummer"
   },
   "Orders": {
     "title": "Meine Käufe",
