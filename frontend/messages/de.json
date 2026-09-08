@@ -425,5 +425,31 @@
   "PasswordInput": {
     "show": "Passwort anzeigen",
     "hide": "Passwort verbergen"
+  },
+  "Meta": {
+    "home": {
+      "title": "ImmoAdvisor — Immobilie in der Schweiz ohne Makler verkaufen",
+      "description": "Konfigurieren Sie nur die Leistungen, die Sie für den Verkauf Ihrer Immobilie in der Schweiz brauchen: Inserat, Fotografie, Unterlagen, Bewertung. Transparente Preise in CHF, unverbindlich."
+    },
+    "about": {
+      "title": "Über uns",
+      "description": "ImmoAdvisor entstand aus der Erfahrung von Carmine, Immobilienprofi in der Schweiz. Transparente Leistungen, keine festen Pakete."
+    },
+    "contact": {
+      "title": "Kontakt",
+      "description": "Haben Sie eine Frage zu unseren Dienstleistungen für den Immobilienverkauf in der Schweiz? Schreiben Sie uns, wir antworten so schnell wie möglich."
+    },
+    "configurator": {
+      "title": "Leistungen konfigurieren",
+      "description": "Wählen Sie professionelle Leistungen für den Verkauf Ihrer Immobilie in der Schweiz: Inserat, Fotografie, Unterlagen, Bewertung. Preis in Echtzeit aktualisiert."
+    },
+    "listings": {
+      "title": "Immobilienanzeigen in der Schweiz",
+      "description": "Entdecken Sie verfügbare Immobilienanzeigen in der Schweiz: Villen, Chalets, Wohnungen. Suche nach Stadt, Preis und Zimmeranzahl."
+    },
+    "terms": {
+      "title": "Allgemeine Geschäftsbedingungen",
+      "description": "Lesen Sie die Allgemeinen Geschäftsbedingungen für die Nutzung der ImmoAdvisor-Plattform."
+    }
   }
 }

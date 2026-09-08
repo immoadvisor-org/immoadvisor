@@ -425,5 +425,31 @@
   "PasswordInput": {
     "show": "Mostra password",
     "hide": "Nascondi password"
+  },
+  "Meta": {
+    "home": {
+      "title": "ImmoAdvisor — Vendi il tuo immobile in Svizzera senza agenzia",
+      "description": "Configura solo i servizi che ti servono per vendere casa in Svizzera: annuncio, fotografie, documentazione, valutazione. Prezzi trasparenti in CHF, nessun vincolo."
+    },
+    "about": {
+      "title": "Chi siamo",
+      "description": "ImmoAdvisor nasce dall'esperienza di Carmine, professionista immobiliare in Svizzera. Servizi trasparenti, senza pacchetti imposti."
+    },
+    "contact": {
+      "title": "Contattaci",
+      "description": "Hai una domanda sui nostri servizi per la vendita immobiliare in Svizzera? Scrivici, ti rispondiamo il prima possibile."
+    },
+    "configurator": {
+      "title": "Configura i tuoi servizi",
+      "description": "Scegli tra i servizi professionali per la vendita del tuo immobile in Svizzera: annuncio, fotografie, documentazione, valutazione. Totale aggiornato in tempo reale."
+    },
+    "listings": {
+      "title": "Annunci immobiliari in Svizzera",
+      "description": "Scopri gli annunci immobiliari disponibili in Svizzera: ville, chalet, appartamenti. Cerca per città, prezzo e numero di locali."
+    },
+    "terms": {
+      "title": "Termini e condizioni",
+      "description": "Consulta i termini e le condizioni di utilizzo della piattaforma ImmoAdvisor."
+    }
   }
 }

@@ -2,11 +2,12 @@ import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages, setRequestLocale } from "next-intl/server";
+import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 
-import { routing } from "@/i18n/routing";
+import { routing, type Locale } from "@/i18n/routing";
 import { BRAND_NAME } from "@/lib/constants";
+import { SITE_URL, buildAlternates } from "@/lib/seo";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { ThemeToggle } from "@/components/layout/ThemeToggle";
@@ -21,9 +22,32 @@ const spaceGrotesk = Space_Grotesk({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: BRAND_NAME,
-  description: "Configura e acquista i servizi per vendere il tuo immobile in Svizzera.",
+export async function generateMetadata({ params }: LocaleLayoutProps): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Meta" });
+  const alternates = buildAlternates(locale as Locale, "/");
+
+  return {
+    metadataBase: new URL(SITE_URL),
+    title: { default: t("home.title"), template: `%s — ${BRAND_NAME}` },
+    description: t("home.description"),
+    alternates,
+    openGraph: {
+      siteName: BRAND_NAME,
+      locale,
+      type: "website",
+    },
+    twitter: { card: "summary_large_image" },
+    robots: { index: true, follow: true },
+  };
+}
+
+const ORGANIZATION_JSON_LD = {
+  "@context": "https://schema.org",
+  "@type": "RealEstateAgent",
+  name: BRAND_NAME,
+  url: SITE_URL,
+  areaServed: { "@type": "Country", name: "Switzerland" },
 };
 
 // Applica il tema salvato prima del primo paint, per evitare il flash
@@ -63,6 +87,10 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
     <html lang={locale} className={spaceGrotesk.variable} suppressHydrationWarning>
       <body className="flex min-h-screen flex-col bg-slate-50 text-slate-900 transition-colors dark:bg-slate-950 dark:text-slate-50">
         <script dangerouslySetInnerHTML={{ __html: NO_FLASH_THEME_SCRIPT }} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(ORGANIZATION_JSON_LD) }}
+        />
         <NextIntlClientProvider messages={messages}>
           <Header />
           <main className="flex-1 pb-24">{children}</main>

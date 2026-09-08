@@ -425,5 +425,31 @@
   "PasswordInput": {
     "show": "Show password",
     "hide": "Hide password"
+  },
+  "Meta": {
+    "home": {
+      "title": "ImmoAdvisor — Sell Your Property in Switzerland Without an Agency",
+      "description": "Configure only the services you need to sell your property in Switzerland: listing, photography, documentation, valuation. Transparent CHF pricing, no commitment."
+    },
+    "about": {
+      "title": "About Us",
+      "description": "ImmoAdvisor was built on Carmine's experience as a real estate professional in Switzerland. Transparent services, no forced packages."
+    },
+    "contact": {
+      "title": "Contact Us",
+      "description": "Have a question about our property-selling services in Switzerland? Get in touch, we'll reply as soon as possible."
+    },
+    "configurator": {
+      "title": "Configure Your Services",
+      "description": "Choose from professional services for selling your property in Switzerland: listing, photography, documentation, valuation. Total updates live."
+    },
+    "listings": {
+      "title": "Property Listings in Switzerland",
+      "description": "Browse available property listings in Switzerland: villas, chalets, apartments. Search by city, price and number of rooms."
+    },
+    "terms": {
+      "title": "Terms & Conditions",
+      "description": "Read the terms and conditions for using the ImmoAdvisor platform."
+    }
   }
 }
