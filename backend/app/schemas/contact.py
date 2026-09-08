@@ -3,6 +3,8 @@ from datetime import datetime
 
 from pydantic import BaseModel, ConfigDict, EmailStr, Field
 
+from app.models.contact import ContactMessageStatus
+
 
 class ContactMessageCreate(BaseModel):
     first_name: str = Field(min_length=1, max_length=100)
@@ -23,4 +25,11 @@ class ContactMessageRead(BaseModel):
     phone: str | None
     message: str
     listing_reference: str | None
+    status: ContactMessageStatus
+    notes: str | None
     created_at: datetime
+
+
+class ContactMessageAdminUpdate(BaseModel):
+    status: ContactMessageStatus | None = None
+    notes: str | None = None

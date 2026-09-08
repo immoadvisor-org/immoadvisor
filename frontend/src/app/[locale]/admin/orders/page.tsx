@@ -9,6 +9,7 @@ import { useIsAdmin } from "@/features/profile/useIsAdmin";
 import { listAllOrders, type AdminOrder } from "@/features/admin/ordersAdminApi";
 import { AdminLayout } from "@/components/admin/AdminLayout";
 import { NotificationEmailList } from "@/components/admin/NotificationEmailList";
+import { EditIcon, ICON_BUTTON_CLASS } from "@/components/admin/icons";
 import { PriceTag } from "@/components/ui/PriceTag";
 
 type SortField = "date" | "email";
@@ -202,12 +203,9 @@ export default function AdminOrdersPage() {
                       href={`/admin/orders/${order.id}`}
                       aria-label={t("edit")}
                       title={t("edit")}
-                      className="inline-flex h-8 w-8 items-center justify-center rounded-full text-slate-500 hover:bg-slate-100 hover:text-brand-600 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-brand-100"
+                      className={ICON_BUTTON_CLASS}
                     >
-                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-                        <path d="M12 20h9" />
-                        <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4Z" />
-                      </svg>
+                      <EditIcon />
                     </Link>
                   </td>
                 </tr>

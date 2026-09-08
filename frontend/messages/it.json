@@ -308,7 +308,16 @@
     "saveError": "Impossibile salvare",
     "messagesTitle": "Messaggi ricevuti",
     "noMessages": "Nessun messaggio ricevuto.",
-    "loading": "Caricamento..."
+    "loading": "Caricamento...",
+    "status": {
+      "received": "Ricevuto",
+      "contacted": "Contattato",
+      "to_recontact": "Da ricontattare",
+      "completed": "Completato"
+    },
+    "notesLabel": "Note",
+    "notesPlaceholder": "Note interne su questo messaggio...",
+    "statusUpdateError": "Impossibile salvare"
   },
   "Locale": {
     "it": "Italiano",

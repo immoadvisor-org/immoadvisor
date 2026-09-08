@@ -28,3 +28,7 @@ class InvalidImageError(DomainError):
 
 class ListingNotFoundError(DomainError):
     pass
+
+
+class ContactMessageNotFoundError(DomainError):
+    pass

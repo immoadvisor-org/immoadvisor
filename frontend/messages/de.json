@@ -308,7 +308,16 @@
     "saveError": "Speichern fehlgeschlagen",
     "messagesTitle": "Erhaltene Nachrichten",
     "noMessages": "Noch keine Nachrichten erhalten.",
-    "loading": "Wird geladen..."
+    "loading": "Wird geladen...",
+    "status": {
+      "received": "Erhalten",
+      "contacted": "Kontaktiert",
+      "to_recontact": "Erneut kontaktieren",
+      "completed": "Abgeschlossen"
+    },
+    "notesLabel": "Notizen",
+    "notesPlaceholder": "Interne Notizen zu dieser Nachricht...",
+    "statusUpdateError": "Speichern nicht möglich"
   },
   "Locale": {
     "it": "Italiano",

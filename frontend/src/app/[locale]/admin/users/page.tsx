@@ -7,7 +7,7 @@ import { useUser } from "@/features/auth/useUser";
 import { useIsAdmin } from "@/features/profile/useIsAdmin";
 import { deleteAdminUser, listAdminUsers, type AdminProfile } from "@/features/admin/usersAdminApi";
 import { AdminLayout } from "@/components/admin/AdminLayout";
-import { Button } from "@/components/ui/Button";
+import { DeleteIcon, ICON_BUTTON_DANGER_CLASS } from "@/components/admin/icons";
 
 export default function AdminUsersPage() {
   const t = useTranslations("AdminUsers");
@@ -96,9 +96,15 @@ export default function AdminUsersPage() {
                     {new Date(u.created_at).toLocaleDateString()}
                   </td>
                   <td className="px-4 py-3 text-right">
-                    <Button variant="ghost" onClick={() => handleDelete(u)}>
-                      {t("delete")}
-                    </Button>
+                    <button
+                      type="button"
+                      onClick={() => handleDelete(u)}
+                      aria-label={t("delete")}
+                      title={t("delete")}
+                      className={ICON_BUTTON_DANGER_CLASS}
+                    >
+                      <DeleteIcon />
+                    </button>
                   </td>
                 </tr>
               ))}

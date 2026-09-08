@@ -308,7 +308,16 @@
     "saveError": "Impossible d'enregistrer",
     "messagesTitle": "Messages reçus",
     "noMessages": "Aucun message reçu pour le moment.",
-    "loading": "Chargement..."
+    "loading": "Chargement...",
+    "status": {
+      "received": "Reçu",
+      "contacted": "Contacté",
+      "to_recontact": "À recontacter",
+      "completed": "Terminé"
+    },
+    "notesLabel": "Notes",
+    "notesPlaceholder": "Notes internes sur ce message...",
+    "statusUpdateError": "Impossible d'enregistrer"
   },
   "Locale": {
     "it": "Italiano",

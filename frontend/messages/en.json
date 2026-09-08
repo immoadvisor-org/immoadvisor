@@ -308,7 +308,16 @@
     "saveError": "Unable to save",
     "messagesTitle": "Received messages",
     "noMessages": "No messages received yet.",
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "status": {
+      "received": "Received",
+      "contacted": "Contacted",
+      "to_recontact": "To follow up",
+      "completed": "Completed"
+    },
+    "notesLabel": "Notes",
+    "notesPlaceholder": "Internal notes about this message...",
+    "statusUpdateError": "Unable to save"
   },
   "Locale": {
     "it": "Italiano",

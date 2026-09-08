@@ -3,7 +3,7 @@
 import { useTranslations } from "next-intl";
 
 import { PriceTag } from "@/components/ui/PriceTag";
-import { Button } from "@/components/ui/Button";
+import { DeleteIcon, EditIcon, ICON_BUTTON_CLASS, ICON_BUTTON_DANGER_CLASS } from "@/components/admin/icons";
 import type { AdminService } from "@/features/admin/types";
 
 interface ServiceRowProps {
@@ -65,18 +65,21 @@ export function ServiceRow({
         {service.active ? t("active") : t("inactive")}
       </label>
 
-      <div className="flex gap-2">
-        <Button variant="secondary" onClick={onEdit}>
-          {t("edit")}
-        </Button>
-        <Button
-          variant="ghost"
+      <div className="flex gap-1">
+        <button type="button" onClick={onEdit} aria-label={t("edit")} title={t("edit")} className={ICON_BUTTON_CLASS}>
+          <EditIcon />
+        </button>
+        <button
+          type="button"
           onClick={() => {
             if (window.confirm(t("deleteConfirm"))) onDelete();
           }}
+          aria-label={t("delete")}
+          title={t("delete")}
+          className={ICON_BUTTON_DANGER_CLASS}
         >
-          {t("delete")}
-        </Button>
+          <DeleteIcon />
+        </button>
       </div>
     </div>
   );
