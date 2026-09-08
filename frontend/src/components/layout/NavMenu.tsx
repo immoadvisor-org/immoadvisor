@@ -13,6 +13,7 @@ export function NavMenu() {
   const links = [
     { href: "/", label: tNav("home") },
     { href: "/configuratore", label: tNav("configurator") },
+    { href: "/annunci", label: tNav("listings") },
     { href: "/about", label: tNav("about") },
     { href: "/contact", label: tNav("contact") },
   ];

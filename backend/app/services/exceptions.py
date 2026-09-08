@@ -24,3 +24,7 @@ class ServiceInUseError(DomainError):
 
 class InvalidImageError(DomainError):
     pass
+
+
+class ListingNotFoundError(DomainError):
+    pass

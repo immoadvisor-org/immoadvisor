@@ -9,7 +9,8 @@
     "home": "Accueil",
     "configurator": "Configurateur",
     "about": "À propos",
-    "contact": "Contact"
+    "contact": "Contact",
+    "listings": "Annonces"
   },
   "Home": {
     "heroTitle": "La façon la plus simple de vendre votre bien en Suisse",
@@ -21,7 +22,10 @@
     "howItWorksCta": "Aller au configurateur",
     "contactTitle": "Besoin d'aide ?",
     "contactText": "Notre équipe est prête à répondre à vos questions et à vous aider à choisir les bons services.",
-    "contactCta": "Contactez-nous"
+    "contactCta": "Contactez-nous",
+    "listingsTitle": "Quelques-unes de nos annonces",
+    "listingsSubtitle": "Jetez un œil à quelques-uns des biens actuellement en vente.",
+    "listingsCta": "Voir toutes les annonces"
   },
   "About": {
     "title": "À propos",
@@ -193,7 +197,8 @@
     "users": "Utilisateurs",
     "about": "À propos",
     "contact": "Messages",
-    "legal": "Mentions légales"
+    "legal": "Mentions légales",
+    "listings": "Annonces"
   },
   "AdminUsers": {
     "title": "Utilisateurs",
@@ -334,5 +339,39 @@
     "completeButton": "Marquer comme terminé",
     "completing": "Finalisation...",
     "fulfillmentRequiresPayment": "Vous pourrez prendre en charge la commande après confirmation du paiement."
+  },
+  "Listings": {
+    "title": "Nos annonces",
+    "subtitle": "Parcourez les biens disponibles et trouvez celui qui vous convient.",
+    "filterCity": "Ville",
+    "filterPriceMin": "Prix à partir de (CHF)",
+    "filterPriceMax": "Prix jusqu'à (CHF)",
+    "filterRoomsMin": "Pièces à partir de",
+    "filterRoomsMax": "Pièces jusqu'à",
+    "search": "Rechercher",
+    "resetFilters": "Réinitialiser",
+    "loading": "Chargement...",
+    "error": "Impossible de charger les annonces : {error}",
+    "noResults": "Aucune annonce trouvée.",
+    "roomsValue": "{rooms} pièces"
+  },
+  "ListingDetail": {
+    "back": "Retour aux annonces",
+    "notFound": "Annonce introuvable.",
+    "loading": "Chargement...",
+    "priceLabel": "Prix",
+    "roomsValue": "{rooms} pièces"
+  },
+  "AdminListings": {
+    "title": "Annonces",
+    "subtitle": "Créez, modifiez et réorganisez les annonces immobilières affichées sur le site.",
+    "city": "Ville",
+    "canton": "Canton",
+    "rooms": "Pièces",
+    "videoUrl": "URL vidéo (facultatif)",
+    "titleLabel": "Titre",
+    "shortDescription": "Description courte (affichée dans l'aperçu)",
+    "fullDescription": "Description complète (affichée à l'ouverture de l'annonce)",
+    "roomsValue": "{rooms} pièces"
   }
 }

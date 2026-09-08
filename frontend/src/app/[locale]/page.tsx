@@ -5,6 +5,7 @@ import { useLocale, useTranslations } from "next-intl";
 
 import { Link } from "@/i18n/navigation";
 import { Hero } from "@/components/home/Hero";
+import { ListingsCarousel } from "@/components/home/ListingsCarousel";
 import { Button } from "@/components/ui/Button";
 import { getAboutContent, type AboutContent } from "@/features/about/aboutApi";
 
@@ -30,6 +31,8 @@ export default function HomePage() {
         subtitle={t("heroSubtitle")}
         cta={{ href: "/configuratore", label: t("heroCta") }}
       />
+
+      <ListingsCarousel />
 
       {about && (
         <section className="mx-auto max-w-6xl px-4 py-16">

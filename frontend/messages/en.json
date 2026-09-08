@@ -9,7 +9,8 @@
     "home": "Home",
     "configurator": "Configurator",
     "about": "About us",
-    "contact": "Contact"
+    "contact": "Contact",
+    "listings": "Listings"
   },
   "Home": {
     "heroTitle": "The simplest way to sell your property in Switzerland",
@@ -21,7 +22,10 @@
     "howItWorksCta": "Go to the configurator",
     "contactTitle": "Need a hand?",
     "contactText": "Our team is ready to answer your questions and help you choose the right services.",
-    "contactCta": "Contact us"
+    "contactCta": "Contact us",
+    "listingsTitle": "Some of our listings",
+    "listingsSubtitle": "Take a look at some of the properties currently for sale.",
+    "listingsCta": "See all listings"
   },
   "About": {
     "title": "About us",
@@ -193,7 +197,8 @@
     "users": "Users",
     "about": "About",
     "contact": "Messages",
-    "legal": "Legal"
+    "legal": "Legal",
+    "listings": "Listings"
   },
   "AdminUsers": {
     "title": "Users",
@@ -334,5 +339,39 @@
     "completeButton": "Mark as completed",
     "completing": "Completing...",
     "fulfillmentRequiresPayment": "You'll be able to take this order in charge once payment is confirmed."
+  },
+  "Listings": {
+    "title": "Our listings",
+    "subtitle": "Browse the available properties and find the right one for you.",
+    "filterCity": "City",
+    "filterPriceMin": "Price from (CHF)",
+    "filterPriceMax": "Price to (CHF)",
+    "filterRoomsMin": "Rooms from",
+    "filterRoomsMax": "Rooms to",
+    "search": "Search",
+    "resetFilters": "Reset",
+    "loading": "Loading...",
+    "error": "Unable to load listings: {error}",
+    "noResults": "No listings found.",
+    "roomsValue": "{rooms} rooms"
+  },
+  "ListingDetail": {
+    "back": "Back to listings",
+    "notFound": "Listing not found.",
+    "loading": "Loading...",
+    "priceLabel": "Price",
+    "roomsValue": "{rooms} rooms"
+  },
+  "AdminListings": {
+    "title": "Listings",
+    "subtitle": "Create, edit and reorder the property listings shown on the site.",
+    "city": "City",
+    "canton": "Canton",
+    "rooms": "Rooms",
+    "videoUrl": "Video URL (optional)",
+    "titleLabel": "Title",
+    "shortDescription": "Short description (shown in the preview)",
+    "fullDescription": "Full description (shown when opening the listing)",
+    "roomsValue": "{rooms} rooms"
   }
 }

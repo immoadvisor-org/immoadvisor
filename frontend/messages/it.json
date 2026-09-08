@@ -9,7 +9,8 @@
     "home": "Home",
     "configurator": "Configuratore",
     "about": "Chi siamo",
-    "contact": "Contattaci"
+    "contact": "Contattaci",
+    "listings": "Annunci"
   },
   "Home": {
     "heroTitle": "Il modo più semplice per vendere il tuo immobile in Svizzera",
@@ -21,7 +22,10 @@
     "howItWorksCta": "Vai al configuratore",
     "contactTitle": "Hai bisogno di una mano?",
     "contactText": "Il nostro team è pronto a rispondere alle tue domande e aiutarti a scegliere i servizi giusti.",
-    "contactCta": "Contattaci"
+    "contactCta": "Contattaci",
+    "listingsTitle": "Alcuni dei nostri annunci",
+    "listingsSubtitle": "Dai un'occhiata ad alcune delle proprietà attualmente in vendita.",
+    "listingsCta": "Vedi tutti gli annunci"
   },
   "About": {
     "title": "Chi siamo",
@@ -193,7 +197,8 @@
     "users": "Utenti",
     "about": "Chi siamo",
     "contact": "Messaggi",
-    "legal": "Legale"
+    "legal": "Legale",
+    "listings": "Annunci"
   },
   "AdminUsers": {
     "title": "Utenti",
@@ -334,5 +339,39 @@
     "completeButton": "Segna come completato",
     "completing": "Completamento...",
     "fulfillmentRequiresPayment": "Potrai prendere in carico l'ordine dopo la conferma del pagamento."
+  },
+  "Listings": {
+    "title": "I nostri annunci",
+    "subtitle": "Sfoglia gli immobili disponibili e trova quello giusto per te.",
+    "filterCity": "Città",
+    "filterPriceMin": "Prezzo da (CHF)",
+    "filterPriceMax": "Prezzo a (CHF)",
+    "filterRoomsMin": "Locali da",
+    "filterRoomsMax": "Locali a",
+    "search": "Cerca",
+    "resetFilters": "Reimposta",
+    "loading": "Caricamento...",
+    "error": "Impossibile caricare gli annunci: {error}",
+    "noResults": "Nessun annuncio trovato.",
+    "roomsValue": "{rooms} locali"
+  },
+  "ListingDetail": {
+    "back": "Torna agli annunci",
+    "notFound": "Annuncio non trovato.",
+    "loading": "Caricamento...",
+    "priceLabel": "Prezzo",
+    "roomsValue": "{rooms} locali"
+  },
+  "AdminListings": {
+    "title": "Annunci",
+    "subtitle": "Crea, modifica e riordina gli annunci immobiliari mostrati sul sito.",
+    "city": "Città",
+    "canton": "Cantone",
+    "rooms": "Locali",
+    "videoUrl": "URL video (facoltativo)",
+    "titleLabel": "Titolo",
+    "shortDescription": "Descrizione breve (mostrata nell'anteprima)",
+    "fullDescription": "Descrizione estesa (mostrata aprendo l'annuncio)",
+    "roomsValue": "{rooms} locali"
   }
 }

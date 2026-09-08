@@ -9,7 +9,8 @@
     "home": "Startseite",
     "configurator": "Konfigurator",
     "about": "Über uns",
-    "contact": "Kontakt"
+    "contact": "Kontakt",
+    "listings": "Inserate"
   },
   "Home": {
     "heroTitle": "Der einfachste Weg, Ihre Immobilie in der Schweiz zu verkaufen",
@@ -21,7 +22,10 @@
     "howItWorksCta": "Zum Konfigurator",
     "contactTitle": "Brauchen Sie Hilfe?",
     "contactText": "Unser Team beantwortet gerne Ihre Fragen und hilft Ihnen, die richtigen Dienstleistungen zu wählen.",
-    "contactCta": "Kontaktieren Sie uns"
+    "contactCta": "Kontaktieren Sie uns",
+    "listingsTitle": "Einige unserer Inserate",
+    "listingsSubtitle": "Werfen Sie einen Blick auf einige der aktuell zum Verkauf stehenden Immobilien.",
+    "listingsCta": "Alle Inserate ansehen"
   },
   "About": {
     "title": "Über uns",
@@ -193,7 +197,8 @@
     "users": "Benutzer",
     "about": "Über uns",
     "contact": "Nachrichten",
-    "legal": "Rechtliches"
+    "legal": "Rechtliches",
+    "listings": "Inserate"
   },
   "AdminUsers": {
     "title": "Benutzer",
@@ -334,5 +339,39 @@
     "completeButton": "Als abgeschlossen markieren",
     "completing": "Wird abgeschlossen...",
     "fulfillmentRequiresPayment": "Sie können die Bestellung erst nach Zahlungsbestätigung übernehmen."
+  },
+  "Listings": {
+    "title": "Unsere Inserate",
+    "subtitle": "Durchstöbern Sie die verfügbaren Immobilien und finden Sie die richtige für Sie.",
+    "filterCity": "Ort",
+    "filterPriceMin": "Preis von (CHF)",
+    "filterPriceMax": "Preis bis (CHF)",
+    "filterRoomsMin": "Zimmer von",
+    "filterRoomsMax": "Zimmer bis",
+    "search": "Suchen",
+    "resetFilters": "Zurücksetzen",
+    "loading": "Wird geladen...",
+    "error": "Inserate konnten nicht geladen werden: {error}",
+    "noResults": "Keine Inserate gefunden.",
+    "roomsValue": "{rooms} Zimmer"
+  },
+  "ListingDetail": {
+    "back": "Zurück zu den Inseraten",
+    "notFound": "Inserat nicht gefunden.",
+    "loading": "Wird geladen...",
+    "priceLabel": "Preis",
+    "roomsValue": "{rooms} Zimmer"
+  },
+  "AdminListings": {
+    "title": "Inserate",
+    "subtitle": "Erstellen, bearbeiten und ordnen Sie die auf der Website angezeigten Immobilienanzeigen.",
+    "city": "Ort",
+    "canton": "Kanton",
+    "rooms": "Zimmer",
+    "videoUrl": "Video-URL (optional)",
+    "titleLabel": "Titel",
+    "shortDescription": "Kurzbeschreibung (in der Vorschau angezeigt)",
+    "fullDescription": "Ausführliche Beschreibung (beim Öffnen des Inserats angezeigt)",
+    "roomsValue": "{rooms} Zimmer"
   }
 }
