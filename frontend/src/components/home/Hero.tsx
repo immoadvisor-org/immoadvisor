@@ -26,7 +26,7 @@ export function Hero({ title, subtitle, cta }: HeroProps) {
         <p className="mt-4 max-w-xl text-base leading-relaxed text-white/85 sm:text-lg">{subtitle}</p>
         {cta && (
           <Link href={cta.href} className="mt-6 inline-block">
-            <Button>{cta.label}</Button>
+            <Button variant="secondary">{cta.label}</Button>
           </Link>
         )}
       </div>

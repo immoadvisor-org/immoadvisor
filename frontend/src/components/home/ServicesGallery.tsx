@@ -7,6 +7,7 @@ import { useServices } from "@/features/services/useServices";
 import { useCartStore } from "@/features/cart/cartStore";
 import { PriceTag } from "@/components/ui/PriceTag";
 import { Button } from "@/components/ui/Button";
+import { AddToCartButton } from "@/components/ui/AddToCartButton";
 import type { Service } from "@/features/services/types";
 
 const TILTS = ["-rotate-2", "rotate-1", "-rotate-1"];
@@ -47,9 +48,12 @@ function GalleryCard({ service, tilt }: { service: Service; tilt: string }) {
       </Link>
       <div className="flex items-center justify-between border-t border-slate-100 px-5 pb-5 pt-3 dark:border-slate-800">
         <PriceTag amountChf={Number(service.price_chf)} className="text-lg font-semibold text-slate-900 dark:text-slate-50" />
-        <Button variant={isInCart ? "secondary" : "primary"} onClick={() => toggleService(service)}>
-          {isInCart ? t("remove") : t("add")}
-        </Button>
+        <AddToCartButton
+          isInCart={isInCart}
+          onClick={() => toggleService(service)}
+          addLabel={t("add")}
+          removeLabel={t("remove")}
+        />
       </div>
     </div>
   );

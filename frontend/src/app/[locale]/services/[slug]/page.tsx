@@ -8,7 +8,7 @@ import { useRouter } from "@/i18n/navigation";
 import { useServices } from "@/features/services/useServices";
 import { useCartStore } from "@/features/cart/cartStore";
 import { PriceTag } from "@/components/ui/PriceTag";
-import { Button } from "@/components/ui/Button";
+import { AddToCartButton } from "@/components/ui/AddToCartButton";
 
 export default function ServiceDetailPage() {
   const params = useParams<{ slug: string }>();
@@ -100,9 +100,12 @@ export default function ServiceDetailPage() {
               amountChf={Number(service.price_chf)}
               className="text-2xl font-semibold text-slate-900 dark:text-slate-50"
             />
-            <Button variant={isInCart ? "secondary" : "primary"} onClick={() => toggleService(service)}>
-              {isInCart ? t("remove") : t("add")}
-            </Button>
+            <AddToCartButton
+              isInCart={isInCart}
+              onClick={() => toggleService(service)}
+              addLabel={t("add")}
+              removeLabel={t("remove")}
+            />
           </div>
         </div>
       </div>

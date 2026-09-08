@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { useCartStore } from "@/features/cart/cartStore";
 import { PriceTag } from "@/components/ui/PriceTag";
-import { Button } from "@/components/ui/Button";
+import { AddToCartButton } from "@/components/ui/AddToCartButton";
 import type { Service } from "@/features/services/types";
 
 interface ServiceCardProps {
@@ -67,9 +67,12 @@ export function ServiceCard({ service }: ServiceCardProps) {
       </Link>
       <div className="flex items-center justify-between px-5 pb-5">
         <PriceTag amountChf={Number(service.price_chf)} className="text-lg font-medium text-slate-900 dark:text-slate-50" />
-        <Button variant={isInCart ? "secondary" : "primary"} onClick={() => toggleService(service)}>
-          {isInCart ? t("remove") : t("add")}
-        </Button>
+        <AddToCartButton
+          isInCart={isInCart}
+          onClick={() => toggleService(service)}
+          addLabel={t("add")}
+          removeLabel={t("remove")}
+        />
       </div>
     </div>
   );
