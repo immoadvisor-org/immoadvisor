@@ -6,6 +6,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { Hero } from "@/components/home/Hero";
 import { ListingsCarousel } from "@/components/home/ListingsCarousel";
+import { ServicesGallery } from "@/components/home/ServicesGallery";
 import { Button } from "@/components/ui/Button";
 import { getAboutContent, type AboutContent } from "@/features/about/aboutApi";
 import { getHowItWorksContent, type HowItWorksContent } from "@/features/howItWorks/howItWorksApi";
@@ -38,12 +39,32 @@ export default function HomePage() {
       />
 
       {howItWorks && (
-        <section className="bg-slate-50 py-16 dark:bg-slate-900">
-          <div className="mx-auto max-w-3xl px-4 text-center">
-            <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-slate-50 sm:text-3xl">
+        <section
+          className="relative overflow-hidden bg-slate-50 py-20 dark:bg-slate-900"
+          style={
+            howItWorks.background_image_url
+              ? {
+                  backgroundImage: `url(${howItWorks.background_image_url})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }
+              : undefined
+          }
+        >
+          {howItWorks.background_image_url && <div className="absolute inset-0 bg-slate-900/70" />}
+          <div className="relative mx-auto max-w-3xl px-4 text-center">
+            <h2
+              className={`font-display text-2xl font-bold sm:text-3xl ${
+                howItWorks.background_image_url ? "text-white" : "text-slate-900 dark:text-slate-50"
+              }`}
+            >
               {howItWorks.title}
             </h2>
-            <p className="mt-4 text-base leading-relaxed text-slate-600 dark:text-slate-300">
+            <p
+              className={`mt-4 text-base leading-relaxed ${
+                howItWorks.background_image_url ? "text-slate-100" : "text-slate-600 dark:text-slate-300"
+              }`}
+            >
               {howItWorks.text}
             </p>
             <Link href="/configuratore" className="mt-6 inline-block">
@@ -52,6 +73,8 @@ export default function HomePage() {
           </div>
         </section>
       )}
+
+      <ServicesGallery />
 
       {about && (
         <section className="mx-auto max-w-6xl px-4 py-16">

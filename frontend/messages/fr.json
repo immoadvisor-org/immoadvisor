@@ -23,7 +23,10 @@
     "contactCta": "Contactez-nous",
     "listingsTitle": "Quelques-unes de nos annonces",
     "listingsSubtitle": "Jetez un œil à quelques-uns des biens actuellement en vente.",
-    "listingsCta": "Voir toutes les annonces"
+    "listingsCta": "Voir toutes les annonces",
+    "servicesGalleryTitle": "Nos services les plus demandés",
+    "servicesGallerySubtitle": "Jetez un œil à nos services les plus choisis et ajoutez-les à votre panier directement ici.",
+    "servicesGalleryCta": "Accéder au configurateur complet"
   },
   "About": {
     "title": "À propos",
@@ -412,7 +415,11 @@
     "save": "Enregistrer",
     "saved": "Enregistré",
     "saveError": "Impossible d'enregistrer",
-    "loading": "Chargement..."
+    "loading": "Chargement...",
+    "backgroundImageLabel": "Image de fond",
+    "backgroundImageHint": "Affichée derrière le texte de cette section sur la page d'accueil. Facultatif.",
+    "noBackgroundImage": "Aucune image",
+    "changeBackgroundImage": "Changer l'image"
   },
   "PasswordInput": {
     "show": "Afficher le mot de passe",

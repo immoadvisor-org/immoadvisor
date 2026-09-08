@@ -23,7 +23,10 @@
     "contactCta": "Contattaci",
     "listingsTitle": "Alcuni dei nostri annunci",
     "listingsSubtitle": "Dai un'occhiata ad alcune delle proprietà attualmente in vendita.",
-    "listingsCta": "Vedi tutti gli annunci"
+    "listingsCta": "Vedi tutti gli annunci",
+    "servicesGalleryTitle": "I servizi più richiesti",
+    "servicesGallerySubtitle": "Dai un'occhiata ai servizi più scelti e aggiungili al carrello direttamente da qui.",
+    "servicesGalleryCta": "Vai al configuratore completo"
   },
   "About": {
     "title": "Chi siamo",
@@ -412,7 +415,11 @@
     "save": "Salva",
     "saved": "Salvato",
     "saveError": "Impossibile salvare",
-    "loading": "Caricamento..."
+    "loading": "Caricamento...",
+    "backgroundImageLabel": "Immagine di sfondo",
+    "backgroundImageHint": "Mostrata dietro il testo di questa sezione in home. Facoltativa.",
+    "noBackgroundImage": "Nessuna immagine",
+    "changeBackgroundImage": "Cambia immagine"
   },
   "PasswordInput": {
     "show": "Mostra password",

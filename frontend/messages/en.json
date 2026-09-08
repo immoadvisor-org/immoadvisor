@@ -23,7 +23,10 @@
     "contactCta": "Contact us",
     "listingsTitle": "Some of our listings",
     "listingsSubtitle": "Take a look at some of the properties currently for sale.",
-    "listingsCta": "See all listings"
+    "listingsCta": "See all listings",
+    "servicesGalleryTitle": "Our most popular services",
+    "servicesGallerySubtitle": "Take a look at our most chosen services and add them to your cart right from here.",
+    "servicesGalleryCta": "Go to the full configurator"
   },
   "About": {
     "title": "About us",
@@ -412,7 +415,11 @@
     "save": "Save",
     "saved": "Saved",
     "saveError": "Unable to save",
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "backgroundImageLabel": "Background image",
+    "backgroundImageHint": "Shown behind the text of this section on the home page. Optional.",
+    "noBackgroundImage": "No image",
+    "changeBackgroundImage": "Change image"
   },
   "PasswordInput": {
     "show": "Show password",

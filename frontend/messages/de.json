@@ -23,7 +23,10 @@
     "contactCta": "Kontaktieren Sie uns",
     "listingsTitle": "Einige unserer Inserate",
     "listingsSubtitle": "Werfen Sie einen Blick auf einige der aktuell zum Verkauf stehenden Immobilien.",
-    "listingsCta": "Alle Inserate ansehen"
+    "listingsCta": "Alle Inserate ansehen",
+    "servicesGalleryTitle": "Unsere gefragtesten Dienstleistungen",
+    "servicesGallerySubtitle": "Werfen Sie einen Blick auf die beliebtesten Dienstleistungen und fügen Sie sie direkt hier Ihrem Warenkorb hinzu.",
+    "servicesGalleryCta": "Zum vollständigen Konfigurator"
   },
   "About": {
     "title": "Über uns",
@@ -412,7 +415,11 @@
     "save": "Speichern",
     "saved": "Gespeichert",
     "saveError": "Speichern nicht möglich",
-    "loading": "Wird geladen..."
+    "loading": "Wird geladen...",
+    "backgroundImageLabel": "Hintergrundbild",
+    "backgroundImageHint": "Wird hinter dem Text dieses Bereichs auf der Startseite angezeigt. Optional.",
+    "noBackgroundImage": "Kein Bild",
+    "changeBackgroundImage": "Bild ändern"
   },
   "PasswordInput": {
     "show": "Passwort anzeigen",
