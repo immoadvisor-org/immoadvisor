@@ -182,8 +182,8 @@
       "refunded": "Rimborsato"
     },
     "fulfillmentStatus": {
-      "pending": "Da lavorare",
-      "processing": "In lavorazione",
+      "pending": "Da prendere in carico",
+      "processing": "In elaborazione",
       "completed": "Completato"
     }
   },
@@ -328,6 +328,11 @@
     "refundConfirm": "Confermi il rimborso di questo ordine? L'importo verrà restituito al cliente tramite Stripe.",
     "refundError": "Impossibile avviare il rimborso",
     "refundPendingNote": "Rimborso in corso, in attesa di conferma da Stripe.",
-    "fulfillmentUpdateError": "Impossibile aggiornare lo stato di lavorazione"
+    "fulfillmentUpdateError": "Impossibile aggiornare lo stato di lavorazione",
+    "takeChargeButton": "Prendi in carico",
+    "takingCharge": "Presa in carico...",
+    "completeButton": "Segna come completato",
+    "completing": "Completamento...",
+    "fulfillmentRequiresPayment": "Potrai prendere in carico l'ordine dopo la conferma del pagamento."
   }
 }

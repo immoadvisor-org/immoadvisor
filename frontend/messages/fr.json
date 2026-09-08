@@ -182,8 +182,8 @@
       "refunded": "Remboursé"
     },
     "fulfillmentStatus": {
-      "pending": "Non commencé",
-      "processing": "En cours",
+      "pending": "En attente de traitement",
+      "processing": "En cours de traitement",
       "completed": "Terminé"
     }
   },
@@ -328,6 +328,11 @@
     "refundConfirm": "Confirmer le remboursement de cette commande ? Le montant sera restitué au client via Stripe.",
     "refundError": "Impossible de lancer le remboursement",
     "refundPendingNote": "Remboursement en cours, en attente de confirmation de Stripe.",
-    "fulfillmentUpdateError": "Impossible de mettre à jour le statut de traitement"
+    "fulfillmentUpdateError": "Impossible de mettre à jour le statut de traitement",
+    "takeChargeButton": "Prendre en charge",
+    "takingCharge": "Prise en charge...",
+    "completeButton": "Marquer comme terminé",
+    "completing": "Finalisation...",
+    "fulfillmentRequiresPayment": "Vous pourrez prendre en charge la commande après confirmation du paiement."
   }
 }

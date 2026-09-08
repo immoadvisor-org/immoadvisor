@@ -6,7 +6,12 @@ from sqlalchemy.orm import Session, selectinload
 
 from app.models.order import Order, OrderFulfillmentStatus, OrderItem, OrderPaymentStatus
 from app.models.service import Service
-from app.services.exceptions import OrderNotFoundError, OrderNotRefundableError, ServiceNotFoundError
+from app.services.exceptions import (
+    InvalidFulfillmentTransitionError,
+    OrderNotFoundError,
+    OrderNotRefundableError,
+    ServiceNotFoundError,
+)
 from app.services.i18n import translate_service
 
 
@@ -121,9 +126,30 @@ def mark_order_cancelled(db: Session, order: Order) -> Order:
     return order
 
 
+# Percorso di lavorazione a senso unico: "pending" è solo lo stato di
+# partenza implicito (mai impostabile esplicitamente), da qui si può solo
+# avanzare verso "processing" e poi "completed" — mai retrocedere, per non
+# generare notifiche email contraddittorie al cliente.
+_FULFILLMENT_PREREQUISITE = {
+    OrderFulfillmentStatus.PROCESSING: OrderFulfillmentStatus.PENDING,
+    OrderFulfillmentStatus.COMPLETED: OrderFulfillmentStatus.PROCESSING,
+}
+
+
 def update_fulfillment_status(
     db: Session, order: Order, new_status: OrderFulfillmentStatus
 ) -> Order:
+    required_previous = _FULFILLMENT_PREREQUISITE.get(new_status)
+    if required_previous is None or order.fulfillment_status != required_previous:
+        raise InvalidFulfillmentTransitionError(
+            f"Impossibile passare l'ordine {order.id} da "
+            f"{order.fulfillment_status.value} a {new_status.value}"
+        )
+    if new_status == OrderFulfillmentStatus.PROCESSING and order.payment_status != OrderPaymentStatus.PAID:
+        raise InvalidFulfillmentTransitionError(
+            f"L'ordine {order.id} deve essere pagato prima di essere preso in carico"
+        )
+
     order.fulfillment_status = new_status
     order.updated_at = datetime.now(timezone.utc)
     db.commit()

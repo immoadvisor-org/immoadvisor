@@ -182,7 +182,7 @@
       "refunded": "Refunded"
     },
     "fulfillmentStatus": {
-      "pending": "Not started",
+      "pending": "Awaiting processing",
       "processing": "In progress",
       "completed": "Completed"
     }
@@ -328,6 +328,11 @@
     "refundConfirm": "Confirm refund for this order? The amount will be returned to the customer via Stripe.",
     "refundError": "Unable to start the refund",
     "refundPendingNote": "Refund in progress, waiting for confirmation from Stripe.",
-    "fulfillmentUpdateError": "Unable to update the fulfillment status"
+    "fulfillmentUpdateError": "Unable to update the fulfillment status",
+    "takeChargeButton": "Take in charge",
+    "takingCharge": "Taking in charge...",
+    "completeButton": "Mark as completed",
+    "completing": "Completing...",
+    "fulfillmentRequiresPayment": "You'll be able to take this order in charge once payment is confirmed."
   }
 }

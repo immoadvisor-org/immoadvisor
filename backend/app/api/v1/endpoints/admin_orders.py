@@ -9,7 +9,7 @@ from app.integrations.stripe_client import create_refund
 from app.models.order import OrderPaymentStatus
 from app.schemas.order import AdminOrderRead, FulfillmentStatusUpdate
 from app.services import order_service
-from app.services.exceptions import OrderNotFoundError
+from app.services.exceptions import InvalidFulfillmentTransitionError, OrderNotFoundError
 
 router = APIRouter(
     prefix="/admin/orders",
@@ -42,7 +42,11 @@ def update_fulfillment_status(
     except OrderNotFoundError as exc:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=str(exc)) from exc
 
-    order = order_service.update_fulfillment_status(db, order, payload.status)
+    try:
+        order = order_service.update_fulfillment_status(db, order, payload.status)
+    except InvalidFulfillmentTransitionError as exc:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
+
     send_customer_fulfillment_status_email(order)
     return AdminOrderRead.model_validate(order)
 

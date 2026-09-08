@@ -16,9 +16,6 @@ import {
 import { AdminLayout } from "@/components/admin/AdminLayout";
 import { PriceTag } from "@/components/ui/PriceTag";
 import { Button } from "@/components/ui/Button";
-import type { OrderFulfillmentStatus } from "@/types/order";
-
-const FULFILLMENT_OPTIONS: OrderFulfillmentStatus[] = ["processing", "completed"];
 
 export default function AdminOrderDetailPage() {
   const params = useParams<{ id: string }>();
@@ -65,12 +62,26 @@ export default function AdminOrderDetailPage() {
     }
   }
 
-  async function handleFulfillmentChange(newStatus: OrderFulfillmentStatus) {
+  async function handleTakeCharge() {
     if (!accessToken || !order) return;
     setIsUpdatingFulfillment(true);
     setError(null);
     try {
-      const updated = await updateFulfillmentStatus(order.id, newStatus, accessToken);
+      const updated = await updateFulfillmentStatus(order.id, "processing", accessToken);
+      setOrder(updated);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : t("fulfillmentUpdateError"));
+    } finally {
+      setIsUpdatingFulfillment(false);
+    }
+  }
+
+  async function handleComplete() {
+    if (!accessToken || !order) return;
+    setIsUpdatingFulfillment(true);
+    setError(null);
+    try {
+      const updated = await updateFulfillmentStatus(order.id, "completed", accessToken);
       setOrder(updated);
     } catch (err) {
       setError(err instanceof Error ? err.message : t("fulfillmentUpdateError"));
@@ -147,21 +158,22 @@ export default function AdminOrderDetailPage() {
 
           <div className="mt-6 border-t border-slate-200 pt-6 dark:border-slate-800">
             <h2 className="text-sm font-semibold text-slate-900 dark:text-slate-50">{t("fulfillmentStatusLabel")}</h2>
-            <select
-              value={order.fulfillment_status}
-              disabled={isUpdatingFulfillment}
-              onChange={(e) => handleFulfillmentChange(e.target.value as OrderFulfillmentStatus)}
-              className="mt-2 rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
-            >
-              {order.fulfillment_status === "pending" && (
-                <option value="pending">{tOrders("fulfillmentStatus.pending")}</option>
-              )}
-              {FULFILLMENT_OPTIONS.map((s) => (
-                <option key={s} value={s}>
-                  {tOrders(`fulfillmentStatus.${s}`)}
-                </option>
-              ))}
-            </select>
+            <p className="mt-1 text-slate-700 dark:text-slate-300">
+              {tOrders(`fulfillmentStatus.${order.fulfillment_status}`)}
+            </p>
+            {order.fulfillment_status === "pending" && order.payment_status === "paid" && (
+              <Button variant="secondary" className="mt-3" onClick={handleTakeCharge} disabled={isUpdatingFulfillment}>
+                {isUpdatingFulfillment ? t("takingCharge") : t("takeChargeButton")}
+              </Button>
+            )}
+            {order.fulfillment_status === "pending" && order.payment_status !== "paid" && (
+              <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">{t("fulfillmentRequiresPayment")}</p>
+            )}
+            {order.fulfillment_status === "processing" && (
+              <Button variant="secondary" className="mt-3" onClick={handleComplete} disabled={isUpdatingFulfillment}>
+                {isUpdatingFulfillment ? t("completing") : t("completeButton")}
+              </Button>
+            )}
           </div>
 
           {error && <p className="mt-4 text-sm text-red-600 dark:text-red-400">{error}</p>}

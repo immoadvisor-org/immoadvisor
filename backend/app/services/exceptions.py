@@ -14,6 +14,10 @@ class OrderNotRefundableError(DomainError):
     pass
 
 
+class InvalidFulfillmentTransitionError(DomainError):
+    pass
+
+
 class ServiceInUseError(DomainError):
     pass
 

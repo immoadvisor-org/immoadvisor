@@ -182,7 +182,7 @@
       "refunded": "Rückerstattet"
     },
     "fulfillmentStatus": {
-      "pending": "Nicht begonnen",
+      "pending": "Bearbeitung ausstehend",
       "processing": "In Bearbeitung",
       "completed": "Abgeschlossen"
     }
@@ -328,6 +328,11 @@
     "refundConfirm": "Rückerstattung für diese Bestellung bestätigen? Der Betrag wird dem Kunden über Stripe zurückerstattet.",
     "refundError": "Rückerstattung konnte nicht gestartet werden",
     "refundPendingNote": "Rückerstattung läuft, Bestätigung von Stripe ausstehend.",
-    "fulfillmentUpdateError": "Bearbeitungsstatus konnte nicht aktualisiert werden"
+    "fulfillmentUpdateError": "Bearbeitungsstatus konnte nicht aktualisiert werden",
+    "takeChargeButton": "In Bearbeitung nehmen",
+    "takingCharge": "Wird übernommen...",
+    "completeButton": "Als abgeschlossen markieren",
+    "completing": "Wird abgeschlossen...",
+    "fulfillmentRequiresPayment": "Sie können die Bestellung erst nach Zahlungsbestätigung übernehmen."
   }
 }
