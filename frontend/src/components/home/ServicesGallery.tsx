@@ -11,66 +11,12 @@ import type { Service } from "@/features/services/types";
 
 const TILTS = ["-rotate-2", "rotate-1", "-rotate-1"];
 
-const CATEGORY_ART: Record<string, { icon: JSX.Element; accent: "amber" | "teal" }> = {
-  legale: {
-    accent: "amber",
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <rect x="5" y="3" width="14" height="18" rx="1.5" />
-        <path d="M9 8h6M9 12h6M9 16h3" />
-      </svg>
-    ),
-  },
-  consulenza: {
-    accent: "teal",
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <circle cx="10" cy="10" r="6" />
-        <path d="M14.5 14.5L20 20" />
-      </svg>
-    ),
-  },
-  media: {
-    accent: "amber",
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <rect x="3" y="7" width="18" height="13" rx="2" />
-        <circle cx="12" cy="13.5" r="4" />
-        <path d="M8 7l1.5-2.5h5L16 7" />
-      </svg>
-    ),
-  },
-  marketing: {
-    accent: "teal",
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-        <path d="M4 10v4h4l6 4V6l-6 4H4z" />
-        <path d="M18 9a4 4 0 010 6" />
-      </svg>
-    ),
-  },
-};
-
-const FALLBACK_ART: { icon: JSX.Element; accent: "amber" | "teal" } = {
-  accent: "amber",
-  icon: (
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-      <path d="M12 3l2.4 5.4L20 11l-5.6 2.6L12 19l-2.4-5.4L4 11l5.6-2.6L12 3z" />
-    </svg>
-  ),
-};
-
-const ACCENT_CLASSES: Record<"amber" | "teal", string> = {
-  amber: "text-amber-400",
-  teal: "text-teal-300",
-};
-
 function GalleryCard({ service, tilt }: { service: Service; tilt: string }) {
   const t = useTranslations("ServiceCard");
   const isInCart = useCartStore((state) => state.isInCart(service.id));
   const toggleService = useCartStore((state) => state.toggleService);
   const detailHref = `/services/${service.slug}`;
-  const art = CATEGORY_ART[service.category.toLowerCase()] ?? FALLBACK_ART;
+  const image = service.image_urls?.[0];
 
   return (
     <div
@@ -78,20 +24,17 @@ function GalleryCard({ service, tilt }: { service: Service; tilt: string }) {
         isInCart ? "border-brand-500" : "border-slate-200 dark:border-slate-800"
       }`}
     >
-      <Link
-        href={detailHref}
-        className="relative flex h-40 w-full items-center justify-center overflow-hidden bg-gradient-to-br from-slate-800 to-slate-950"
-      >
-        <div
-          className="absolute inset-0 opacity-40"
-          style={{
-            backgroundImage: "radial-gradient(rgba(255,255,255,.18) 1px, transparent 1px)",
-            backgroundSize: "16px 16px",
-          }}
-        />
-        <div className={`relative transition-transform duration-500 group-hover:scale-110 ${ACCENT_CLASSES[art.accent]}`}>
-          {art.icon}
-        </div>
+      <Link href={detailHref} className="relative block h-40 w-full overflow-hidden bg-slate-100 dark:bg-slate-800">
+        {image ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={image}
+            alt={service.name}
+            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+          />
+        ) : (
+          <div className="h-full w-full" />
+        )}
         <span className="absolute left-3 top-3 rounded-full bg-slate-950/80 px-2.5 py-0.5 font-mono text-[0.65rem] uppercase tracking-wide text-amber-400 backdrop-blur">
           {service.category}
         </span>
