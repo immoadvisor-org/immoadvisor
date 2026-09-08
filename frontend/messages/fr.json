@@ -134,7 +134,10 @@
     "avsNumberHint": "L'équivalent suisse du code fiscal italien. Facultatif.",
     "termsPrefix": "J'accepte les",
     "termsLink": "Conditions générales",
-    "errorTermsRequired": "Vous devez accepter les Conditions générales pour vous inscrire"
+    "errorTermsRequired": "Vous devez accepter les Conditions générales pour vous inscrire",
+    "errorEmailAlreadyRegistered": "Cette adresse e-mail est déjà enregistrée. Essayez de vous connecter, ou réinitialisez votre mot de passe si vous l'avez oublié.",
+    "confirmationPendingTitle": "Vérifiez votre e-mail",
+    "confirmationPendingText": "Nous vous avons envoyé un e-mail de confirmation. Cliquez sur le lien pour activer votre compte, puis vous pourrez vous connecter."
   },
   "Terms": {
     "title": "Conditions générales",

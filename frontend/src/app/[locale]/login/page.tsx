@@ -44,6 +44,7 @@ export default function LoginPage() {
   const [error, setError] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [resetEmailSent, setResetEmailSent] = useState(false);
+  const [confirmationPending, setConfirmationPending] = useState(false);
 
   function updateSignUpField(field: keyof SignUpFields, value: string) {
     setSignUpFields((prev) => ({ ...prev, [field]: value }));
@@ -74,30 +75,53 @@ export default function LoginPage() {
 
     setIsSubmitting(true);
 
-    const { error: authError } =
-      mode === "sign-in"
-        ? await supabase.auth.signInWithPassword({ email, password })
-        : await supabase.auth.signUp({
-            email,
-            password,
-            options: {
-              data: {
-                first_name: signUpFields.firstName,
-                last_name: signUpFields.lastName,
-                phone: signUpFields.phone,
-                address_line: signUpFields.addressLine,
-                postal_code: signUpFields.postalCode,
-                city: signUpFields.city,
-                canton: signUpFields.canton,
-                avs_number: signUpFields.avsNumber || null,
-              },
-            },
-          });
+    if (mode === "sign-in") {
+      const { error: authError } = await supabase.auth.signInWithPassword({ email, password });
+      setIsSubmitting(false);
+      if (authError) {
+        setError(authError.message);
+        return;
+      }
+      router.push("/account");
+      return;
+    }
+
+    const { data, error: authError } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        data: {
+          first_name: signUpFields.firstName,
+          last_name: signUpFields.lastName,
+          phone: signUpFields.phone,
+          address_line: signUpFields.addressLine,
+          postal_code: signUpFields.postalCode,
+          city: signUpFields.city,
+          canton: signUpFields.canton,
+          avs_number: signUpFields.avsNumber || null,
+        },
+      },
+    });
 
     setIsSubmitting(false);
 
     if (authError) {
       setError(authError.message);
+      return;
+    }
+
+    // Supabase non restituisce un errore se l'email è già registrata e
+    // confermata (per non rivelare a chi tenta la registrazione quali email
+    // esistono già): il segnale è un array "identities" vuoto.
+    if (data.user && data.user.identities && data.user.identities.length === 0) {
+      setError(t("errorEmailAlreadyRegistered"));
+      return;
+    }
+
+    // Senza conferma email non c'è ancora una sessione attiva: mostriamo
+    // l'istruzione invece di reindirizzare a una pagina che richiede login.
+    if (!data.session) {
+      setConfirmationPending(true);
       return;
     }
 
@@ -108,6 +132,7 @@ export default function LoginPage() {
     setMode(next);
     setError(null);
     setResetEmailSent(false);
+    setConfirmationPending(false);
   }
 
   if (mode === "forgot-password" && resetEmailSent) {
@@ -115,6 +140,21 @@ export default function LoginPage() {
       <div className="mx-auto max-w-sm px-4 py-12 text-center">
         <h1 className="text-2xl font-medium text-slate-900 dark:text-slate-50">{t("resetSuccessTitle")}</h1>
         <p className="mt-3 text-sm text-slate-600 dark:text-slate-300">{t("resetSuccessText")}</p>
+        <button
+          onClick={() => switchMode("sign-in")}
+          className="mt-6 text-sm text-brand-600 hover:underline dark:text-brand-100"
+        >
+          {t("backToSignIn")}
+        </button>
+      </div>
+    );
+  }
+
+  if (mode === "sign-up" && confirmationPending) {
+    return (
+      <div className="mx-auto max-w-sm px-4 py-12 text-center">
+        <h1 className="text-2xl font-medium text-slate-900 dark:text-slate-50">{t("confirmationPendingTitle")}</h1>
+        <p className="mt-3 text-sm text-slate-600 dark:text-slate-300">{t("confirmationPendingText")}</p>
         <button
           onClick={() => switchMode("sign-in")}
           className="mt-6 text-sm text-brand-600 hover:underline dark:text-brand-100"

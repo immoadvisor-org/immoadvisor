@@ -134,7 +134,10 @@
     "avsNumberHint": "Das schweizerische Äquivalent zur italienischen Steuernummer. Optional.",
     "termsPrefix": "Ich akzeptiere die",
     "termsLink": "Allgemeinen Geschäftsbedingungen",
-    "errorTermsRequired": "Sie müssen die Allgemeinen Geschäftsbedingungen akzeptieren, um sich zu registrieren"
+    "errorTermsRequired": "Sie müssen die Allgemeinen Geschäftsbedingungen akzeptieren, um sich zu registrieren",
+    "errorEmailAlreadyRegistered": "Diese E-Mail-Adresse ist bereits registriert. Versuchen Sie sich anzumelden oder setzen Sie Ihr Passwort zurück, falls Sie es vergessen haben.",
+    "confirmationPendingTitle": "Prüfen Sie Ihre E-Mail",
+    "confirmationPendingText": "Wir haben Ihnen eine Bestätigungs-E-Mail gesendet. Klicken Sie auf den Link, um Ihr Konto zu aktivieren, danach können Sie sich anmelden."
   },
   "Terms": {
     "title": "Allgemeine Geschäftsbedingungen",

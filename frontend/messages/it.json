@@ -134,7 +134,10 @@
     "avsNumberHint": "L'equivalente svizzero del codice fiscale italiano. Facoltativo.",
     "termsPrefix": "Accetto i",
     "termsLink": "Termini e condizioni",
-    "errorTermsRequired": "Devi accettare i Termini e condizioni per registrarti"
+    "errorTermsRequired": "Devi accettare i Termini e condizioni per registrarti",
+    "errorEmailAlreadyRegistered": "Questo indirizzo email è già registrato. Prova ad accedere, oppure recupera la password se l'hai dimenticata.",
+    "confirmationPendingTitle": "Controlla la tua email",
+    "confirmationPendingText": "Ti abbiamo inviato un'email di conferma. Clicca sul link per attivare il tuo account, poi potrai accedere."
   },
   "Terms": {
     "title": "Termini e condizioni",

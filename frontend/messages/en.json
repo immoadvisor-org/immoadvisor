@@ -134,7 +134,10 @@
     "avsNumberHint": "The Swiss equivalent of the Italian tax code. Optional.",
     "termsPrefix": "I accept the",
     "termsLink": "Terms and conditions",
-    "errorTermsRequired": "You must accept the Terms and conditions to sign up"
+    "errorTermsRequired": "You must accept the Terms and conditions to sign up",
+    "errorEmailAlreadyRegistered": "This email address is already registered. Try signing in, or reset your password if you've forgotten it.",
+    "confirmationPendingTitle": "Check your email",
+    "confirmationPendingText": "We've sent you a confirmation email. Click the link to activate your account, then you'll be able to sign in."
   },
   "Terms": {
     "title": "Terms and conditions",
