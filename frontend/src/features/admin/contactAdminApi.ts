@@ -9,6 +9,7 @@ export interface ContactMessage {
   email: string;
   phone: string | null;
   message: string;
+  listing_reference: string | null;
   created_at: string;
 }
 

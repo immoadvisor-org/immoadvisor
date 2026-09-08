@@ -8,13 +8,14 @@ import { Link } from "@/i18n/navigation";
 import { getListingBySlug } from "@/features/listings/listingsApi";
 import type { Listing } from "@/features/listings/types";
 import { PriceTag } from "@/components/ui/PriceTag";
+import { ListingGallery } from "@/components/listings/ListingGallery";
+import { ListingInquiryForm } from "@/components/listings/ListingInquiryForm";
 
 export default function ListingDetailPage() {
   const params = useParams<{ slug: string }>();
   const locale = useLocale();
   const t = useTranslations("ListingDetail");
   const [listing, setListing] = useState<Listing | null | undefined>(undefined);
-  const [activeImage, setActiveImage] = useState(0);
 
   useEffect(() => {
     let isMounted = true;
@@ -48,8 +49,6 @@ export default function ListingDetailPage() {
     );
   }
 
-  const images = listing.image_urls;
-
   return (
     <div className="mx-auto max-w-5xl px-4 py-12">
       <Link href="/annunci" className="text-sm text-brand-600 hover:underline dark:text-brand-100">
@@ -57,41 +56,7 @@ export default function ListingDetailPage() {
       </Link>
 
       <div className="mt-6 grid grid-cols-1 gap-10 lg:grid-cols-2">
-        <div>
-          {images.length > 0 ? (
-            <div>
-              <div className="aspect-[4/3] w-full overflow-hidden rounded-2xl bg-slate-100 dark:bg-slate-800">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={images[activeImage]} alt={listing.title} className="h-full w-full object-cover" />
-              </div>
-              {images.length > 1 && (
-                <div className="mt-3 flex gap-2">
-                  {images.map((url, index) => (
-                    <button
-                      key={url}
-                      type="button"
-                      onClick={() => setActiveImage(index)}
-                      className={`h-16 w-16 overflow-hidden rounded-lg border-2 ${
-                        index === activeImage ? "border-brand-500" : "border-transparent"
-                      }`}
-                    >
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={url} alt="" className="h-full w-full object-cover" />
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
-          ) : (
-            <div className="aspect-[4/3] w-full rounded-2xl bg-slate-100 dark:bg-slate-800" />
-          )}
-
-          {listing.video_url && (
-            <div className="mt-4 aspect-video w-full overflow-hidden rounded-2xl bg-slate-100 dark:bg-slate-800">
-              <video src={listing.video_url} controls className="h-full w-full object-cover" />
-            </div>
-          )}
-        </div>
+        <ListingGallery title={listing.title} images={listing.image_urls} videoUrl={listing.video_url} />
 
         <div>
           <span className="inline-block rounded-full bg-brand-50 px-2.5 py-0.5 text-xs font-medium uppercase tracking-wide text-brand-600 dark:bg-brand-500/20 dark:text-brand-100">
@@ -115,6 +80,11 @@ export default function ListingDetailPage() {
               className="mt-1 block text-4xl font-bold text-brand-600 dark:text-brand-100"
             />
           </div>
+
+          <ListingInquiryForm
+            listingReference={`${listing.title} (${listing.slug})`}
+            defaultMessage={t("inquiryDefaultMessage", { title: listing.title })}
+          />
         </div>
       </div>
     </div>

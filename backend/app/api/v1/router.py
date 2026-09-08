@@ -5,6 +5,7 @@ from app.api.v1.endpoints import (
     account,
     admin_about,
     admin_contact,
+    admin_how_it_works,
     admin_legal,
     admin_listings,
     admin_notifications,
@@ -13,6 +14,7 @@ from app.api.v1.endpoints import (
     admin_users,
     checkout,
     contact,
+    how_it_works,
     legal,
     listings,
     orders,
@@ -28,12 +30,14 @@ api_router.include_router(checkout.router)
 api_router.include_router(webhooks.router)
 api_router.include_router(contact.router)
 api_router.include_router(about.router)
+api_router.include_router(how_it_works.router)
 api_router.include_router(legal.router)
 api_router.include_router(account.router)
 api_router.include_router(admin_services.router)
 api_router.include_router(admin_listings.router)
 api_router.include_router(admin_contact.router)
 api_router.include_router(admin_about.router)
+api_router.include_router(admin_how_it_works.router)
 api_router.include_router(admin_orders.router)
 api_router.include_router(admin_notifications.router)
 api_router.include_router(admin_legal.router)

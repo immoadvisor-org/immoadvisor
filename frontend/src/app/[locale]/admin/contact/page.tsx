@@ -71,6 +71,11 @@ export default function AdminContactPage() {
                   {message.email}
                   {message.phone ? ` · ${message.phone}` : ""}
                 </p>
+                {message.listing_reference && (
+                  <span className="mt-2 inline-block rounded-full bg-brand-50 px-2.5 py-0.5 text-xs font-medium text-brand-600 dark:bg-brand-500/20 dark:text-brand-100">
+                    {message.listing_reference}
+                  </span>
+                )}
                 <p className="mt-2 text-sm text-slate-700 dark:text-slate-300">{message.message}</p>
               </div>
             ))}

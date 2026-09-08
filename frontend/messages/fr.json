@@ -17,8 +17,6 @@
     "heroSubtitle": "Faites confiance à ImmoAdvisor : choisissez uniquement les services dont vous avez vraiment besoin, avec des prix transparents et sans engagement.",
     "heroCta": "Aller au configurateur",
     "discoverMore": "En savoir plus",
-    "howItWorksTitle": "Comment ça marche",
-    "howItWorksText": "Parcourez les services disponibles — annonce, photographie, documentation, évaluation et plus encore — sélectionnez ceux dont vous avez besoin et regardez le total se mettre à jour en temps réel. Pas de forfaits fixes : composez le vôtre.",
     "howItWorksCta": "Aller au configurateur",
     "contactTitle": "Besoin d'aide ?",
     "contactText": "Notre équipe est prête à répondre à vos questions et à vous aider à choisir les bons services.",
@@ -198,7 +196,8 @@
     "about": "À propos",
     "contact": "Messages",
     "legal": "Mentions légales",
-    "listings": "Annonces"
+    "listings": "Annonces",
+    "howItWorks": "Comment ça marche"
   },
   "AdminUsers": {
     "title": "Utilisateurs",
@@ -360,7 +359,14 @@
     "notFound": "Annonce introuvable.",
     "loading": "Chargement...",
     "priceLabel": "Prix",
-    "roomsValue": "{rooms} pièces"
+    "roomsValue": "{rooms} pièces",
+    "inquiryButton": "Demander des informations",
+    "inquiryTitle": "Demander des informations sur cette annonce",
+    "inquirySuccess": "Demande envoyée ! Nous vous répondrons rapidement.",
+    "inquiryCancel": "Fermer",
+    "inquiryDefaultMessage": "Je suis intéressé(e) par l'annonce \"{title}\" et souhaiterais obtenir plus d'informations.",
+    "previousMedia": "Image précédente",
+    "nextMedia": "Image suivante"
   },
   "AdminListings": {
     "title": "Annonces",
@@ -374,5 +380,15 @@
     "fullDescription": "Description complète (affichée à l'ouverture de l'annonce)",
     "roomsValue": "{rooms} pièces",
     "sectionEnabled": "Afficher la section Annonces sur le site (menu et accueil)"
+  },
+  "AdminHowItWorks": {
+    "title": "Section \"Comment ça marche\"",
+    "subtitle": "Modifiez le texte affiché sur la page d'accueil, pour chaque langue.",
+    "titleLabel": "Titre",
+    "textLabel": "Texte",
+    "save": "Enregistrer",
+    "saved": "Enregistré",
+    "saveError": "Impossible d'enregistrer",
+    "loading": "Chargement..."
   }
 }

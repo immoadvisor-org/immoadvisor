@@ -17,8 +17,6 @@
     "heroSubtitle": "Affidati a ImmoAdvisor: scegli solo i servizi che ti servono davvero, con prezzi trasparenti e nessun vincolo.",
     "heroCta": "Vai al configuratore",
     "discoverMore": "Scopri di più",
-    "howItWorksTitle": "Come funziona",
-    "howItWorksText": "Sfoglia i servizi disponibili — annuncio, fotografie, documentazione, valutazione e altro — seleziona quelli che ti servono e vedi il totale aggiornarsi in tempo reale. Nessun pacchetto fisso: costruisci il tuo su misura.",
     "howItWorksCta": "Vai al configuratore",
     "contactTitle": "Hai bisogno di una mano?",
     "contactText": "Il nostro team è pronto a rispondere alle tue domande e aiutarti a scegliere i servizi giusti.",
@@ -198,7 +196,8 @@
     "about": "Chi siamo",
     "contact": "Messaggi",
     "legal": "Legale",
-    "listings": "Annunci"
+    "listings": "Annunci",
+    "howItWorks": "Come funziona"
   },
   "AdminUsers": {
     "title": "Utenti",
@@ -360,7 +359,14 @@
     "notFound": "Annuncio non trovato.",
     "loading": "Caricamento...",
     "priceLabel": "Prezzo",
-    "roomsValue": "{rooms} locali"
+    "roomsValue": "{rooms} locali",
+    "inquiryButton": "Richiedi informazioni",
+    "inquiryTitle": "Richiedi informazioni su questo annuncio",
+    "inquirySuccess": "Richiesta inviata! Ti risponderemo al più presto.",
+    "inquiryCancel": "Chiudi",
+    "inquiryDefaultMessage": "Sono interessato/a all'annuncio \"{title}\", vorrei ricevere maggiori informazioni.",
+    "previousMedia": "Immagine precedente",
+    "nextMedia": "Immagine successiva"
   },
   "AdminListings": {
     "title": "Annunci",
@@ -374,5 +380,15 @@
     "fullDescription": "Descrizione estesa (mostrata aprendo l'annuncio)",
     "roomsValue": "{rooms} locali",
     "sectionEnabled": "Mostra la sezione Annunci sul sito (menu e home)"
+  },
+  "AdminHowItWorks": {
+    "title": "Sezione \"Come funziona\"",
+    "subtitle": "Modifica il testo mostrato in home, per ogni lingua.",
+    "titleLabel": "Titolo",
+    "textLabel": "Testo",
+    "save": "Salva",
+    "saved": "Salvato",
+    "saveError": "Impossibile salvare",
+    "loading": "Caricamento..."
   }
 }

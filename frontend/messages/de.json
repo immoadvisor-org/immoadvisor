@@ -17,8 +17,6 @@
     "heroSubtitle": "Vertrauen Sie auf ImmoAdvisor: Wählen Sie nur die Dienstleistungen, die Sie wirklich brauchen, mit transparenten Preisen und ohne Verpflichtung.",
     "heroCta": "Zum Konfigurator",
     "discoverMore": "Mehr erfahren",
-    "howItWorksTitle": "So funktioniert's",
-    "howItWorksText": "Durchstöbern Sie die verfügbaren Dienstleistungen — Inserat, Fotografie, Unterlagen, Bewertung und mehr — wählen Sie die gewünschten aus und sehen Sie die Summe in Echtzeit aktualisiert. Keine festen Pakete: stellen Sie Ihr eigenes zusammen.",
     "howItWorksCta": "Zum Konfigurator",
     "contactTitle": "Brauchen Sie Hilfe?",
     "contactText": "Unser Team beantwortet gerne Ihre Fragen und hilft Ihnen, die richtigen Dienstleistungen zu wählen.",
@@ -198,7 +196,8 @@
     "about": "Über uns",
     "contact": "Nachrichten",
     "legal": "Rechtliches",
-    "listings": "Inserate"
+    "listings": "Inserate",
+    "howItWorks": "So funktioniert's"
   },
   "AdminUsers": {
     "title": "Benutzer",
@@ -360,7 +359,14 @@
     "notFound": "Inserat nicht gefunden.",
     "loading": "Wird geladen...",
     "priceLabel": "Preis",
-    "roomsValue": "{rooms} Zimmer"
+    "roomsValue": "{rooms} Zimmer",
+    "inquiryButton": "Informationen anfordern",
+    "inquiryTitle": "Informationen zu diesem Inserat anfordern",
+    "inquirySuccess": "Anfrage gesendet! Wir melden uns in Kürze bei Ihnen.",
+    "inquiryCancel": "Schliessen",
+    "inquiryDefaultMessage": "Ich interessiere mich für das Inserat \"{title}\" und hätte gerne weitere Informationen.",
+    "previousMedia": "Vorheriges Bild",
+    "nextMedia": "Nächstes Bild"
   },
   "AdminListings": {
     "title": "Inserate",
@@ -374,5 +380,15 @@
     "fullDescription": "Ausführliche Beschreibung (beim Öffnen des Inserats angezeigt)",
     "roomsValue": "{rooms} Zimmer",
     "sectionEnabled": "Inserate-Bereich auf der Website anzeigen (Menü und Startseite)"
+  },
+  "AdminHowItWorks": {
+    "title": "Bereich \"So funktioniert's\"",
+    "subtitle": "Bearbeiten Sie den auf der Startseite angezeigten Text, für jede Sprache.",
+    "titleLabel": "Titel",
+    "textLabel": "Text",
+    "save": "Speichern",
+    "saved": "Gespeichert",
+    "saveError": "Speichern nicht möglich",
+    "loading": "Wird geladen..."
   }
 }

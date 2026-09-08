@@ -10,6 +10,7 @@ class ContactMessageCreate(BaseModel):
     email: EmailStr
     phone: str | None = Field(default=None, max_length=30)
     message: str = Field(min_length=1, max_length=5000)
+    listing_reference: str | None = Field(default=None, max_length=300)
 
 
 class ContactMessageRead(BaseModel):
@@ -21,4 +22,5 @@ class ContactMessageRead(BaseModel):
     email: str
     phone: str | None
     message: str
+    listing_reference: str | None
     created_at: datetime

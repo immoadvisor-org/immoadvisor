@@ -39,19 +39,23 @@ def _send_email(to: list[str], subject: str, html: str, reply_to: str | None = N
 
 
 def send_contact_notification(message: ContactMessage, recipients: list[str]) -> None:
+    listing_line = (
+        f"<p><strong>Annuncio:</strong> {message.listing_reference}</p>" if message.listing_reference else ""
+    )
     body = (
         f"<p><strong>Nome:</strong> {message.first_name} {message.last_name}</p>"
         f"<p><strong>Email:</strong> {message.email}</p>"
         f"<p><strong>Telefono:</strong> {message.phone or '-'}</p>"
+        f"{listing_line}"
         f"<p><strong>Messaggio:</strong></p>"
         f"<p>{message.message}</p>"
     )
-    _send_email(
-        to=recipients,
-        subject=f"Nuovo messaggio di contatto da {message.first_name} {message.last_name}",
-        html=body,
-        reply_to=message.email,
+    subject = (
+        f"Richiesta informazioni per annuncio: {message.listing_reference}"
+        if message.listing_reference
+        else f"Nuovo messaggio di contatto da {message.first_name} {message.last_name}"
     )
+    _send_email(to=recipients, subject=subject, html=body, reply_to=message.email)
 
 
 PAYMENT_STATUS_LABELS = {

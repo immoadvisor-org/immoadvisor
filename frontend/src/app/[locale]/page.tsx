@@ -8,16 +8,21 @@ import { Hero } from "@/components/home/Hero";
 import { ListingsCarousel } from "@/components/home/ListingsCarousel";
 import { Button } from "@/components/ui/Button";
 import { getAboutContent, type AboutContent } from "@/features/about/aboutApi";
+import { getHowItWorksContent, type HowItWorksContent } from "@/features/howItWorks/howItWorksApi";
 
 export default function HomePage() {
   const t = useTranslations("Home");
   const locale = useLocale();
   const [about, setAbout] = useState<AboutContent | null>(null);
+  const [howItWorks, setHowItWorks] = useState<HowItWorksContent | null>(null);
 
   useEffect(() => {
     let isMounted = true;
     getAboutContent(locale).then((data) => {
       if (isMounted) setAbout(data);
+    });
+    getHowItWorksContent(locale).then((data) => {
+      if (isMounted) setHowItWorks(data);
     });
     return () => {
       isMounted = false;
@@ -31,6 +36,22 @@ export default function HomePage() {
         subtitle={t("heroSubtitle")}
         cta={{ href: "/configuratore", label: t("heroCta") }}
       />
+
+      {howItWorks && (
+        <section className="bg-slate-50 py-16 dark:bg-slate-900">
+          <div className="mx-auto max-w-3xl px-4 text-center">
+            <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-slate-50 sm:text-3xl">
+              {howItWorks.title}
+            </h2>
+            <p className="mt-4 text-base leading-relaxed text-slate-600 dark:text-slate-300">
+              {howItWorks.text}
+            </p>
+            <Link href="/configuratore" className="mt-6 inline-block">
+              <Button>{t("howItWorksCta")}</Button>
+            </Link>
+          </div>
+        </section>
+      )}
 
       <ListingsCarousel />
 
@@ -53,20 +74,6 @@ export default function HomePage() {
           </div>
         </section>
       )}
-
-      <section className="bg-slate-50 py-16 dark:bg-slate-900">
-        <div className="mx-auto max-w-3xl px-4 text-center">
-          <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-slate-50 sm:text-3xl">
-            {t("howItWorksTitle")}
-          </h2>
-          <p className="mt-4 text-base leading-relaxed text-slate-600 dark:text-slate-300">
-            {t("howItWorksText")}
-          </p>
-          <Link href="/configuratore" className="mt-6 inline-block">
-            <Button>{t("howItWorksCta")}</Button>
-          </Link>
-        </div>
-      </section>
 
       <section className="mx-auto max-w-3xl px-4 py-16 text-center">
         <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-slate-50 sm:text-3xl">

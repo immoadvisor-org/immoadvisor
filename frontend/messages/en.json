@@ -17,8 +17,6 @@
     "heroSubtitle": "Rely on ImmoAdvisor: choose only the services you really need, with transparent pricing and no strings attached.",
     "heroCta": "Go to the configurator",
     "discoverMore": "Learn more",
-    "howItWorksTitle": "How it works",
-    "howItWorksText": "Browse the available services — listing, photography, documentation, valuation and more — select the ones you need and watch the total update in real time. No fixed bundles: build your own.",
     "howItWorksCta": "Go to the configurator",
     "contactTitle": "Need a hand?",
     "contactText": "Our team is ready to answer your questions and help you choose the right services.",
@@ -198,7 +196,8 @@
     "about": "About",
     "contact": "Messages",
     "legal": "Legal",
-    "listings": "Listings"
+    "listings": "Listings",
+    "howItWorks": "How it works"
   },
   "AdminUsers": {
     "title": "Users",
@@ -360,7 +359,14 @@
     "notFound": "Listing not found.",
     "loading": "Loading...",
     "priceLabel": "Price",
-    "roomsValue": "{rooms} rooms"
+    "roomsValue": "{rooms} rooms",
+    "inquiryButton": "Request information",
+    "inquiryTitle": "Request information about this listing",
+    "inquirySuccess": "Request sent! We'll get back to you shortly.",
+    "inquiryCancel": "Close",
+    "inquiryDefaultMessage": "I'm interested in the listing \"{title}\" and would like more information.",
+    "previousMedia": "Previous image",
+    "nextMedia": "Next image"
   },
   "AdminListings": {
     "title": "Listings",
@@ -374,5 +380,15 @@
     "fullDescription": "Full description (shown when opening the listing)",
     "roomsValue": "{rooms} rooms",
     "sectionEnabled": "Show the Listings section on the site (menu and home)"
+  },
+  "AdminHowItWorks": {
+    "title": "\"How it works\" section",
+    "subtitle": "Edit the text shown on the home page, for each language.",
+    "titleLabel": "Title",
+    "textLabel": "Text",
+    "save": "Save",
+    "saved": "Saved",
+    "saveError": "Unable to save",
+    "loading": "Loading..."
   }
 }

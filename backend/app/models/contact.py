@@ -17,4 +17,7 @@ class ContactMessage(Base):
     email: Mapped[str] = mapped_column(String)
     phone: Mapped[str | None] = mapped_column(String, nullable=True)
     message: Mapped[str] = mapped_column(String)
+    # Riferimento testuale (non FK) all'annuncio a cui si riferisce la
+    # richiesta, se inviata dalla pagina di dettaglio annuncio.
+    listing_reference: Mapped[str | None] = mapped_column(String, nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))

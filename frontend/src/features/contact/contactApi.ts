@@ -6,6 +6,7 @@ export interface ContactFormPayload {
   email: string;
   phone?: string;
   message: string;
+  listing_reference?: string;
 }
 
 export function submitContactMessage(payload: ContactFormPayload): Promise<void> {
