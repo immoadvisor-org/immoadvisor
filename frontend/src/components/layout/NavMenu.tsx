@@ -27,7 +27,7 @@ export function NavMenu() {
         onClick={() => setIsOpen((open) => !open)}
         aria-label={t("menu")}
         aria-expanded={isOpen}
-        className="flex h-9 w-9 items-center justify-center rounded-full text-slate-700 hover:bg-slate-100 dark:text-neutral-200 dark:hover:bg-slate-800"
+        className="flex h-9 w-9 items-center justify-center rounded-full text-slate-700 hover:bg-slate-100 dark:text-neutral-200 dark:hover:bg-neutral-800"
       >
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round">
           <path d="M3 6h18M3 12h18M3 18h18" />
@@ -43,7 +43,7 @@ export function NavMenu() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 dark:text-neutral-200 dark:hover:bg-slate-800"
+                className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 dark:text-neutral-200 dark:hover:bg-neutral-800"
               >
                 {link.label}
               </Link>

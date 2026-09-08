@@ -33,7 +33,7 @@ export function Header() {
           {user ? (
             <UserMenu user={user} />
           ) : (
-            <Link href="/login" className="hover:text-slate-900 dark:hover:text-slate-50">
+            <Link href="/login" className="hover:text-slate-900 dark:hover:text-neutral-50">
               {t("login")}
             </Link>
           )}
@@ -41,7 +41,7 @@ export function Header() {
             type="button"
             onClick={toggleDrawer}
             aria-label={t("cart")}
-            className="relative flex h-9 w-9 items-center justify-center rounded-full text-slate-700 hover:bg-slate-100 dark:text-neutral-200 dark:hover:bg-slate-800"
+            className="relative flex h-9 w-9 items-center justify-center rounded-full text-slate-700 hover:bg-slate-100 dark:text-neutral-200 dark:hover:bg-neutral-800"
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
               <path d="M6 6h15l-1.5 9h-12z" strokeLinejoin="round" />

@@ -32,7 +32,7 @@ export function LocaleSwitcher() {
         onClick={() => setIsOpen((open) => !open)}
         aria-label="Language"
         aria-expanded={isOpen}
-        className="text-xs font-medium uppercase text-slate-400 hover:text-slate-600 dark:text-neutral-500 dark:hover:text-slate-300"
+        className="text-xs font-medium uppercase text-slate-400 hover:text-slate-600 dark:text-neutral-500 dark:hover:text-neutral-300"
       >
         {locale}
       </button>
@@ -46,7 +46,7 @@ export function LocaleSwitcher() {
                 key={code}
                 type="button"
                 onClick={() => handleSelect(code)}
-                className={`flex w-full items-center gap-2 px-4 py-2 text-left text-sm hover:bg-slate-50 dark:hover:bg-slate-800 ${
+                className={`flex w-full items-center gap-2 px-4 py-2 text-left text-sm hover:bg-slate-50 dark:hover:bg-neutral-800 ${
                   code === locale
                     ? "font-medium text-brand-600 dark:text-brand-100"
                     : "text-slate-700 dark:text-neutral-200"

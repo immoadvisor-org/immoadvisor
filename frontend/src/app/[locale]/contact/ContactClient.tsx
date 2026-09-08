@@ -82,7 +82,7 @@ export function ContactClient() {
         </h1>
         <p className="mt-3 text-slate-600 dark:text-neutral-300">{t("successText")}</p>
         <Link href="/" className="mt-8 inline-block">
-          <Button>{t("backHome")}</Button>
+          <Button variant="secondary">{t("backHome")}</Button>
         </Link>
       </div>
     );

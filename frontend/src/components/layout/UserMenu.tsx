@@ -37,7 +37,7 @@ export function UserMenu({ user }: UserMenuProps) {
         aria-expanded={isOpen}
         aria-label={displayName}
         title={displayName}
-        className="flex h-9 w-9 items-center justify-center rounded-full text-slate-700 hover:bg-slate-100 dark:text-neutral-200 dark:hover:bg-slate-800"
+        className="flex h-9 w-9 items-center justify-center rounded-full text-slate-700 hover:bg-slate-100 dark:text-neutral-200 dark:hover:bg-neutral-800"
       >
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="12" cy="8" r="4" />
@@ -55,14 +55,14 @@ export function UserMenu({ user }: UserMenuProps) {
             <Link
               href="/account"
               onClick={() => setIsOpen(false)}
-              className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 dark:text-neutral-200 dark:hover:bg-slate-800"
+              className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 dark:text-neutral-200 dark:hover:bg-neutral-800"
             >
               {t("account")}
             </Link>
             <Link
               href="/account/orders"
               onClick={() => setIsOpen(false)}
-              className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 dark:text-neutral-200 dark:hover:bg-slate-800"
+              className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 dark:text-neutral-200 dark:hover:bg-neutral-800"
             >
               {tAccount("myOrders")}
             </Link>
@@ -70,7 +70,7 @@ export function UserMenu({ user }: UserMenuProps) {
               <Link
                 href="/admin/services"
                 onClick={() => setIsOpen(false)}
-                className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 dark:text-neutral-200 dark:hover:bg-slate-800"
+                className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 dark:text-neutral-200 dark:hover:bg-neutral-800"
               >
                 Admin
               </Link>
@@ -78,7 +78,7 @@ export function UserMenu({ user }: UserMenuProps) {
             <button
               type="button"
               onClick={handleLogout}
-              className="block w-full px-4 py-2 text-left text-sm text-slate-700 hover:bg-slate-50 dark:text-neutral-200 dark:hover:bg-slate-800"
+              className="block w-full px-4 py-2 text-left text-sm text-slate-700 hover:bg-slate-50 dark:text-neutral-200 dark:hover:bg-neutral-800"
             >
               {tAccount("logout")}
             </button>

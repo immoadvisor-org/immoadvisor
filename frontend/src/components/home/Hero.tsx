@@ -12,7 +12,7 @@ export function Hero({ title, subtitle, cta }: HeroProps) {
     <section className="relative flex h-[70vh] min-h-[420px] w-full items-end overflow-hidden sm:h-[80vh]">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src="/hero-illustration.svg"
+        src="/hero-illustration.svg?v=2"
         alt=""
         aria-hidden="true"
         className="absolute inset-0 h-full w-full object-cover"

@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl";
 import { useListings } from "@/features/listings/useListings";
 import type { ListingFilters } from "@/features/listings/types";
 import { ListingCard } from "@/components/listings/ListingCard";
+import { Button } from "@/components/ui/Button";
 
 const EMPTY_FILTERS: ListingFilters = {};
 
@@ -98,19 +99,12 @@ export function ListingList() {
           />
         </label>
         <div className="flex items-end gap-2 sm:col-span-2 lg:col-span-5">
-          <button
-            type="submit"
-            className="rounded-lg bg-brand-500 px-4 py-2 text-sm font-medium text-white hover:bg-brand-600"
-          >
+          <Button type="submit" variant="secondary">
             {t("search")}
-          </button>
-          <button
-            type="button"
-            onClick={handleReset}
-            className="rounded-lg px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-100 dark:text-neutral-300 dark:hover:bg-slate-800"
-          >
+          </Button>
+          <Button type="button" variant="ghost" onClick={handleReset}>
             {t("resetFilters")}
-          </button>
+          </Button>
         </div>
       </form>
 

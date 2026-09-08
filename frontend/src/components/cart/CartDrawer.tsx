@@ -26,7 +26,7 @@ export function CartDrawer() {
           <h2 className="text-lg font-medium text-slate-900 dark:text-neutral-50">{t("title")}</h2>
           <button
             onClick={closeDrawer}
-            className="text-slate-400 hover:text-slate-700 dark:text-neutral-500 dark:hover:text-slate-200"
+            className="text-slate-400 hover:text-slate-700 dark:text-neutral-500 dark:hover:text-neutral-200"
             aria-label={t("close")}
           >
             ✕

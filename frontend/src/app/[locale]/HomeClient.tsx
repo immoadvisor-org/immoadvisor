@@ -84,7 +84,7 @@ export function HomeClient() {
         <section className="mx-auto max-w-6xl px-4 py-16">
           <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/about-illustration.svg" alt="" aria-hidden="true" className="w-full rounded-2xl" />
+            <img src="/about-illustration.svg?v=2" alt="" aria-hidden="true" className="w-full rounded-2xl" />
             <div>
               <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-neutral-50 sm:text-3xl">
                 {about.title}

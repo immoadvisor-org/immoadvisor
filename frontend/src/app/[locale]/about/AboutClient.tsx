@@ -57,7 +57,7 @@ export function AboutClient() {
           </div>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/about-illustration.svg"
+            src="/about-illustration.svg?v=2"
             alt=""
             aria-hidden="true"
             className="w-full rounded-2xl"
@@ -87,7 +87,7 @@ export function AboutClient() {
       <section className="relative mt-4 flex min-h-[280px] items-center overflow-hidden">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/hero-illustration.svg"
+          src="/hero-illustration.svg?v=2"
           alt=""
           aria-hidden="true"
           className="absolute inset-0 h-full w-full object-cover"
@@ -97,7 +97,7 @@ export function AboutClient() {
           <h2 className="font-display text-2xl font-bold text-white sm:text-3xl">{content.cta_title}</h2>
           <p className="mx-auto mt-3 max-w-xl text-white/85">{content.cta_text}</p>
           <Link href="/contact" className="mt-6 inline-block">
-            <Button>{content.cta_button}</Button>
+            <Button variant="secondary">{content.cta_button}</Button>
           </Link>
         </div>
       </section>

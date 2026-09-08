@@ -36,7 +36,7 @@ export function AdminLayout({ children }: AdminLayoutProps) {
                 className={`whitespace-nowrap rounded-lg px-3 py-2 text-sm font-medium ${
                   isActive
                     ? "bg-brand-50 text-brand-600 dark:bg-brand-500/20 dark:text-brand-100"
-                    : "text-slate-600 hover:bg-slate-100 dark:text-neutral-300 dark:hover:bg-slate-800"
+                    : "text-slate-600 hover:bg-slate-100 dark:text-neutral-300 dark:hover:bg-neutral-800"
                 }`}
               >
                 {item.label}

@@ -79,7 +79,7 @@ export default function AdminLegalPage() {
                 className={`px-3 py-2 text-sm font-medium uppercase ${
                   activeTab === locale
                     ? "border-b-2 border-brand-500 text-brand-600 dark:text-brand-200"
-                    : "text-slate-400 hover:text-slate-700 dark:text-neutral-500 dark:hover:text-slate-200"
+                    : "text-slate-400 hover:text-slate-700 dark:text-neutral-500 dark:hover:text-neutral-200"
                 }`}
               >
                 {locale}

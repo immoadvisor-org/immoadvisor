@@ -35,7 +35,7 @@ export function ListingRow({
         <button
           onClick={() => onMove("up")}
           disabled={isFirst}
-          className="text-xs text-slate-400 hover:text-slate-700 disabled:opacity-30 dark:text-neutral-500 dark:hover:text-slate-200"
+          className="text-xs text-slate-400 hover:text-slate-700 disabled:opacity-30 dark:text-neutral-500 dark:hover:text-neutral-200"
           aria-label={t("moveUp")}
         >
           ▲
@@ -43,7 +43,7 @@ export function ListingRow({
         <button
           onClick={() => onMove("down")}
           disabled={isLast}
-          className="text-xs text-slate-400 hover:text-slate-700 disabled:opacity-30 dark:text-neutral-500 dark:hover:text-slate-200"
+          className="text-xs text-slate-400 hover:text-slate-700 disabled:opacity-30 dark:text-neutral-500 dark:hover:text-neutral-200"
           aria-label={t("moveDown")}
         >
           ▼

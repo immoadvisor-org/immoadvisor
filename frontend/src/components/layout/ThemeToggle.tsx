@@ -39,7 +39,7 @@ export function ThemeToggle() {
         aria-label={t("toLight")}
         aria-pressed={theme === "light"}
         className={`flex h-8 w-8 items-center justify-center rounded-full transition-colors ${
-          theme === "light" ? "bg-brand-500 text-white" : "text-slate-400 hover:text-slate-700 dark:hover:text-slate-200"
+          theme === "light" ? "bg-brand-500 text-white" : "text-slate-400 hover:text-slate-700 dark:hover:text-neutral-200"
         }`}
       >
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -53,7 +53,7 @@ export function ThemeToggle() {
         aria-label={t("toDark")}
         aria-pressed={theme === "dark"}
         className={`flex h-8 w-8 items-center justify-center rounded-full transition-colors ${
-          theme === "dark" ? "bg-brand-500 text-white" : "text-slate-400 hover:text-slate-700 dark:hover:text-slate-200"
+          theme === "dark" ? "bg-brand-500 text-white" : "text-slate-400 hover:text-slate-700 dark:hover:text-neutral-200"
         }`}
       >
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">

@@ -1,5 +1,5 @@
 export const ICON_BUTTON_CLASS =
-  "inline-flex h-8 w-8 items-center justify-center rounded-full text-slate-500 hover:bg-slate-100 hover:text-brand-600 dark:text-neutral-400 dark:hover:bg-slate-800 dark:hover:text-brand-100";
+  "inline-flex h-8 w-8 items-center justify-center rounded-full text-slate-500 hover:bg-slate-100 hover:text-brand-600 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-brand-100";
 
 export const ICON_BUTTON_DANGER_CLASS =
   "inline-flex h-8 w-8 items-center justify-center rounded-full text-slate-500 hover:bg-red-50 hover:text-red-600 dark:text-neutral-400 dark:hover:bg-red-950/40 dark:hover:text-red-400";
