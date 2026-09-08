@@ -37,7 +37,7 @@ export function UserMenu({ user }: UserMenuProps) {
         aria-expanded={isOpen}
         aria-label={displayName}
         title={displayName}
-        className="flex h-9 w-9 items-center justify-center rounded-full text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800"
+        className="flex h-9 w-9 items-center justify-center rounded-full text-slate-700 hover:bg-slate-100 dark:text-neutral-200 dark:hover:bg-slate-800"
       >
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
           <circle cx="12" cy="8" r="4" />
@@ -48,21 +48,21 @@ export function UserMenu({ user }: UserMenuProps) {
       {isOpen && (
         <>
           <div className="fixed inset-0 z-40" onClick={() => setIsOpen(false)} aria-hidden="true" />
-          <div className="absolute right-0 z-50 mt-2 w-52 overflow-hidden rounded-xl border border-slate-200 bg-white py-1 shadow-lg dark:border-slate-700 dark:bg-slate-900">
-            <div className="truncate border-b border-slate-100 px-4 py-2 text-sm font-medium text-slate-900 dark:border-slate-800 dark:text-slate-50">
+          <div className="absolute right-0 z-50 mt-2 w-52 overflow-hidden rounded-xl border border-slate-200 bg-white py-1 shadow-lg dark:border-neutral-700 dark:bg-neutral-900">
+            <div className="truncate border-b border-slate-100 px-4 py-2 text-sm font-medium text-slate-900 dark:border-neutral-800 dark:text-neutral-50">
               {displayName}
             </div>
             <Link
               href="/account"
               onClick={() => setIsOpen(false)}
-              className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 dark:text-slate-200 dark:hover:bg-slate-800"
+              className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 dark:text-neutral-200 dark:hover:bg-slate-800"
             >
               {t("account")}
             </Link>
             <Link
               href="/account/orders"
               onClick={() => setIsOpen(false)}
-              className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 dark:text-slate-200 dark:hover:bg-slate-800"
+              className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 dark:text-neutral-200 dark:hover:bg-slate-800"
             >
               {tAccount("myOrders")}
             </Link>
@@ -70,7 +70,7 @@ export function UserMenu({ user }: UserMenuProps) {
               <Link
                 href="/admin/services"
                 onClick={() => setIsOpen(false)}
-                className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 dark:text-slate-200 dark:hover:bg-slate-800"
+                className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 dark:text-neutral-200 dark:hover:bg-slate-800"
               >
                 Admin
               </Link>
@@ -78,7 +78,7 @@ export function UserMenu({ user }: UserMenuProps) {
             <button
               type="button"
               onClick={handleLogout}
-              className="block w-full px-4 py-2 text-left text-sm text-slate-700 hover:bg-slate-50 dark:text-slate-200 dark:hover:bg-slate-800"
+              className="block w-full px-4 py-2 text-left text-sm text-slate-700 hover:bg-slate-50 dark:text-neutral-200 dark:hover:bg-slate-800"
             >
               {tAccount("logout")}
             </button>

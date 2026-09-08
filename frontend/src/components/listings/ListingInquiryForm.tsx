@@ -97,12 +97,12 @@ export function ListingInquiryForm({ listingReference, defaultMessage }: Listing
   }
 
   const inputClass =
-    "mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100";
-  const labelClass = "block text-sm font-medium text-slate-700 dark:text-slate-300";
+    "mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-100";
+  const labelClass = "block text-sm font-medium text-slate-700 dark:text-neutral-300";
 
   return (
-    <form onSubmit={handleSubmit} className="mt-4 space-y-3 rounded-xl border border-slate-200 p-4 dark:border-slate-800" noValidate>
-      <h3 className="text-sm font-semibold text-slate-900 dark:text-slate-50">{t("inquiryTitle")}</h3>
+    <form onSubmit={handleSubmit} className="mt-4 space-y-3 rounded-xl border border-slate-200 p-4 dark:border-neutral-800" noValidate>
+      <h3 className="text-sm font-semibold text-slate-900 dark:text-neutral-50">{t("inquiryTitle")}</h3>
 
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
         <div>

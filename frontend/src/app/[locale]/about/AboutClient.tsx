@@ -30,7 +30,7 @@ export function AboutClient() {
   }, [locale]);
 
   if (isLoading) {
-    return <p className="mx-auto max-w-6xl px-4 py-12 text-sm text-slate-500 dark:text-slate-400">{t("loading")}</p>;
+    return <p className="mx-auto max-w-6xl px-4 py-12 text-sm text-slate-500 dark:text-neutral-400">{t("loading")}</p>;
   }
 
   if (!content) {
@@ -48,10 +48,10 @@ export function AboutClient() {
       <div className="mx-auto max-w-6xl px-4 py-12">
         <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2">
           <div>
-            <h1 className="font-display text-3xl font-bold text-slate-900 dark:text-slate-50 sm:text-4xl">
+            <h1 className="font-display text-3xl font-bold text-slate-900 dark:text-neutral-50 sm:text-4xl">
               {content.title}
             </h1>
-            <p className="mt-5 text-base leading-relaxed text-slate-600 dark:text-slate-300">
+            <p className="mt-5 text-base leading-relaxed text-slate-600 dark:text-neutral-300">
               {content.intro}
             </p>
           </div>
@@ -64,19 +64,19 @@ export function AboutClient() {
           />
         </div>
 
-        <h2 className="mt-16 text-xl font-semibold text-slate-900 dark:text-slate-50">
+        <h2 className="mt-16 text-xl font-semibold text-slate-900 dark:text-neutral-50">
           {tAbout("valuesTitle")}
         </h2>
         <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
           {values.map((value) => (
             <div
               key={value.title}
-              className="rounded-2xl border border-slate-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900"
+              className="rounded-2xl border border-slate-200 bg-white p-6 dark:border-neutral-800 dark:bg-neutral-900"
             >
-              <h3 className="text-base font-semibold text-slate-900 dark:text-slate-50">
+              <h3 className="text-base font-semibold text-slate-900 dark:text-neutral-50">
                 {value.title}
               </h3>
-              <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+              <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-neutral-300">
                 {value.text}
               </p>
             </div>

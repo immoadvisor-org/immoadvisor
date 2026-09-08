@@ -21,11 +21,11 @@ function GalleryCard({ service, tilt }: { service: Service; tilt: string }) {
 
   return (
     <div
-      className={`group relative flex flex-col overflow-hidden rounded-2xl border bg-white shadow-md transition-all duration-300 hover:z-10 hover:-translate-y-2 hover:rotate-0 hover:shadow-xl dark:bg-slate-900 ${tilt} ${
-        isInCart ? "border-brand-500" : "border-slate-200 dark:border-slate-800"
+      className={`group relative flex flex-col overflow-hidden rounded-2xl border bg-white shadow-md transition-all duration-300 hover:z-10 hover:-translate-y-2 hover:rotate-0 hover:shadow-xl dark:bg-neutral-900 ${tilt} ${
+        isInCart ? "border-brand-500" : "border-slate-200 dark:border-neutral-800"
       }`}
     >
-      <Link href={detailHref} className="relative block h-40 w-full overflow-hidden bg-slate-100 dark:bg-slate-800">
+      <Link href={detailHref} className="relative block h-40 w-full overflow-hidden bg-slate-100 dark:bg-neutral-800">
         {image ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
@@ -41,13 +41,13 @@ function GalleryCard({ service, tilt }: { service: Service; tilt: string }) {
         </span>
       </Link>
       <Link href={detailHref} className="flex flex-1 flex-col p-5">
-        <h3 className="text-base font-semibold text-slate-900 dark:text-slate-50">{service.name}</h3>
-        <p className="mt-2 line-clamp-2 flex-1 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+        <h3 className="text-base font-semibold text-slate-900 dark:text-neutral-50">{service.name}</h3>
+        <p className="mt-2 line-clamp-2 flex-1 text-sm leading-relaxed text-slate-600 dark:text-neutral-300">
           {service.description}
         </p>
       </Link>
-      <div className="flex items-center justify-between border-t border-slate-100 px-5 pb-5 pt-3 dark:border-slate-800">
-        <PriceTag amountChf={Number(service.price_chf)} className="text-lg font-semibold text-slate-900 dark:text-slate-50" />
+      <div className="flex items-center justify-between border-t border-slate-100 px-5 pb-5 pt-3 dark:border-neutral-800">
+        <PriceTag amountChf={Number(service.price_chf)} className="text-lg font-semibold text-slate-900 dark:text-neutral-50" />
         <AddToCartButton
           isInCart={isInCart}
           onClick={() => toggleService(service)}
@@ -69,10 +69,10 @@ export function ServicesGallery() {
   return (
     <section className="mx-auto max-w-6xl px-4 py-16">
       <div className="text-center">
-        <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-slate-50 sm:text-3xl">
+        <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-neutral-50 sm:text-3xl">
           {t("servicesGalleryTitle")}
         </h2>
-        <p className="mt-4 text-base leading-relaxed text-slate-600 dark:text-slate-300">
+        <p className="mt-4 text-base leading-relaxed text-slate-600 dark:text-neutral-300">
           {t("servicesGallerySubtitle")}
         </p>
       </div>

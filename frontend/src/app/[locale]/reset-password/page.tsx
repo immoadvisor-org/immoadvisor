@@ -46,20 +46,20 @@ export default function ResetPasswordPage() {
   if (isDone) {
     return (
       <div className="mx-auto max-w-sm px-4 py-12 text-center">
-        <h1 className="text-2xl font-medium text-slate-900 dark:text-slate-50">{t("successTitle")}</h1>
-        <p className="mt-3 text-sm text-slate-600 dark:text-slate-300">{t("successText")}</p>
+        <h1 className="text-2xl font-medium text-slate-900 dark:text-neutral-50">{t("successTitle")}</h1>
+        <p className="mt-3 text-sm text-slate-600 dark:text-neutral-300">{t("successText")}</p>
       </div>
     );
   }
 
   return (
     <div className="mx-auto max-w-sm px-4 py-12">
-      <h1 className="text-2xl font-medium text-slate-900 dark:text-slate-50">{t("title")}</h1>
-      <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">{t("subtitle")}</p>
+      <h1 className="text-2xl font-medium text-slate-900 dark:text-neutral-50">{t("title")}</h1>
+      <p className="mt-2 text-sm text-slate-600 dark:text-neutral-300">{t("subtitle")}</p>
 
       <form onSubmit={handleSubmit} className="mt-6 space-y-4">
         <div>
-          <label htmlFor="newPassword" className="block text-sm font-medium text-slate-700 dark:text-slate-300">
+          <label htmlFor="newPassword" className="block text-sm font-medium text-slate-700 dark:text-neutral-300">
             {t("newPasswordLabel")}
           </label>
           <PasswordInput
@@ -68,12 +68,12 @@ export default function ResetPasswordPage() {
             minLength={8}
             value={password}
             onChange={(event) => setPassword(event.target.value)}
-            className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
+            className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-100"
           />
         </div>
 
         <div>
-          <label htmlFor="confirmPassword" className="block text-sm font-medium text-slate-700 dark:text-slate-300">
+          <label htmlFor="confirmPassword" className="block text-sm font-medium text-slate-700 dark:text-neutral-300">
             {t("confirmPasswordLabel")}
           </label>
           <PasswordInput
@@ -82,7 +82,7 @@ export default function ResetPasswordPage() {
             minLength={8}
             value={confirmPassword}
             onChange={(event) => setConfirmPassword(event.target.value)}
-            className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
+            className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-100"
           />
         </div>
 

@@ -44,12 +44,12 @@ export default function AdminServicesPage() {
   }, [isAdmin, accessToken, loadServices]);
 
   if (isLoadingUser) {
-    return <p className="mx-auto max-w-6xl px-4 py-12 text-sm text-slate-500 dark:text-slate-400">{t("loading")}</p>;
+    return <p className="mx-auto max-w-6xl px-4 py-12 text-sm text-slate-500 dark:text-neutral-400">{t("loading")}</p>;
   }
 
   if (!user || !isAdmin) {
     return (
-      <p className="mx-auto max-w-6xl px-4 py-12 text-sm text-slate-600 dark:text-slate-300">{t("accessDenied")}</p>
+      <p className="mx-auto max-w-6xl px-4 py-12 text-sm text-slate-600 dark:text-neutral-300">{t("accessDenied")}</p>
     );
   }
 
@@ -112,8 +112,8 @@ export default function AdminServicesPage() {
     <AdminLayout>
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-medium text-slate-900 dark:text-slate-50">{t("title")}</h1>
-          <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">{t("subtitle")}</p>
+          <h1 className="text-2xl font-medium text-slate-900 dark:text-neutral-50">{t("title")}</h1>
+          <p className="mt-1 text-sm text-slate-600 dark:text-neutral-300">{t("subtitle")}</p>
         </div>
         <Button onClick={() => setEditingId("new")}>{t("newItem")}</Button>
       </div>
@@ -126,9 +126,9 @@ export default function AdminServicesPage() {
         </div>
       )}
 
-      <div className="mt-6 rounded-xl border border-slate-200 bg-white px-5 dark:border-slate-800 dark:bg-slate-900">
+      <div className="mt-6 rounded-xl border border-slate-200 bg-white px-5 dark:border-neutral-800 dark:bg-neutral-900">
         {isLoading ? (
-          <p className="py-4 text-sm text-slate-500 dark:text-slate-400">{t("loading")}</p>
+          <p className="py-4 text-sm text-slate-500 dark:text-neutral-400">{t("loading")}</p>
         ) : (
           services.map((service, index) =>
             editingId === service.id ? (

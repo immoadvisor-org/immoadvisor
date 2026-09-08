@@ -23,14 +23,14 @@ export function ServiceCard({ service }: ServiceCardProps) {
 
   return (
     <div
-      className={`group flex flex-col overflow-hidden rounded-2xl border bg-white transition-all dark:bg-slate-900 ${
+      className={`group flex flex-col overflow-hidden rounded-2xl border bg-white transition-all dark:bg-neutral-900 ${
         isInCart
           ? "border-brand-500 shadow-md shadow-brand-100 dark:shadow-none"
-          : "border-slate-200 shadow-sm hover:shadow-md dark:border-slate-800"
+          : "border-slate-200 shadow-sm hover:shadow-md dark:border-neutral-800"
       }`}
     >
       {images.length > 0 && (
-        <div className="relative aspect-[4/3] w-full overflow-hidden bg-slate-100 dark:bg-slate-800">
+        <div className="relative aspect-[4/3] w-full overflow-hidden bg-slate-100 dark:bg-neutral-800">
           <Link href={detailHref}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -60,13 +60,13 @@ export function ServiceCard({ service }: ServiceCardProps) {
         <span className="inline-block w-fit rounded-full bg-brand-50 px-2.5 py-0.5 text-xs font-medium uppercase tracking-wide text-brand-600 dark:bg-brand-500/20 dark:text-brand-100">
           {service.category}
         </span>
-        <h3 className="mt-2 text-base font-semibold text-slate-900 dark:text-slate-50">{service.name}</h3>
-        <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+        <h3 className="mt-2 text-base font-semibold text-slate-900 dark:text-neutral-50">{service.name}</h3>
+        <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-slate-600 dark:text-neutral-300">
           {service.description}
         </p>
       </Link>
       <div className="flex items-center justify-between px-5 pb-5">
-        <PriceTag amountChf={Number(service.price_chf)} className="text-lg font-medium text-slate-900 dark:text-slate-50" />
+        <PriceTag amountChf={Number(service.price_chf)} className="text-lg font-medium text-slate-900 dark:text-neutral-50" />
         <AddToCartButton
           isInCart={isInCart}
           onClick={() => toggleService(service)}

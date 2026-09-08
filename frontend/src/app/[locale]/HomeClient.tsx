@@ -53,24 +53,24 @@ export function HomeClient() {
       />
 
       {howItWorks && (
-        <section className="bg-slate-50 py-20 dark:bg-slate-900">
+        <section className="bg-slate-50 py-20 dark:bg-neutral-900">
           <div className="mx-auto max-w-3xl px-4 text-center">
-            <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-slate-50 sm:text-3xl">
+            <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-neutral-50 sm:text-3xl">
               {howItWorks.title}
             </h2>
-            <p className="mt-4 text-base leading-relaxed text-slate-600 dark:text-slate-300">{howItWorks.text}</p>
+            <p className="mt-4 text-base leading-relaxed text-slate-600 dark:text-neutral-300">{howItWorks.text}</p>
           </div>
 
           {howItWorks.steps.length > 0 && (
             <div className="mx-auto mt-14 grid max-w-5xl grid-cols-1 gap-10 px-4 sm:grid-cols-3">
               {howItWorks.steps.map((step, index) => (
-                <div key={index} className="border-t border-slate-200 pt-5 dark:border-slate-800">
+                <div key={index} className="border-t border-slate-200 pt-5 dark:border-neutral-800">
                   <span className="font-mono text-sm text-amber-600 dark:text-amber-400">
                     {String(index + 1).padStart(2, "0")}
                   </span>
                   <div className="mt-3 text-amber-600 dark:text-amber-400">{STEP_ICONS[index % STEP_ICONS.length]}</div>
-                  <h3 className="mt-3 text-base font-semibold text-slate-900 dark:text-slate-50">{step.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-300">{step.text}</p>
+                  <h3 className="mt-3 text-base font-semibold text-slate-900 dark:text-neutral-50">{step.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-neutral-300">{step.text}</p>
                 </div>
               ))}
             </div>
@@ -86,10 +86,10 @@ export function HomeClient() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/about-illustration.svg" alt="" aria-hidden="true" className="w-full rounded-2xl" />
             <div>
-              <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-slate-50 sm:text-3xl">
+              <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-neutral-50 sm:text-3xl">
                 {about.title}
               </h2>
-              <p className="mt-4 text-base leading-relaxed text-slate-600 dark:text-slate-300">
+              <p className="mt-4 text-base leading-relaxed text-slate-600 dark:text-neutral-300">
                 {about.intro}
               </p>
               <Link href="/about" className="mt-4 inline-block text-brand-600 hover:underline dark:text-brand-100">
@@ -103,10 +103,10 @@ export function HomeClient() {
       <ListingsCarousel />
 
       <section className="mx-auto max-w-3xl px-4 py-16 text-center">
-        <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-slate-50 sm:text-3xl">
+        <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-neutral-50 sm:text-3xl">
           {t("contactTitle")}
         </h2>
-        <p className="mt-4 text-base leading-relaxed text-slate-600 dark:text-slate-300">
+        <p className="mt-4 text-base leading-relaxed text-slate-600 dark:text-neutral-300">
           {t("contactText")}
         </p>
         <Link href="/contact" className="mt-6 inline-block">

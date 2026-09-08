@@ -18,16 +18,16 @@ export function CartBar() {
   return (
     <button
       onClick={toggleDrawer}
-      className="fixed inset-x-0 bottom-0 z-40 flex items-center justify-between border-t border-slate-200 bg-white px-6 py-4 shadow-[0_-4px_12px_rgba(0,0,0,0.06)] dark:border-slate-800 dark:bg-slate-900"
+      className="fixed inset-x-0 bottom-0 z-40 flex items-center justify-between border-t border-slate-200 bg-white px-6 py-4 shadow-[0_-4px_12px_rgba(0,0,0,0.06)] dark:border-neutral-800 dark:bg-neutral-900"
       aria-label="Cart"
     >
-      <span className="flex items-center gap-2 text-sm font-medium text-slate-900 dark:text-slate-50">
+      <span className="flex items-center gap-2 text-sm font-medium text-slate-900 dark:text-neutral-50">
         <span className="flex h-6 w-6 items-center justify-center rounded-full bg-brand-500 text-xs text-white">
           {itemCount}
         </span>
         {itemCount === 1 ? t("itemSingular") : t("itemPlural")}
       </span>
-      <PriceTag amountChf={total} className="text-base font-medium text-slate-900 dark:text-slate-50" />
+      <PriceTag amountChf={total} className="text-base font-medium text-slate-900 dark:text-neutral-50" />
     </button>
   );
 }

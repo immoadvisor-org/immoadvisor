@@ -66,12 +66,12 @@ export default function AdminListingsPage() {
   }
 
   if (isLoadingUser) {
-    return <p className="mx-auto max-w-6xl px-4 py-12 text-sm text-slate-500 dark:text-slate-400">{tAdmin("loading")}</p>;
+    return <p className="mx-auto max-w-6xl px-4 py-12 text-sm text-slate-500 dark:text-neutral-400">{tAdmin("loading")}</p>;
   }
 
   if (!user || !isAdmin) {
     return (
-      <p className="mx-auto max-w-6xl px-4 py-12 text-sm text-slate-600 dark:text-slate-300">{tAdmin("accessDenied")}</p>
+      <p className="mx-auto max-w-6xl px-4 py-12 text-sm text-slate-600 dark:text-neutral-300">{tAdmin("accessDenied")}</p>
     );
   }
 
@@ -134,13 +134,13 @@ export default function AdminListingsPage() {
     <AdminLayout>
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-medium text-slate-900 dark:text-slate-50">{t("title")}</h1>
-          <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">{t("subtitle")}</p>
+          <h1 className="text-2xl font-medium text-slate-900 dark:text-neutral-50">{t("title")}</h1>
+          <p className="mt-1 text-sm text-slate-600 dark:text-neutral-300">{t("subtitle")}</p>
         </div>
         <Button onClick={() => setEditingId("new")}>{tAdmin("newItem")}</Button>
       </div>
 
-      <label className="mt-6 flex items-center gap-2 rounded-xl border border-slate-200 bg-white p-4 text-sm text-slate-700 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300">
+      <label className="mt-6 flex items-center gap-2 rounded-xl border border-slate-200 bg-white p-4 text-sm text-slate-700 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-300">
         <input
           type="checkbox"
           checked={sectionEnabled}
@@ -158,9 +158,9 @@ export default function AdminListingsPage() {
         </div>
       )}
 
-      <div className="mt-6 rounded-xl border border-slate-200 bg-white px-5 dark:border-slate-800 dark:bg-slate-900">
+      <div className="mt-6 rounded-xl border border-slate-200 bg-white px-5 dark:border-neutral-800 dark:bg-neutral-900">
         {isLoading ? (
-          <p className="py-4 text-sm text-slate-500 dark:text-slate-400">{tAdmin("loading")}</p>
+          <p className="py-4 text-sm text-slate-500 dark:text-neutral-400">{tAdmin("loading")}</p>
         ) : (
           listings.map((listing, index) =>
             editingId === listing.id ? (

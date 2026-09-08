@@ -139,8 +139,8 @@ export default function LoginPage() {
   if (mode === "forgot-password" && resetEmailSent) {
     return (
       <div className="mx-auto max-w-sm px-4 py-12 text-center">
-        <h1 className="text-2xl font-medium text-slate-900 dark:text-slate-50">{t("resetSuccessTitle")}</h1>
-        <p className="mt-3 text-sm text-slate-600 dark:text-slate-300">{t("resetSuccessText")}</p>
+        <h1 className="text-2xl font-medium text-slate-900 dark:text-neutral-50">{t("resetSuccessTitle")}</h1>
+        <p className="mt-3 text-sm text-slate-600 dark:text-neutral-300">{t("resetSuccessText")}</p>
         <button
           onClick={() => switchMode("sign-in")}
           className="mt-6 text-sm text-brand-600 hover:underline dark:text-brand-100"
@@ -154,8 +154,8 @@ export default function LoginPage() {
   if (mode === "sign-up" && confirmationPending) {
     return (
       <div className="mx-auto max-w-sm px-4 py-12 text-center">
-        <h1 className="text-2xl font-medium text-slate-900 dark:text-slate-50">{t("confirmationPendingTitle")}</h1>
-        <p className="mt-3 text-sm text-slate-600 dark:text-slate-300">{t("confirmationPendingText")}</p>
+        <h1 className="text-2xl font-medium text-slate-900 dark:text-neutral-50">{t("confirmationPendingTitle")}</h1>
+        <p className="mt-3 text-sm text-slate-600 dark:text-neutral-300">{t("confirmationPendingText")}</p>
         <button
           onClick={() => switchMode("sign-in")}
           className="mt-6 text-sm text-brand-600 hover:underline dark:text-brand-100"
@@ -167,16 +167,16 @@ export default function LoginPage() {
   }
 
   const inputClass =
-    "mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100";
-  const labelClass = "block text-sm font-medium text-slate-700 dark:text-slate-300";
+    "mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-100";
+  const labelClass = "block text-sm font-medium text-slate-700 dark:text-neutral-300";
 
   return (
     <div className="mx-auto max-w-md px-4 py-12">
-      <h1 className="text-2xl font-medium text-slate-900 dark:text-slate-50">
+      <h1 className="text-2xl font-medium text-slate-900 dark:text-neutral-50">
         {mode === "sign-in" ? t("signInTitle") : mode === "sign-up" ? t("signUpTitle") : t("resetTitle")}
       </h1>
       {mode === "forgot-password" && (
-        <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">{t("resetSubtitle")}</p>
+        <p className="mt-2 text-sm text-slate-600 dark:text-neutral-300">{t("resetSubtitle")}</p>
       )}
 
       <form onSubmit={handleSubmit} className="mt-6 space-y-4">
@@ -337,10 +337,10 @@ export default function LoginPage() {
                 onChange={(e) => updateSignUpField("avsNumber", e.target.value)}
                 className={inputClass}
               />
-              <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">{t("avsNumberHint")}</p>
+              <p className="mt-1 text-xs text-slate-500 dark:text-neutral-400">{t("avsNumberHint")}</p>
             </div>
 
-            <label className="flex items-start gap-2 text-sm text-slate-700 dark:text-slate-300">
+            <label className="flex items-start gap-2 text-sm text-slate-700 dark:text-neutral-300">
               <input
                 type="checkbox"
                 checked={termsAccepted}

@@ -29,12 +29,12 @@ export function ServiceRow({
   const label = service.translations.it?.name || service.translations.en?.name || service.slug;
 
   return (
-    <div className="flex items-center justify-between gap-4 border-b border-slate-100 py-3 dark:border-slate-800">
+    <div className="flex items-center justify-between gap-4 border-b border-slate-100 py-3 dark:border-neutral-800">
       <div className="flex flex-col gap-1">
         <button
           onClick={() => onMove("up")}
           disabled={isFirst}
-          className="text-xs text-slate-400 hover:text-slate-700 disabled:opacity-30 dark:text-slate-500 dark:hover:text-slate-200"
+          className="text-xs text-slate-400 hover:text-slate-700 disabled:opacity-30 dark:text-neutral-500 dark:hover:text-slate-200"
           aria-label={t("moveUp")}
         >
           ▲
@@ -42,7 +42,7 @@ export function ServiceRow({
         <button
           onClick={() => onMove("down")}
           disabled={isLast}
-          className="text-xs text-slate-400 hover:text-slate-700 disabled:opacity-30 dark:text-slate-500 dark:hover:text-slate-200"
+          className="text-xs text-slate-400 hover:text-slate-700 disabled:opacity-30 dark:text-neutral-500 dark:hover:text-slate-200"
           aria-label={t("moveDown")}
         >
           ▼
@@ -50,13 +50,13 @@ export function ServiceRow({
       </div>
 
       <div className="min-w-0 flex-1">
-        <p className="truncate text-sm font-medium text-slate-900 dark:text-slate-50">{label}</p>
-        <p className="text-xs text-slate-500 dark:text-slate-400">{service.slug}</p>
+        <p className="truncate text-sm font-medium text-slate-900 dark:text-neutral-50">{label}</p>
+        <p className="text-xs text-slate-500 dark:text-neutral-400">{service.slug}</p>
       </div>
 
-      <PriceTag amountChf={Number(service.price_chf)} className="text-sm text-slate-700 dark:text-slate-300" />
+      <PriceTag amountChf={Number(service.price_chf)} className="text-sm text-slate-700 dark:text-neutral-300" />
 
-      <label className="flex items-center gap-1 text-xs text-slate-600 dark:text-slate-300">
+      <label className="flex items-center gap-1 text-xs text-slate-600 dark:text-neutral-300">
         <input
           type="checkbox"
           checked={service.active}

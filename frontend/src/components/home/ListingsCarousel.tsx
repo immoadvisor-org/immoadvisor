@@ -35,10 +35,10 @@ export function ListingsCarousel() {
   return (
     <section className="mx-auto max-w-6xl px-4 py-16">
       <div className="text-center">
-        <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-slate-50 sm:text-3xl">
+        <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-neutral-50 sm:text-3xl">
           {t("listingsTitle")}
         </h2>
-        <p className="mt-4 text-base leading-relaxed text-slate-600 dark:text-slate-300">{t("listingsSubtitle")}</p>
+        <p className="mt-4 text-base leading-relaxed text-slate-600 dark:text-neutral-300">{t("listingsSubtitle")}</p>
       </div>
 
       {!isLoading && (

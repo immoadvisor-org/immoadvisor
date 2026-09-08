@@ -52,7 +52,7 @@ export default function AccountPage() {
   }, [isLoading, user, router]);
 
   if (isLoading || !user) {
-    return <p className="mx-auto max-w-6xl px-4 py-12 text-sm text-slate-500 dark:text-slate-400">{t("loading")}</p>;
+    return <p className="mx-auto max-w-6xl px-4 py-12 text-sm text-slate-500 dark:text-neutral-400">{t("loading")}</p>;
   }
 
   function startEditing() {
@@ -118,17 +118,17 @@ export default function AccountPage() {
   }
 
   const inputClass =
-    "mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100";
-  const labelClass = "block text-sm text-slate-500 dark:text-slate-400";
+    "mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-100";
+  const labelClass = "block text-sm text-slate-500 dark:text-neutral-400";
 
   return (
     <div className="mx-auto max-w-xl px-4 py-12">
-      <h1 className="text-2xl font-medium text-slate-900 dark:text-slate-50">{t("title")}</h1>
+      <h1 className="text-2xl font-medium text-slate-900 dark:text-neutral-50">{t("title")}</h1>
 
-      <div className="mt-6 rounded-xl border border-slate-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900">
+      <div className="mt-6 rounded-xl border border-slate-200 bg-white p-6 dark:border-neutral-800 dark:bg-neutral-900">
         <div>
-          <p className="text-sm text-slate-500 dark:text-slate-400">{t("email")}</p>
-          <p className="text-slate-900 dark:text-slate-50">{user.email}</p>
+          <p className="text-sm text-slate-500 dark:text-neutral-400">{t("email")}</p>
+          <p className="text-slate-900 dark:text-neutral-50">{user.email}</p>
         </div>
 
         {isEditing ? (
@@ -179,7 +179,7 @@ export default function AccountPage() {
                   className={inputClass}
                 />
               </label>
-              <label className="col-span-2 block text-sm text-slate-500 dark:text-slate-400">
+              <label className="col-span-2 block text-sm text-slate-500 dark:text-neutral-400">
                 {t("cityLabel")}
                 <input
                   value={formValues.city}
@@ -227,18 +227,18 @@ export default function AccountPage() {
           <>
             <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div>
-                <p className="text-sm text-slate-500 dark:text-slate-400">{t("fullName")}</p>
-                <p className="text-slate-900 dark:text-slate-50">
+                <p className="text-sm text-slate-500 dark:text-neutral-400">{t("fullName")}</p>
+                <p className="text-slate-900 dark:text-neutral-50">
                   {[profile?.first_name, profile?.last_name].filter(Boolean).join(" ") || "—"}
                 </p>
               </div>
               <div>
-                <p className="text-sm text-slate-500 dark:text-slate-400">{t("phone")}</p>
-                <p className="text-slate-900 dark:text-slate-50">{profile?.phone || "—"}</p>
+                <p className="text-sm text-slate-500 dark:text-neutral-400">{t("phone")}</p>
+                <p className="text-slate-900 dark:text-neutral-50">{profile?.phone || "—"}</p>
               </div>
               <div>
-                <p className="text-sm text-slate-500 dark:text-slate-400">{t("address")}</p>
-                <p className="text-slate-900 dark:text-slate-50">
+                <p className="text-sm text-slate-500 dark:text-neutral-400">{t("address")}</p>
+                <p className="text-slate-900 dark:text-neutral-50">
                   {profile?.address_line || "—"}
                   {profile?.postal_code || profile?.city ? (
                     <>
@@ -249,12 +249,12 @@ export default function AccountPage() {
                 </p>
               </div>
               <div>
-                <p className="text-sm text-slate-500 dark:text-slate-400">{t("canton")}</p>
-                <p className="text-slate-900 dark:text-slate-50">{profile?.canton || "—"}</p>
+                <p className="text-sm text-slate-500 dark:text-neutral-400">{t("canton")}</p>
+                <p className="text-slate-900 dark:text-neutral-50">{profile?.canton || "—"}</p>
               </div>
               <div>
-                <p className="text-sm text-slate-500 dark:text-slate-400">{t("avsNumber")}</p>
-                <p className="text-slate-900 dark:text-slate-50">{profile?.avs_number || "—"}</p>
+                <p className="text-sm text-slate-500 dark:text-neutral-400">{t("avsNumber")}</p>
+                <p className="text-slate-900 dark:text-neutral-50">{profile?.avs_number || "—"}</p>
               </div>
             </div>
             <Button variant="secondary" className="mt-4" onClick={startEditing}>

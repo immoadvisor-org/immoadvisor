@@ -10,7 +10,7 @@ export function ServiceList() {
   const { services, isLoading, error } = useServices();
 
   if (isLoading) {
-    return <p className="text-sm text-slate-500 dark:text-slate-400">{t("loading")}</p>;
+    return <p className="text-sm text-slate-500 dark:text-neutral-400">{t("loading")}</p>;
   }
 
   if (error) {

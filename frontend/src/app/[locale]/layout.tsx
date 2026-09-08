@@ -85,7 +85,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
 
   return (
     <html lang={locale} className={spaceGrotesk.variable} suppressHydrationWarning>
-      <body className="flex min-h-screen flex-col bg-slate-50 text-slate-900 transition-colors dark:bg-slate-950 dark:text-slate-50">
+      <body className="flex min-h-screen flex-col bg-slate-50 text-slate-900 transition-colors dark:bg-neutral-950 dark:text-neutral-50">
         <script dangerouslySetInnerHTML={{ __html: NO_FLASH_THEME_SCRIPT }} />
         <script
           type="application/ld+json"

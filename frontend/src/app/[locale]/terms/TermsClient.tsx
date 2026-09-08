@@ -28,11 +28,11 @@ export function TermsClient() {
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-12">
-      <h1 className="text-2xl font-medium text-slate-900 dark:text-slate-50">{t("title")}</h1>
+      <h1 className="text-2xl font-medium text-slate-900 dark:text-neutral-50">{t("title")}</h1>
       {isLoading ? (
-        <p className="mt-6 text-sm text-slate-500 dark:text-slate-400">{t("loading")}</p>
+        <p className="mt-6 text-sm text-slate-500 dark:text-neutral-400">{t("loading")}</p>
       ) : (
-        <p className="mt-6 whitespace-pre-line text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+        <p className="mt-6 whitespace-pre-line text-sm leading-relaxed text-slate-600 dark:text-neutral-300">
           {content}
         </p>
       )}

@@ -32,7 +32,7 @@ export function ThemeToggle() {
   }
 
   return (
-    <div className="fixed bottom-24 right-4 z-40 flex items-center gap-1 rounded-full border border-slate-200 bg-white p-1 shadow-md dark:border-slate-700 dark:bg-slate-800 sm:bottom-6">
+    <div className="fixed bottom-24 right-4 z-40 flex items-center gap-1 rounded-full border border-slate-200 bg-white p-1 shadow-md dark:border-neutral-700 dark:bg-neutral-800 sm:bottom-6">
       <button
         type="button"
         onClick={() => setAndApply("light")}

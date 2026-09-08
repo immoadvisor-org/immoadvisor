@@ -61,12 +61,12 @@ export default function AdminAboutPage() {
   }, [isAdmin, accessToken]);
 
   if (isLoadingUser) {
-    return <p className="mx-auto max-w-6xl px-4 py-12 text-sm text-slate-500 dark:text-slate-400">{tAdmin("loading")}</p>;
+    return <p className="mx-auto max-w-6xl px-4 py-12 text-sm text-slate-500 dark:text-neutral-400">{tAdmin("loading")}</p>;
   }
 
   if (!user || !isAdmin) {
     return (
-      <p className="mx-auto max-w-6xl px-4 py-12 text-sm text-slate-600 dark:text-slate-300">{tAdmin("accessDenied")}</p>
+      <p className="mx-auto max-w-6xl px-4 py-12 text-sm text-slate-600 dark:text-neutral-300">{tAdmin("accessDenied")}</p>
     );
   }
 
@@ -96,14 +96,14 @@ export default function AdminAboutPage() {
 
   return (
     <AdminLayout>
-      <h1 className="text-2xl font-medium text-slate-900 dark:text-slate-50">{t("title")}</h1>
-      <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">{t("subtitle")}</p>
+      <h1 className="text-2xl font-medium text-slate-900 dark:text-neutral-50">{t("title")}</h1>
+      <p className="mt-1 text-sm text-slate-600 dark:text-neutral-300">{t("subtitle")}</p>
 
       {isLoading ? (
-        <p className="mt-6 text-sm text-slate-500 dark:text-slate-400">{t("loading")}</p>
+        <p className="mt-6 text-sm text-slate-500 dark:text-neutral-400">{t("loading")}</p>
       ) : (
-        <div className="mt-6 rounded-xl border border-slate-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900">
-          <div className="flex gap-2 border-b border-slate-200 dark:border-slate-700">
+        <div className="mt-6 rounded-xl border border-slate-200 bg-white p-6 dark:border-neutral-800 dark:bg-neutral-900">
+          <div className="flex gap-2 border-b border-slate-200 dark:border-neutral-700">
             {routing.locales.map((locale) => (
               <button
                 key={locale}
@@ -111,7 +111,7 @@ export default function AdminAboutPage() {
                 className={`px-3 py-2 text-sm font-medium uppercase ${
                   activeTab === locale
                     ? "border-b-2 border-brand-500 text-brand-600 dark:text-brand-200"
-                    : "text-slate-400 hover:text-slate-700 dark:text-slate-500 dark:hover:text-slate-200"
+                    : "text-slate-400 hover:text-slate-700 dark:text-neutral-500 dark:hover:text-slate-200"
                 }`}
               >
                 {locale}
@@ -121,20 +121,20 @@ export default function AdminAboutPage() {
 
           <div className="mt-4 space-y-4">
             {FIELDS.map((field) => (
-              <label key={field.key} className="block text-sm text-slate-700 dark:text-slate-300">
+              <label key={field.key} className="block text-sm text-slate-700 dark:text-neutral-300">
                 {t(field.labelKey)}
                 {field.multiline ? (
                   <textarea
                     value={current[field.key]}
                     onChange={(e) => updateField(field.key, e.target.value)}
                     rows={3}
-                    className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
+                    className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-100"
                   />
                 ) : (
                   <input
                     value={current[field.key]}
                     onChange={(e) => updateField(field.key, e.target.value)}
-                    className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
+                    className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-100"
                   />
                 )}
               </label>

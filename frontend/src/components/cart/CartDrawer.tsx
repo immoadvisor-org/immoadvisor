@@ -21,12 +21,12 @@ export function CartDrawer() {
   return (
     <div className="fixed inset-0 z-50 flex justify-end">
       <div className="absolute inset-0 bg-black/30" onClick={closeDrawer} aria-hidden="true" />
-      <div className="relative flex h-full w-full max-w-sm flex-col bg-white p-6 shadow-xl dark:bg-slate-900">
+      <div className="relative flex h-full w-full max-w-sm flex-col bg-white p-6 shadow-xl dark:bg-neutral-900">
         <div className="flex items-center justify-between">
-          <h2 className="text-lg font-medium text-slate-900 dark:text-slate-50">{t("title")}</h2>
+          <h2 className="text-lg font-medium text-slate-900 dark:text-neutral-50">{t("title")}</h2>
           <button
             onClick={closeDrawer}
-            className="text-slate-400 hover:text-slate-700 dark:text-slate-500 dark:hover:text-slate-200"
+            className="text-slate-400 hover:text-slate-700 dark:text-neutral-500 dark:hover:text-slate-200"
             aria-label={t("close")}
           >
             ✕
@@ -35,7 +35,7 @@ export function CartDrawer() {
 
         <div className="mt-4 flex-1 overflow-y-auto">
           {items.length === 0 ? (
-            <p className="mt-8 text-center text-sm text-slate-500 dark:text-slate-400">{t("empty")}</p>
+            <p className="mt-8 text-center text-sm text-slate-500 dark:text-neutral-400">{t("empty")}</p>
           ) : (
             items.map((service) => (
               <CartItemRow key={service.id} service={service} onRemove={removeService} />
@@ -43,8 +43,8 @@ export function CartDrawer() {
           )}
         </div>
 
-        <div className="mt-4 border-t border-slate-200 pt-4 dark:border-slate-800">
-          <div className="flex items-center justify-between text-base font-medium text-slate-900 dark:text-slate-50">
+        <div className="mt-4 border-t border-slate-200 pt-4 dark:border-neutral-800">
+          <div className="flex items-center justify-between text-base font-medium text-slate-900 dark:text-neutral-50">
             <span>{t("total")}</span>
             <PriceTag amountChf={total} />
           </div>

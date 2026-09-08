@@ -23,14 +23,14 @@ export function ServiceDetailClient() {
 
   if (isLoading) {
     return (
-      <p className="mx-auto max-w-6xl px-4 py-12 text-sm text-slate-500 dark:text-slate-400">{td("loading")}</p>
+      <p className="mx-auto max-w-6xl px-4 py-12 text-sm text-slate-500 dark:text-neutral-400">{td("loading")}</p>
     );
   }
 
   if (!service) {
     return (
       <div className="mx-auto max-w-6xl px-4 py-12 text-center">
-        <p className="text-slate-600 dark:text-slate-300">{td("notFound")}</p>
+        <p className="text-slate-600 dark:text-neutral-300">{td("notFound")}</p>
         <button
           onClick={() => router.back()}
           className="mt-4 inline-block text-brand-600 hover:underline dark:text-brand-100"
@@ -53,7 +53,7 @@ export function ServiceDetailClient() {
         <div>
           {images.length > 0 ? (
             <div>
-              <div className="aspect-[4/3] w-full overflow-hidden rounded-2xl bg-slate-100 dark:bg-slate-800">
+              <div className="aspect-[4/3] w-full overflow-hidden rounded-2xl bg-slate-100 dark:bg-neutral-800">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={images[activeImage]}
@@ -80,7 +80,7 @@ export function ServiceDetailClient() {
               )}
             </div>
           ) : (
-            <div className="aspect-[4/3] w-full rounded-2xl bg-slate-100 dark:bg-slate-800" />
+            <div className="aspect-[4/3] w-full rounded-2xl bg-slate-100 dark:bg-neutral-800" />
           )}
         </div>
 
@@ -88,17 +88,17 @@ export function ServiceDetailClient() {
           <span className="inline-block rounded-full bg-brand-50 px-2.5 py-0.5 text-xs font-medium uppercase tracking-wide text-brand-600 dark:bg-brand-500/20 dark:text-brand-100">
             {service.category}
           </span>
-          <h1 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-slate-50 sm:text-3xl">
+          <h1 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-neutral-50 sm:text-3xl">
             {service.name}
           </h1>
-          <p className="mt-4 whitespace-pre-line text-base leading-relaxed text-slate-600 dark:text-slate-300">
+          <p className="mt-4 whitespace-pre-line text-base leading-relaxed text-slate-600 dark:text-neutral-300">
             {service.description}
           </p>
 
-          <div className="mt-8 flex items-center justify-between border-t border-slate-200 pt-6 dark:border-slate-800">
+          <div className="mt-8 flex items-center justify-between border-t border-slate-200 pt-6 dark:border-neutral-800">
             <PriceTag
               amountChf={Number(service.price_chf)}
-              className="text-2xl font-semibold text-slate-900 dark:text-slate-50"
+              className="text-2xl font-semibold text-slate-900 dark:text-neutral-50"
             />
             <AddToCartButton
               isInCart={isInCart}

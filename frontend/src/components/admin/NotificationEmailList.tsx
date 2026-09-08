@@ -64,24 +64,24 @@ export function NotificationEmailList({ purpose, accessToken }: NotificationEmai
   return (
     <div>
       {isLoading ? (
-        <p className="text-sm text-slate-500 dark:text-slate-400">{t("loading")}</p>
+        <p className="text-sm text-slate-500 dark:text-neutral-400">{t("loading")}</p>
       ) : (
         <>
           {recipients.length === 0 ? (
-            <p className="text-sm text-slate-500 dark:text-slate-400">{t("empty")}</p>
+            <p className="text-sm text-slate-500 dark:text-neutral-400">{t("empty")}</p>
           ) : (
             <ul className="space-y-1">
               {recipients.map((recipient) => (
                 <li
                   key={recipient.id}
-                  className="flex items-center justify-between rounded-lg bg-slate-50 px-3 py-1.5 text-sm text-slate-700 dark:bg-slate-800 dark:text-slate-200"
+                  className="flex items-center justify-between rounded-lg bg-slate-50 px-3 py-1.5 text-sm text-slate-700 dark:bg-neutral-800 dark:text-neutral-200"
                 >
                   {recipient.email}
                   <button
                     type="button"
                     onClick={() => handleRemove(recipient.id)}
                     aria-label={t("remove")}
-                    className="text-slate-400 hover:text-red-600 dark:text-slate-500 dark:hover:text-red-400"
+                    className="text-slate-400 hover:text-red-600 dark:text-neutral-500 dark:hover:text-red-400"
                   >
                     ×
                   </button>
@@ -96,7 +96,7 @@ export function NotificationEmailList({ purpose, accessToken }: NotificationEmai
               value={newEmail}
               onChange={(e) => setNewEmail(e.target.value)}
               placeholder={t("addPlaceholder")}
-              className="flex-1 rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
+              className="flex-1 rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-100"
             />
             <Button type="submit" variant="secondary" disabled={isSubmitting}>
               {t("add")}

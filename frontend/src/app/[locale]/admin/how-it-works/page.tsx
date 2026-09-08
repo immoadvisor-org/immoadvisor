@@ -51,12 +51,12 @@ export default function AdminHowItWorksPage() {
   }, [isAdmin, accessToken]);
 
   if (isLoadingUser) {
-    return <p className="mx-auto max-w-6xl px-4 py-12 text-sm text-slate-500 dark:text-slate-400">{tAdmin("loading")}</p>;
+    return <p className="mx-auto max-w-6xl px-4 py-12 text-sm text-slate-500 dark:text-neutral-400">{tAdmin("loading")}</p>;
   }
 
   if (!user || !isAdmin) {
     return (
-      <p className="mx-auto max-w-6xl px-4 py-12 text-sm text-slate-600 dark:text-slate-300">{tAdmin("accessDenied")}</p>
+      <p className="mx-auto max-w-6xl px-4 py-12 text-sm text-slate-600 dark:text-neutral-300">{tAdmin("accessDenied")}</p>
     );
   }
 
@@ -97,14 +97,14 @@ export default function AdminHowItWorksPage() {
 
   return (
     <AdminLayout>
-      <h1 className="text-2xl font-medium text-slate-900 dark:text-slate-50">{t("title")}</h1>
-      <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">{t("subtitle")}</p>
+      <h1 className="text-2xl font-medium text-slate-900 dark:text-neutral-50">{t("title")}</h1>
+      <p className="mt-1 text-sm text-slate-600 dark:text-neutral-300">{t("subtitle")}</p>
 
       {isLoading ? (
-        <p className="mt-6 text-sm text-slate-500 dark:text-slate-400">{t("loading")}</p>
+        <p className="mt-6 text-sm text-slate-500 dark:text-neutral-400">{t("loading")}</p>
       ) : (
-        <div className="mt-6 rounded-xl border border-slate-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900">
-          <div className="flex gap-2 border-b border-slate-200 pb-4 dark:border-slate-700">
+        <div className="mt-6 rounded-xl border border-slate-200 bg-white p-6 dark:border-neutral-800 dark:bg-neutral-900">
+          <div className="flex gap-2 border-b border-slate-200 pb-4 dark:border-neutral-700">
             {routing.locales.map((locale) => (
               <button
                 key={locale}
@@ -112,7 +112,7 @@ export default function AdminHowItWorksPage() {
                 className={`px-3 py-2 text-sm font-medium uppercase ${
                   activeTab === locale
                     ? "border-b-2 border-brand-500 text-brand-600 dark:text-brand-200"
-                    : "text-slate-400 hover:text-slate-700 dark:text-slate-500 dark:hover:text-slate-200"
+                    : "text-slate-400 hover:text-slate-700 dark:text-neutral-500 dark:hover:text-slate-200"
                 }`}
               >
                 {locale}
@@ -121,49 +121,49 @@ export default function AdminHowItWorksPage() {
           </div>
 
           <div className="mt-4 space-y-4">
-            <label className="block text-sm text-slate-700 dark:text-slate-300">
+            <label className="block text-sm text-slate-700 dark:text-neutral-300">
               {t("titleLabel")}
               <input
                 value={current.title}
                 onChange={(e) => updateField("title", e.target.value)}
-                className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
+                className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-100"
               />
             </label>
-            <label className="block text-sm text-slate-700 dark:text-slate-300">
+            <label className="block text-sm text-slate-700 dark:text-neutral-300">
               {t("textLabel")}
               <textarea
                 value={current.text}
                 onChange={(e) => updateField("text", e.target.value)}
                 rows={4}
-                className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
+                className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-100"
               />
             </label>
           </div>
 
           <div className="mt-8">
-            <p className="text-sm font-medium text-slate-700 dark:text-slate-300">{t("stepsLabel")}</p>
-            <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">{t("stepsHint")}</p>
+            <p className="text-sm font-medium text-slate-700 dark:text-neutral-300">{t("stepsLabel")}</p>
+            <p className="mt-1 text-xs text-slate-500 dark:text-neutral-400">{t("stepsHint")}</p>
             <div className="mt-4 space-y-5">
               {current.steps.map((step, index) => (
-                <div key={index} className="rounded-lg border border-slate-200 p-4 dark:border-slate-700">
+                <div key={index} className="rounded-lg border border-slate-200 p-4 dark:border-neutral-700">
                   <p className="text-xs font-medium uppercase tracking-wide text-amber-600 dark:text-amber-400">
                     {t("stepNumber", { number: index + 1 })}
                   </p>
-                  <label className="mt-2 block text-sm text-slate-700 dark:text-slate-300">
+                  <label className="mt-2 block text-sm text-slate-700 dark:text-neutral-300">
                     {t("stepTitleLabel")}
                     <input
                       value={step.title}
                       onChange={(e) => updateStepField(index, "title", e.target.value)}
-                      className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
+                      className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-100"
                     />
                   </label>
-                  <label className="mt-3 block text-sm text-slate-700 dark:text-slate-300">
+                  <label className="mt-3 block text-sm text-slate-700 dark:text-neutral-300">
                     {t("stepTextLabel")}
                     <textarea
                       value={step.text}
                       onChange={(e) => updateStepField(index, "text", e.target.value)}
                       rows={2}
-                      className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
+                      className="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-100"
                     />
                   </label>
                 </div>

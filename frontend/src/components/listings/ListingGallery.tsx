@@ -20,7 +20,7 @@ export function ListingGallery({ title, images, videoUrl }: ListingGalleryProps)
   const [activeIndex, setActiveIndex] = useState(0);
 
   if (slides.length === 0) {
-    return <div className="aspect-[4/3] w-full rounded-2xl bg-slate-100 dark:bg-slate-800" />;
+    return <div className="aspect-[4/3] w-full rounded-2xl bg-slate-100 dark:bg-neutral-800" />;
   }
 
   const current = slides[activeIndex];
@@ -31,7 +31,7 @@ export function ListingGallery({ title, images, videoUrl }: ListingGalleryProps)
 
   return (
     <div>
-      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-slate-100 dark:bg-slate-800">
+      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-slate-100 dark:bg-neutral-800">
         {current.type === "image" ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img src={current.url} alt={title} className="h-full w-full object-cover" />
@@ -45,7 +45,7 @@ export function ListingGallery({ title, images, videoUrl }: ListingGalleryProps)
               type="button"
               onClick={() => goTo(activeIndex - 1)}
               aria-label={t("previousMedia")}
-              className="absolute left-2 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/80 text-slate-700 shadow hover:bg-white dark:bg-slate-900/80 dark:text-slate-100"
+              className="absolute left-2 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/80 text-slate-700 shadow hover:bg-white dark:bg-neutral-900/80 dark:text-neutral-100"
             >
               ‹
             </button>
@@ -53,7 +53,7 @@ export function ListingGallery({ title, images, videoUrl }: ListingGalleryProps)
               type="button"
               onClick={() => goTo(activeIndex + 1)}
               aria-label={t("nextMedia")}
-              className="absolute right-2 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/80 text-slate-700 shadow hover:bg-white dark:bg-slate-900/80 dark:text-slate-100"
+              className="absolute right-2 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-white/80 text-slate-700 shadow hover:bg-white dark:bg-neutral-900/80 dark:text-neutral-100"
             >
               ›
             </button>

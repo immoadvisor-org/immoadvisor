@@ -13,10 +13,10 @@ export function CartItemRow({ service, onRemove }: CartItemRowProps) {
   const t = useTranslations("CartItemRow");
 
   return (
-    <div className="flex items-center justify-between border-b border-slate-100 py-3 dark:border-slate-800">
+    <div className="flex items-center justify-between border-b border-slate-100 py-3 dark:border-neutral-800">
       <div>
-        <p className="text-sm font-medium text-slate-900 dark:text-slate-50">{service.name}</p>
-        <PriceTag amountChf={Number(service.price_chf)} className="text-sm text-slate-500 dark:text-slate-400" />
+        <p className="text-sm font-medium text-slate-900 dark:text-neutral-50">{service.name}</p>
+        <PriceTag amountChf={Number(service.price_chf)} className="text-sm text-slate-500 dark:text-neutral-400" />
       </div>
       <button
         onClick={() => onRemove(service.id)}
