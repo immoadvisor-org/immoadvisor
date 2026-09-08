@@ -227,7 +227,8 @@
     "columnServices": "Dienstleistungen",
     "columnTotal": "Gesamt",
     "noOrders": "Keine Bestellungen gefunden.",
-    "loading": "Wird geladen..."
+    "loading": "Wird geladen...",
+    "statusUpdateError": "Status konnte nicht aktualisiert werden"
   },
   "NotificationEmails": {
     "loading": "Wird geladen...",

@@ -227,7 +227,8 @@
     "columnServices": "Services",
     "columnTotal": "Total",
     "noOrders": "Aucune commande trouvée.",
-    "loading": "Chargement..."
+    "loading": "Chargement...",
+    "statusUpdateError": "Impossible de mettre à jour le statut"
   },
   "NotificationEmails": {
     "loading": "Chargement...",

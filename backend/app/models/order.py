@@ -19,6 +19,12 @@ class OrderStatus(str, enum.Enum):
     CANCELLED = "cancelled"
 
 
+class OrderItemStatus(str, enum.Enum):
+    PENDING = "pending"
+    PROCESSING = "processing"
+    COMPLETED = "completed"
+
+
 class Order(Base):
     __tablename__ = "orders"
 
@@ -57,6 +63,12 @@ class OrderItem(Base):
     service_id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), ForeignKey("services.id"))
     service_name_snapshot: Mapped[str] = mapped_column(String)
     price_chf_snapshot: Mapped[Decimal] = mapped_column(Numeric(10, 2))
+    status: Mapped[OrderItemStatus] = mapped_column(
+        SAEnum(
+            OrderItemStatus, name="order_item_status", values_callable=lambda e: [i.value for i in e]
+        ),
+        default=OrderItemStatus.PENDING,
+    )
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
 
     order: Mapped[Order] = relationship(back_populates="items")

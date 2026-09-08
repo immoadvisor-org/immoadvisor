@@ -227,7 +227,8 @@
     "columnServices": "Services",
     "columnTotal": "Total",
     "noOrders": "No orders found.",
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "statusUpdateError": "Unable to update the status"
   },
   "NotificationEmails": {
     "loading": "Loading...",

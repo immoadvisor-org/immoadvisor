@@ -5,7 +5,7 @@ from fastapi import APIRouter, Depends, HTTPException, Request, status
 from sqlalchemy.orm import Session
 
 from app.api.deps import get_db
-from app.integrations.email_client import send_order_notification
+from app.integrations.email_client import send_customer_order_status_email, send_order_notification
 from app.integrations.stripe_client import construct_webhook_event, extract_order_id_from_session
 from app.models.order import OrderStatus
 from app.services import notification_service, order_service
@@ -53,5 +53,6 @@ async def stripe_webhook(request: Request, db: Session = Depends(get_db)) -> dic
         if outcome_changed:
             recipients = notification_service.list_recipient_emails(db, "order")
             send_order_notification(order, recipients)
+            send_customer_order_status_email(order)
 
     return {"received": True}

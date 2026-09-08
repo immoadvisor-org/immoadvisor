@@ -4,7 +4,7 @@ import httpx
 
 from app.core.config import get_settings
 from app.models.contact import ContactMessage
-from app.models.order import Order
+from app.models.order import Order, OrderItem
 
 logger = logging.getLogger(__name__)
 
@@ -80,3 +80,63 @@ def send_order_notification(order: Order, recipients: list[str]) -> None:
         subject=f"Ordine {status_label.lower()}: CHF {order.total_chf} da {order.email or 'utente'}",
         html=body,
     )
+
+
+# Messaggio mostrato al cliente per ogni stato dell'ordine: a differenza della
+# notifica admin (sintetica), qui il tono è rivolto a chi ha acquistato e
+# spiega cosa aspettarsi.
+CUSTOMER_ORDER_STATUS_MESSAGES = {
+    "paid": (
+        "Pagamento confermato",
+        "Grazie per il tuo acquisto! Abbiamo ricevuto il pagamento e a breve il nostro team prenderà in carico i servizi richiesti. Ti aggiorneremo via email man mano che procediamo.",
+    ),
+    "cancelled": (
+        "Pagamento non riuscito",
+        "Il pagamento per il tuo ordine non è andato a buon fine (sessione scaduta o annullata). Nessun addebito è stato effettuato. Puoi riprovare in qualsiasi momento dal carrello; se pensi si tratti di un errore, contattaci pure.",
+    ),
+    "processing": (
+        "Ordine preso in carico",
+        "Il tuo ordine è stato preso in carico dal nostro team e siamo al lavoro sui servizi richiesti.",
+    ),
+    "completed": (
+        "Ordine completato",
+        "Tutti i servizi del tuo ordine sono stati completati. Grazie per aver scelto ImmoAdvisor!",
+    ),
+    "pending": (
+        "Ordine in attesa di pagamento",
+        "Il tuo ordine è stato creato ed è in attesa di conferma del pagamento.",
+    ),
+}
+
+
+def send_customer_order_status_email(order: Order) -> None:
+    if not order.email:
+        return
+
+    title, message = CUSTOMER_ORDER_STATUS_MESSAGES.get(
+        order.status.value, ("Aggiornamento ordine", "Lo stato del tuo ordine è cambiato.")
+    )
+    items_html = "".join(
+        f"<li>{item.service_name_snapshot} — CHF {item.price_chf_snapshot}</li>" for item in order.items
+    )
+    body = (
+        f"<p>{message}</p>"
+        f"<p><strong>Totale:</strong> CHF {order.total_chf}</p>"
+        f"<p><strong>Servizi:</strong></p>"
+        f"<ul>{items_html}</ul>"
+    )
+    _send_email(to=[order.email], subject=f"ImmoAdvisor — {title}", html=body)
+
+
+def send_customer_item_status_email(order: Order, item: OrderItem) -> None:
+    if not order.email:
+        return
+
+    title, message = CUSTOMER_ORDER_STATUS_MESSAGES.get(
+        item.status.value, ("Aggiornamento servizio", "Lo stato di un servizio del tuo ordine è cambiato.")
+    )
+    body = (
+        f"<p>Il servizio <strong>{item.service_name_snapshot}</strong> del tuo ordine è stato aggiornato:</p>"
+        f"<p>{message}</p>"
+    )
+    _send_email(to=[order.email], subject=f"ImmoAdvisor — {item.service_name_snapshot}: {title.lower()}", html=body)

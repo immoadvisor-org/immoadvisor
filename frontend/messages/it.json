@@ -227,7 +227,8 @@
     "columnServices": "Servizi",
     "columnTotal": "Totale",
     "noOrders": "Nessun ordine trovato.",
-    "loading": "Caricamento..."
+    "loading": "Caricamento...",
+    "statusUpdateError": "Impossibile aggiornare lo stato"
   },
   "NotificationEmails": {
     "loading": "Caricamento...",

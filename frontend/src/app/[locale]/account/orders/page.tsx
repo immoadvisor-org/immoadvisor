@@ -75,8 +75,14 @@ function OrdersPageContent() {
 
               <ul className="mt-3 space-y-1">
                 {order.items.map((item) => (
-                  <li key={item.service_id} className="text-sm text-slate-700 dark:text-slate-300">
-                    {item.service_name_snapshot}
+                  <li
+                    key={item.id}
+                    className="flex items-center justify-between gap-2 text-sm text-slate-700 dark:text-slate-300"
+                  >
+                    <span>{item.service_name_snapshot}</span>
+                    <span className="rounded-full bg-slate-100 px-2 py-0.5 text-xs font-medium text-slate-600 dark:bg-slate-800 dark:text-slate-300">
+                      {t(`status.${item.status}`)}
+                    </span>
                   </li>
                 ))}
               </ul>

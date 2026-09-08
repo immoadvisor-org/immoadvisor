@@ -10,6 +10,10 @@ class OrderNotFoundError(DomainError):
     pass
 
 
+class OrderItemNotFoundError(DomainError):
+    pass
+
+
 class ServiceInUseError(DomainError):
     pass
 

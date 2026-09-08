@@ -4,9 +4,9 @@ from datetime import datetime, timezone
 from sqlalchemy import select
 from sqlalchemy.orm import Session, selectinload
 
-from app.models.order import Order, OrderItem, OrderStatus
+from app.models.order import Order, OrderItem, OrderItemStatus, OrderStatus
 from app.models.service import Service
-from app.services.exceptions import OrderNotFoundError, ServiceNotFoundError
+from app.services.exceptions import OrderItemNotFoundError, OrderNotFoundError, ServiceNotFoundError
 from app.services.i18n import translate_service
 
 
@@ -109,3 +109,32 @@ def mark_order_cancelled(db: Session, order: Order) -> Order:
     db.commit()
     db.refresh(order)
     return order
+
+
+def update_order_status(db: Session, order: Order, new_status: OrderStatus) -> Order:
+    order.status = new_status
+    order.updated_at = datetime.now(timezone.utc)
+    db.commit()
+    db.refresh(order)
+    return order
+
+
+def get_order_item(db: Session, item_id: uuid.UUID) -> OrderItem:
+    stmt = (
+        select(OrderItem)
+        .where(OrderItem.id == item_id)
+        .options(selectinload(OrderItem.order).selectinload(Order.items))
+    )
+    item = db.scalars(stmt).first()
+    if item is None:
+        raise OrderItemNotFoundError(f"Servizio d'ordine {item_id} non trovato")
+    return item
+
+
+def update_order_item_status(
+    db: Session, item: OrderItem, new_status: OrderItemStatus
+) -> OrderItem:
+    item.status = new_status
+    db.commit()
+    db.refresh(item)
+    return item
