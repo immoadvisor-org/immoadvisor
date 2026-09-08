@@ -142,7 +142,7 @@ export function ListingInquiryForm({ listingReference, defaultMessage }: Listing
       {submitError && <p className="text-sm text-red-600 dark:text-red-400">{submitError}</p>}
 
       <div className="flex gap-2">
-        <Button type="submit" className="flex-1" disabled={isSubmitting}>
+        <Button type="submit" variant="secondary" className="flex-1" disabled={isSubmitting}>
           {isSubmitting ? tContact("submitting") : tContact("submit")}
         </Button>
         <Button type="button" variant="ghost" aria-label={t("inquiryCancel")} onClick={() => setIsOpen(false)}>

@@ -59,9 +59,6 @@ export default function HomePage() {
               {howItWorks.title}
             </h2>
             <p className="mt-4 text-base leading-relaxed text-slate-600 dark:text-slate-300">{howItWorks.text}</p>
-            <Link href="/configuratore" className="mt-6 inline-block">
-              <Button variant="secondary">{t("howItWorksCta")}</Button>
-            </Link>
           </div>
 
           {howItWorks.steps.length > 0 && (

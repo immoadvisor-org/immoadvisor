@@ -164,7 +164,7 @@ export default function ContactPage() {
 
         {submitError && <p className="text-sm text-red-600 dark:text-red-400">{submitError}</p>}
 
-        <Button type="submit" className="w-full" disabled={isSubmitting}>
+        <Button type="submit" variant="secondary" className="w-full" disabled={isSubmitting}>
           {isSubmitting ? t("submitting") : t("submit")}
         </Button>
       </form>
