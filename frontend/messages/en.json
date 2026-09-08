@@ -413,5 +413,9 @@
     "saved": "Saved",
     "saveError": "Unable to save",
     "loading": "Loading..."
+  },
+  "PasswordInput": {
+    "show": "Show password",
+    "hide": "Hide password"
   }
 }

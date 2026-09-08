@@ -413,5 +413,9 @@
     "saved": "Gespeichert",
     "saveError": "Speichern nicht möglich",
     "loading": "Wird geladen..."
+  },
+  "PasswordInput": {
+    "show": "Passwort anzeigen",
+    "hide": "Passwort verbergen"
   }
 }

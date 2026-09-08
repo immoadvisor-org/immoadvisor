@@ -413,5 +413,9 @@
     "saved": "Salvato",
     "saveError": "Impossibile salvare",
     "loading": "Caricamento..."
+  },
+  "PasswordInput": {
+    "show": "Mostra password",
+    "hide": "Nascondi password"
   }
 }

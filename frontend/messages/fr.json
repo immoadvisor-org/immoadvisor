@@ -413,5 +413,9 @@
     "saved": "Enregistré",
     "saveError": "Impossible d'enregistrer",
     "loading": "Chargement..."
+  },
+  "PasswordInput": {
+    "show": "Afficher le mot de passe",
+    "hide": "Masquer le mot de passe"
   }
 }

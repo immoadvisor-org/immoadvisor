@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl";
 import { Link, useRouter } from "@/i18n/navigation";
 import { supabase } from "@/features/auth/supabaseClient";
 import { Button } from "@/components/ui/Button";
+import { PasswordInput } from "@/components/ui/PasswordInput";
 
 export default function ResetPasswordPage() {
   const t = useTranslations("ResetPassword");
@@ -61,9 +62,8 @@ export default function ResetPasswordPage() {
           <label htmlFor="newPassword" className="block text-sm font-medium text-slate-700 dark:text-slate-300">
             {t("newPasswordLabel")}
           </label>
-          <input
+          <PasswordInput
             id="newPassword"
-            type="password"
             required
             minLength={8}
             value={password}
@@ -76,9 +76,8 @@ export default function ResetPasswordPage() {
           <label htmlFor="confirmPassword" className="block text-sm font-medium text-slate-700 dark:text-slate-300">
             {t("confirmPasswordLabel")}
           </label>
-          <input
+          <PasswordInput
             id="confirmPassword"
-            type="password"
             required
             minLength={8}
             value={confirmPassword}

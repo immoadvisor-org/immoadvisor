@@ -6,6 +6,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { Link, useRouter } from "@/i18n/navigation";
 import { supabase } from "@/features/auth/supabaseClient";
 import { Button } from "@/components/ui/Button";
+import { PasswordInput } from "@/components/ui/PasswordInput";
 import { SWISS_CANTONS } from "@/lib/cantons";
 
 type Mode = "sign-in" | "sign-up" | "forgot-password";
@@ -209,9 +210,8 @@ export default function LoginPage() {
                 </button>
               )}
             </div>
-            <input
+            <PasswordInput
               id="password"
-              type="password"
               required
               minLength={8}
               value={password}
