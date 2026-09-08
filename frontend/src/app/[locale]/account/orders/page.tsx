@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 
@@ -11,6 +11,14 @@ import { useCartStore } from "@/features/cart/cartStore";
 import { PriceTag } from "@/components/ui/PriceTag";
 
 export default function OrdersPage() {
+  return (
+    <Suspense fallback={null}>
+      <OrdersPageContent />
+    </Suspense>
+  );
+}
+
+function OrdersPageContent() {
   const t = useTranslations("Orders");
   const router = useRouter();
   const searchParams = useSearchParams();
