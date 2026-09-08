@@ -138,8 +138,33 @@
   },
   "AdminNav": {
     "services": "Services",
+    "orders": "Commandes",
     "about": "À propos",
     "contact": "Messages"
+  },
+  "AdminOrders": {
+    "title": "Commandes",
+    "subtitle": "Liste de tous les achats effectués par les utilisateurs.",
+    "notificationsTitle": "Notifications par e-mail",
+    "notificationsSubtitle": "Ces adresses reçoivent une notification pour chaque achat, réussi ou non.",
+    "filterEmail": "Filtrer par e-mail",
+    "filterDateFrom": "Du",
+    "filterDateTo": "Au",
+    "columnDate": "Date",
+    "columnEmail": "E-mail",
+    "columnStatus": "Statut",
+    "columnServices": "Services",
+    "columnTotal": "Total",
+    "noOrders": "Aucune commande trouvée.",
+    "loading": "Chargement..."
+  },
+  "NotificationEmails": {
+    "loading": "Chargement...",
+    "empty": "Aucune adresse configurée.",
+    "addPlaceholder": "nom@exemple.com",
+    "add": "Ajouter",
+    "remove": "Retirer",
+    "addError": "Impossible d'ajouter l'adresse"
   },
   "AdminAbout": {
     "title": "Contenu \"À propos\"",
@@ -194,6 +219,7 @@
   "AdminContact": {
     "catalogLink": "Catalogue",
     "settingsTitle": "Notifications par e-mail",
+    "settingsSubtitle": "Ces adresses reçoivent une notification pour chaque nouveau message de contact.",
     "notificationEmailLabel": "E-mail pour recevoir les notifications",
     "save": "Enregistrer",
     "saved": "Enregistré",

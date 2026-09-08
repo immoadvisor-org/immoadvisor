@@ -5,9 +5,10 @@ from fastapi import APIRouter, Depends, HTTPException, Request, status
 from sqlalchemy.orm import Session
 
 from app.api.deps import get_db
+from app.integrations.email_client import send_order_notification
 from app.integrations.stripe_client import construct_webhook_event, extract_order_id_from_session
 from app.models.order import OrderStatus
-from app.services import order_service
+from app.services import notification_service, order_service
 from app.services.exceptions import OrderNotFoundError
 from app.services.fulfillment_service import orchestrate_post_payment
 
@@ -38,12 +39,19 @@ async def stripe_webhook(request: Request, db: Session = Depends(get_db)) -> dic
             logger.error("Webhook Stripe per ordine inesistente: %s", order_id)
             return {"received": True}
 
+        outcome_changed = False
         if event["type"] == "checkout.session.completed":
             order = order_service.mark_order_paid(db, order, session["payment_intent"])
             orchestrate_post_payment(db, order)
+            outcome_changed = True
         elif order.status == OrderStatus.PENDING:
             # Solo un ordine ancora "in attesa" va annullato: se nel frattempo è
             # già stato pagato (evento arrivato in ordine diverso), non toccarlo.
-            order_service.mark_order_cancelled(db, order)
+            order = order_service.mark_order_cancelled(db, order)
+            outcome_changed = True
+
+        if outcome_changed:
+            recipients = notification_service.list_recipient_emails(db, "order")
+            send_order_notification(order, recipients)
 
     return {"received": True}

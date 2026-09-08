@@ -11,7 +11,11 @@ from app.services.i18n import translate_service
 
 
 def create_pending_order(
-    db: Session, user_id: uuid.UUID, service_ids: list[uuid.UUID], locale: str
+    db: Session,
+    user_id: uuid.UUID,
+    service_ids: list[uuid.UUID],
+    locale: str,
+    email: str | None = None,
 ) -> Order:
     unique_ids = list(dict.fromkeys(service_ids))
     services = list(
@@ -28,6 +32,7 @@ def create_pending_order(
     order = Order(
         id=uuid.uuid4(),
         user_id=user_id,
+        email=email,
         status=OrderStatus.PENDING,
         total_chf=total,
         created_at=now,
@@ -60,6 +65,15 @@ def get_order(db: Session, order_id: uuid.UUID) -> Order:
     if order is None:
         raise OrderNotFoundError(f"Ordine {order_id} non trovato")
     return order
+
+
+def list_all_orders(db: Session) -> list[Order]:
+    stmt = (
+        select(Order)
+        .options(selectinload(Order.items))
+        .order_by(Order.created_at.desc())
+    )
+    return list(db.scalars(stmt))
 
 
 def get_orders_for_user(db: Session, user_id: uuid.UUID) -> list[Order]:

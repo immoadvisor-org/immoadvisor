@@ -25,6 +25,10 @@ class OrderRead(BaseModel):
     items: list[OrderItemRead]
 
 
+class AdminOrderRead(OrderRead):
+    email: str | None
+
+
 class CheckoutSessionCreate(BaseModel):
     service_ids: list[uuid.UUID] = Field(min_length=1)
     locale: str | None = None

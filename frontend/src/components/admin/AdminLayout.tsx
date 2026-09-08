@@ -14,6 +14,7 @@ export function AdminLayout({ children }: AdminLayoutProps) {
 
   const items = [
     { href: "/admin/services", label: t("services") },
+    { href: "/admin/orders", label: t("orders") },
     { href: "/admin/about", label: t("about") },
     { href: "/admin/contact", label: t("contact") },
   ];

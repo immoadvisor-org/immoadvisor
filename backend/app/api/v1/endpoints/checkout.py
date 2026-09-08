@@ -20,7 +20,7 @@ def create_session(
     resolved_locale = resolve_locale(payload.locale)
     try:
         order = order_service.create_pending_order(
-            db, current_user.user_id, payload.service_ids, resolved_locale
+            db, current_user.user_id, payload.service_ids, resolved_locale, current_user.email
         )
     except ServiceNotFoundError as exc:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc

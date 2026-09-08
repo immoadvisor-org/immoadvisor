@@ -22,13 +22,3 @@ class ContactMessageRead(BaseModel):
     phone: str | None
     message: str
     created_at: datetime
-
-
-class ContactSettingsRead(BaseModel):
-    model_config = ConfigDict(from_attributes=True)
-
-    notification_email: str | None
-
-
-class ContactSettingsUpdate(BaseModel):
-    notification_email: EmailStr | None = None

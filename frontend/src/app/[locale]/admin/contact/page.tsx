@@ -5,14 +5,9 @@ import { useTranslations } from "next-intl";
 
 import { useUser } from "@/features/auth/useUser";
 import { useIsAdmin } from "@/features/profile/useIsAdmin";
-import {
-  getContactSettings,
-  listContactMessages,
-  updateContactSettings,
-  type ContactMessage,
-} from "@/features/admin/contactAdminApi";
+import { listContactMessages, type ContactMessage } from "@/features/admin/contactAdminApi";
 import { AdminLayout } from "@/components/admin/AdminLayout";
-import { Button } from "@/components/ui/Button";
+import { NotificationEmailList } from "@/components/admin/NotificationEmailList";
 
 export default function AdminContactPage() {
   const t = useTranslations("AdminContact");
@@ -21,20 +16,14 @@ export default function AdminContactPage() {
   const isAdmin = useIsAdmin(user);
   const accessToken = session?.access_token;
 
-  const [notificationEmail, setNotificationEmail] = useState("");
   const [messages, setMessages] = useState<ContactMessage[]>([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [isSaving, setIsSaving] = useState(false);
-  const [saveState, setSaveState] = useState<"idle" | "saved" | "error">("idle");
 
   useEffect(() => {
     if (!isAdmin || !accessToken) return;
     setIsLoading(true);
-    Promise.all([getContactSettings(accessToken), listContactMessages(accessToken)])
-      .then(([settings, msgs]) => {
-        setNotificationEmail(settings.notification_email ?? "");
-        setMessages(msgs);
-      })
+    listContactMessages(accessToken)
+      .then(setMessages)
       .finally(() => setIsLoading(false));
   }, [isAdmin, accessToken]);
 
@@ -42,24 +31,10 @@ export default function AdminContactPage() {
     return <p className="mx-auto max-w-6xl px-4 py-12 text-sm text-slate-500 dark:text-slate-400">{tAdmin("loading")}</p>;
   }
 
-  if (!user || !isAdmin) {
+  if (!user || !isAdmin || !accessToken) {
     return (
       <p className="mx-auto max-w-6xl px-4 py-12 text-sm text-slate-600 dark:text-slate-300">{tAdmin("accessDenied")}</p>
     );
-  }
-
-  async function handleSave() {
-    if (!accessToken) return;
-    setIsSaving(true);
-    setSaveState("idle");
-    try {
-      await updateContactSettings(notificationEmail.trim() || null, accessToken);
-      setSaveState("saved");
-    } catch {
-      setSaveState("error");
-    } finally {
-      setIsSaving(false);
-    }
   }
 
   return (
@@ -68,22 +43,9 @@ export default function AdminContactPage() {
 
       <div className="mt-6 rounded-xl border border-slate-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900">
         <h2 className="text-base font-semibold text-slate-900 dark:text-slate-50">{t("settingsTitle")}</h2>
-        <label className="mt-3 block text-sm text-slate-700 dark:text-slate-300" htmlFor="notificationEmail">
-          {t("notificationEmailLabel")}
-          <input
-            id="notificationEmail"
-            type="email"
-            value={notificationEmail}
-            onChange={(e) => setNotificationEmail(e.target.value)}
-            className="mt-1 w-full max-w-sm rounded-lg border border-slate-300 px-3 py-2 text-sm dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100"
-          />
-        </label>
-        <div className="mt-3 flex items-center gap-3">
-          <Button onClick={handleSave} disabled={isSaving}>
-            {t("save")}
-          </Button>
-          {saveState === "saved" && <span className="text-sm text-brand-600 dark:text-brand-100">{t("saved")}</span>}
-          {saveState === "error" && <span className="text-sm text-red-600 dark:text-red-400">{t("saveError")}</span>}
+        <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">{t("settingsSubtitle")}</p>
+        <div className="mt-3">
+          <NotificationEmailList purpose="contact" accessToken={accessToken} />
         </div>
       </div>
 

@@ -138,8 +138,33 @@
   },
   "AdminNav": {
     "services": "Servizi",
+    "orders": "Ordini",
     "about": "Chi siamo",
     "contact": "Messaggi"
+  },
+  "AdminOrders": {
+    "title": "Ordini",
+    "subtitle": "Elenco di tutti gli acquisti effettuati dagli utenti.",
+    "notificationsTitle": "Notifiche email",
+    "notificationsSubtitle": "Questi indirizzi ricevono una notifica per ogni acquisto, riuscito o meno.",
+    "filterEmail": "Filtra per email",
+    "filterDateFrom": "Da",
+    "filterDateTo": "A",
+    "columnDate": "Data",
+    "columnEmail": "Email",
+    "columnStatus": "Stato",
+    "columnServices": "Servizi",
+    "columnTotal": "Totale",
+    "noOrders": "Nessun ordine trovato.",
+    "loading": "Caricamento..."
+  },
+  "NotificationEmails": {
+    "loading": "Caricamento...",
+    "empty": "Nessun indirizzo configurato.",
+    "addPlaceholder": "nome@esempio.com",
+    "add": "Aggiungi",
+    "remove": "Rimuovi",
+    "addError": "Impossibile aggiungere l'indirizzo"
   },
   "AdminAbout": {
     "title": "Contenuto \"Chi siamo\"",
@@ -194,6 +219,7 @@
   "AdminContact": {
     "catalogLink": "Catalogo",
     "settingsTitle": "Notifiche email",
+    "settingsSubtitle": "Questi indirizzi ricevono una notifica per ogni nuovo messaggio di contatto.",
     "notificationEmailLabel": "Email a cui inviare le notifiche",
     "save": "Salva",
     "saved": "Salvato",

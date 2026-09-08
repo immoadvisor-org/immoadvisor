@@ -28,6 +28,10 @@ class Order(Base):
     user_id: Mapped[uuid.UUID] = mapped_column(
         UUID(as_uuid=True), ForeignKey("profiles.id")
     )
+    # Snapshot dell'email del cliente al momento dell'ordine: permette di
+    # elencare gli ordini in admin senza dover interrogare lo schema auth,
+    # e resta corretta anche se l'utente cambia poi la propria email.
+    email: Mapped[str | None] = mapped_column(String, nullable=True)
     status: Mapped[OrderStatus] = mapped_column(
         SAEnum(OrderStatus, name="order_status", values_callable=lambda e: [i.value for i in e]),
         default=OrderStatus.PENDING,
