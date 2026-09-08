@@ -1,0 +1,58 @@
+<svg width="1600" height="700" viewBox="0 0 1600 700" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="hiwSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0b1224" />
+      <stop offset="55%" stop-color="#1b3a5c" />
+      <stop offset="100%" stop-color="#2f5372" />
+    </linearGradient>
+    <radialGradient id="hiwGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffd9a0" stop-opacity="0.5" />
+      <stop offset="100%" stop-color="#ffd9a0" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <rect width="1600" height="700" fill="url(#hiwSky)" />
+
+  <!-- stelle -->
+  <g fill="#ffffff">
+    <circle cx="90" cy="70" r="1.6" opacity="0.7" />
+    <circle cx="200" cy="140" r="1.2" opacity="0.5" />
+    <circle cx="340" cy="60" r="1.8" opacity="0.8" />
+    <circle cx="1240" cy="80" r="1.5" opacity="0.7" />
+    <circle cx="1360" cy="150" r="1.2" opacity="0.5" />
+    <circle cx="1480" cy="70" r="1.6" opacity="0.65" />
+    <circle cx="1540" cy="180" r="1.2" opacity="0.5" />
+  </g>
+
+  <!-- bagliore centrale dietro le tessere -->
+  <circle cx="800" cy="320" r="360" fill="url(#hiwGlow)" />
+
+  <!-- tessere di selezione (rappresentano i servizi del configuratore) -->
+  <g>
+    <rect x="560" y="200" width="150" height="150" rx="20" fill="#0f2033" stroke="#3d6483" stroke-width="2" opacity="0.9" />
+    <path d="M602 278 L622 298 L662 250" fill="none" stroke="#7be3c4" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+
+    <rect x="730" y="160" width="150" height="150" rx="20" fill="#12335a" stroke="#ffd27a" stroke-width="3" opacity="0.95" />
+    <path d="M772 238 L792 258 L832 210" fill="none" stroke="#ffd27a" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+
+    <rect x="900" y="220" width="150" height="150" rx="20" fill="#0f2033" stroke="#3d6483" stroke-width="2" opacity="0.85" />
+    <circle cx="975" cy="295" r="10" fill="#3d6483" />
+
+    <rect x="645" y="370" width="150" height="150" rx="20" fill="#0f2033" stroke="#3d6483" stroke-width="2" opacity="0.8" />
+    <circle cx="720" cy="445" r="10" fill="#3d6483" />
+
+    <rect x="815" y="380" width="150" height="150" rx="20" fill="#12335a" stroke="#7be3c4" stroke-width="3" opacity="0.95" />
+    <path d="M857 458 L877 478 L917 430" fill="none" stroke="#7be3c4" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+
+  <!-- skyline in silhouette -->
+  <path
+    d="M0,560 L150,500 L300,555 L450,480 L620,545 L800,470 L980,540 L1150,475 L1320,545 L1600,500 L1600,700 L0,700 Z"
+    fill="#1d3650"
+    opacity="0.75"
+  />
+  <path
+    d="M0,610 L200,545 L380,600 L560,530 L760,595 L980,525 L1180,590 L1400,540 L1600,600 L1600,700 L0,700 Z"
+    fill="#0f2033"
+  />
+</svg>

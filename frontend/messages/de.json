@@ -81,7 +81,7 @@
   "ServiceDetail": {
     "loading": "Wird geladen...",
     "notFound": "Dienstleistung nicht gefunden.",
-    "back": "Zurück zum Konfigurator"
+    "back": "Zurück"
   },
   "CartBar": {
     "itemSingular": "ausgewählte Dienstleistung",

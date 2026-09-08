@@ -16,6 +16,7 @@ function GalleryCard({ service, tilt }: { service: Service; tilt: string }) {
   const isInCart = useCartStore((state) => state.isInCart(service.id));
   const toggleService = useCartStore((state) => state.toggleService);
   const image = service.image_urls[0];
+  const detailHref = `/services/${service.slug}`;
 
   return (
     <div
@@ -23,7 +24,7 @@ function GalleryCard({ service, tilt }: { service: Service; tilt: string }) {
         isInCart ? "border-brand-500" : "border-slate-200 dark:border-slate-800"
       }`}
     >
-      <div className="relative aspect-[4/3] w-full overflow-hidden bg-slate-100 dark:bg-slate-800">
+      <Link href={detailHref} className="relative block aspect-[4/3] w-full overflow-hidden bg-slate-100 dark:bg-slate-800">
         {image ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
@@ -37,18 +38,18 @@ function GalleryCard({ service, tilt }: { service: Service; tilt: string }) {
         <span className="absolute left-3 top-3 rounded-full bg-white/90 px-2.5 py-0.5 text-xs font-medium uppercase tracking-wide text-brand-600 backdrop-blur dark:bg-slate-900/90 dark:text-brand-100">
           {service.category}
         </span>
-      </div>
-      <div className="flex flex-1 flex-col p-5">
+      </Link>
+      <Link href={detailHref} className="flex flex-1 flex-col p-5">
         <h3 className="text-base font-semibold text-slate-900 dark:text-slate-50">{service.name}</h3>
         <p className="mt-2 line-clamp-2 flex-1 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
           {service.description}
         </p>
-        <div className="mt-4 flex items-center justify-between border-t border-slate-100 pt-3 dark:border-slate-800">
-          <PriceTag amountChf={Number(service.price_chf)} className="text-lg font-semibold text-slate-900 dark:text-slate-50" />
-          <Button variant={isInCart ? "secondary" : "primary"} onClick={() => toggleService(service)}>
-            {isInCart ? t("remove") : t("add")}
-          </Button>
-        </div>
+      </Link>
+      <div className="flex items-center justify-between border-t border-slate-100 px-5 pb-5 pt-3 dark:border-slate-800">
+        <PriceTag amountChf={Number(service.price_chf)} className="text-lg font-semibold text-slate-900 dark:text-slate-50" />
+        <Button variant={isInCart ? "secondary" : "primary"} onClick={() => toggleService(service)}>
+          {isInCart ? t("remove") : t("add")}
+        </Button>
       </div>
     </div>
   );

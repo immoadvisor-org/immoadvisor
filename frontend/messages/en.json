@@ -81,7 +81,7 @@
   "ServiceDetail": {
     "loading": "Loading...",
     "notFound": "Service not found.",
-    "back": "Back to configurator"
+    "back": "Back"
   },
   "CartBar": {
     "itemSingular": "service selected",

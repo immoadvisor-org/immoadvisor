@@ -81,7 +81,7 @@
   "ServiceDetail": {
     "loading": "Chargement...",
     "notFound": "Service introuvable.",
-    "back": "Retour au configurateur"
+    "back": "Retour"
   },
   "CartBar": {
     "itemSingular": "service sélectionné",

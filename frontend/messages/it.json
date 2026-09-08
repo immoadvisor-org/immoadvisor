@@ -81,7 +81,7 @@
   "ServiceDetail": {
     "loading": "Caricamento...",
     "notFound": "Servizio non trovato.",
-    "back": "Torna al configuratore"
+    "back": "Indietro"
   },
   "CartBar": {
     "itemSingular": "servizio selezionato",

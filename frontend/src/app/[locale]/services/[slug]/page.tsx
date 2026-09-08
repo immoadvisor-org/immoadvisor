@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 
-import { Link } from "@/i18n/navigation";
+import { useRouter } from "@/i18n/navigation";
 import { useServices } from "@/features/services/useServices";
 import { useCartStore } from "@/features/cart/cartStore";
 import { PriceTag } from "@/components/ui/PriceTag";
@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/Button";
 
 export default function ServiceDetailPage() {
   const params = useParams<{ slug: string }>();
+  const router = useRouter();
   const t = useTranslations("ServiceCard");
   const td = useTranslations("ServiceDetail");
   const { services, isLoading } = useServices();
@@ -30,9 +31,12 @@ export default function ServiceDetailPage() {
     return (
       <div className="mx-auto max-w-6xl px-4 py-12 text-center">
         <p className="text-slate-600 dark:text-slate-300">{td("notFound")}</p>
-        <Link href="/configuratore" className="mt-4 inline-block text-brand-600 hover:underline dark:text-brand-100">
+        <button
+          onClick={() => router.back()}
+          className="mt-4 inline-block text-brand-600 hover:underline dark:text-brand-100"
+        >
           {td("back")}
-        </Link>
+        </button>
       </div>
     );
   }
@@ -41,9 +45,9 @@ export default function ServiceDetailPage() {
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-12">
-      <Link href="/configuratore" className="text-sm text-brand-600 hover:underline dark:text-brand-100">
+      <button onClick={() => router.back()} className="text-sm text-brand-600 hover:underline dark:text-brand-100">
         ← {td("back")}
-      </Link>
+      </button>
 
       <div className="mt-6 grid grid-cols-1 gap-10 lg:grid-cols-2">
         <div>
