@@ -24,3 +24,15 @@ def translate_service(service: Service, locale: str) -> tuple[str, str]:
             return entry["name"], entry.get("description", "")
 
     return service.slug, ""
+
+
+def resolve_translation_entry(translations: dict, locale: str) -> dict | None:
+    """Voce di un blob { lingua: {...} } per la lingua richiesta, con lo
+    stesso fallback di translate_service: richiesta -> default -> qualunque
+    disponibile. Usato per contenuti dinamici diversi dai servizi (es. Chi siamo).
+    """
+    for candidate in (locale, DEFAULT_LOCALE, *SUPPORTED_LOCALES):
+        entry = translations.get(candidate)
+        if entry:
+            return entry
+    return None

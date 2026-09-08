@@ -30,7 +30,7 @@ export default function ServiceDetailPage() {
     return (
       <div className="mx-auto max-w-6xl px-4 py-12 text-center">
         <p className="text-slate-600 dark:text-slate-300">{td("notFound")}</p>
-        <Link href="/" className="mt-4 inline-block text-brand-600 hover:underline dark:text-brand-100">
+        <Link href="/configuratore" className="mt-4 inline-block text-brand-600 hover:underline dark:text-brand-100">
           {td("back")}
         </Link>
       </div>
@@ -41,7 +41,7 @@ export default function ServiceDetailPage() {
 
   return (
     <div className="mx-auto max-w-5xl px-4 py-12">
-      <Link href="/" className="text-sm text-brand-600 hover:underline dark:text-brand-100">
+      <Link href="/configuratore" className="text-sm text-brand-600 hover:underline dark:text-brand-100">
         ← {td("back")}
       </Link>
 

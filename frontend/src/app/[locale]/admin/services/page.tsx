@@ -3,7 +3,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 
-import { Link } from "@/i18n/navigation";
 import { useUser } from "@/features/auth/useUser";
 import { useIsAdmin } from "@/features/profile/useIsAdmin";
 import {
@@ -15,6 +14,7 @@ import {
 } from "@/features/admin/adminApi";
 import type { AdminService, AdminServicePayload } from "@/features/admin/types";
 import { ApiError } from "@/lib/apiClient";
+import { AdminLayout } from "@/components/admin/AdminLayout";
 import { ServiceRow } from "@/components/admin/ServiceRow";
 import { ServiceEditor } from "@/components/admin/ServiceEditor";
 import { Button } from "@/components/ui/Button";
@@ -109,18 +109,13 @@ export default function AdminServicesPage() {
   }
 
   return (
-    <div className="mx-auto max-w-4xl px-4 py-12">
+    <AdminLayout>
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-medium text-slate-900 dark:text-slate-50">{t("title")}</h1>
           <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">{t("subtitle")}</p>
         </div>
-        <div className="flex items-center gap-4">
-          <Link href="/admin/contact" className="text-sm text-brand-600 hover:underline dark:text-brand-100">
-            {t("contactLink")} →
-          </Link>
-          <Button onClick={() => setEditingId("new")}>{t("newItem")}</Button>
-        </div>
+        <Button onClick={() => setEditingId("new")}>{t("newItem")}</Button>
       </div>
 
       {error && <p className="mt-4 text-sm text-red-600 dark:text-red-400">{error}</p>}
@@ -160,6 +155,6 @@ export default function AdminServicesPage() {
           )
         )}
       </div>
-    </div>
+    </AdminLayout>
   );
 }

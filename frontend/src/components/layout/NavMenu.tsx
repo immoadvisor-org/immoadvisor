@@ -10,6 +10,13 @@ export function NavMenu() {
   const tNav = useTranslations("Nav");
   const [isOpen, setIsOpen] = useState(false);
 
+  const links = [
+    { href: "/", label: tNav("home") },
+    { href: "/configuratore", label: tNav("configurator") },
+    { href: "/about", label: tNav("about") },
+    { href: "/contact", label: tNav("contact") },
+  ];
+
   return (
     <div className="relative">
       <button
@@ -28,27 +35,16 @@ export function NavMenu() {
         <>
           <div className="fixed inset-0 z-40" onClick={() => setIsOpen(false)} aria-hidden="true" />
           <div className="absolute right-0 z-50 mt-2 w-48 overflow-hidden rounded-xl border border-slate-200 bg-white py-1 shadow-lg dark:border-slate-700 dark:bg-slate-900">
-            <Link
-              href="/"
-              onClick={() => setIsOpen(false)}
-              className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 dark:text-slate-200 dark:hover:bg-slate-800"
-            >
-              {tNav("home")}
-            </Link>
-            <Link
-              href="/about"
-              onClick={() => setIsOpen(false)}
-              className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 dark:text-slate-200 dark:hover:bg-slate-800"
-            >
-              {tNav("about")}
-            </Link>
-            <Link
-              href="/contact"
-              onClick={() => setIsOpen(false)}
-              className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 dark:text-slate-200 dark:hover:bg-slate-800"
-            >
-              {tNav("contact")}
-            </Link>
+            {links.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setIsOpen(false)}
+                className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 dark:text-slate-200 dark:hover:bg-slate-800"
+              >
+                {link.label}
+              </Link>
+            ))}
           </div>
         </>
       )}

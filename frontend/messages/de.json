@@ -6,9 +6,22 @@
     "menu": "Menü"
   },
   "Nav": {
-    "home": "Konfigurator",
+    "home": "Startseite",
+    "configurator": "Konfigurator",
     "about": "Über uns",
     "contact": "Kontakt"
+  },
+  "Home": {
+    "heroTitle": "Der einfachste Weg, Ihre Immobilie in der Schweiz zu verkaufen",
+    "heroSubtitle": "Vertrauen Sie auf ImmoAdvisor: Wählen Sie nur die Dienstleistungen, die Sie wirklich brauchen, mit transparenten Preisen und ohne Verpflichtung.",
+    "heroCta": "Zum Konfigurator",
+    "discoverMore": "Mehr erfahren",
+    "howItWorksTitle": "So funktioniert's",
+    "howItWorksText": "Durchstöbern Sie die verfügbaren Dienstleistungen — Inserat, Fotografie, Unterlagen, Bewertung und mehr — wählen Sie die gewünschten aus und sehen Sie die Summe in Echtzeit aktualisiert. Keine festen Pakete: stellen Sie Ihr eigenes zusammen.",
+    "howItWorksCta": "Zum Konfigurator",
+    "contactTitle": "Brauchen Sie Hilfe?",
+    "contactText": "Unser Team beantwortet gerne Ihre Fragen und hilft Ihnen, die richtigen Dienstleistungen zu wählen.",
+    "contactCta": "Kontaktieren Sie uns"
   },
   "About": {
     "title": "Über uns",
@@ -122,6 +135,30 @@
       "completed": "Abgeschlossen",
       "cancelled": "Storniert"
     }
+  },
+  "AdminNav": {
+    "services": "Dienstleistungen",
+    "about": "Über uns",
+    "contact": "Nachrichten"
+  },
+  "AdminAbout": {
+    "title": "Inhalt \"Über uns\"",
+    "subtitle": "Bearbeiten Sie Text und Werte der öffentlichen Seite, für jede Sprache.",
+    "titleLabel": "Titel",
+    "introLabel": "Einleitung",
+    "value1TitleLabel": "Wert 1 — Titel",
+    "value1TextLabel": "Wert 1 — Text",
+    "value2TitleLabel": "Wert 2 — Titel",
+    "value2TextLabel": "Wert 2 — Text",
+    "value3TitleLabel": "Wert 3 — Titel",
+    "value3TextLabel": "Wert 3 — Text",
+    "ctaTitleLabel": "Abschlussbereich — Titel",
+    "ctaTextLabel": "Abschlussbereich — Text",
+    "ctaButtonLabel": "Abschlussbereich — Schaltflächentext",
+    "save": "Speichern",
+    "saved": "Gespeichert",
+    "saveError": "Speichern fehlgeschlagen",
+    "loading": "Wird geladen..."
   },
   "Admin": {
     "title": "Katalogverwaltung",

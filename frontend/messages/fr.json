@@ -6,9 +6,22 @@
     "menu": "Menu"
   },
   "Nav": {
-    "home": "Configurateur",
+    "home": "Accueil",
+    "configurator": "Configurateur",
     "about": "À propos",
     "contact": "Contact"
+  },
+  "Home": {
+    "heroTitle": "La façon la plus simple de vendre votre bien en Suisse",
+    "heroSubtitle": "Faites confiance à ImmoAdvisor : choisissez uniquement les services dont vous avez vraiment besoin, avec des prix transparents et sans engagement.",
+    "heroCta": "Aller au configurateur",
+    "discoverMore": "En savoir plus",
+    "howItWorksTitle": "Comment ça marche",
+    "howItWorksText": "Parcourez les services disponibles — annonce, photographie, documentation, évaluation et plus encore — sélectionnez ceux dont vous avez besoin et regardez le total se mettre à jour en temps réel. Pas de forfaits fixes : composez le vôtre.",
+    "howItWorksCta": "Aller au configurateur",
+    "contactTitle": "Besoin d'aide ?",
+    "contactText": "Notre équipe est prête à répondre à vos questions et à vous aider à choisir les bons services.",
+    "contactCta": "Contactez-nous"
   },
   "About": {
     "title": "À propos",
@@ -122,6 +135,30 @@
       "completed": "Terminée",
       "cancelled": "Annulée"
     }
+  },
+  "AdminNav": {
+    "services": "Services",
+    "about": "À propos",
+    "contact": "Messages"
+  },
+  "AdminAbout": {
+    "title": "Contenu \"À propos\"",
+    "subtitle": "Modifiez le texte et les valeurs affichés sur la page publique, pour chaque langue.",
+    "titleLabel": "Titre",
+    "introLabel": "Introduction",
+    "value1TitleLabel": "Valeur 1 — titre",
+    "value1TextLabel": "Valeur 1 — texte",
+    "value2TitleLabel": "Valeur 2 — titre",
+    "value2TextLabel": "Valeur 2 — texte",
+    "value3TitleLabel": "Valeur 3 — titre",
+    "value3TextLabel": "Valeur 3 — texte",
+    "ctaTitleLabel": "Section finale — titre",
+    "ctaTextLabel": "Section finale — texte",
+    "ctaButtonLabel": "Section finale — texte du bouton",
+    "save": "Enregistrer",
+    "saved": "Enregistré",
+    "saveError": "Impossible d'enregistrer",
+    "loading": "Chargement..."
   },
   "Admin": {
     "title": "Gestion du catalogue",

@@ -44,7 +44,7 @@ export default function CartPage() {
     return (
       <div className="mx-auto max-w-6xl px-4 py-12 text-center">
         <p className="text-slate-600 dark:text-slate-300">{t("empty")}</p>
-        <Link href="/" className="mt-4 inline-block text-brand-600 hover:underline dark:text-brand-100">
+        <Link href="/configuratore" className="mt-4 inline-block text-brand-600 hover:underline dark:text-brand-100">
           {t("backToConfigurator")}
         </Link>
       </div>

@@ -6,9 +6,22 @@
     "menu": "Menu"
   },
   "Nav": {
-    "home": "Configurator",
+    "home": "Home",
+    "configurator": "Configurator",
     "about": "About us",
     "contact": "Contact"
+  },
+  "Home": {
+    "heroTitle": "The simplest way to sell your property in Switzerland",
+    "heroSubtitle": "Rely on ImmoAdvisor: choose only the services you really need, with transparent pricing and no strings attached.",
+    "heroCta": "Go to the configurator",
+    "discoverMore": "Learn more",
+    "howItWorksTitle": "How it works",
+    "howItWorksText": "Browse the available services — listing, photography, documentation, valuation and more — select the ones you need and watch the total update in real time. No fixed bundles: build your own.",
+    "howItWorksCta": "Go to the configurator",
+    "contactTitle": "Need a hand?",
+    "contactText": "Our team is ready to answer your questions and help you choose the right services.",
+    "contactCta": "Contact us"
   },
   "About": {
     "title": "About us",
@@ -122,6 +135,30 @@
       "completed": "Completed",
       "cancelled": "Cancelled"
     }
+  },
+  "AdminNav": {
+    "services": "Services",
+    "about": "About",
+    "contact": "Messages"
+  },
+  "AdminAbout": {
+    "title": "\"About us\" content",
+    "subtitle": "Edit the text and values shown on the public page, for each language.",
+    "titleLabel": "Title",
+    "introLabel": "Intro",
+    "value1TitleLabel": "Value 1 — title",
+    "value1TextLabel": "Value 1 — text",
+    "value2TitleLabel": "Value 2 — title",
+    "value2TextLabel": "Value 2 — text",
+    "value3TitleLabel": "Value 3 — title",
+    "value3TextLabel": "Value 3 — text",
+    "ctaTitleLabel": "Closing section — title",
+    "ctaTextLabel": "Closing section — text",
+    "ctaButtonLabel": "Closing section — button text",
+    "save": "Save",
+    "saved": "Saved",
+    "saveError": "Unable to save",
+    "loading": "Loading..."
   },
   "Admin": {
     "title": "Catalog management",

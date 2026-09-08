@@ -6,9 +6,22 @@
     "menu": "Menu"
   },
   "Nav": {
-    "home": "Configuratore",
+    "home": "Home",
+    "configurator": "Configuratore",
     "about": "Chi siamo",
     "contact": "Contattaci"
+  },
+  "Home": {
+    "heroTitle": "Il modo più semplice per vendere il tuo immobile in Svizzera",
+    "heroSubtitle": "Affidati a ImmoAdvisor: scegli solo i servizi che ti servono davvero, con prezzi trasparenti e nessun vincolo.",
+    "heroCta": "Vai al configuratore",
+    "discoverMore": "Scopri di più",
+    "howItWorksTitle": "Come funziona",
+    "howItWorksText": "Sfoglia i servizi disponibili — annuncio, fotografie, documentazione, valutazione e altro — seleziona quelli che ti servono e vedi il totale aggiornarsi in tempo reale. Nessun pacchetto fisso: costruisci il tuo su misura.",
+    "howItWorksCta": "Vai al configuratore",
+    "contactTitle": "Hai bisogno di una mano?",
+    "contactText": "Il nostro team è pronto a rispondere alle tue domande e aiutarti a scegliere i servizi giusti.",
+    "contactCta": "Contattaci"
   },
   "About": {
     "title": "Chi siamo",
@@ -122,6 +135,30 @@
       "completed": "Completato",
       "cancelled": "Annullato"
     }
+  },
+  "AdminNav": {
+    "services": "Servizi",
+    "about": "Chi siamo",
+    "contact": "Messaggi"
+  },
+  "AdminAbout": {
+    "title": "Contenuto \"Chi siamo\"",
+    "subtitle": "Modifica testo e valori mostrati nella pagina pubblica, per ogni lingua.",
+    "titleLabel": "Titolo",
+    "introLabel": "Introduzione",
+    "value1TitleLabel": "Valore 1 — titolo",
+    "value1TextLabel": "Valore 1 — testo",
+    "value2TitleLabel": "Valore 2 — titolo",
+    "value2TextLabel": "Valore 2 — testo",
+    "value3TitleLabel": "Valore 3 — titolo",
+    "value3TextLabel": "Valore 3 — testo",
+    "ctaTitleLabel": "Sezione finale — titolo",
+    "ctaTextLabel": "Sezione finale — testo",
+    "ctaButtonLabel": "Sezione finale — testo pulsante",
+    "save": "Salva",
+    "saved": "Salvato",
+    "saveError": "Impossibile salvare",
+    "loading": "Caricamento..."
   },
   "Admin": {
     "title": "Gestione catalogo",

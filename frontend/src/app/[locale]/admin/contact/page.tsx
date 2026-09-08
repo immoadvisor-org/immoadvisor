@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 
-import { Link } from "@/i18n/navigation";
 import { useUser } from "@/features/auth/useUser";
 import { useIsAdmin } from "@/features/profile/useIsAdmin";
 import {
@@ -12,6 +11,7 @@ import {
   updateContactSettings,
   type ContactMessage,
 } from "@/features/admin/contactAdminApi";
+import { AdminLayout } from "@/components/admin/AdminLayout";
 import { Button } from "@/components/ui/Button";
 
 export default function AdminContactPage() {
@@ -63,13 +63,8 @@ export default function AdminContactPage() {
   }
 
   return (
-    <div className="mx-auto max-w-4xl px-4 py-12">
-      <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-medium text-slate-900 dark:text-slate-50">{t("messagesTitle")}</h1>
-        <Link href="/admin/services" className="text-sm text-brand-600 hover:underline dark:text-brand-100">
-          {t("catalogLink")} →
-        </Link>
-      </div>
+    <AdminLayout>
+      <h1 className="text-2xl font-medium text-slate-900 dark:text-slate-50">{t("messagesTitle")}</h1>
 
       <div className="mt-6 rounded-xl border border-slate-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900">
         <h2 className="text-base font-semibold text-slate-900 dark:text-slate-50">{t("settingsTitle")}</h2>
@@ -120,6 +115,6 @@ export default function AdminContactPage() {
           </div>
         )}
       </div>
-    </div>
+    </AdminLayout>
   );
 }

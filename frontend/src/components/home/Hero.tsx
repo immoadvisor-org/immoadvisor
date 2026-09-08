@@ -1,8 +1,13 @@
-import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
+import { Button } from "@/components/ui/Button";
 
-export function Hero() {
-  const t = useTranslations("Configurator");
+interface HeroProps {
+  title: string;
+  subtitle: string;
+  cta?: { href: string; label: string };
+}
 
+export function Hero({ title, subtitle, cta }: HeroProps) {
   return (
     <section className="relative flex h-[70vh] min-h-[420px] w-full items-end overflow-hidden sm:h-[80vh]">
       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -16,11 +21,14 @@ export function Hero() {
 
       <div className="relative mx-auto w-full max-w-6xl px-4 pb-14 sm:pb-20">
         <h1 className="font-display max-w-2xl text-4xl font-bold leading-tight text-white sm:text-5xl">
-          {t("title")}
+          {title}
         </h1>
-        <p className="mt-4 max-w-xl text-base leading-relaxed text-white/85 sm:text-lg">
-          {t("subtitle")}
-        </p>
+        <p className="mt-4 max-w-xl text-base leading-relaxed text-white/85 sm:text-lg">{subtitle}</p>
+        {cta && (
+          <Link href={cta.href} className="mt-6 inline-block">
+            <Button>{cta.label}</Button>
+          </Link>
+        )}
       </div>
     </section>
   );
