@@ -1,6 +1,7 @@
 import { useTranslations } from "next-intl";
 
 import { PriceTag } from "@/components/ui/PriceTag";
+import { DeleteIcon, ICON_BUTTON_DANGER_CLASS } from "@/components/admin/icons";
 import type { Service } from "@/features/services/types";
 
 interface CartItemRowProps {
@@ -19,10 +20,11 @@ export function CartItemRow({ service, onRemove }: CartItemRowProps) {
       </div>
       <button
         onClick={() => onRemove(service.id)}
-        className="text-sm text-slate-400 hover:text-red-600 dark:text-slate-500 dark:hover:text-red-400"
+        className={ICON_BUTTON_DANGER_CLASS}
         aria-label={t("removeAria", { name: service.name })}
+        title={t("remove")}
       >
-        {t("remove")}
+        <DeleteIcon />
       </button>
     </div>
   );
