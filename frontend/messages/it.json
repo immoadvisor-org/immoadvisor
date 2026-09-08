@@ -114,7 +114,27 @@
     "submitSignUp": "Registrati",
     "submitting": "Attendere...",
     "toggleToSignUp": "Non hai un account? Registrati",
-    "toggleToSignIn": "Hai già un account? Accedi"
+    "toggleToSignIn": "Hai già un account? Accedi",
+    "forgotPassword": "Password dimenticata?",
+    "resetTitle": "Reimposta la password",
+    "resetSubtitle": "Inserisci la tua email: ti invieremo un link per reimpostare la password.",
+    "resetSubmit": "Invia link di reimpostazione",
+    "resetSuccessTitle": "Controlla la tua email",
+    "resetSuccessText": "Se l'indirizzo inserito è registrato, riceverai a breve un'email con il link per reimpostare la password. Controlla anche nello spam.",
+    "backToSignIn": "Torna al login"
+  },
+  "ResetPassword": {
+    "title": "Imposta una nuova password",
+    "subtitle": "Scegli una nuova password per il tuo account.",
+    "newPasswordLabel": "Nuova password",
+    "confirmPasswordLabel": "Conferma password",
+    "submit": "Salva nuova password",
+    "submitting": "Salvataggio...",
+    "successTitle": "Password aggiornata",
+    "successText": "La tua password è stata aggiornata. Ti stiamo reindirizzando al tuo account...",
+    "errorMinLength": "La password deve contenere almeno 8 caratteri",
+    "errorMismatch": "Le password non coincidono",
+    "backToSignIn": "Torna al login"
   },
   "Account": {
     "title": "Il mio account",

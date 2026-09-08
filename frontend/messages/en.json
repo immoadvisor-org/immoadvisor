@@ -114,7 +114,27 @@
     "submitSignUp": "Sign up",
     "submitting": "Please wait...",
     "toggleToSignUp": "Don't have an account? Sign up",
-    "toggleToSignIn": "Already have an account? Sign in"
+    "toggleToSignIn": "Already have an account? Sign in",
+    "forgotPassword": "Forgot password?",
+    "resetTitle": "Reset your password",
+    "resetSubtitle": "Enter your email: we'll send you a link to reset your password.",
+    "resetSubmit": "Send reset link",
+    "resetSuccessTitle": "Check your email",
+    "resetSuccessText": "If that address is registered, you'll receive an email shortly with a link to reset your password. Check your spam folder too.",
+    "backToSignIn": "Back to sign in"
+  },
+  "ResetPassword": {
+    "title": "Set a new password",
+    "subtitle": "Choose a new password for your account.",
+    "newPasswordLabel": "New password",
+    "confirmPasswordLabel": "Confirm password",
+    "submit": "Save new password",
+    "submitting": "Saving...",
+    "successTitle": "Password updated",
+    "successText": "Your password has been updated. Redirecting you to your account...",
+    "errorMinLength": "Password must be at least 8 characters",
+    "errorMismatch": "Passwords do not match",
+    "backToSignIn": "Back to sign in"
   },
   "Account": {
     "title": "My account",
