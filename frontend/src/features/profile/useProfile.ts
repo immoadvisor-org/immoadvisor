@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import type { User } from "@supabase/supabase-js";
 
 import { supabase } from "@/features/auth/supabaseClient";
@@ -16,14 +16,26 @@ export interface Profile {
   avs_number: string | null;
 }
 
+const PROFILE_COLUMNS = "first_name, last_name, phone, address_line, postal_code, city, canton, avs_number";
+
 interface UseProfileResult {
   profile: Profile | null;
   isLoading: boolean;
+  refetch: () => Promise<void>;
 }
 
 export function useProfile(user: User | null): UseProfileResult {
   const [profile, setProfile] = useState<Profile | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+
+  const refetch = useCallback(async () => {
+    if (!user) {
+      setProfile(null);
+      return;
+    }
+    const { data } = await supabase.from("profiles").select(PROFILE_COLUMNS).eq("id", user.id).single();
+    setProfile(data);
+  }, [user]);
 
   useEffect(() => {
     if (!user) {
@@ -37,7 +49,7 @@ export function useProfile(user: User | null): UseProfileResult {
 
     supabase
       .from("profiles")
-      .select("first_name, last_name, phone, address_line, postal_code, city, canton, avs_number")
+      .select(PROFILE_COLUMNS)
       .eq("id", user.id)
       .single()
       .then(({ data }) => {
@@ -52,5 +64,5 @@ export function useProfile(user: User | null): UseProfileResult {
     };
   }, [user]);
 
-  return { profile, isLoading };
+  return { profile, isLoading, refetch };
 }

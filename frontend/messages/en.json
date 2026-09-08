@@ -174,7 +174,16 @@
     "phone": "Phone",
     "address": "Address",
     "canton": "Canton",
-    "avsNumber": "AVS number"
+    "avsNumber": "AVS number",
+    "firstNameLabel": "First name",
+    "lastNameLabel": "Last name",
+    "postalCodeLabel": "Postal code",
+    "cityLabel": "City",
+    "editButton": "Edit my details",
+    "editSave": "Save",
+    "editSaving": "Saving...",
+    "editCancel": "Cancel",
+    "editError": "Unable to save your details, please try again."
   },
   "Orders": {
     "title": "My purchases",

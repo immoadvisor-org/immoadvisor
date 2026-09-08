@@ -174,7 +174,16 @@
     "phone": "Telefono",
     "address": "Indirizzo",
     "canton": "Cantone",
-    "avsNumber": "Numero AVS"
+    "avsNumber": "Numero AVS",
+    "firstNameLabel": "Nome",
+    "lastNameLabel": "Cognome",
+    "postalCodeLabel": "NPA",
+    "cityLabel": "Località",
+    "editButton": "Modifica i miei dati",
+    "editSave": "Salva",
+    "editSaving": "Salvataggio...",
+    "editCancel": "Annulla",
+    "editError": "Impossibile salvare i dati, riprova."
   },
   "Orders": {
     "title": "I miei acquisti",

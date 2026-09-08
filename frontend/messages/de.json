@@ -174,7 +174,16 @@
     "phone": "Telefon",
     "address": "Adresse",
     "canton": "Kanton",
-    "avsNumber": "AHV-Nummer"
+    "avsNumber": "AHV-Nummer",
+    "firstNameLabel": "Vorname",
+    "lastNameLabel": "Nachname",
+    "postalCodeLabel": "PLZ",
+    "cityLabel": "Ort",
+    "editButton": "Meine Daten bearbeiten",
+    "editSave": "Speichern",
+    "editSaving": "Wird gespeichert...",
+    "editCancel": "Abbrechen",
+    "editError": "Daten konnten nicht gespeichert werden, bitte versuchen Sie es erneut."
   },
   "Orders": {
     "title": "Meine Käufe",

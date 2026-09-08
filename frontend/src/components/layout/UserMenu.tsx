@@ -35,9 +35,14 @@ export function UserMenu({ user }: UserMenuProps) {
         type="button"
         onClick={() => setIsOpen((open) => !open)}
         aria-expanded={isOpen}
-        className="max-w-[7rem] truncate rounded-lg px-1 py-1 text-sm text-slate-700 hover:text-slate-900 dark:text-slate-300 dark:hover:text-slate-50 sm:max-w-[10rem]"
+        aria-label={displayName}
+        title={displayName}
+        className="flex h-9 w-9 items-center justify-center rounded-full text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800"
       >
-        {displayName}
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="12" cy="8" r="4" />
+          <path d="M4 20c0-4.4 3.6-7 8-7s8 2.6 8 7" />
+        </svg>
       </button>
 
       {isOpen && (
