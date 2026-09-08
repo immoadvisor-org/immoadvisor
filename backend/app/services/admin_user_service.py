@@ -1,6 +1,9 @@
+import uuid
+
 from sqlalchemy import text
 from sqlalchemy.orm import Session
 
+from app.models.profile import Profile
 from app.schemas.profile import ProfileRead
 
 # Richiede un raw query con join sullo schema auth: public.profiles non
@@ -20,3 +23,8 @@ _LIST_USERS_SQL = text("""
 def list_users(db: Session) -> list[ProfileRead]:
     rows = db.execute(_LIST_USERS_SQL).mappings().all()
     return [ProfileRead(**row) for row in rows]
+
+
+def is_admin_user(db: Session, user_id: uuid.UUID) -> bool:
+    profile = db.get(Profile, user_id)
+    return bool(profile and profile.is_admin)

@@ -96,15 +96,17 @@ export default function AdminUsersPage() {
                     {new Date(u.created_at).toLocaleDateString()}
                   </td>
                   <td className="px-4 py-3 text-right">
-                    <button
-                      type="button"
-                      onClick={() => handleDelete(u)}
-                      aria-label={t("delete")}
-                      title={t("delete")}
-                      className={ICON_BUTTON_DANGER_CLASS}
-                    >
-                      <DeleteIcon />
-                    </button>
+                    {!u.is_admin && (
+                      <button
+                        type="button"
+                        onClick={() => handleDelete(u)}
+                        aria-label={t("delete")}
+                        title={t("delete")}
+                        className={ICON_BUTTON_DANGER_CLASS}
+                      >
+                        <DeleteIcon />
+                      </button>
+                    )}
                   </td>
                 </tr>
               ))}
