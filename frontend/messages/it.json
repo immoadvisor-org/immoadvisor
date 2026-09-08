@@ -121,7 +121,24 @@
     "resetSubmit": "Invia link di reimpostazione",
     "resetSuccessTitle": "Controlla la tua email",
     "resetSuccessText": "Se l'indirizzo inserito è registrato, riceverai a breve un'email con il link per reimpostare la password. Controlla anche nello spam.",
-    "backToSignIn": "Torna al login"
+    "backToSignIn": "Torna al login",
+    "firstName": "Nome",
+    "lastName": "Cognome",
+    "phone": "Telefono",
+    "addressLine": "Indirizzo (via e numero)",
+    "postalCode": "NPA",
+    "city": "Località",
+    "canton": "Cantone",
+    "cantonPlaceholder": "Seleziona un cantone",
+    "avsNumber": "Numero AVS (facoltativo)",
+    "avsNumberHint": "L'equivalente svizzero del codice fiscale italiano. Facoltativo.",
+    "termsPrefix": "Accetto i",
+    "termsLink": "Termini e condizioni",
+    "errorTermsRequired": "Devi accettare i Termini e condizioni per registrarti"
+  },
+  "Terms": {
+    "title": "Termini e condizioni",
+    "loading": "Caricamento..."
   },
   "ResetPassword": {
     "title": "Imposta una nuova password",
@@ -141,7 +158,13 @@
     "email": "Email",
     "myOrders": "I miei acquisti",
     "logout": "Esci",
-    "loading": "Caricamento..."
+    "loading": "Caricamento...",
+    "deleteAccountTitle": "Elimina account",
+    "deleteAccountText": "Questa azione è irreversibile: il tuo account e i tuoi dati personali verranno eliminati definitivamente. Lo storico dei tuoi ordini verrà mantenuto per obblighi contabili.",
+    "deleteAccountButton": "Elimina il mio account",
+    "deleteAccountLoading": "Eliminazione in corso...",
+    "deleteAccountConfirm": "Sei sicuro di voler eliminare il tuo account? L'azione non è reversibile.",
+    "deleteAccountError": "Impossibile eliminare l'account, riprova."
   },
   "Orders": {
     "title": "I miei acquisti",
@@ -159,8 +182,33 @@
   "AdminNav": {
     "services": "Servizi",
     "orders": "Ordini",
+    "users": "Utenti",
     "about": "Chi siamo",
-    "contact": "Messaggi"
+    "contact": "Messaggi",
+    "legal": "Legale"
+  },
+  "AdminUsers": {
+    "title": "Utenti",
+    "subtitle": "Elenco di tutti gli utenti registrati.",
+    "loading": "Caricamento...",
+    "noUsers": "Nessun utente trovato.",
+    "columnName": "Nome",
+    "columnEmail": "Email",
+    "columnPhone": "Telefono",
+    "columnAddress": "Indirizzo",
+    "columnRegisteredAt": "Registrato il",
+    "adminBadge": "Admin",
+    "delete": "Elimina",
+    "deleteConfirm": "Eliminare definitivamente l'utente {email}? L'azione non è reversibile.",
+    "deleteError": "Impossibile eliminare l'utente"
+  },
+  "AdminLegal": {
+    "title": "Termini e condizioni",
+    "subtitle": "Modifica il testo mostrato agli utenti in fase di registrazione, per ogni lingua.",
+    "loading": "Caricamento...",
+    "save": "Salva",
+    "saved": "Salvato",
+    "saveError": "Impossibile salvare"
   },
   "AdminOrders": {
     "title": "Ordini",

@@ -121,7 +121,24 @@
     "resetSubmit": "Link zum Zurücksetzen senden",
     "resetSuccessTitle": "Prüfen Sie Ihre E-Mail",
     "resetSuccessText": "Falls diese Adresse registriert ist, erhalten Sie in Kürze eine E-Mail mit einem Link zum Zurücksetzen Ihres Passworts. Prüfen Sie auch Ihren Spam-Ordner.",
-    "backToSignIn": "Zurück zur Anmeldung"
+    "backToSignIn": "Zurück zur Anmeldung",
+    "firstName": "Vorname",
+    "lastName": "Nachname",
+    "phone": "Telefon",
+    "addressLine": "Adresse (Strasse und Nummer)",
+    "postalCode": "PLZ",
+    "city": "Ort",
+    "canton": "Kanton",
+    "cantonPlaceholder": "Kanton auswählen",
+    "avsNumber": "AHV-Nummer (optional)",
+    "avsNumberHint": "Das schweizerische Äquivalent zur italienischen Steuernummer. Optional.",
+    "termsPrefix": "Ich akzeptiere die",
+    "termsLink": "Allgemeinen Geschäftsbedingungen",
+    "errorTermsRequired": "Sie müssen die Allgemeinen Geschäftsbedingungen akzeptieren, um sich zu registrieren"
+  },
+  "Terms": {
+    "title": "Allgemeine Geschäftsbedingungen",
+    "loading": "Wird geladen..."
   },
   "ResetPassword": {
     "title": "Neues Passwort festlegen",
@@ -141,7 +158,13 @@
     "email": "E-Mail",
     "myOrders": "Meine Käufe",
     "logout": "Abmelden",
-    "loading": "Wird geladen..."
+    "loading": "Wird geladen...",
+    "deleteAccountTitle": "Konto löschen",
+    "deleteAccountText": "Diese Aktion ist unwiderruflich: Ihr Konto und Ihre persönlichen Daten werden endgültig gelöscht. Ihr Bestellverlauf wird aus buchhalterischen Gründen aufbewahrt.",
+    "deleteAccountButton": "Mein Konto löschen",
+    "deleteAccountLoading": "Wird gelöscht...",
+    "deleteAccountConfirm": "Sind Sie sicher, dass Sie Ihr Konto löschen möchten? Diese Aktion kann nicht rückgängig gemacht werden.",
+    "deleteAccountError": "Konto konnte nicht gelöscht werden, bitte versuchen Sie es erneut."
   },
   "Orders": {
     "title": "Meine Käufe",
@@ -159,8 +182,33 @@
   "AdminNav": {
     "services": "Dienstleistungen",
     "orders": "Bestellungen",
+    "users": "Benutzer",
     "about": "Über uns",
-    "contact": "Nachrichten"
+    "contact": "Nachrichten",
+    "legal": "Rechtliches"
+  },
+  "AdminUsers": {
+    "title": "Benutzer",
+    "subtitle": "Liste aller registrierten Benutzer.",
+    "loading": "Wird geladen...",
+    "noUsers": "Keine Benutzer gefunden.",
+    "columnName": "Name",
+    "columnEmail": "E-Mail",
+    "columnPhone": "Telefon",
+    "columnAddress": "Adresse",
+    "columnRegisteredAt": "Registriert am",
+    "adminBadge": "Admin",
+    "delete": "Löschen",
+    "deleteConfirm": "Benutzer {email} endgültig löschen? Diese Aktion kann nicht rückgängig gemacht werden.",
+    "deleteError": "Benutzer konnte nicht gelöscht werden"
+  },
+  "AdminLegal": {
+    "title": "Allgemeine Geschäftsbedingungen",
+    "subtitle": "Bearbeiten Sie den Text, der Nutzern bei der Registrierung angezeigt wird, für jede Sprache.",
+    "loading": "Wird geladen...",
+    "save": "Speichern",
+    "saved": "Gespeichert",
+    "saveError": "Speichern fehlgeschlagen"
   },
   "AdminOrders": {
     "title": "Bestellungen",

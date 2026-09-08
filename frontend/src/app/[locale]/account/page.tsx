@@ -1,19 +1,22 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 
 import { useRouter, Link } from "@/i18n/navigation";
 import { useUser } from "@/features/auth/useUser";
 import { useIsAdmin } from "@/features/profile/useIsAdmin";
 import { supabase } from "@/features/auth/supabaseClient";
+import { deleteMyAccount } from "@/features/auth/accountApi";
 import { Button } from "@/components/ui/Button";
 
 export default function AccountPage() {
   const t = useTranslations("Account");
   const router = useRouter();
-  const { user, isLoading } = useUser();
+  const { user, session, isLoading } = useUser();
   const isAdmin = useIsAdmin(user);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [deleteError, setDeleteError] = useState<string | null>(null);
 
   useEffect(() => {
     if (!isLoading && !user) {
@@ -28,6 +31,22 @@ export default function AccountPage() {
   async function handleLogout() {
     await supabase.auth.signOut();
     router.push("/");
+  }
+
+  async function handleDeleteAccount() {
+    if (!session?.access_token) return;
+    if (!window.confirm(t("deleteAccountConfirm"))) return;
+
+    setIsDeleting(true);
+    setDeleteError(null);
+    try {
+      await deleteMyAccount(session.access_token);
+      await supabase.auth.signOut();
+      router.push("/");
+    } catch (err) {
+      setDeleteError(err instanceof Error ? err.message : t("deleteAccountError"));
+      setIsDeleting(false);
+    }
   }
 
   return (
@@ -52,6 +71,20 @@ export default function AccountPage() {
         </div>
         <Button variant="secondary" onClick={handleLogout}>
           {t("logout")}
+        </Button>
+      </div>
+
+      <div className="mt-10 rounded-xl border border-red-200 bg-red-50 p-6 dark:border-red-900/50 dark:bg-red-950/20">
+        <h2 className="text-sm font-semibold text-red-700 dark:text-red-300">{t("deleteAccountTitle")}</h2>
+        <p className="mt-1 text-sm text-red-600 dark:text-red-400">{t("deleteAccountText")}</p>
+        {deleteError && <p className="mt-2 text-sm text-red-600 dark:text-red-400">{deleteError}</p>}
+        <Button
+          variant="secondary"
+          onClick={handleDeleteAccount}
+          disabled={isDeleting}
+          className="mt-3 border border-red-300 text-red-700 hover:bg-red-100 dark:border-red-800 dark:text-red-300 dark:hover:bg-red-900/30"
+        >
+          {isDeleting ? t("deleteAccountLoading") : t("deleteAccountButton")}
         </Button>
       </div>
     </div>

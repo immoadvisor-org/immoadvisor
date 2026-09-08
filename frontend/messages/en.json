@@ -121,7 +121,24 @@
     "resetSubmit": "Send reset link",
     "resetSuccessTitle": "Check your email",
     "resetSuccessText": "If that address is registered, you'll receive an email shortly with a link to reset your password. Check your spam folder too.",
-    "backToSignIn": "Back to sign in"
+    "backToSignIn": "Back to sign in",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "phone": "Phone",
+    "addressLine": "Address (street and number)",
+    "postalCode": "Postal code",
+    "city": "City",
+    "canton": "Canton",
+    "cantonPlaceholder": "Select a canton",
+    "avsNumber": "AVS number (optional)",
+    "avsNumberHint": "The Swiss equivalent of the Italian tax code. Optional.",
+    "termsPrefix": "I accept the",
+    "termsLink": "Terms and conditions",
+    "errorTermsRequired": "You must accept the Terms and conditions to sign up"
+  },
+  "Terms": {
+    "title": "Terms and conditions",
+    "loading": "Loading..."
   },
   "ResetPassword": {
     "title": "Set a new password",
@@ -141,7 +158,13 @@
     "email": "Email",
     "myOrders": "My purchases",
     "logout": "Log out",
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "deleteAccountTitle": "Delete account",
+    "deleteAccountText": "This action is irreversible: your account and personal data will be permanently deleted. Your order history will be kept for accounting purposes.",
+    "deleteAccountButton": "Delete my account",
+    "deleteAccountLoading": "Deleting...",
+    "deleteAccountConfirm": "Are you sure you want to delete your account? This action cannot be undone.",
+    "deleteAccountError": "Unable to delete the account, please try again."
   },
   "Orders": {
     "title": "My purchases",
@@ -159,8 +182,33 @@
   "AdminNav": {
     "services": "Services",
     "orders": "Orders",
+    "users": "Users",
     "about": "About",
-    "contact": "Messages"
+    "contact": "Messages",
+    "legal": "Legal"
+  },
+  "AdminUsers": {
+    "title": "Users",
+    "subtitle": "List of all registered users.",
+    "loading": "Loading...",
+    "noUsers": "No users found.",
+    "columnName": "Name",
+    "columnEmail": "Email",
+    "columnPhone": "Phone",
+    "columnAddress": "Address",
+    "columnRegisteredAt": "Registered on",
+    "adminBadge": "Admin",
+    "delete": "Delete",
+    "deleteConfirm": "Permanently delete the user {email}? This action cannot be undone.",
+    "deleteError": "Unable to delete the user"
+  },
+  "AdminLegal": {
+    "title": "Terms and conditions",
+    "subtitle": "Edit the text shown to users when they sign up, for each language.",
+    "loading": "Loading...",
+    "save": "Save",
+    "saved": "Saved",
+    "saveError": "Unable to save"
   },
   "AdminOrders": {
     "title": "Orders",

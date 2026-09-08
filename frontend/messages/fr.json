@@ -121,7 +121,24 @@
     "resetSubmit": "Envoyer le lien de réinitialisation",
     "resetSuccessTitle": "Vérifiez votre e-mail",
     "resetSuccessText": "Si cette adresse est enregistrée, vous recevrez sous peu un e-mail avec un lien pour réinitialiser votre mot de passe. Vérifiez aussi vos courriers indésirables.",
-    "backToSignIn": "Retour à la connexion"
+    "backToSignIn": "Retour à la connexion",
+    "firstName": "Prénom",
+    "lastName": "Nom",
+    "phone": "Téléphone",
+    "addressLine": "Adresse (rue et numéro)",
+    "postalCode": "NPA",
+    "city": "Localité",
+    "canton": "Canton",
+    "cantonPlaceholder": "Sélectionnez un canton",
+    "avsNumber": "Numéro AVS (facultatif)",
+    "avsNumberHint": "L'équivalent suisse du code fiscal italien. Facultatif.",
+    "termsPrefix": "J'accepte les",
+    "termsLink": "Conditions générales",
+    "errorTermsRequired": "Vous devez accepter les Conditions générales pour vous inscrire"
+  },
+  "Terms": {
+    "title": "Conditions générales",
+    "loading": "Chargement..."
   },
   "ResetPassword": {
     "title": "Définir un nouveau mot de passe",
@@ -141,7 +158,13 @@
     "email": "E-mail",
     "myOrders": "Mes achats",
     "logout": "Se déconnecter",
-    "loading": "Chargement..."
+    "loading": "Chargement...",
+    "deleteAccountTitle": "Supprimer le compte",
+    "deleteAccountText": "Cette action est irréversible : votre compte et vos données personnelles seront définitivement supprimés. L'historique de vos commandes sera conservé à des fins comptables.",
+    "deleteAccountButton": "Supprimer mon compte",
+    "deleteAccountLoading": "Suppression en cours...",
+    "deleteAccountConfirm": "Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible.",
+    "deleteAccountError": "Impossible de supprimer le compte, veuillez réessayer."
   },
   "Orders": {
     "title": "Mes achats",
@@ -159,8 +182,33 @@
   "AdminNav": {
     "services": "Services",
     "orders": "Commandes",
+    "users": "Utilisateurs",
     "about": "À propos",
-    "contact": "Messages"
+    "contact": "Messages",
+    "legal": "Mentions légales"
+  },
+  "AdminUsers": {
+    "title": "Utilisateurs",
+    "subtitle": "Liste de tous les utilisateurs inscrits.",
+    "loading": "Chargement...",
+    "noUsers": "Aucun utilisateur trouvé.",
+    "columnName": "Nom",
+    "columnEmail": "E-mail",
+    "columnPhone": "Téléphone",
+    "columnAddress": "Adresse",
+    "columnRegisteredAt": "Inscrit le",
+    "adminBadge": "Admin",
+    "delete": "Supprimer",
+    "deleteConfirm": "Supprimer définitivement l'utilisateur {email} ? Cette action est irréversible.",
+    "deleteError": "Impossible de supprimer l'utilisateur"
+  },
+  "AdminLegal": {
+    "title": "Conditions générales",
+    "subtitle": "Modifiez le texte affiché aux utilisateurs lors de l'inscription, pour chaque langue.",
+    "loading": "Chargement...",
+    "save": "Enregistrer",
+    "saved": "Enregistré",
+    "saveError": "Impossible d'enregistrer"
   },
   "AdminOrders": {
     "title": "Commandes",
