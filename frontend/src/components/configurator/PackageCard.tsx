@@ -1,0 +1,155 @@
+"use client";
+
+import { useState } from "react";
+import { useLocale, useTranslations } from "next-intl";
+
+import { Link } from "@/i18n/navigation";
+import { Button } from "@/components/ui/Button";
+import { PriceTag } from "@/components/ui/PriceTag";
+import { useUser } from "@/features/auth/useUser";
+import { startPackageCheckout } from "@/features/checkout/checkoutApi";
+import type { SalesPackage } from "@/features/salesPackages/salesPackagesApi";
+
+export function Check() {
+  return (
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="mx-auto text-brand-600 dark:text-brand-200"
+      aria-hidden="true"
+    >
+      <path d="M20 6L9 17l-5-5" />
+    </svg>
+  );
+}
+
+export function PackageCard({ pkg, buyLabel }: { pkg: SalesPackage; buyLabel: string }) {
+  const t = useTranslations("SalesPackages");
+  const locale = useLocale();
+  const { user, session, isLoading: isLoadingUser } = useUser();
+  // Il PDF descrive i pacchetti come una quota mensile: il pagamento a rate
+  // è quindi proposto per primo (selezionato di default), con il pagamento
+  // in un'unica soluzione come alternativa.
+  const [paymentMode, setPaymentMode] = useState<"installments" | "single">("installments");
+  const [isCheckingOut, setIsCheckingOut] = useState(false);
+  const [checkoutError, setCheckoutError] = useState<string | null>(null);
+
+  const monthlyPrice = Number(pkg.monthly_price_chf);
+  const totalPrice = monthlyPrice * pkg.installments;
+
+  async function handleBuy() {
+    if (!session) return;
+    setIsCheckingOut(true);
+    setCheckoutError(null);
+    try {
+      const { checkout_url } = await startPackageCheckout(pkg.id, paymentMode, locale, session.access_token);
+      window.location.href = checkout_url;
+    } catch (err) {
+      setCheckoutError(err instanceof Error ? err.message : t("checkoutError"));
+      setIsCheckingOut(false);
+    }
+  }
+
+  return (
+    <div
+      className={`flex flex-col rounded-2xl border bg-white p-6 dark:bg-neutral-900 ${
+        pkg.featured
+          ? "border-brand-500 shadow-lg shadow-brand-100 dark:shadow-none"
+          : "border-slate-200 shadow-sm dark:border-neutral-800"
+      }`}
+    >
+      {pkg.featured && pkg.featured_label && (
+        <span className="mb-3 inline-block w-fit rounded-full bg-brand-500 px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wide text-white">
+          {pkg.featured_label}
+        </span>
+      )}
+      <h3 className="text-lg font-semibold text-slate-900 dark:text-neutral-50">{pkg.name}</h3>
+
+      {pkg.installments > 1 && (
+        <div className="mt-3 flex rounded-lg border border-slate-200 p-0.5 text-xs font-medium dark:border-neutral-700">
+          <button
+            type="button"
+            onClick={() => setPaymentMode("installments")}
+            className={`flex-1 rounded-md px-2 py-1.5 transition-colors ${
+              paymentMode === "installments"
+                ? "bg-brand-500 text-white"
+                : "text-slate-500 hover:text-slate-800 dark:text-neutral-400 dark:hover:text-neutral-100"
+            }`}
+          >
+            {t("paymentModeInstallments", { count: pkg.installments })}
+          </button>
+          <button
+            type="button"
+            onClick={() => setPaymentMode("single")}
+            className={`flex-1 rounded-md px-2 py-1.5 transition-colors ${
+              paymentMode === "single"
+                ? "bg-brand-500 text-white"
+                : "text-slate-500 hover:text-slate-800 dark:text-neutral-400 dark:hover:text-neutral-100"
+            }`}
+          >
+            {t("paymentModeSingle")}
+          </button>
+        </div>
+      )}
+
+      <div className="mt-3 flex items-baseline gap-1">
+        <PriceTag
+          amountChf={paymentMode === "installments" ? monthlyPrice : totalPrice}
+          className="text-2xl font-bold text-slate-900 dark:text-neutral-50"
+        />
+        <span className="text-sm text-slate-500 dark:text-neutral-400">
+          {paymentMode === "installments" ? t("perMonth") : t("oneTime")}
+        </span>
+      </div>
+      {paymentMode === "installments" && pkg.installments > 1 && (
+        <p className="mt-1 text-xs text-slate-500 dark:text-neutral-400">
+          {t("installmentsBreakdown", { count: pkg.installments, total: totalPrice.toLocaleString("de-CH") })}
+        </p>
+      )}
+
+      {pkg.includes_label && (
+        <p className="mt-4 text-xs font-medium uppercase tracking-wide text-slate-400 dark:text-neutral-500">
+          {pkg.includes_label}
+        </p>
+      )}
+
+      <ul className="mt-3 flex-1 space-y-2">
+        {pkg.features.map((feature, index) => (
+          <li key={index} className="flex items-start gap-2 text-sm text-slate-600 dark:text-neutral-300">
+            <span className="mt-0.5 flex-shrink-0 text-brand-600 dark:text-brand-200">
+              <Check />
+            </span>
+            {feature}
+          </li>
+        ))}
+      </ul>
+
+      {checkoutError && <p className="mt-3 text-xs text-red-600 dark:text-red-400">{checkoutError}</p>}
+
+      {!isLoadingUser && !user && (
+        <p className="mt-4 text-xs text-slate-500 dark:text-neutral-400">
+          {t("loginRequiredPrefix")}{" "}
+          <Link href="/login" className="text-brand-600 hover:underline dark:text-brand-100">
+            {t("loginRequiredLink")}
+          </Link>{" "}
+          {t("loginRequiredSuffix")}
+        </p>
+      )}
+
+      <Button
+        variant={pkg.featured ? "primary" : "secondary"}
+        className="mt-4 w-full"
+        onClick={handleBuy}
+        disabled={!user || isCheckingOut}
+      >
+        {isCheckingOut ? t("buying") : buyLabel}
+      </Button>
+    </div>
+  );
+}

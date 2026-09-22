@@ -26,7 +26,10 @@
     "listingsCta": "Alle Inserate ansehen",
     "servicesGalleryTitle": "Unsere gefragtesten Dienstleistungen",
     "servicesGallerySubtitle": "Werfen Sie einen Blick auf die beliebtesten Dienstleistungen und fügen Sie sie direkt hier Ihrem Warenkorb hinzu.",
-    "servicesGalleryCta": "Zum vollständigen Konfigurator"
+    "servicesGalleryCta": "Zum vollständigen Konfigurator",
+    "packagesGalleryTitle": "Verkaufspakete",
+    "packagesGallerySubtitle": "Wählen Sie das passende Rundum-Paket für den Verkauf Ihrer Immobilie – in Raten oder als Einmalzahlung.",
+    "packagesGalleryCta": "Alle Pakete ansehen"
   },
   "About": {
     "title": "Über uns",

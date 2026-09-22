@@ -26,7 +26,10 @@
     "listingsCta": "See all listings",
     "servicesGalleryTitle": "Our most popular services",
     "servicesGallerySubtitle": "Take a look at our most chosen services and add them to your cart right from here.",
-    "servicesGalleryCta": "Go to the full configurator"
+    "servicesGalleryCta": "Go to the full configurator",
+    "packagesGalleryTitle": "Sales packages",
+    "packagesGallerySubtitle": "Choose the all-in-one package that best fits selling your property, in instalments or in full.",
+    "packagesGalleryCta": "See all packages"
   },
   "About": {
     "title": "About us",

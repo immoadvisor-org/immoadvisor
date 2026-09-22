@@ -26,7 +26,10 @@
     "listingsCta": "Voir toutes les annonces",
     "servicesGalleryTitle": "Nos services les plus demandés",
     "servicesGallerySubtitle": "Jetez un œil à nos services les plus choisis et ajoutez-les à votre panier directement ici.",
-    "servicesGalleryCta": "Accéder au configurateur complet"
+    "servicesGalleryCta": "Accéder au configurateur complet",
+    "packagesGalleryTitle": "Forfaits de vente",
+    "packagesGallerySubtitle": "Choisissez le forfait tout compris le mieux adapté à la vente de votre bien, en plusieurs mensualités ou en une fois.",
+    "packagesGalleryCta": "Voir tous les forfaits"
   },
   "About": {
     "title": "À propos",

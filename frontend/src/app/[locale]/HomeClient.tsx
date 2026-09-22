@@ -6,6 +6,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { Hero } from "@/components/home/Hero";
 import { ListingsCarousel } from "@/components/home/ListingsCarousel";
+import { PackagesGallery } from "@/components/home/PackagesGallery";
 import { ServicesGallery } from "@/components/home/ServicesGallery";
 import { Button } from "@/components/ui/Button";
 import { getAboutContent, type AboutContent } from "@/features/about/aboutApi";
@@ -77,6 +78,8 @@ export function HomeClient() {
           )}
         </section>
       )}
+
+      <PackagesGallery />
 
       <ServicesGallery />
 

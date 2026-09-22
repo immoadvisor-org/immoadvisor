@@ -26,7 +26,10 @@
     "listingsCta": "Vedi tutti gli annunci",
     "servicesGalleryTitle": "I servizi più richiesti",
     "servicesGallerySubtitle": "Dai un'occhiata ai servizi più scelti e aggiungili al carrello direttamente da qui.",
-    "servicesGalleryCta": "Vai al configuratore completo"
+    "servicesGalleryCta": "Vai al configuratore completo",
+    "packagesGalleryTitle": "Pacchetti di vendita",
+    "packagesGallerySubtitle": "Scegli il pacchetto tutto compreso più adatto per vendere il tuo immobile, a rate o in un'unica soluzione.",
+    "packagesGalleryCta": "Vedi tutti i pacchetti"
   },
   "About": {
     "title": "Chi siamo",
