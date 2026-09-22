@@ -8,6 +8,7 @@ import { Link } from "@/i18n/navigation";
 import { useUser } from "@/features/auth/useUser";
 import { useIsAdmin } from "@/features/profile/useIsAdmin";
 import {
+  cancelOrderSubscription,
   getAdminOrder,
   refundOrder,
   updateFulfillmentStatus,
@@ -29,6 +30,7 @@ export default function AdminOrderDetailPage() {
   const [order, setOrder] = useState<AdminOrder | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isRefunding, setIsRefunding] = useState(false);
+  const [isCancellingSubscription, setIsCancellingSubscription] = useState(false);
   const [isUpdatingFulfillment, setIsUpdatingFulfillment] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -62,6 +64,22 @@ export default function AdminOrderDetailPage() {
     }
   }
 
+  async function handleCancelSubscription() {
+    if (!accessToken || !order) return;
+    if (!window.confirm(t("cancelSubscriptionConfirm"))) return;
+
+    setIsCancellingSubscription(true);
+    setError(null);
+    try {
+      await cancelOrderSubscription(order.id, accessToken);
+      loadOrder();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : t("cancelSubscriptionError"));
+    } finally {
+      setIsCancellingSubscription(false);
+    }
+  }
+
   async function handleTakeCharge() {
     if (!accessToken || !order) return;
     setIsUpdatingFulfillment(true);
@@ -89,6 +107,9 @@ export default function AdminOrderDetailPage() {
       setIsUpdatingFulfillment(false);
     }
   }
+
+  const isOrderPayable =
+    !!order && (order.payment_status === "paid" || order.payment_status === "active" || order.payment_status === "completed");
 
   if (isLoadingUser) {
     return <p className="mx-auto max-w-6xl px-4 py-12 text-sm text-slate-500 dark:text-neutral-400">{tAdmin("loading")}</p>;
@@ -146,6 +167,11 @@ export default function AdminOrderDetailPage() {
             <p className="mt-1 text-slate-700 dark:text-neutral-300">
               {tOrders(`paymentStatus.${order.payment_status}`)}
             </p>
+            {order.payment_mode === "installments" && (
+              <p className="mt-1 text-sm text-slate-500 dark:text-neutral-400">
+                {t("installmentsProgress", { paid: order.installments_paid, total: order.installments_total ?? 0 })}
+              </p>
+            )}
             {order.payment_status === "paid" && (
               <Button variant="secondary" className="mt-3" onClick={handleRefund} disabled={isRefunding}>
                 {isRefunding ? t("refunding") : t("refundButton")}
@@ -154,6 +180,19 @@ export default function AdminOrderDetailPage() {
             {order.payment_status === "refund_pending" && (
               <p className="mt-2 text-sm text-amber-700 dark:text-amber-300">{t("refundPendingNote")}</p>
             )}
+            {(order.payment_status === "active" || order.payment_status === "past_due") && (
+              <Button
+                variant="secondary"
+                className="mt-3"
+                onClick={handleCancelSubscription}
+                disabled={isCancellingSubscription}
+              >
+                {isCancellingSubscription ? t("cancellingSubscription") : t("cancelSubscriptionButton")}
+              </Button>
+            )}
+            {order.payment_mode === "installments" && order.payment_status === "cancelled" && (
+              <p className="mt-2 text-sm text-slate-500 dark:text-neutral-400">{t("subscriptionCancelledNote")}</p>
+            )}
           </div>
 
           <div className="mt-6 border-t border-slate-200 pt-6 dark:border-neutral-800">
@@ -161,12 +200,12 @@ export default function AdminOrderDetailPage() {
             <p className="mt-1 text-slate-700 dark:text-neutral-300">
               {tOrders(`fulfillmentStatus.${order.fulfillment_status}`)}
             </p>
-            {order.fulfillment_status === "pending" && order.payment_status === "paid" && (
+            {order.fulfillment_status === "pending" && isOrderPayable && (
               <Button variant="secondary" className="mt-3" onClick={handleTakeCharge} disabled={isUpdatingFulfillment}>
                 {isUpdatingFulfillment ? t("takingCharge") : t("takeChargeButton")}
               </Button>
             )}
-            {order.fulfillment_status === "pending" && order.payment_status !== "paid" && (
+            {order.fulfillment_status === "pending" && !isOrderPayable && (
               <p className="mt-2 text-sm text-slate-500 dark:text-neutral-400">{t("fulfillmentRequiresPayment")}</p>
             )}
             {order.fulfillment_status === "processing" && (

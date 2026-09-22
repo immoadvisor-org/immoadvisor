@@ -16,7 +16,10 @@ type SortField = "date" | "email";
 
 const PAYMENT_STATUS_STYLES: Record<string, string> = {
   paid: "bg-brand-50 text-brand-600 dark:bg-brand-500/20 dark:text-brand-100",
+  active: "bg-brand-50 text-brand-600 dark:bg-brand-500/20 dark:text-brand-100",
+  completed: "bg-brand-50 text-brand-600 dark:bg-brand-500/20 dark:text-brand-100",
   pending: "bg-amber-50 text-amber-700 dark:bg-amber-500/20 dark:text-amber-200",
+  past_due: "bg-red-50 text-red-700 dark:bg-red-500/20 dark:text-red-200",
   cancelled: "bg-slate-100 text-slate-600 dark:bg-neutral-800 dark:text-neutral-300",
   refund_pending: "bg-amber-50 text-amber-700 dark:bg-amber-500/20 dark:text-amber-200",
   refunded: "bg-slate-100 text-slate-600 dark:bg-neutral-800 dark:text-neutral-300",
@@ -182,6 +185,11 @@ export default function AdminOrdersPage() {
                     >
                       {tOrders(`paymentStatus.${order.payment_status}`)}
                     </span>
+                    {order.payment_mode === "installments" && (
+                      <span className="ml-1.5 text-xs text-slate-500 dark:text-neutral-400">
+                        {order.installments_paid}/{order.installments_total}
+                      </span>
+                    )}
                   </td>
                   <td className="px-4 py-3">
                     <span

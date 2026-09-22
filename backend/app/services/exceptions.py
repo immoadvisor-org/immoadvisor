@@ -22,6 +22,14 @@ class ServiceInUseError(DomainError):
     pass
 
 
+class SalesPackageNotFoundError(DomainError):
+    pass
+
+
+class SalesPackageInUseError(DomainError):
+    pass
+
+
 class InvalidImageError(DomainError):
     pass
 

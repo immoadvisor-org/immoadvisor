@@ -20,10 +20,13 @@ def orchestrate_post_payment(db: Session, order: Order) -> None:
     (pubblicazione annuncio), altri restano attività manuali per Carmine
     (es. sopralluogo fotografico) e qui vengono solo tracciati/loggati.
     """
-    service_ids = [item.service_id for item in order.items]
+    # Le righe d'ordine per un pacchetto (item.service_id is None) non hanno
+    # un fulfillment automatico dedicato: solo i servizi a la carte lo
+    # attivano.
+    service_ids = [item.service_id for item in order.items if item.service_id is not None]
     purchased_slugs = set(
         db.scalars(select(Service.slug).where(Service.id.in_(service_ids)))
-    )
+    ) if service_ids else set()
 
     if purchased_slugs & IMMOSCOUT_TRIGGER_SLUGS:
         client = ImmoScoutClient()

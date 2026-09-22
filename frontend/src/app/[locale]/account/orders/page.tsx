@@ -72,7 +72,9 @@ function OrdersPageContent() {
                   <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700 dark:bg-neutral-800 dark:text-neutral-200">
                     {t(`paymentStatus.${order.payment_status}`)}
                   </span>
-                  {order.payment_status === "paid" && (
+                  {(order.payment_status === "paid" ||
+                    order.payment_status === "active" ||
+                    order.payment_status === "completed") && (
                     <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700 dark:bg-neutral-800 dark:text-neutral-200">
                       {t(`fulfillmentStatus.${order.fulfillment_status}`)}
                     </span>
@@ -87,6 +89,12 @@ function OrdersPageContent() {
                   </li>
                 ))}
               </ul>
+
+              {order.payment_mode === "installments" && (
+                <p className="mt-2 text-xs text-slate-500 dark:text-neutral-400">
+                  {t("installmentsProgress", { paid: order.installments_paid, total: order.installments_total ?? 0 })}
+                </p>
+              )}
 
               <div className="mt-3 flex justify-end text-base font-medium text-slate-900 dark:text-neutral-50">
                 <PriceTag amountChf={Number(order.total_chf)} />

@@ -31,3 +31,10 @@ export function refundOrder(orderId: string, accessToken: string): Promise<Admin
     accessToken,
   });
 }
+
+export function cancelOrderSubscription(orderId: string, accessToken: string): Promise<AdminOrder> {
+  return apiFetch<AdminOrder>(`/api/v1/admin/orders/${orderId}/cancel-subscription`, {
+    method: "POST",
+    accessToken,
+  });
+}

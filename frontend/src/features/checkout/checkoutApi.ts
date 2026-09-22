@@ -16,3 +16,16 @@ export async function startCheckout(
     body: JSON.stringify({ service_ids: serviceIds, locale }),
   });
 }
+
+export async function startPackageCheckout(
+  packageId: string,
+  paymentMode: "single" | "installments",
+  locale: string,
+  accessToken: string
+): Promise<CheckoutSessionResponse> {
+  return apiFetch<CheckoutSessionResponse>("/api/v1/checkout/package-session", {
+    method: "POST",
+    accessToken,
+    body: JSON.stringify({ package_id: packageId, payment_mode: paymentMode, locale }),
+  });
+}

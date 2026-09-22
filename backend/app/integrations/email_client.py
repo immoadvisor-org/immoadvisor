@@ -61,6 +61,9 @@ def send_contact_notification(message: ContactMessage, recipients: list[str]) ->
 PAYMENT_STATUS_LABELS = {
     "pending": "In attesa di pagamento",
     "paid": "Pagato",
+    "active": "Abbonamento attivo (pagamento a rate)",
+    "past_due": "Rata non riuscita",
+    "completed": "Rate completate",
     "cancelled": "Annullato / pagamento non riuscito",
     "refund_pending": "Rimborso in corso",
     "refunded": "Rimborsato",
@@ -79,12 +82,19 @@ def _order_items_html(order: Order) -> str:
     )
 
 
+def _installment_progress_html(order: Order) -> str:
+    if order.payment_mode != "installments" or order.installments_total is None:
+        return ""
+    return f"<p><strong>Rate pagate:</strong> {order.installments_paid} di {order.installments_total}</p>"
+
+
 def send_order_notification(order: Order, recipients: list[str]) -> None:
     status_label = PAYMENT_STATUS_LABELS.get(order.payment_status.value, order.payment_status.value)
     body = (
         f"<p><strong>Stato pagamento:</strong> {status_label}</p>"
         f"<p><strong>Cliente:</strong> {order.email or '-'}</p>"
         f"<p><strong>Totale:</strong> CHF {order.total_chf}</p>"
+        f"{_installment_progress_html(order)}"
         f"<p><strong>Servizi:</strong></p>"
         f"<ul>{_order_items_html(order)}</ul>"
     )
@@ -102,6 +112,18 @@ CUSTOMER_PAYMENT_STATUS_MESSAGES = {
     "paid": (
         "Pagamento confermato",
         "Grazie per il tuo acquisto! Abbiamo ricevuto il pagamento e a breve il nostro team prenderà in carico i servizi richiesti. Ti aggiorneremo via email man mano che procediamo.",
+    ),
+    "active": (
+        "Pagamento rateale attivo",
+        "Grazie! Abbiamo ricevuto la rata e il tuo pacchetto è confermato. Le rate successive verranno addebitate automaticamente ogni mese sulla stessa carta, fino al completamento del piano.",
+    ),
+    "past_due": (
+        "Rata non riuscita",
+        "L'ultimo addebito della rata mensile non è andato a buon fine. Stripe riprova automaticamente nei prossimi giorni; se il metodo di pagamento non è più valido, aggiornalo il prima possibile per evitare l'interruzione del servizio.",
+    ),
+    "completed": (
+        "Tutte le rate pagate",
+        "Complimenti, hai completato il pagamento rateale del tuo pacchetto! Grazie per aver scelto ImmoAdvisor.",
     ),
     "cancelled": (
         "Pagamento non riuscito",
@@ -141,12 +163,26 @@ def send_customer_payment_status_email(order: Order) -> None:
     if not order.email:
         return
 
-    title, message = CUSTOMER_PAYMENT_STATUS_MESSAGES.get(
-        order.payment_status.value, ("Aggiornamento ordine", "Lo stato del pagamento del tuo ordine è cambiato.")
-    )
+    if order.payment_mode == "installments" and order.payment_status.value == "cancelled" and order.installments_paid > 0:
+        # Un abbonamento interrotto dopo che almeno una rata è già stata
+        # incassata non è "nessun addebito effettuato": il messaggio
+        # generico per "cancelled" (pensato per un pagamento singolo mai
+        # riuscito) sarebbe fuorviante.
+        title, message = (
+            "Pagamento rateale interrotto",
+            f"Il pagamento rateale del tuo pacchetto si è interrotto dopo {order.installments_paid} rata/e "
+            f"su {order.installments_total} (rata non riuscita anche dopo i tentativi automatici, oppure "
+            "cancellazione richiesta). Le rate già addebitate non vengono restituite automaticamente; "
+            "contattaci se pensi si tratti di un errore.",
+        )
+    else:
+        title, message = CUSTOMER_PAYMENT_STATUS_MESSAGES.get(
+            order.payment_status.value, ("Aggiornamento ordine", "Lo stato del pagamento del tuo ordine è cambiato.")
+        )
     body = (
         f"<p>{message}</p>"
         f"<p><strong>Totale:</strong> CHF {order.total_chf}</p>"
+        f"{_installment_progress_html(order)}"
         f"<p><strong>Servizi:</strong></p>"
         f"<ul>{_order_items_html(order)}</ul>"
     )

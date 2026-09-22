@@ -1,5 +1,6 @@
 import time
 import uuid
+from decimal import Decimal
 
 import stripe
 
@@ -39,6 +40,68 @@ def create_checkout_session(order: Order) -> stripe.checkout.Session:
         metadata={"order_id": str(order.id)},
         expires_at=int(time.time()) + CHECKOUT_SESSION_EXPIRY_SECONDS,
     )
+
+
+def create_installment_checkout_session(
+    order: Order, item_name: str, monthly_price_chf: Decimal
+) -> stripe.checkout.Session:
+    """Sessione Stripe per il pagamento rateale di un pacchetto: un
+    abbonamento con addebito mensile. Il numero di rate non si imposta qui
+    (Checkout in modalità "subscription" non lo supporta): viene applicato
+    subito dopo, nel webhook checkout.session.completed, trasformando
+    l'abbonamento in una Subscription Schedule a `order.installments_total`
+    cicli fissi (vedi limit_subscription_to_fixed_cycles più sotto).
+
+    payment_method_types è limitato a "card": Twint e PayPal richiedono
+    un'autorizzazione dedicata per gli addebiti ricorrenti non presenti
+    (off-session) che complicherebbe la configurazione; la carta è l'unico
+    metodo con supporto nativo e affidabile per gli abbonamenti Stripe.
+    """
+    return stripe.checkout.Session.create(
+        mode="subscription",
+        line_items=[
+            {
+                "price_data": {
+                    "currency": "chf",
+                    "unit_amount": int(monthly_price_chf * 100),
+                    "recurring": {"interval": "month"},
+                    "product_data": {"name": item_name},
+                },
+                "quantity": 1,
+            }
+        ],
+        payment_method_types=["card"],
+        success_url=f"{settings.frontend_url}/account/orders?checkout=success&order_id={order.id}",
+        cancel_url=f"{settings.frontend_url}/configuratore?checkout=cancelled",
+        client_reference_id=str(order.id),
+        metadata={"order_id": str(order.id)},
+        subscription_data={"metadata": {"order_id": str(order.id)}},
+    )
+
+
+def limit_subscription_to_fixed_cycles(subscription_id: str, iterations: int) -> stripe.SubscriptionSchedule:
+    """Applica a un abbonamento appena creato un numero fisso di cicli di
+    addebito: dopo l'ultima rata, Stripe cancella l'abbonamento da sola
+    (end_behavior="cancel"), senza bisogno di logica di conteggio lato
+    nostro per fermare gli addebiti futuri.
+    """
+    schedule = stripe.SubscriptionSchedule.create(from_subscription=subscription_id)
+    current_phase = schedule["phases"][0]
+    return stripe.SubscriptionSchedule.modify(
+        schedule["id"],
+        end_behavior="cancel",
+        phases=[
+            {
+                "items": [{"price": item["price"], "quantity": item["quantity"]} for item in current_phase["items"]],
+                "iterations": iterations,
+                "start_date": current_phase["start_date"],
+            }
+        ],
+    )
+
+
+def cancel_subscription(subscription_id: str) -> stripe.Subscription:
+    return stripe.Subscription.cancel(subscription_id)
 
 
 def create_refund(payment_intent: str) -> stripe.Refund:

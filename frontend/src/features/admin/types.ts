@@ -15,3 +15,41 @@ export interface AdminService {
 }
 
 export type AdminServicePayload = Omit<AdminService, "id">;
+
+export interface SalesPackageTranslationInput {
+  name: string;
+  featuredLabel: string | null;
+  includesLabel: string | null;
+  features: string[];
+}
+
+export interface AdminSalesPackage {
+  id: string;
+  slug: string;
+  monthly_price_chf: string;
+  featured: boolean;
+  active: boolean;
+  display_order: number;
+  installments: number;
+  translations: Record<string, SalesPackageTranslationInput>;
+}
+
+export type AdminSalesPackagePayload = Omit<AdminSalesPackage, "id">;
+
+export interface SalesPackageComparisonRowInput {
+  name: string;
+  description: string;
+  individualPrice: string;
+  basic: string;
+  medium: string;
+  allInclusive: string;
+}
+
+export interface SalesPackagesTranslationInput {
+  title: string;
+  subtitle: string;
+  comparisonRows: SalesPackageComparisonRowInput[];
+  monthlyFeeLabel: string;
+  notes: string[];
+  buyLabel: string;
+}

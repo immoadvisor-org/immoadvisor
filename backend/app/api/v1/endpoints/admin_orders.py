@@ -5,7 +5,7 @@ from sqlalchemy.orm import Session
 
 from app.api.deps import get_current_admin_user, get_db
 from app.integrations.email_client import send_customer_payment_status_email, send_customer_fulfillment_status_email
-from app.integrations.stripe_client import create_refund
+from app.integrations.stripe_client import cancel_subscription, create_refund
 from app.models.order import OrderPaymentStatus
 from app.schemas.order import AdminOrderRead, FulfillmentStatusUpdate
 from app.services import order_service
@@ -67,4 +67,30 @@ def refund_order(order_id: uuid.UUID, db: Session = Depends(get_db)) -> AdminOrd
     refund = create_refund(order.stripe_payment_intent)
     order = order_service.mark_refund_pending(db, order, refund.id)
     send_customer_payment_status_email(order)
+    return AdminOrderRead.model_validate(order)
+
+
+@router.post("/{order_id}/cancel-subscription", response_model=AdminOrderRead)
+def cancel_order_subscription(order_id: uuid.UUID, db: Session = Depends(get_db)) -> AdminOrderRead:
+    try:
+        order = order_service.get_order(db, order_id)
+    except OrderNotFoundError as exc:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail=str(exc)) from exc
+
+    if order.payment_mode != "installments" or order.payment_status not in (
+        OrderPaymentStatus.ACTIVE,
+        OrderPaymentStatus.PAST_DUE,
+    ):
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Solo un abbonamento a rate attivo può essere annullato",
+        )
+
+    # Le rate già addebitate non vengono rimborsate qui: annullare un
+    # abbonamento ferma solo gli addebiti futuri. Un rimborso su una rata
+    # già pagata va gestito singolarmente dal Dashboard Stripe (ogni rata
+    # ha un proprio payment_intent, distinto da quello dell'ordine).
+    cancel_subscription(order.stripe_subscription_id)
+    # Lo stato definitivo dell'ordine viene aggiornato dal webhook
+    # customer.subscription.deleted innescato da questa cancellazione.
     return AdminOrderRead.model_validate(order)

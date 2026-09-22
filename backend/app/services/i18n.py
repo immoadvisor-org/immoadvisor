@@ -1,4 +1,5 @@
 from app.models.listing import Listing
+from app.models.sales_package import SalesPackage
 from app.models.service import Service
 
 SUPPORTED_LOCALES: tuple[str, ...] = ("en", "it", "de", "fr")
@@ -39,6 +40,26 @@ def translate_listing(listing: Listing, locale: str) -> tuple[str, str, str]:
             return entry["title"], entry.get("short_description", ""), entry.get("full_description", "")
 
     return listing.slug, "", ""
+
+
+def translate_sales_package(package: SalesPackage, locale: str) -> dict:
+    """Traduzione di un pacchetto di vendita nella lingua richiesta, con lo
+    stesso fallback di translate_service. Restituisce sempre almeno "name"
+    (fallback allo slug) e "features" (fallback lista vuota).
+    """
+    translations = package.translations or {}
+
+    for candidate in (locale, DEFAULT_LOCALE, *SUPPORTED_LOCALES):
+        entry = translations.get(candidate)
+        if entry and entry.get("name"):
+            return {
+                "name": entry["name"],
+                "featuredLabel": entry.get("featuredLabel"),
+                "includesLabel": entry.get("includesLabel"),
+                "features": entry.get("features", []),
+            }
+
+    return {"name": package.slug, "featuredLabel": None, "includesLabel": None, "features": []}
 
 
 def resolve_translation_entry(translations: dict, locale: str) -> dict | None:
