@@ -80,7 +80,6 @@
     "featureColumn": "Leistung",
     "individualPriceColumn": "Einzelpreis",
     "perMonth": "/ Monat",
-    "buying": "Weiterleitung zur Zahlung...",
     "checkoutError": "Unerwarteter Fehler beim Kauf, bitte versuchen Sie es erneut.",
     "loginRequiredPrefix": "Sie müssen sich",
     "loginRequiredLink": "anmelden",
@@ -88,7 +87,18 @@
     "paymentModeInstallments": "Ratenzahlung ({count})",
     "paymentModeSingle": "Einmalzahlung",
     "oneTime": "einmalig",
-    "installmentsBreakdown": "{count} monatliche Raten — Gesamt CHF {total}"
+    "installmentsBreakdown": "{count} monatliche Raten — Gesamt CHF {total}",
+    "checkoutTitle": "Zusammenfassung Ihres Kaufs",
+    "checkoutSubtitle": "Prüfen Sie alle Details, bevor Sie zur sicheren Zahlung über Stripe weitergehen.",
+    "notFound": "Paket nicht gefunden.",
+    "backToConfigurator": "Zurück zum Konfigurator",
+    "paymentModeLabel": "Zahlungsart",
+    "perInstallmentLabel": "Betrag pro Rate",
+    "installmentsCountLabel": "Wird automatisch jeden Monat abgebucht, für {count} Raten",
+    "totalLabel": "Gesamt",
+    "notesTitle": "Gut zu wissen",
+    "confirming": "Weiterleitung zur Zahlung...",
+    "confirmButton": "Bestätigen und bezahlen"
   },
   "ServiceList": {
     "loading": "Dienstleistungen werden geladen...",

@@ -80,7 +80,6 @@
     "featureColumn": "Service",
     "individualPriceColumn": "Individual price",
     "perMonth": "/ month",
-    "buying": "Redirecting to payment...",
     "checkoutError": "Unexpected error during checkout, please try again.",
     "loginRequiredPrefix": "You need to",
     "loginRequiredLink": "sign in",
@@ -88,7 +87,18 @@
     "paymentModeInstallments": "Instalments ({count})",
     "paymentModeSingle": "Pay in full",
     "oneTime": "one-time",
-    "installmentsBreakdown": "{count} monthly instalments — total CHF {total}"
+    "installmentsBreakdown": "{count} monthly instalments — total CHF {total}",
+    "checkoutTitle": "Review your purchase",
+    "checkoutSubtitle": "Check all the details before proceeding to secure payment on Stripe.",
+    "notFound": "Package not found.",
+    "backToConfigurator": "Back to the configurator",
+    "paymentModeLabel": "Payment method",
+    "perInstallmentLabel": "Amount per instalment",
+    "installmentsCountLabel": "Charged automatically every month, for {count} instalments",
+    "totalLabel": "Total",
+    "notesTitle": "Good to know",
+    "confirming": "Redirecting to payment...",
+    "confirmButton": "Confirm and pay"
   },
   "ServiceList": {
     "loading": "Loading services...",

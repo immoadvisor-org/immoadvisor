@@ -1,13 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 
 import { Link } from "@/i18n/navigation";
 import { Button } from "@/components/ui/Button";
 import { PriceTag } from "@/components/ui/PriceTag";
-import { useUser } from "@/features/auth/useUser";
-import { startPackageCheckout } from "@/features/checkout/checkoutApi";
 import type { SalesPackage } from "@/features/salesPackages/salesPackagesApi";
 
 export function Check() {
@@ -31,30 +29,14 @@ export function Check() {
 
 export function PackageCard({ pkg, buyLabel }: { pkg: SalesPackage; buyLabel: string }) {
   const t = useTranslations("SalesPackages");
-  const locale = useLocale();
-  const { user, session, isLoading: isLoadingUser } = useUser();
   // Il PDF descrive i pacchetti come una quota mensile: il pagamento a rate
   // è quindi proposto per primo (selezionato di default), con il pagamento
-  // in un'unica soluzione come alternativa.
+  // in un'unica soluzione come alternativa. La scelta fatta qui è solo
+  // un'anteprima: il riepilogo prima del pagamento permette di cambiarla.
   const [paymentMode, setPaymentMode] = useState<"installments" | "single">("installments");
-  const [isCheckingOut, setIsCheckingOut] = useState(false);
-  const [checkoutError, setCheckoutError] = useState<string | null>(null);
 
   const monthlyPrice = Number(pkg.monthly_price_chf);
   const totalPrice = monthlyPrice * pkg.installments;
-
-  async function handleBuy() {
-    if (!session) return;
-    setIsCheckingOut(true);
-    setCheckoutError(null);
-    try {
-      const { checkout_url } = await startPackageCheckout(pkg.id, paymentMode, locale, session.access_token);
-      window.location.href = checkout_url;
-    } catch (err) {
-      setCheckoutError(err instanceof Error ? err.message : t("checkoutError"));
-      setIsCheckingOut(false);
-    }
-  }
 
   return (
     <div
@@ -130,26 +112,11 @@ export function PackageCard({ pkg, buyLabel }: { pkg: SalesPackage; buyLabel: st
         ))}
       </ul>
 
-      {checkoutError && <p className="mt-3 text-xs text-red-600 dark:text-red-400">{checkoutError}</p>}
-
-      {!isLoadingUser && !user && (
-        <p className="mt-4 text-xs text-slate-500 dark:text-neutral-400">
-          {t("loginRequiredPrefix")}{" "}
-          <Link href="/login" className="text-brand-600 hover:underline dark:text-brand-100">
-            {t("loginRequiredLink")}
-          </Link>{" "}
-          {t("loginRequiredSuffix")}
-        </p>
-      )}
-
-      <Button
-        variant={pkg.featured ? "primary" : "secondary"}
-        className="mt-4 w-full"
-        onClick={handleBuy}
-        disabled={!user || isCheckingOut}
-      >
-        {isCheckingOut ? t("buying") : buyLabel}
-      </Button>
+      <Link href={{ pathname: "/pacchetto", query: { packageId: pkg.id, mode: paymentMode } }} className="mt-4 block">
+        <Button variant={pkg.featured ? "primary" : "secondary"} className="w-full">
+          {buyLabel}
+        </Button>
+      </Link>
     </div>
   );
 }

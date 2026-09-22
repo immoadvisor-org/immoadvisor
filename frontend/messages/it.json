@@ -80,7 +80,6 @@
     "featureColumn": "Prestazione",
     "individualPriceColumn": "Prezzo singolo",
     "perMonth": "/ mese",
-    "buying": "Reindirizzamento al pagamento...",
     "checkoutError": "Errore imprevisto durante l'acquisto, riprova.",
     "loginRequiredPrefix": "Devi",
     "loginRequiredLink": "accedere",
@@ -88,7 +87,18 @@
     "paymentModeInstallments": "Rateale ({count} rate)",
     "paymentModeSingle": "Unica soluzione",
     "oneTime": "in un'unica volta",
-    "installmentsBreakdown": "{count} rate mensili — totale CHF {total}"
+    "installmentsBreakdown": "{count} rate mensili — totale CHF {total}",
+    "checkoutTitle": "Riepilogo del tuo acquisto",
+    "checkoutSubtitle": "Controlla tutti i dettagli prima di procedere al pagamento sicuro su Stripe.",
+    "notFound": "Pacchetto non trovato.",
+    "backToConfigurator": "Torna al configuratore",
+    "paymentModeLabel": "Modalità di pagamento",
+    "perInstallmentLabel": "Importo per rata",
+    "installmentsCountLabel": "Addebitato automaticamente ogni mese, per {count} rate",
+    "totalLabel": "Totale",
+    "notesTitle": "Da sapere",
+    "confirming": "Reindirizzamento al pagamento...",
+    "confirmButton": "Conferma e paga"
   },
   "ServiceList": {
     "loading": "Caricamento dei servizi...",
