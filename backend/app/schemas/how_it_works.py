@@ -15,10 +15,14 @@ class HowItWorksTranslationInput(BaseModel):
 class HowItWorksContentRead(HowItWorksTranslationInput):
     """Contenuto risolto per una singola lingua, quello che consuma il pubblico."""
 
+    visible: bool = True
+
 
 class HowItWorksContentAdminRead(BaseModel):
+    visible: bool
     translations: dict[str, HowItWorksTranslationInput]
 
 
 class HowItWorksContentAdminUpdate(BaseModel):
+    visible: bool
     translations: dict[str, HowItWorksTranslationInput]

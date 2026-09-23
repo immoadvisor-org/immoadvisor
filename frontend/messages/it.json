@@ -504,6 +504,8 @@
   "AdminHowItWorks": {
     "title": "Sezione \"Come funziona\"",
     "subtitle": "Modifica il testo mostrato in home, per ogni lingua.",
+    "visibleLabel": "Mostra questa sezione in home",
+    "visibleHint": "Se disattivato, la sezione \"Come funziona\" non compare in home per nessuna lingua (il testo resta salvato, per riattivarla in seguito).",
     "titleLabel": "Titolo",
     "textLabel": "Testo",
     "save": "Salva",

@@ -504,6 +504,8 @@
   "AdminHowItWorks": {
     "title": "Section \"Comment ça marche\"",
     "subtitle": "Modifiez le texte affiché sur la page d'accueil, pour chaque langue.",
+    "visibleLabel": "Afficher cette section sur la page d'accueil",
+    "visibleHint": "Si désactivé, la section \"Comment ça marche\" n'apparaît plus sur la page d'accueil, dans aucune langue (le texte reste enregistré, pour la réactiver plus tard).",
     "titleLabel": "Titre",
     "textLabel": "Texte",
     "save": "Enregistrer",

@@ -504,6 +504,8 @@
   "AdminHowItWorks": {
     "title": "\"How it works\" section",
     "subtitle": "Edit the text shown on the home page, for each language.",
+    "visibleLabel": "Show this section on the home page",
+    "visibleHint": "When off, the \"How it works\" section doesn't appear on the home page in any language (the text stays saved, to turn it back on later).",
     "titleLabel": "Title",
     "textLabel": "Text",
     "save": "Save",

@@ -4,6 +4,7 @@ import type { HowItWorksTranslation } from "@/features/howItWorks/howItWorksApi"
 const BASE = "/api/v1/admin/how-it-works";
 
 export interface HowItWorksContentAdmin {
+  visible: boolean;
   translations: Record<string, HowItWorksTranslation>;
 }
 
@@ -12,12 +13,13 @@ export function getAdminHowItWorksContent(accessToken: string): Promise<HowItWor
 }
 
 export function updateAdminHowItWorksContent(
+  visible: boolean,
   translations: Record<string, HowItWorksTranslation>,
   accessToken: string
 ): Promise<HowItWorksContentAdmin> {
   return apiFetch<HowItWorksContentAdmin>(BASE, {
     method: "PUT",
     accessToken,
-    body: JSON.stringify({ translations }),
+    body: JSON.stringify({ visible, translations }),
   });
 }

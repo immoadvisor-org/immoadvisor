@@ -504,6 +504,8 @@
   "AdminHowItWorks": {
     "title": "Bereich \"So funktioniert's\"",
     "subtitle": "Bearbeiten Sie den auf der Startseite angezeigten Text, für jede Sprache.",
+    "visibleLabel": "Diesen Bereich auf der Startseite anzeigen",
+    "visibleHint": "Wenn deaktiviert, erscheint der Bereich \"So funktioniert's\" in keiner Sprache auf der Startseite (der Text bleibt gespeichert, um ihn später wieder zu aktivieren).",
     "titleLabel": "Titel",
     "textLabel": "Text",
     "save": "Speichern",

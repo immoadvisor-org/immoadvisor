@@ -32,6 +32,7 @@ export default function AdminHowItWorksPage() {
   const accessToken = session?.access_token;
 
   const [translations, setTranslations] = useState<Record<string, HowItWorksTranslation>>({});
+  const [visible, setVisible] = useState(true);
   const [activeTab, setActiveTab] = useState<Locale>(routing.locales[0]);
   const [isLoading, setIsLoading] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
@@ -46,6 +47,7 @@ export default function AdminHowItWorksPage() {
           Object.entries(data.translations).map(([locale, entry]) => [locale, withThreeSteps(entry)])
         );
         setTranslations(normalized);
+        setVisible(data.visible);
       })
       .finally(() => setIsLoading(false));
   }, [isAdmin, accessToken]);
@@ -82,11 +84,12 @@ export default function AdminHowItWorksPage() {
     setIsSaving(true);
     setSaveState("idle");
     try {
-      const updated = await updateAdminHowItWorksContent(translations, accessToken);
+      const updated = await updateAdminHowItWorksContent(visible, translations, accessToken);
       const normalized = Object.fromEntries(
         Object.entries(updated.translations).map(([locale, entry]) => [locale, withThreeSteps(entry)])
       );
       setTranslations(normalized);
+      setVisible(updated.visible);
       setSaveState("saved");
     } catch {
       setSaveState("error");
@@ -104,7 +107,13 @@ export default function AdminHowItWorksPage() {
         <p className="mt-6 text-sm text-slate-500 dark:text-neutral-400">{t("loading")}</p>
       ) : (
         <div className="mt-6 rounded-xl border border-slate-200 bg-white p-6 dark:border-neutral-800 dark:bg-neutral-900">
-          <div className="flex gap-2 border-b border-slate-200 pb-4 dark:border-neutral-700">
+          <label className="flex items-center gap-2 text-sm text-slate-700 dark:text-neutral-300">
+            <input type="checkbox" checked={visible} onChange={(e) => setVisible(e.target.checked)} />
+            {t("visibleLabel")}
+          </label>
+          <p className="mt-1 text-xs text-slate-500 dark:text-neutral-400">{t("visibleHint")}</p>
+
+          <div className="mt-6 flex gap-2 border-b border-slate-200 pb-4 dark:border-neutral-700">
             {routing.locales.map((locale) => (
               <button
                 key={locale}
