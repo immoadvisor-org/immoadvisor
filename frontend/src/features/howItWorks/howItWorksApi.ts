@@ -11,9 +11,7 @@ export interface HowItWorksTranslation {
   steps: HowItWorksStep[];
 }
 
-export interface HowItWorksContent extends HowItWorksTranslation {
-  visible: boolean;
-}
+export type HowItWorksContent = HowItWorksTranslation;
 
 export function getHowItWorksContent(locale: string): Promise<HowItWorksContent> {
   return apiFetch<HowItWorksContent>(`/api/v1/how-it-works?locale=${locale}`);

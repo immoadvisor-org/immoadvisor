@@ -249,7 +249,30 @@
     "legal": "Mentions légales",
     "listings": "Annonces",
     "howItWorks": "Comment ça marche",
-    "salesPackages": "Forfaits de vente"
+    "salesPackages": "Forfaits de vente",
+    "homeLayout": "Mise en page de l'accueil",
+    "dailyWorkGroup": "Travail quotidien",
+    "siteManagementGroup": "Gestion du site"
+  },
+  "AdminHomeLayout": {
+    "title": "Mise en page de l'accueil",
+    "subtitle": "Ordonnez et affichez/masquez les sections de la page d'accueil.",
+    "pinnedNote": "L'en-tête (Hero) et le bloc \"Besoin d'un coup de main ?\" restent toujours respectivement au début et à la fin de la page.",
+    "loading": "Chargement...",
+    "moveUp": "Monter",
+    "moveDown": "Descendre",
+    "visible": "Visible",
+    "hidden": "Masquée",
+    "save": "Enregistrer",
+    "saved": "Enregistré",
+    "saveError": "Impossible d'enregistrer",
+    "sections": {
+      "packages": "Forfaits de vente",
+      "services": "Services les plus demandés",
+      "about": "À propos",
+      "listings": "Annonces en vedette",
+      "how_it_works": "Comment ça marche"
+    }
   },
   "AdminSalesPackages": {
     "title": "Forfaits de vente",
@@ -504,8 +527,6 @@
   "AdminHowItWorks": {
     "title": "Section \"Comment ça marche\"",
     "subtitle": "Modifiez le texte affiché sur la page d'accueil, pour chaque langue.",
-    "visibleLabel": "Afficher cette section sur la page d'accueil",
-    "visibleHint": "Si désactivé, la section \"Comment ça marche\" n'apparaît plus sur la page d'accueil, dans aucune langue (le texte reste enregistré, pour la réactiver plus tard).",
     "titleLabel": "Titre",
     "textLabel": "Texte",
     "save": "Enregistrer",

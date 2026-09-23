@@ -18,7 +18,6 @@ def get_content_row(db: Session) -> HowItWorksContent:
 
 def update_content(db: Session, payload: HowItWorksContentAdminUpdate) -> HowItWorksContent:
     content = get_content_row(db)
-    content.visible = payload.visible
     content.translations = {
         locale: entry.model_dump() for locale, entry in payload.translations.items()
     }
@@ -31,4 +30,4 @@ def resolve_for_locale(content: HowItWorksContent, locale: str) -> HowItWorksCon
     entry = resolve_translation_entry(content.translations or {}, locale)
     if entry is None:
         return None
-    return HowItWorksContentRead(visible=content.visible, **entry)
+    return HowItWorksContentRead(**entry)

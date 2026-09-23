@@ -13,7 +13,7 @@ router = APIRouter(
 
 
 def _to_admin_read(content) -> HowItWorksContentAdminRead:
-    return HowItWorksContentAdminRead(visible=content.visible, translations=content.translations or {})
+    return HowItWorksContentAdminRead(translations=content.translations or {})
 
 
 @router.get("", response_model=HowItWorksContentAdminRead)

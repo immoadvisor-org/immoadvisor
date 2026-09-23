@@ -5,6 +5,7 @@ from app.api.v1.endpoints import (
     account,
     admin_about,
     admin_contact,
+    admin_home_layout,
     admin_how_it_works,
     admin_legal,
     admin_listings,
@@ -15,6 +16,7 @@ from app.api.v1.endpoints import (
     admin_users,
     checkout,
     contact,
+    home_layout,
     how_it_works,
     legal,
     listings,
@@ -34,6 +36,7 @@ api_router.include_router(contact.router)
 api_router.include_router(about.router)
 api_router.include_router(how_it_works.router)
 api_router.include_router(sales_packages.router)
+api_router.include_router(home_layout.router)
 api_router.include_router(legal.router)
 api_router.include_router(account.router)
 api_router.include_router(admin_services.router)
@@ -42,6 +45,7 @@ api_router.include_router(admin_contact.router)
 api_router.include_router(admin_about.router)
 api_router.include_router(admin_how_it_works.router)
 api_router.include_router(admin_sales_packages.router)
+api_router.include_router(admin_home_layout.router)
 api_router.include_router(admin_orders.router)
 api_router.include_router(admin_notifications.router)
 api_router.include_router(admin_legal.router)

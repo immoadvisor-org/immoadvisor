@@ -249,7 +249,30 @@
     "legal": "Legale",
     "listings": "Annunci",
     "howItWorks": "Come funziona",
-    "salesPackages": "Pacchetti di vendita"
+    "salesPackages": "Pacchetti di vendita",
+    "homeLayout": "Layout home",
+    "dailyWorkGroup": "Lavoro quotidiano",
+    "siteManagementGroup": "Gestione sito"
+  },
+  "AdminHomeLayout": {
+    "title": "Layout home",
+    "subtitle": "Ordina e mostra/nascondi le sezioni della home page.",
+    "pinnedNote": "L'intestazione (Hero) e il blocco \"Hai bisogno di una mano?\" restano sempre rispettivamente all'inizio e alla fine della pagina.",
+    "loading": "Caricamento...",
+    "moveUp": "Sposta su",
+    "moveDown": "Sposta giù",
+    "visible": "Visibile",
+    "hidden": "Nascosta",
+    "save": "Salva",
+    "saved": "Salvato",
+    "saveError": "Impossibile salvare",
+    "sections": {
+      "packages": "Pacchetti di vendita",
+      "services": "Servizi più richiesti",
+      "about": "Chi siamo",
+      "listings": "Annunci in evidenza",
+      "how_it_works": "Come funziona"
+    }
   },
   "AdminSalesPackages": {
     "title": "Pacchetti di vendita",
@@ -504,8 +527,6 @@
   "AdminHowItWorks": {
     "title": "Sezione \"Come funziona\"",
     "subtitle": "Modifica il testo mostrato in home, per ogni lingua.",
-    "visibleLabel": "Mostra questa sezione in home",
-    "visibleHint": "Se disattivato, la sezione \"Come funziona\" non compare in home per nessuna lingua (il testo resta salvato, per riattivarla in seguito).",
     "titleLabel": "Titolo",
     "textLabel": "Testo",
     "save": "Salva",

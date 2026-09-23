@@ -249,7 +249,30 @@
     "legal": "Rechtliches",
     "listings": "Inserate",
     "howItWorks": "So funktioniert's",
-    "salesPackages": "Verkaufspakete"
+    "salesPackages": "Verkaufspakete",
+    "homeLayout": "Startseiten-Layout",
+    "dailyWorkGroup": "Tägliche Arbeit",
+    "siteManagementGroup": "Website-Verwaltung"
+  },
+  "AdminHomeLayout": {
+    "title": "Startseiten-Layout",
+    "subtitle": "Ordnen Sie die Abschnitte der Startseite und blenden Sie sie ein oder aus.",
+    "pinnedNote": "Die Kopfzeile (Hero) und der Block \"Brauchen Sie Hilfe?\" bleiben immer am Anfang bzw. Ende der Seite.",
+    "loading": "Wird geladen...",
+    "moveUp": "Nach oben",
+    "moveDown": "Nach unten",
+    "visible": "Sichtbar",
+    "hidden": "Ausgeblendet",
+    "save": "Speichern",
+    "saved": "Gespeichert",
+    "saveError": "Speichern nicht möglich",
+    "sections": {
+      "packages": "Verkaufspakete",
+      "services": "Gefragteste Dienstleistungen",
+      "about": "Über uns",
+      "listings": "Ausgewählte Inserate",
+      "how_it_works": "So funktioniert's"
+    }
   },
   "AdminSalesPackages": {
     "title": "Verkaufspakete",
@@ -504,8 +527,6 @@
   "AdminHowItWorks": {
     "title": "Bereich \"So funktioniert's\"",
     "subtitle": "Bearbeiten Sie den auf der Startseite angezeigten Text, für jede Sprache.",
-    "visibleLabel": "Diesen Bereich auf der Startseite anzeigen",
-    "visibleHint": "Wenn deaktiviert, erscheint der Bereich \"So funktioniert's\" in keiner Sprache auf der Startseite (der Text bleibt gespeichert, um ihn später wieder zu aktivieren).",
     "titleLabel": "Titel",
     "textLabel": "Text",
     "save": "Speichern",

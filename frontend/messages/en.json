@@ -249,7 +249,30 @@
     "legal": "Legal",
     "listings": "Listings",
     "howItWorks": "How it works",
-    "salesPackages": "Sales packages"
+    "salesPackages": "Sales packages",
+    "homeLayout": "Home layout",
+    "dailyWorkGroup": "Daily work",
+    "siteManagementGroup": "Site management"
+  },
+  "AdminHomeLayout": {
+    "title": "Home layout",
+    "subtitle": "Order and show/hide the sections of the home page.",
+    "pinnedNote": "The header (Hero) and the \"Need a hand?\" block always stay at the start and end of the page, respectively.",
+    "loading": "Loading...",
+    "moveUp": "Move up",
+    "moveDown": "Move down",
+    "visible": "Visible",
+    "hidden": "Hidden",
+    "save": "Save",
+    "saved": "Saved",
+    "saveError": "Unable to save",
+    "sections": {
+      "packages": "Sales packages",
+      "services": "Most requested services",
+      "about": "About us",
+      "listings": "Featured listings",
+      "how_it_works": "How it works"
+    }
   },
   "AdminSalesPackages": {
     "title": "Sales packages",
@@ -504,8 +527,6 @@
   "AdminHowItWorks": {
     "title": "\"How it works\" section",
     "subtitle": "Edit the text shown on the home page, for each language.",
-    "visibleLabel": "Show this section on the home page",
-    "visibleHint": "When off, the \"How it works\" section doesn't appear on the home page in any language (the text stays saved, to turn it back on later).",
     "titleLabel": "Title",
     "textLabel": "Text",
     "save": "Save",
