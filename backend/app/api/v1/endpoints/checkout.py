@@ -9,7 +9,11 @@ from app.schemas.order import (
     PackageCheckoutSessionCreate,
 )
 from app.services import order_service
-from app.services.exceptions import SalesPackageNotFoundError, ServiceNotFoundError
+from app.services.exceptions import (
+    PaymentModeNotAllowedError,
+    SalesPackageNotFoundError,
+    ServiceNotFoundError,
+)
 from app.services.i18n import resolve_locale
 
 router = APIRouter(prefix="/checkout", tags=["checkout"])
@@ -52,6 +56,8 @@ def create_package_session(
             current_user.email,
         )
     except SalesPackageNotFoundError as exc:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
+    except PaymentModeNotAllowedError as exc:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
 
     if payload.payment_mode == "installments":

@@ -31,6 +31,7 @@ export interface AdminSalesPackage {
   active: boolean;
   display_order: number;
   installments: number;
+  allow_single_payment: boolean;
   translations: Record<string, SalesPackageTranslationInput>;
 }
 

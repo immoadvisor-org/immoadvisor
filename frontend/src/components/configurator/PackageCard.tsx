@@ -34,16 +34,22 @@ export function PackageCard({ pkg, buyLabel }: { pkg: SalesPackage; buyLabel: st
   // in un'unica soluzione come alternativa. La scelta fatta qui è solo
   // un'anteprima: il riepilogo prima del pagamento permette di cambiarla.
   const [paymentMode, setPaymentMode] = useState<"installments" | "single">("installments");
+  const showPaymentModeToggle = pkg.installments > 1 && pkg.allow_single_payment;
+  // Se il pagamento in un'unica soluzione è disattivato per questo
+  // pacchetto, non esiste modo di impostare "single" (nessun pulsante lo
+  // fa): questo garantisce comunque che il resto del componente non lo usi
+  // mai per errore.
+  const effectiveMode = showPaymentModeToggle ? paymentMode : "installments";
 
   const monthlyPrice = Number(pkg.monthly_price_chf);
   const totalPrice = monthlyPrice * pkg.installments;
 
   return (
     <div
-      className={`flex flex-col rounded-2xl border bg-white p-6 dark:bg-neutral-900 ${
+      className={`flex flex-col rounded-2xl border bg-white p-6 transition-all duration-200 hover:-translate-y-1 dark:bg-neutral-900 ${
         pkg.featured
-          ? "border-brand-500 shadow-lg shadow-brand-100 dark:shadow-none"
-          : "border-slate-200 shadow-sm dark:border-neutral-800"
+          ? "border-brand-500 shadow-lg shadow-brand-100 hover:shadow-xl dark:shadow-none"
+          : "border-slate-200 shadow-sm hover:border-brand-300 hover:shadow-lg dark:border-neutral-800 dark:hover:border-brand-500/50"
       }`}
     >
       {pkg.featured && pkg.featured_label && (
@@ -53,13 +59,13 @@ export function PackageCard({ pkg, buyLabel }: { pkg: SalesPackage; buyLabel: st
       )}
       <h3 className="text-lg font-semibold text-slate-900 dark:text-neutral-50">{pkg.name}</h3>
 
-      {pkg.installments > 1 && (
+      {showPaymentModeToggle && (
         <div className="mt-3 flex rounded-lg border border-slate-200 p-0.5 text-xs font-medium dark:border-neutral-700">
           <button
             type="button"
             onClick={() => setPaymentMode("installments")}
             className={`flex-1 rounded-md px-2 py-1.5 transition-colors ${
-              paymentMode === "installments"
+              effectiveMode === "installments"
                 ? "bg-brand-500 text-white"
                 : "text-slate-500 hover:text-slate-800 dark:text-neutral-400 dark:hover:text-neutral-100"
             }`}
@@ -70,7 +76,7 @@ export function PackageCard({ pkg, buyLabel }: { pkg: SalesPackage; buyLabel: st
             type="button"
             onClick={() => setPaymentMode("single")}
             className={`flex-1 rounded-md px-2 py-1.5 transition-colors ${
-              paymentMode === "single"
+              effectiveMode === "single"
                 ? "bg-brand-500 text-white"
                 : "text-slate-500 hover:text-slate-800 dark:text-neutral-400 dark:hover:text-neutral-100"
             }`}
@@ -80,16 +86,16 @@ export function PackageCard({ pkg, buyLabel }: { pkg: SalesPackage; buyLabel: st
         </div>
       )}
 
-      <div className="mt-3 flex items-baseline gap-1">
+      <div className={`flex items-baseline gap-1 ${showPaymentModeToggle ? "mt-3" : "mt-4"}`}>
         <PriceTag
-          amountChf={paymentMode === "installments" ? monthlyPrice : totalPrice}
+          amountChf={effectiveMode === "installments" ? monthlyPrice : totalPrice}
           className="text-2xl font-bold text-slate-900 dark:text-neutral-50"
         />
         <span className="text-sm text-slate-500 dark:text-neutral-400">
-          {paymentMode === "installments" ? t("perMonth") : t("oneTime")}
+          {effectiveMode === "installments" ? t("perMonth") : t("oneTime")}
         </span>
       </div>
-      {paymentMode === "installments" && pkg.installments > 1 && (
+      {effectiveMode === "installments" && pkg.installments > 1 && (
         <p className="mt-1 text-xs text-slate-500 dark:text-neutral-400">
           {t("installmentsBreakdown", { count: pkg.installments, total: totalPrice.toLocaleString("de-CH") })}
         </p>
@@ -112,7 +118,7 @@ export function PackageCard({ pkg, buyLabel }: { pkg: SalesPackage; buyLabel: st
         ))}
       </ul>
 
-      <Link href={{ pathname: "/pacchetto", query: { packageId: pkg.id, mode: paymentMode } }} className="mt-4 block">
+      <Link href={{ pathname: "/pacchetto", query: { packageId: pkg.id, mode: effectiveMode } }} className="mt-4 block">
         <Button variant={pkg.featured ? "primary" : "secondary"} className="w-full">
           {buyLabel}
         </Button>

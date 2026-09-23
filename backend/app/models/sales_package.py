@@ -27,6 +27,9 @@ class SalesPackage(Base):
     # Numero di rate mensili proposto per il pagamento rateale di questo
     # pacchetto (usato per creare l'abbonamento Stripe a cicli fissi).
     installments: Mapped[int] = mapped_column(Integer, default=4)
+    # Se false, il pagamento in un'unica soluzione non è offerto per questo
+    # pacchetto: solo il rateale.
+    allow_single_payment: Mapped[bool] = mapped_column(Boolean, default=True)
     # { "it": {"name": ..., "featuredLabel": ..., "includesLabel": ...,
     #           "features": ["...", ...]}, "en": {...}, "de": {...}, "fr": {...} }
     translations: Mapped[dict] = mapped_column(JSONB, default=dict)

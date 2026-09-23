@@ -34,13 +34,18 @@ function PackageCheckoutContent() {
   const [checkoutError, setCheckoutError] = useState<string | null>(null);
 
   const pkg = packages.find((p) => p.id === packageId);
+  const showPaymentModeToggle = !!pkg && pkg.installments > 1 && pkg.allow_single_payment;
+  // Se il pagamento in un'unica soluzione è disattivato per questo
+  // pacchetto, ignora anche un eventuale ?mode=single nell'URL: non deve
+  // mai essere possibile inviarlo a Stripe per questo pacchetto.
+  const effectiveMode = showPaymentModeToggle ? paymentMode : "installments";
 
   async function handleConfirm() {
     if (!session || !pkg) return;
     setIsCheckingOut(true);
     setCheckoutError(null);
     try {
-      const { checkout_url } = await startPackageCheckout(pkg.id, paymentMode, locale, session.access_token);
+      const { checkout_url } = await startPackageCheckout(pkg.id, effectiveMode, locale, session.access_token);
       window.location.href = checkout_url;
     } catch (err) {
       setCheckoutError(err instanceof Error ? err.message : t("checkoutError"));
@@ -87,7 +92,7 @@ function PackageCheckoutContent() {
           )}
         </div>
 
-        {pkg.installments > 1 && (
+        {showPaymentModeToggle && (
           <div className="mt-4">
             <p className="text-sm font-medium text-slate-700 dark:text-neutral-300">{t("paymentModeLabel")}</p>
             <div className="mt-2 flex rounded-lg border border-slate-200 p-0.5 text-sm font-medium dark:border-neutral-700">
@@ -95,7 +100,7 @@ function PackageCheckoutContent() {
                 type="button"
                 onClick={() => setPaymentMode("installments")}
                 className={`flex-1 rounded-md px-3 py-2 transition-colors ${
-                  paymentMode === "installments"
+                  effectiveMode === "installments"
                     ? "bg-brand-500 text-white"
                     : "text-slate-500 hover:text-slate-800 dark:text-neutral-400 dark:hover:text-neutral-100"
                 }`}
@@ -106,7 +111,7 @@ function PackageCheckoutContent() {
                 type="button"
                 onClick={() => setPaymentMode("single")}
                 className={`flex-1 rounded-md px-3 py-2 transition-colors ${
-                  paymentMode === "single"
+                  effectiveMode === "single"
                     ? "bg-brand-500 text-white"
                     : "text-slate-500 hover:text-slate-800 dark:text-neutral-400 dark:hover:text-neutral-100"
                 }`}
@@ -118,7 +123,7 @@ function PackageCheckoutContent() {
         )}
 
         <div className="mt-4 space-y-2 rounded-lg bg-slate-50 p-4 dark:bg-neutral-800">
-          {paymentMode === "installments" && (
+          {effectiveMode === "installments" && (
             <>
               <div className="flex items-baseline justify-between">
                 <span className="text-sm text-slate-600 dark:text-neutral-300">{t("perInstallmentLabel")}</span>

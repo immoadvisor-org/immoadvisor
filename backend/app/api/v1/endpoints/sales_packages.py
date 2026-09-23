@@ -20,6 +20,7 @@ def list_sales_packages(locale: str | None = None, db: Session = Depends(get_db)
             monthly_price_chf=package.monthly_price_chf,
             featured=package.featured,
             installments=package.installments,
+            allow_single_payment=package.allow_single_payment,
             name=translate_sales_package(package, resolved_locale)["name"],
             featured_label=translate_sales_package(package, resolved_locale)["featuredLabel"],
             includes_label=translate_sales_package(package, resolved_locale)["includesLabel"],

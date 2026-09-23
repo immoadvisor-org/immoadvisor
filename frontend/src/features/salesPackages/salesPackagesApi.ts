@@ -6,6 +6,7 @@ export interface SalesPackage {
   monthly_price_chf: string;
   featured: boolean;
   installments: number;
+  allow_single_payment: boolean;
   name: string;
   featured_label: string | null;
   includes_label: string | null;

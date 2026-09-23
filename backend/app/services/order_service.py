@@ -11,6 +11,7 @@ from app.services.exceptions import (
     InvalidFulfillmentTransitionError,
     OrderNotFoundError,
     OrderNotRefundableError,
+    PaymentModeNotAllowedError,
     SalesPackageNotFoundError,
     ServiceNotFoundError,
 )
@@ -74,6 +75,11 @@ def create_pending_order_for_package(
     package = db.get(SalesPackage, package_id)
     if package is None or not package.active:
         raise SalesPackageNotFoundError(f"Pacchetto {package_id} non trovato o non attivo")
+
+    if payment_mode == "single" and not package.allow_single_payment:
+        raise PaymentModeNotAllowedError(
+            f"Il pagamento in un'unica soluzione non è disponibile per il pacchetto {package_id}"
+        )
 
     is_installments = payment_mode == "installments"
     # Il totale del contratto è sempre rata x numero di rate, sia che lo si

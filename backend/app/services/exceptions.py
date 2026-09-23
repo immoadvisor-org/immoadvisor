@@ -30,6 +30,10 @@ class SalesPackageInUseError(DomainError):
     pass
 
 
+class PaymentModeNotAllowedError(DomainError):
+    pass
+
+
 class InvalidImageError(DomainError):
     pass
 

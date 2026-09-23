@@ -15,6 +15,7 @@ class SalesPackageRead(BaseModel):
     monthly_price_chf: Decimal
     featured: bool
     installments: int
+    allow_single_payment: bool
     name: str
     featured_label: str | None = None
     includes_label: str | None = None
@@ -75,6 +76,7 @@ class AdminSalesPackageBase(BaseModel):
     active: bool = True
     display_order: int = 0
     installments: int = 4
+    allow_single_payment: bool = True
     translations: dict[str, SalesPackageTranslationInput]
 
 
@@ -89,6 +91,7 @@ class AdminSalesPackageUpdate(BaseModel):
     active: bool | None = None
     display_order: int | None = None
     installments: int | None = None
+    allow_single_payment: bool | None = None
     translations: dict[str, SalesPackageTranslationInput] | None = None
 
 

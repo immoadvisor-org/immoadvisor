@@ -28,6 +28,7 @@ export function SalesPackageEditor({ initial, onSave, onCancel }: SalesPackageEd
   const [featured, setFeatured] = useState(initial?.featured ?? false);
   const [active, setActive] = useState(initial?.active ?? true);
   const [installments, setInstallments] = useState(initial?.installments ?? 4);
+  const [allowSinglePayment, setAllowSinglePayment] = useState(initial?.allow_single_payment ?? true);
   const [displayOrder] = useState(initial?.display_order ?? 0);
   const [translations, setTranslations] = useState<Record<string, SalesPackageTranslationInput>>({
     ...EMPTY_TRANSLATIONS,
@@ -79,6 +80,7 @@ export function SalesPackageEditor({ initial, onSave, onCancel }: SalesPackageEd
         featured,
         active,
         installments,
+        allow_single_payment: allowSinglePayment,
         display_order: displayOrder,
         translations,
       });
@@ -133,6 +135,14 @@ export function SalesPackageEditor({ initial, onSave, onCancel }: SalesPackageEd
           <label className="flex items-center gap-2 text-sm text-slate-700 dark:text-neutral-300">
             <input type="checkbox" checked={active} onChange={(e) => setActive(e.target.checked)} />
             {t("active")}
+          </label>
+          <label className="flex items-center gap-2 text-sm text-slate-700 dark:text-neutral-300">
+            <input
+              type="checkbox"
+              checked={allowSinglePayment}
+              onChange={(e) => setAllowSinglePayment(e.target.checked)}
+            />
+            {t("allowSinglePayment")}
           </label>
         </div>
       </div>
