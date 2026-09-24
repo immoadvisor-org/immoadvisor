@@ -13,8 +13,8 @@ export function AdminLayout({ children }: AdminLayoutProps) {
   const pathname = usePathname();
 
   // "Lavoro quotidiano": quello che si controlla spesso (ordini/pagamenti,
-  // messaggi). "Gestione sito": contenuti e catalogo, che si toccano solo
-  // ogni tanto — separati per non dover scorrere tra le due cose ogni
+  // messaggi, annunci da pubblicare o aggiornare). "Gestione sito":
+  // contenuti e catalogo, che si toccano solo ogni tanto — separati per non dover scorrere tra le due cose ogni
   // giorno.
   const groups = [
     {
@@ -22,6 +22,7 @@ export function AdminLayout({ children }: AdminLayoutProps) {
       items: [
         { href: "/admin/orders", label: t("orders") },
         { href: "/admin/contact", label: t("contact") },
+        { href: "/admin/listings", label: t("listings") },
       ],
     },
     {
@@ -29,7 +30,6 @@ export function AdminLayout({ children }: AdminLayoutProps) {
       items: [
         { href: "/admin/services", label: t("services") },
         { href: "/admin/sales-packages", label: t("salesPackages") },
-        { href: "/admin/listings", label: t("listings") },
         { href: "/admin/home-layout", label: t("homeLayout") },
         { href: "/admin/about", label: t("about") },
         { href: "/admin/how-it-works", label: t("howItWorks") },

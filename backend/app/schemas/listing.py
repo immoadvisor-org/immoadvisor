@@ -36,3 +36,12 @@ class ListingRead(BaseModel):
             image_urls=listing.image_urls or [],
             video_url=listing.video_url,
         )
+
+
+class ListingFacetsRead(BaseModel):
+    cities: list[str]
+    cantons: list[str]
+    price_min: Decimal | None
+    price_max: Decimal | None
+    rooms_min: Decimal | None
+    rooms_max: Decimal | None

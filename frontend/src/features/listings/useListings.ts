@@ -14,11 +14,16 @@ interface UseListingsResult {
 
 function buildQuery(locale: string, filters?: ListingFilters): string {
   const params = new URLSearchParams({ locale });
+  if (filters?.q) params.set("q", filters.q);
   if (filters?.city) params.set("city", filters.city);
+  if (filters?.canton) params.set("canton", filters.canton);
   if (filters?.price_min) params.set("price_min", filters.price_min);
   if (filters?.price_max) params.set("price_max", filters.price_max);
   if (filters?.rooms_min) params.set("rooms_min", filters.rooms_min);
   if (filters?.rooms_max) params.set("rooms_max", filters.rooms_max);
+  if (filters?.has_images) params.set("has_images", "true");
+  if (filters?.has_video) params.set("has_video", "true");
+  if (filters?.sort && filters.sort !== "default") params.set("sort", filters.sort);
   if (filters?.limit) params.set("limit", String(filters.limit));
   return params.toString();
 }
