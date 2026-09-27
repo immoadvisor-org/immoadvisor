@@ -77,7 +77,7 @@ export function PackageCard({ pkg, buyLabel }: { pkg: SalesPackage; buyLabel: st
   return (
     <div
       className={`relative isolate overflow-hidden rounded-2xl transition-all duration-200 hover:-translate-y-1 ${
-        pkg.featured ? "ring-2 ring-brand-400" : "ring-1 ring-slate-200 dark:ring-white/10"
+        pkg.featured ? "ring-2 ring-inset ring-brand-400" : "ring-1 ring-inset ring-slate-200 dark:ring-white/10"
       }`}
     >
       {/* Una sola immagine di sfondo copre l'intera card (come la foto auto
@@ -106,7 +106,7 @@ export function PackageCard({ pkg, buyLabel }: { pkg: SalesPackage; buyLabel: st
         </p>
       )}
 
-      <div className="px-6 pb-6 pt-11">
+      <div className="px-6 pb-6 pt-16 lg:pt-11">
         {/* Come su Tesla: su schermi larghi la card è più alta, con
             nome/prezzo/pulsante ancorati in basso a sinistra (self-end) e il
             contenuto (features) ancorato in alto a destra (self-start).
@@ -166,7 +166,7 @@ export function PackageCard({ pkg, buyLabel }: { pkg: SalesPackage; buyLabel: st
             <div className="hidden lg:block">{buyButton}</div>
           </div>
 
-          <div className="mt-6 flex flex-1 flex-col lg:mt-0 lg:self-start">
+          <div className="mt-10 flex flex-1 flex-col lg:mt-0 lg:self-start">
             {pkg.includes_label && (
               <p className="text-xs font-medium uppercase tracking-wide text-slate-400 dark:text-white/60">
                 {pkg.includes_label}

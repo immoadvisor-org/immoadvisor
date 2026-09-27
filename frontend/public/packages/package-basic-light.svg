@@ -20,9 +20,4 @@
 
   <path d="M0,330 L140,300 L300,325 L500,290 L660,320 L800,295 L800,500 L0,500 Z" fill="#d7e2fb" />
   <rect x="0" y="480" width="800" height="20" fill="#c4d3f7" />
-
-  <polygon points="495,360 530,300 620,315 605,360" fill="none" stroke="#2547a0" stroke-width="4" stroke-linejoin="round" />
-  <rect x="508" y="356" width="110" height="66" fill="none" stroke="#2547a0" stroke-width="4" />
-  <rect x="538" y="380" width="26" height="42" rx="2" fill="none" stroke="#2547a0" stroke-width="3" />
-  <rect x="574" y="380" width="24" height="24" rx="2" fill="#2f5fdb" opacity="0.9" />
 </svg>

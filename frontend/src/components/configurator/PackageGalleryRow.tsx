@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 import { PackageCard } from "@/components/configurator/PackageCard";
 import type { SalesPackage } from "@/features/salesPackages/salesPackagesApi";
@@ -28,10 +28,18 @@ function GalleryArrow({ direction, onClick }: { direction: "left" | "right"; onC
 export function PackageGalleryRow({ packages, buyLabel }: { packages: SalesPackage[]; buyLabel: string }) {
   const scrollerRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  // Il pacchetto più scelto va mostrato per primo: è quello che deve
-  // catturare l'attenzione appena si apre la gallery, specialmente su
-  // mobile dove all'inizio se ne vede solo uno senza scorrere.
-  const orderedPackages = [...packages].sort((a, b) => Number(b.featured) - Number(a.featured));
+
+  // L'ordine delle schede resta quello originale (Basic, Medium, All
+  // Inclusive): quello che cambia è solo la posizione di partenza della
+  // gallery, aperta già sul pacchetto più scelto invece che sul primo.
+  useLayoutEffect(() => {
+    const el = scrollerRef.current;
+    const featuredIndex = packages.findIndex((pkg) => pkg.featured);
+    if (!el || featuredIndex <= 0) return;
+    const card = el.children[featuredIndex] as HTMLElement | undefined;
+    if (card) el.scrollLeft = card.offsetLeft;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     const el = scrollerRef.current;
@@ -56,7 +64,7 @@ export function PackageGalleryRow({ packages, buyLabel }: { packages: SalesPacka
     handleScroll();
     el.addEventListener("scroll", handleScroll, { passive: true });
     return () => el.removeEventListener("scroll", handleScroll);
-  }, [orderedPackages.length]);
+  }, [packages.length]);
 
   function scrollByCard(direction: "left" | "right") {
     const el = scrollerRef.current;
@@ -77,9 +85,9 @@ export function PackageGalleryRow({ packages, buyLabel }: { packages: SalesPacka
     <div>
       <div
         ref={scrollerRef}
-        className="flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth py-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className="flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth px-1 py-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
-        {orderedPackages.map((pkg) => (
+        {packages.map((pkg) => (
           <div key={pkg.id} className="w-[88vw] flex-shrink-0 snap-start sm:w-[80%] lg:w-[74%]">
             <PackageCard pkg={pkg} buyLabel={buyLabel} />
           </div>
@@ -88,7 +96,7 @@ export function PackageGalleryRow({ packages, buyLabel }: { packages: SalesPacka
       <div className="mt-4 flex items-center justify-center gap-4">
         <GalleryArrow direction="left" onClick={() => scrollByCard("left")} />
         <div className="flex gap-2">
-          {orderedPackages.map((pkg, index) => (
+          {packages.map((pkg, index) => (
             <button
               key={pkg.id}
               type="button"
