@@ -60,10 +60,12 @@ export function ListingRow({ listing }: ListingRowProps) {
           </ul>
         </div>
 
-        <div className="mt-4 flex flex-wrap items-center justify-between gap-x-3 gap-y-2 border-t border-slate-100 pt-3 dark:border-neutral-800 sm:mt-0 sm:w-40 sm:flex-shrink-0 sm:flex-col sm:items-end sm:justify-between sm:border-l sm:border-t-0 sm:pl-6 sm:pt-0">
+        <div className="mt-4 flex flex-wrap items-center justify-between gap-x-3 gap-y-2 border-t border-slate-100 pt-3 dark:border-neutral-800 sm:mt-0 sm:w-44 sm:flex-shrink-0 sm:flex-col sm:items-end sm:justify-between sm:border-l sm:border-t-0 sm:pl-6 sm:pt-0">
           <PriceTag
             amountChf={Number(listing.price_chf)}
-            className="text-lg font-semibold text-slate-900 dark:text-neutral-50 sm:text-xl"
+            hideCents
+            className="text-lg font-semibold text-slate-900 dark:text-neutral-50"
+            currencyClassName="mr-0.5 text-xs font-medium text-slate-500 dark:text-neutral-400"
           />
           {/* Tutta la riga è già un link: qui basta l'aspetto di un pulsante. */}
           <span className="rounded-lg bg-brand-500 px-4 py-2 text-sm font-medium text-white transition-colors group-hover:bg-brand-600">

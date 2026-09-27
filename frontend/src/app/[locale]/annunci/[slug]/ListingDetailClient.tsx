@@ -77,7 +77,9 @@ export function ListingDetailClient() {
             <p className="text-sm uppercase tracking-wide text-slate-500 dark:text-neutral-400">{t("priceLabel")}</p>
             <PriceTag
               amountChf={Number(listing.price_chf)}
+              hideCents
               className="mt-1 block text-4xl font-bold text-brand-600 dark:text-brand-100"
+              currencyClassName="mr-1 text-xl font-semibold"
             />
           </div>
 

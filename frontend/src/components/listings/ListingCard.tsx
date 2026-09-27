@@ -44,7 +44,12 @@ export function ListingCard({ listing }: ListingCardProps) {
           <span className="text-sm text-slate-500 dark:text-neutral-400">
             {t("roomsValue", { rooms: listing.rooms })}
           </span>
-          <PriceTag amountChf={Number(listing.price_chf)} className="text-lg font-semibold text-slate-900 dark:text-neutral-50" />
+          <PriceTag
+            amountChf={Number(listing.price_chf)}
+            hideCents
+            className="text-base font-semibold text-slate-900 dark:text-neutral-50"
+            currencyClassName="mr-0.5 text-xs font-medium text-slate-500 dark:text-neutral-400"
+          />
         </div>
       </div>
     </Link>
