@@ -5,6 +5,7 @@ from app.api.v1.endpoints import (
     account,
     admin_about,
     admin_contact,
+    admin_emails,
     admin_home_layout,
     admin_how_it_works,
     admin_legal,
@@ -53,4 +54,5 @@ api_router.include_router(admin_orders.router)
 api_router.include_router(admin_page_intro_settings.router)
 api_router.include_router(admin_notifications.router)
 api_router.include_router(admin_legal.router)
+api_router.include_router(admin_emails.router)
 api_router.include_router(admin_users.router)

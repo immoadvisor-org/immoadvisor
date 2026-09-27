@@ -255,7 +255,8 @@
     "salesPackages": "Verkaufspakete",
     "homeLayout": "Startseiten-Layout",
     "dailyWorkGroup": "Tägliche Arbeit",
-    "siteManagementGroup": "Website-Verwaltung"
+    "siteManagementGroup": "Website-Verwaltung",
+    "emails": "E-Mails"
   },
   "AdminHomeLayout": {
     "title": "Startseiten-Layout",
@@ -607,6 +608,124 @@
     "terms": {
       "title": "Allgemeine Geschäftsbedingungen",
       "description": "Lesen Sie die Allgemeinen Geschäftsbedingungen für die Nutzung der ImmoAdvisor-Plattform."
+    }
+  },
+  "AdminEmails": {
+    "title": "E-Mails",
+    "subtitle": "Bearbeiten Sie den Text der automatisch versendeten E-Mails und die Signatur am Ende jeder Nachricht.",
+    "loading": "Wird geladen...",
+    "loadError": "E-Mails konnten nicht geladen werden",
+    "notFound": "E-Mail nicht gefunden",
+    "backToAll": "Alle E-Mails",
+    "customized": "Angepasst",
+    "default": "Standard",
+    "subject": "Betreff",
+    "body": "Text",
+    "signatureText": "Signaturtext",
+    "formattingHelp": "Eine Leerzeile trennt Absätze. Schreiben Sie **Text** für Fettdruck.",
+    "showLogo": "ImmoAdvisor-Logo über der Signatur anzeigen",
+    "placeholders": "Platzhalter",
+    "placeholdersHelp": "Klicken, um ihn ins ausgewählte Feld einzufügen: Er wird durch die echten Daten jeder E-Mail ersetzt.",
+    "save": "Speichern",
+    "saved": "Gespeichert",
+    "saveError": "Speichern fehlgeschlagen",
+    "reset": "Standardtext wiederherstellen",
+    "resetConfirm": "Standardtext wiederherstellen? Ihre gespeicherten Änderungen gehen verloren.",
+    "resetDone": "Standardtext wiederhergestellt",
+    "preview": "Vorschau",
+    "previewHelp": "Mit Beispieldaten und der aktuellen Signatur.",
+    "groups": {
+      "signature": "Signatur",
+      "admin": "Benachrichtigungen ans Team",
+      "customer_payment": "Kunde — Zahlung",
+      "customer_fulfillment": "Kunde — Auftragsbearbeitung"
+    },
+    "groupDescriptions": {
+      "signature": "Wird am Ende jeder E-Mail angefügt.",
+      "admin": "An die unter Nachrichten und Bestellungen konfigurierten Adressen.",
+      "customer_payment": "An den Kunden, wenn sich der Zahlungsstatus ändert.",
+      "customer_fulfillment": "An den Kunden, wenn Sie den Bearbeitungsstatus der Bestellung ändern."
+    },
+    "templates": {
+      "signature": {
+        "name": "Signatur",
+        "description": "Text und Logo am Ende jeder E-Mail."
+      },
+      "contact_admin": {
+        "name": "Neue Kontaktnachricht",
+        "description": "Wenn jemand über das Kontaktformular schreibt."
+      },
+      "contact_admin_listing": {
+        "name": "Anfrage zu einem Inserat",
+        "description": "Wenn jemand Informationen zu einem Inserat anfragt."
+      },
+      "order_admin": {
+        "name": "Bestellaktualisierung",
+        "description": "Bei jedem Kauf und jeder Änderung des Zahlungsstatus."
+      },
+      "customer_payment_paid": {
+        "name": "Zahlung bestätigt",
+        "description": "Einmalzahlung erfolgreich."
+      },
+      "customer_payment_active": {
+        "name": "Ratenzahlung aktiv",
+        "description": "Rate bezahlt, Ratenplan läuft."
+      },
+      "customer_payment_past_due": {
+        "name": "Rate fehlgeschlagen",
+        "description": "Abbuchung einer Rate fehlgeschlagen."
+      },
+      "customer_payment_completed": {
+        "name": "Alle Raten bezahlt",
+        "description": "Ratenplan abgeschlossen."
+      },
+      "customer_payment_cancelled": {
+        "name": "Zahlung fehlgeschlagen",
+        "description": "Zahlung abgebrochen oder abgelaufen, keine Belastung."
+      },
+      "customer_payment_installments_interrupted": {
+        "name": "Ratenzahlung unterbrochen",
+        "description": "Plan nach mindestens einer bezahlten Rate beendet."
+      },
+      "customer_payment_refund_pending": {
+        "name": "Rückerstattung läuft",
+        "description": "Rückerstattung vom Admin veranlasst."
+      },
+      "customer_payment_refunded": {
+        "name": "Rückerstattung abgeschlossen",
+        "description": "Rückerstattung dem Kunden gutgeschrieben."
+      },
+      "customer_payment_pending": {
+        "name": "Zahlung ausstehend",
+        "description": "Bestellung erstellt, Zahlung noch nicht bestätigt."
+      },
+      "customer_fulfillment_pending": {
+        "name": "Bestellung erhalten",
+        "description": "Bestellung wieder auf \"zu bearbeiten\" gesetzt."
+      },
+      "customer_fulfillment_processing": {
+        "name": "Bestellung in Bearbeitung",
+        "description": "Bestellung auf \"in Bearbeitung\" gesetzt."
+      },
+      "customer_fulfillment_completed": {
+        "name": "Bestellung abgeschlossen",
+        "description": "Alle Dienstleistungen der Bestellung abgeschlossen."
+      }
+    },
+    "placeholderDescriptions": {
+      "nome": "Vorname des Absenders",
+      "cognome": "Nachname des Absenders",
+      "email": "E-Mail des Absenders",
+      "telefono": "Telefon des Absenders",
+      "messaggio": "Nachrichtentext",
+      "annuncio": "Inseratsreferenz",
+      "stato": "Zahlungsstatus",
+      "cliente": "E-Mail des Kunden",
+      "totale": "Bestellsumme in CHF",
+      "rate": "Zeile \"Bezahlte Raten: X von Y\" (leer bei Einmalzahlungen)",
+      "rate_pagate": "Anzahl bezahlter Raten",
+      "rate_totali": "Gesamtzahl der Raten",
+      "servizi": "Liste der gekauften Dienstleistungen mit Preis"
     }
   }
 }

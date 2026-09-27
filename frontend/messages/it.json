@@ -255,7 +255,8 @@
     "salesPackages": "Pacchetti di vendita",
     "homeLayout": "Layout home",
     "dailyWorkGroup": "Lavoro quotidiano",
-    "siteManagementGroup": "Gestione sito"
+    "siteManagementGroup": "Gestione sito",
+    "emails": "Email"
   },
   "AdminHomeLayout": {
     "title": "Layout home",
@@ -607,6 +608,124 @@
     "terms": {
       "title": "Termini e condizioni",
       "description": "Consulta i termini e le condizioni di utilizzo della piattaforma ImmoAdvisor."
+    }
+  },
+  "AdminEmails": {
+    "title": "Email",
+    "subtitle": "Modifica il testo delle email inviate automaticamente dal sito e la firma in fondo a ogni messaggio.",
+    "loading": "Caricamento...",
+    "loadError": "Impossibile caricare le email",
+    "notFound": "Email non trovata",
+    "backToAll": "Tutte le email",
+    "customized": "Personalizzata",
+    "default": "Predefinita",
+    "subject": "Oggetto",
+    "body": "Testo",
+    "signatureText": "Testo della firma",
+    "formattingHelp": "Una riga vuota separa i paragrafi. Scrivi **testo** per il grassetto.",
+    "showLogo": "Mostra il logo ImmoAdvisor sopra la firma",
+    "placeholders": "Segnaposto",
+    "placeholdersHelp": "Clicca per inserirlo nel campo selezionato: verrà sostituito con i dati reali di ogni email.",
+    "save": "Salva",
+    "saved": "Salvato",
+    "saveError": "Impossibile salvare",
+    "reset": "Ripristina testo predefinito",
+    "resetConfirm": "Ripristinare il testo predefinito? Le modifiche salvate andranno perse.",
+    "resetDone": "Testo predefinito ripristinato",
+    "preview": "Anteprima",
+    "previewHelp": "Con dati di esempio e la firma attuale.",
+    "groups": {
+      "signature": "Firma",
+      "admin": "Notifiche allo staff",
+      "customer_payment": "Cliente — pagamento",
+      "customer_fulfillment": "Cliente — lavorazione ordine"
+    },
+    "groupDescriptions": {
+      "signature": "Aggiunta in fondo a tutte le email.",
+      "admin": "Inviate agli indirizzi configurati in Messaggi e Ordini.",
+      "customer_payment": "Inviate al cliente quando cambia lo stato del pagamento.",
+      "customer_fulfillment": "Inviate al cliente quando cambi lo stato di lavorazione dell'ordine."
+    },
+    "templates": {
+      "signature": {
+        "name": "Firma",
+        "description": "Testo e logo in fondo a ogni email."
+      },
+      "contact_admin": {
+        "name": "Nuovo messaggio di contatto",
+        "description": "Quando qualcuno scrive dal modulo Contattaci."
+      },
+      "contact_admin_listing": {
+        "name": "Richiesta su un annuncio",
+        "description": "Quando qualcuno chiede informazioni su un annuncio."
+      },
+      "order_admin": {
+        "name": "Aggiornamento ordine",
+        "description": "A ogni acquisto e cambio di stato del pagamento."
+      },
+      "customer_payment_paid": {
+        "name": "Pagamento confermato",
+        "description": "Pagamento unico riuscito."
+      },
+      "customer_payment_active": {
+        "name": "Pagamento rateale attivo",
+        "description": "Rata pagata, piano a rate in corso."
+      },
+      "customer_payment_past_due": {
+        "name": "Rata non riuscita",
+        "description": "Addebito di una rata fallito."
+      },
+      "customer_payment_completed": {
+        "name": "Tutte le rate pagate",
+        "description": "Piano a rate completato."
+      },
+      "customer_payment_cancelled": {
+        "name": "Pagamento non riuscito",
+        "description": "Pagamento annullato o scaduto, nessun addebito."
+      },
+      "customer_payment_installments_interrupted": {
+        "name": "Pagamento rateale interrotto",
+        "description": "Piano a rate interrotto dopo almeno una rata pagata."
+      },
+      "customer_payment_refund_pending": {
+        "name": "Rimborso in corso",
+        "description": "Rimborso avviato dall'admin."
+      },
+      "customer_payment_refunded": {
+        "name": "Rimborso completato",
+        "description": "Rimborso accreditato al cliente."
+      },
+      "customer_payment_pending": {
+        "name": "In attesa di pagamento",
+        "description": "Ordine creato, pagamento non ancora confermato."
+      },
+      "customer_fulfillment_pending": {
+        "name": "Ordine ricevuto",
+        "description": "Ordine rimesso in stato \"da lavorare\"."
+      },
+      "customer_fulfillment_processing": {
+        "name": "Ordine preso in carico",
+        "description": "Ordine passato a \"in lavorazione\"."
+      },
+      "customer_fulfillment_completed": {
+        "name": "Ordine completato",
+        "description": "Tutti i servizi dell'ordine completati."
+      }
+    },
+    "placeholderDescriptions": {
+      "nome": "Nome del mittente",
+      "cognome": "Cognome del mittente",
+      "email": "Email del mittente",
+      "telefono": "Telefono del mittente",
+      "messaggio": "Testo del messaggio",
+      "annuncio": "Riferimento dell'annuncio",
+      "stato": "Stato del pagamento",
+      "cliente": "Email del cliente",
+      "totale": "Totale dell'ordine in CHF",
+      "rate": "Riga \"Rate pagate: X di Y\" (vuota per i pagamenti unici)",
+      "rate_pagate": "Numero di rate pagate",
+      "rate_totali": "Numero totale di rate",
+      "servizi": "Elenco dei servizi acquistati con prezzo"
     }
   }
 }

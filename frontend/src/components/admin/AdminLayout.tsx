@@ -34,6 +34,7 @@ export function AdminLayout({ children }: AdminLayoutProps) {
         { href: "/admin/about", label: t("about") },
         { href: "/admin/how-it-works", label: t("howItWorks") },
         { href: "/admin/legal", label: t("legal") },
+        { href: "/admin/emails", label: t("emails") },
         { href: "/admin/users", label: t("users") },
       ],
     },
@@ -50,7 +51,7 @@ export function AdminLayout({ children }: AdminLayoutProps) {
               </p>
               <div className="mt-1 flex gap-1 overflow-x-auto sm:flex-col sm:overflow-visible">
                 {group.items.map((item) => {
-                  const isActive = pathname === item.href;
+                  const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`);
                   return (
                     <Link
                       key={item.href}

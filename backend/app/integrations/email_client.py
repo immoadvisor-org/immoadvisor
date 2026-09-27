@@ -3,10 +3,13 @@ import logging
 from pathlib import Path
 
 import httpx
+from sqlalchemy.orm import Session
 
 from app.core.config import get_settings
 from app.models.contact import ContactMessage
 from app.models.order import Order
+from app.services import email_template_service
+from app.services.email_template_service import SIGNATURE_KEY, render_body_html, render_subject
 
 logger = logging.getLogger(__name__)
 
@@ -18,32 +21,33 @@ FROM_ADDRESS = "ImmoAdvisor <onboarding@resend.dev>"
 # dipende da un URL pubblico raggiungibile.
 _LOGO_PATH = Path(__file__).parent / "assets" / "logo.png"
 _LOGO_CONTENT_ID = "immoadvisor-logo"
+_LOGO_BASE64 = base64.b64encode(_LOGO_PATH.read_bytes()).decode() if _LOGO_PATH.exists() else None
 _LOGO_ATTACHMENT = (
     {
         "filename": "logo.png",
-        "content": base64.b64encode(_LOGO_PATH.read_bytes()).decode(),
+        "content": _LOGO_BASE64,
         "content_type": "image/png",
         "content_id": _LOGO_CONTENT_ID,
     }
-    if _LOGO_PATH.exists()
+    if _LOGO_BASE64
     else None
 )
+# Solo per l'anteprima nel browser dell'admin, dove "cid:" non si risolve.
+LOGO_PREVIEW_SRC = f"data:image/png;base64,{_LOGO_BASE64}" if _LOGO_BASE64 else ""
 
-_SIGNATURE_HTML = (
-    '<div style="margin-top:32px;padding-top:20px;border-top:1px solid #e2e8f0;">'
-    + (
-        f'<img src="cid:{_LOGO_CONTENT_ID}" alt="ImmoAdvisor" width="150" height="44" '
+
+def render_signature_html(body: str, show_logo: bool, logo_src: str = f"cid:{_LOGO_CONTENT_ID}") -> str:
+    logo = (
+        f'<img src="{logo_src}" alt="ImmoAdvisor" width="150" height="44" '
         'style="display:block;margin-bottom:8px;border:0;" />'
-        if _LOGO_ATTACHMENT
+        if show_logo and _LOGO_BASE64
         else ""
     )
-    +
-    '<p style="margin:0;color:#64748b;font-size:13px;">Lo staff di ImmoAdvisor</p>'
-    "</div>"
-)
+    text = render_body_html(body, {}, paragraph_style="margin:0 0 6px;color:#64748b;font-size:13px;")
+    return f'<div style="margin-top:32px;padding-top:20px;border-top:1px solid #e2e8f0;">{logo}{text}</div>'
 
 
-def _send_email(to: list[str], subject: str, html: str, reply_to: str | None = None) -> None:
+def _send_email(db: Session, to: list[str], subject: str, html: str, reply_to: str | None = None) -> None:
     """Invia una email via Resend. Se RESEND_API_KEY o i destinatari non sono
     configurati, salta silenziosamente (loggando un avviso) invece di far
     fallire l'operazione che l'ha innescata: il dato è comunque già salvato
@@ -54,10 +58,16 @@ def _send_email(to: list[str], subject: str, html: str, reply_to: str | None = N
         logger.warning("Invio email saltato (RESEND_API_KEY o destinatari non configurati): %s", subject)
         return
 
-    payload: dict = {"from": FROM_ADDRESS, "to": to, "subject": subject, "html": html + _SIGNATURE_HTML}
+    signature = email_template_service.get_template(db, SIGNATURE_KEY)
+    payload: dict = {
+        "from": FROM_ADDRESS,
+        "to": to,
+        "subject": subject,
+        "html": html + render_signature_html(signature.body, signature.show_logo),
+    }
     if reply_to:
         payload["reply_to"] = reply_to
-    if _LOGO_ATTACHMENT:
+    if signature.show_logo and _LOGO_ATTACHMENT:
         payload["attachments"] = [_LOGO_ATTACHMENT]
 
     try:
@@ -72,24 +82,28 @@ def _send_email(to: list[str], subject: str, html: str, reply_to: str | None = N
         logger.exception("Invio email fallito: %s", subject)
 
 
-def send_contact_notification(message: ContactMessage, recipients: list[str]) -> None:
-    listing_line = (
-        f"<p><strong>Annuncio:</strong> {message.listing_reference}</p>" if message.listing_reference else ""
+def _send_template(db: Session, key: str, to: list[str], values: dict[str, str], reply_to: str | None = None) -> None:
+    template = email_template_service.get_template(db, key)
+    _send_email(
+        db,
+        to=to,
+        subject=render_subject(template.subject or "", values),
+        html=render_body_html(template.body, values),
+        reply_to=reply_to,
     )
-    body = (
-        f"<p><strong>Nome:</strong> {message.first_name} {message.last_name}</p>"
-        f"<p><strong>Email:</strong> {message.email}</p>"
-        f"<p><strong>Telefono:</strong> {message.phone or '-'}</p>"
-        f"{listing_line}"
-        f"<p><strong>Messaggio:</strong></p>"
-        f"<p>{message.message}</p>"
-    )
-    subject = (
-        f"Richiesta informazioni per annuncio: {message.listing_reference}"
-        if message.listing_reference
-        else f"Nuovo messaggio di contatto da {message.first_name} {message.last_name}"
-    )
-    _send_email(to=recipients, subject=subject, html=body, reply_to=message.email)
+
+
+def send_contact_notification(db: Session, message: ContactMessage, recipients: list[str]) -> None:
+    values = {
+        "nome": message.first_name,
+        "cognome": message.last_name,
+        "email": message.email,
+        "telefono": message.phone or "-",
+        "messaggio": message.message,
+        "annuncio": message.listing_reference or "",
+    }
+    key = "contact_admin_listing" if message.listing_reference else "contact_admin"
+    _send_template(db, key, recipients, values, reply_to=message.email)
 
 
 PAYMENT_STATUS_LABELS = {
@@ -103,136 +117,57 @@ PAYMENT_STATUS_LABELS = {
     "refunded": "Rimborsato",
 }
 
-FULFILLMENT_STATUS_LABELS = {
-    "pending": "Da lavorare",
-    "processing": "In lavorazione",
-    "completed": "Completato",
-}
+
+def _order_values(order: Order) -> dict[str, str]:
+    has_installments = order.payment_mode == "installments" and order.installments_total is not None
+    return {
+        "totale": str(order.total_chf),
+        "rate": f"Rate pagate: {order.installments_paid} di {order.installments_total}" if has_installments else "",
+        "rate_pagate": str(order.installments_paid),
+        "rate_totali": str(order.installments_total or ""),
+        "servizi": "\n".join(
+            f"• {item.service_name_snapshot} — CHF {item.price_chf_snapshot}" for item in order.items
+        ),
+    }
 
 
-def _order_items_html(order: Order) -> str:
-    return "".join(
-        f"<li>{item.service_name_snapshot} — CHF {item.price_chf_snapshot}</li>" for item in order.items
-    )
-
-
-def _installment_progress_html(order: Order) -> str:
-    if order.payment_mode != "installments" or order.installments_total is None:
-        return ""
-    return f"<p><strong>Rate pagate:</strong> {order.installments_paid} di {order.installments_total}</p>"
-
-
-def send_order_notification(order: Order, recipients: list[str]) -> None:
+def send_order_notification(db: Session, order: Order, recipients: list[str]) -> None:
     status_label = PAYMENT_STATUS_LABELS.get(order.payment_status.value, order.payment_status.value)
-    body = (
-        f"<p><strong>Stato pagamento:</strong> {status_label}</p>"
-        f"<p><strong>Cliente:</strong> {order.email or '-'}</p>"
-        f"<p><strong>Totale:</strong> CHF {order.total_chf}</p>"
-        f"{_installment_progress_html(order)}"
-        f"<p><strong>Servizi:</strong></p>"
-        f"<ul>{_order_items_html(order)}</ul>"
-    )
+    values = {**_order_values(order), "stato": status_label, "cliente": order.email or "-"}
+    # L'oggetto predefinito usa lo stato in minuscolo ("Ordine pagato: ...").
+    template = email_template_service.get_template(db, "order_admin")
+    subject_values = {**values, "stato": status_label.lower(), "cliente": order.email or "utente"}
     _send_email(
+        db,
         to=recipients,
-        subject=f"Ordine {status_label.lower()}: CHF {order.total_chf} da {order.email or 'utente'}",
-        html=body,
+        subject=render_subject(template.subject or "", subject_values),
+        html=render_body_html(template.body, values),
     )
 
 
-# Messaggio mostrato al cliente per ogni stato di pagamento dell'ordine: a
-# differenza della notifica admin (sintetica), qui il tono è rivolto a chi
-# ha acquistato e spiega cosa aspettarsi.
-CUSTOMER_PAYMENT_STATUS_MESSAGES = {
-    "paid": (
-        "Pagamento confermato",
-        "Grazie per il tuo acquisto! Abbiamo ricevuto il pagamento e a breve il nostro team prenderà in carico i servizi richiesti. Ti aggiorneremo via email man mano che procediamo.",
-    ),
-    "active": (
-        "Pagamento rateale attivo",
-        "Grazie! Abbiamo ricevuto la rata e il tuo pacchetto è confermato. Le rate successive verranno addebitate automaticamente ogni mese sulla stessa carta, fino al completamento del piano.",
-    ),
-    "past_due": (
-        "Rata non riuscita",
-        "L'ultimo addebito della rata mensile non è andato a buon fine. Stripe riprova automaticamente nei prossimi giorni; se il metodo di pagamento non è più valido, aggiornalo il prima possibile per evitare l'interruzione del servizio.",
-    ),
-    "completed": (
-        "Tutte le rate pagate",
-        "Complimenti, hai completato il pagamento rateale del tuo pacchetto! Grazie per aver scelto ImmoAdvisor.",
-    ),
-    "cancelled": (
-        "Pagamento non riuscito",
-        "Il pagamento per il tuo ordine non è andato a buon fine (sessione scaduta o annullata). Nessun addebito è stato effettuato. Puoi riprovare in qualsiasi momento dal carrello; se pensi si tratti di un errore, contattaci pure.",
-    ),
-    "refund_pending": (
-        "Rimborso in corso",
-        "Abbiamo avviato il rimborso del tuo ordine. L'accredito sul tuo metodo di pagamento richiede in genere alcuni giorni lavorativi; ti confermeremo via email al completamento.",
-    ),
-    "refunded": (
-        "Rimborso completato",
-        "Il rimborso del tuo ordine è stato completato. L'importo è stato accreditato sul tuo metodo di pagamento originale.",
-    ),
-    "pending": (
-        "Ordine in attesa di pagamento",
-        "Il tuo ordine è stato creato ed è in attesa di conferma del pagamento.",
-    ),
-}
-
-CUSTOMER_FULFILLMENT_STATUS_MESSAGES = {
-    "processing": (
-        "Ordine preso in carico",
-        "Il tuo ordine è stato preso in carico dal nostro team e siamo al lavoro sui servizi richiesti.",
-    ),
-    "completed": (
-        "Ordine completato",
-        "Tutti i servizi del tuo ordine sono stati completati. Grazie per aver scelto ImmoAdvisor!",
-    ),
-    "pending": (
-        "Ordine ricevuto",
-        "Il tuo ordine è stato ricevuto e sarà presto preso in carico dal nostro team.",
-    ),
-}
-
-
-def send_customer_payment_status_email(order: Order) -> None:
+def send_customer_payment_status_email(db: Session, order: Order) -> None:
     if not order.email:
         return
 
-    if order.payment_mode == "installments" and order.payment_status.value == "cancelled" and order.installments_paid > 0:
+    status = order.payment_status.value
+    if order.payment_mode == "installments" and status == "cancelled" and order.installments_paid > 0:
         # Un abbonamento interrotto dopo che almeno una rata è già stata
-        # incassata non è "nessun addebito effettuato": il messaggio
-        # generico per "cancelled" (pensato per un pagamento singolo mai
-        # riuscito) sarebbe fuorviante.
-        title, message = (
-            "Pagamento rateale interrotto",
-            f"Il pagamento rateale del tuo pacchetto si è interrotto dopo {order.installments_paid} rata/e "
-            f"su {order.installments_total} (rata non riuscita anche dopo i tentativi automatici, oppure "
-            "cancellazione richiesta). Le rate già addebitate non vengono restituite automaticamente; "
-            "contattaci se pensi si tratti di un errore.",
-        )
+        # incassata non è "nessun addebito effettuato".
+        key = "customer_payment_installments_interrupted"
     else:
-        title, message = CUSTOMER_PAYMENT_STATUS_MESSAGES.get(
-            order.payment_status.value, ("Aggiornamento ordine", "Lo stato del pagamento del tuo ordine è cambiato.")
-        )
-    body = (
-        f"<p>{message}</p>"
-        f"<p><strong>Totale:</strong> CHF {order.total_chf}</p>"
-        f"{_installment_progress_html(order)}"
-        f"<p><strong>Servizi:</strong></p>"
-        f"<ul>{_order_items_html(order)}</ul>"
-    )
-    _send_email(to=[order.email], subject=f"ImmoAdvisor — {title}", html=body)
+        key = f"customer_payment_{status}"
+    if key not in email_template_service.TEMPLATES:
+        logger.warning("Nessun modello email per lo stato di pagamento %s", status)
+        return
+    _send_template(db, key, [order.email], _order_values(order))
 
 
-def send_customer_fulfillment_status_email(order: Order) -> None:
+def send_customer_fulfillment_status_email(db: Session, order: Order) -> None:
     if not order.email:
         return
 
-    title, message = CUSTOMER_FULFILLMENT_STATUS_MESSAGES.get(
-        order.fulfillment_status.value, ("Aggiornamento ordine", "Lo stato di lavorazione del tuo ordine è cambiato.")
-    )
-    body = (
-        f"<p>{message}</p>"
-        f"<p><strong>Servizi:</strong></p>"
-        f"<ul>{_order_items_html(order)}</ul>"
-    )
-    _send_email(to=[order.email], subject=f"ImmoAdvisor — {title}", html=body)
+    key = f"customer_fulfillment_{order.fulfillment_status.value}"
+    if key not in email_template_service.TEMPLATES:
+        logger.warning("Nessun modello email per lo stato di lavorazione %s", order.fulfillment_status.value)
+        return
+    _send_template(db, key, [order.email], _order_values(order))

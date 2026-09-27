@@ -47,7 +47,7 @@ def update_fulfillment_status(
     except InvalidFulfillmentTransitionError as exc:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
 
-    send_customer_fulfillment_status_email(order)
+    send_customer_fulfillment_status_email(db, order)
     return AdminOrderRead.model_validate(order)
 
 
@@ -66,7 +66,7 @@ def refund_order(order_id: uuid.UUID, db: Session = Depends(get_db)) -> AdminOrd
 
     refund = create_refund(order.stripe_payment_intent)
     order = order_service.mark_refund_pending(db, order, refund.id)
-    send_customer_payment_status_email(order)
+    send_customer_payment_status_email(db, order)
     return AdminOrderRead.model_validate(order)
 
 

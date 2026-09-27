@@ -255,7 +255,8 @@
     "salesPackages": "Forfaits de vente",
     "homeLayout": "Mise en page de l'accueil",
     "dailyWorkGroup": "Travail quotidien",
-    "siteManagementGroup": "Gestion du site"
+    "siteManagementGroup": "Gestion du site",
+    "emails": "E-mails"
   },
   "AdminHomeLayout": {
     "title": "Mise en page de l'accueil",
@@ -607,6 +608,124 @@
     "terms": {
       "title": "Conditions générales",
       "description": "Consultez les conditions générales d'utilisation de la plateforme ImmoAdvisor."
+    }
+  },
+  "AdminEmails": {
+    "title": "E-mails",
+    "subtitle": "Modifiez le texte des e-mails envoyés automatiquement par le site et la signature en bas de chaque message.",
+    "loading": "Chargement...",
+    "loadError": "Impossible de charger les e-mails",
+    "notFound": "E-mail introuvable",
+    "backToAll": "Tous les e-mails",
+    "customized": "Personnalisé",
+    "default": "Par défaut",
+    "subject": "Objet",
+    "body": "Texte",
+    "signatureText": "Texte de la signature",
+    "formattingHelp": "Une ligne vide sépare les paragraphes. Écrivez **texte** pour le gras.",
+    "showLogo": "Afficher le logo ImmoAdvisor au-dessus de la signature",
+    "placeholders": "Variables",
+    "placeholdersHelp": "Cliquez pour l'insérer dans le champ sélectionné : elle sera remplacée par les données réelles de chaque e-mail.",
+    "save": "Enregistrer",
+    "saved": "Enregistré",
+    "saveError": "Impossible d'enregistrer",
+    "reset": "Rétablir le texte par défaut",
+    "resetConfirm": "Rétablir le texte par défaut ? Vos modifications enregistrées seront perdues.",
+    "resetDone": "Texte par défaut rétabli",
+    "preview": "Aperçu",
+    "previewHelp": "Avec des données d'exemple et la signature actuelle.",
+    "groups": {
+      "signature": "Signature",
+      "admin": "Notifications à l'équipe",
+      "customer_payment": "Client — paiement",
+      "customer_fulfillment": "Client — traitement de la commande"
+    },
+    "groupDescriptions": {
+      "signature": "Ajoutée en bas de chaque e-mail.",
+      "admin": "Envoyées aux adresses configurées dans Messages et Commandes.",
+      "customer_payment": "Envoyées au client lorsque le statut du paiement change.",
+      "customer_fulfillment": "Envoyées au client lorsque vous changez le statut de traitement de la commande."
+    },
+    "templates": {
+      "signature": {
+        "name": "Signature",
+        "description": "Texte et logo en bas de chaque e-mail."
+      },
+      "contact_admin": {
+        "name": "Nouveau message de contact",
+        "description": "Quand quelqu'un écrit via le formulaire de contact."
+      },
+      "contact_admin_listing": {
+        "name": "Demande sur une annonce",
+        "description": "Quand quelqu'un demande des informations sur une annonce."
+      },
+      "order_admin": {
+        "name": "Mise à jour de commande",
+        "description": "À chaque achat et changement de statut du paiement."
+      },
+      "customer_payment_paid": {
+        "name": "Paiement confirmé",
+        "description": "Paiement unique réussi."
+      },
+      "customer_payment_active": {
+        "name": "Paiement échelonné actif",
+        "description": "Échéance payée, plan en cours."
+      },
+      "customer_payment_past_due": {
+        "name": "Échéance échouée",
+        "description": "Le prélèvement d'une échéance a échoué."
+      },
+      "customer_payment_completed": {
+        "name": "Toutes les échéances payées",
+        "description": "Plan échelonné terminé."
+      },
+      "customer_payment_cancelled": {
+        "name": "Paiement échoué",
+        "description": "Paiement annulé ou expiré, aucun débit."
+      },
+      "customer_payment_installments_interrupted": {
+        "name": "Paiement échelonné interrompu",
+        "description": "Plan arrêté après au moins une échéance payée."
+      },
+      "customer_payment_refund_pending": {
+        "name": "Remboursement en cours",
+        "description": "Remboursement lancé par l'admin."
+      },
+      "customer_payment_refunded": {
+        "name": "Remboursement effectué",
+        "description": "Remboursement crédité au client."
+      },
+      "customer_payment_pending": {
+        "name": "En attente de paiement",
+        "description": "Commande créée, paiement pas encore confirmé."
+      },
+      "customer_fulfillment_pending": {
+        "name": "Commande reçue",
+        "description": "Commande remise à \"à traiter\"."
+      },
+      "customer_fulfillment_processing": {
+        "name": "Commande prise en charge",
+        "description": "Commande passée \"en cours\"."
+      },
+      "customer_fulfillment_completed": {
+        "name": "Commande terminée",
+        "description": "Tous les services de la commande sont terminés."
+      }
+    },
+    "placeholderDescriptions": {
+      "nome": "Prénom de l'expéditeur",
+      "cognome": "Nom de l'expéditeur",
+      "email": "E-mail de l'expéditeur",
+      "telefono": "Téléphone de l'expéditeur",
+      "messaggio": "Texte du message",
+      "annuncio": "Référence de l'annonce",
+      "stato": "Statut du paiement",
+      "cliente": "E-mail du client",
+      "totale": "Total de la commande en CHF",
+      "rate": "Ligne \"Échéances payées : X sur Y\" (vide pour les paiements uniques)",
+      "rate_pagate": "Nombre d'échéances payées",
+      "rate_totali": "Nombre total d'échéances",
+      "servizi": "Liste des services achetés avec prix"
     }
   }
 }

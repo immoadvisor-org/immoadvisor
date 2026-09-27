@@ -255,7 +255,8 @@
     "salesPackages": "Sales packages",
     "homeLayout": "Home layout",
     "dailyWorkGroup": "Daily work",
-    "siteManagementGroup": "Site management"
+    "siteManagementGroup": "Site management",
+    "emails": "Emails"
   },
   "AdminHomeLayout": {
     "title": "Home layout",
@@ -607,6 +608,124 @@
     "terms": {
       "title": "Terms & Conditions",
       "description": "Read the terms and conditions for using the ImmoAdvisor platform."
+    }
+  },
+  "AdminEmails": {
+    "title": "Emails",
+    "subtitle": "Edit the text of the emails the site sends automatically and the signature at the bottom of every message.",
+    "loading": "Loading...",
+    "loadError": "Could not load emails",
+    "notFound": "Email not found",
+    "backToAll": "All emails",
+    "customized": "Customized",
+    "default": "Default",
+    "subject": "Subject",
+    "body": "Text",
+    "signatureText": "Signature text",
+    "formattingHelp": "A blank line separates paragraphs. Write **text** for bold.",
+    "showLogo": "Show the ImmoAdvisor logo above the signature",
+    "placeholders": "Placeholders",
+    "placeholdersHelp": "Click to insert it into the selected field: it will be replaced with each email's real data.",
+    "save": "Save",
+    "saved": "Saved",
+    "saveError": "Could not save",
+    "reset": "Restore default text",
+    "resetConfirm": "Restore the default text? Your saved changes will be lost.",
+    "resetDone": "Default text restored",
+    "preview": "Preview",
+    "previewHelp": "With sample data and the current signature.",
+    "groups": {
+      "signature": "Signature",
+      "admin": "Staff notifications",
+      "customer_payment": "Customer — payment",
+      "customer_fulfillment": "Customer — order processing"
+    },
+    "groupDescriptions": {
+      "signature": "Added at the bottom of every email.",
+      "admin": "Sent to the addresses configured in Messages and Orders.",
+      "customer_payment": "Sent to the customer when the payment status changes.",
+      "customer_fulfillment": "Sent to the customer when you change the order's processing status."
+    },
+    "templates": {
+      "signature": {
+        "name": "Signature",
+        "description": "Text and logo at the bottom of every email."
+      },
+      "contact_admin": {
+        "name": "New contact message",
+        "description": "When someone writes via the Contact form."
+      },
+      "contact_admin_listing": {
+        "name": "Listing enquiry",
+        "description": "When someone asks about a listing."
+      },
+      "order_admin": {
+        "name": "Order update",
+        "description": "On every purchase and payment status change."
+      },
+      "customer_payment_paid": {
+        "name": "Payment confirmed",
+        "description": "One-off payment succeeded."
+      },
+      "customer_payment_active": {
+        "name": "Instalment plan active",
+        "description": "Instalment paid, plan in progress."
+      },
+      "customer_payment_past_due": {
+        "name": "Instalment failed",
+        "description": "An instalment charge failed."
+      },
+      "customer_payment_completed": {
+        "name": "All instalments paid",
+        "description": "Instalment plan completed."
+      },
+      "customer_payment_cancelled": {
+        "name": "Payment failed",
+        "description": "Payment cancelled or expired, nothing charged."
+      },
+      "customer_payment_installments_interrupted": {
+        "name": "Instalment plan interrupted",
+        "description": "Plan stopped after at least one paid instalment."
+      },
+      "customer_payment_refund_pending": {
+        "name": "Refund in progress",
+        "description": "Refund started by the admin."
+      },
+      "customer_payment_refunded": {
+        "name": "Refund completed",
+        "description": "Refund credited to the customer."
+      },
+      "customer_payment_pending": {
+        "name": "Awaiting payment",
+        "description": "Order created, payment not yet confirmed."
+      },
+      "customer_fulfillment_pending": {
+        "name": "Order received",
+        "description": "Order set back to \"to do\"."
+      },
+      "customer_fulfillment_processing": {
+        "name": "Order in progress",
+        "description": "Order moved to \"in progress\"."
+      },
+      "customer_fulfillment_completed": {
+        "name": "Order completed",
+        "description": "All services in the order completed."
+      }
+    },
+    "placeholderDescriptions": {
+      "nome": "Sender's first name",
+      "cognome": "Sender's last name",
+      "email": "Sender's email",
+      "telefono": "Sender's phone",
+      "messaggio": "Message text",
+      "annuncio": "Listing reference",
+      "stato": "Payment status",
+      "cliente": "Customer email",
+      "totale": "Order total in CHF",
+      "rate": "\"Instalments paid: X of Y\" line (empty for one-off payments)",
+      "rate_pagate": "Number of instalments paid",
+      "rate_totali": "Total number of instalments",
+      "servizi": "List of purchased services with price"
     }
   }
 }

@@ -23,8 +23,8 @@ router = APIRouter(prefix="/webhooks", tags=["webhooks"])
 
 def _notify(db: Session, order) -> None:
     recipients = notification_service.list_recipient_emails(db, "order")
-    send_order_notification(order, recipients)
-    send_customer_payment_status_email(order)
+    send_order_notification(db, order, recipients)
+    send_customer_payment_status_email(db, order)
 
 
 @router.post("/stripe", status_code=status.HTTP_200_OK)
