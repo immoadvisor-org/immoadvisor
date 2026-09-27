@@ -3,9 +3,9 @@
 import { useTranslations } from "next-intl";
 
 import { Link } from "@/i18n/navigation";
-import { BRAND_NAME } from "@/lib/constants";
 import { useUser } from "@/features/auth/useUser";
 import { useCartStore } from "@/features/cart/cartStore";
+import { BrandWordmark } from "@/components/layout/BrandWordmark";
 import { LocaleSwitcher } from "@/components/layout/LocaleSwitcher";
 import { NavMenu } from "@/components/layout/NavMenu";
 import { UserMenu } from "@/components/layout/UserMenu";
@@ -24,7 +24,7 @@ export function Header() {
             href="/"
             className="font-display text-xl font-bold tracking-tight text-slate-900 dark:text-neutral-50"
           >
-            {BRAND_NAME}
+            <BrandWordmark />
           </Link>
           <LocaleSwitcher />
         </div>
