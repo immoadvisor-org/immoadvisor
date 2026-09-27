@@ -548,7 +548,12 @@
       "price_desc": "Prezzo decrescente",
       "rooms_desc": "Più locali",
       "rooms_asc": "Meno locali"
-    }
+    },
+    "viewMode": "Modalità di visualizzazione",
+    "viewGrid": "Vista a griglia",
+    "viewList": "Vista a lista",
+    "details": "Dettagli",
+    "photosCount": "{count, plural, one {# foto} other {# foto}}"
   },
   "ListingDetail": {
     "back": "Torna agli annunci",

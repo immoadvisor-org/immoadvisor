@@ -1,12 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 
 import { useListings } from "@/features/listings/useListings";
 import { useListingFacets } from "@/features/listings/useListingFacets";
 import type { ListingSort } from "@/features/listings/types";
 import { ListingCard } from "@/components/listings/ListingCard";
+import { ListingRow } from "@/components/listings/ListingRow";
 import {
   EMPTY_SEARCH,
   ListingSearch,
@@ -17,6 +18,31 @@ import {
 
 const SORT_OPTIONS: ListingSort[] = ["default", "newest", "price_asc", "price_desc", "rooms_desc", "rooms_asc"];
 
+type ViewMode = "grid" | "list";
+// Preferenza del singolo visitatore, ricordata tra una visita e l'altra.
+const VIEW_MODE_STORAGE_KEY = "listings-view-mode";
+
+function ViewModeIcon({ mode }: { mode: ViewMode }) {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" aria-hidden="true">
+      {mode === "grid" ? (
+        <>
+          <rect x="4" y="4" width="6.5" height="6.5" rx="1.5" />
+          <rect x="13.5" y="4" width="6.5" height="6.5" rx="1.5" />
+          <rect x="4" y="13.5" width="6.5" height="6.5" rx="1.5" />
+          <rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.5" />
+        </>
+      ) : (
+        <>
+          <rect x="4" y="4.5" width="6" height="6" rx="1.5" />
+          <rect x="4" y="13.5" width="6" height="6" rx="1.5" />
+          <path d="M13 6.5h7M13 9h4.5M13 15.5h7M13 18h4.5" strokeLinecap="round" />
+        </>
+      )}
+    </svg>
+  );
+}
+
 export function ListingList() {
   const t = useTranslations("Listings");
   const facets = useListingFacets();
@@ -25,6 +51,25 @@ export function ListingList() {
   const [draft, setDraft] = useState<ListingSearchValues>(EMPTY_SEARCH);
   const [applied, setApplied] = useState<ListingSearchValues>(EMPTY_SEARCH);
   const [sort, setSort] = useState<ListingSort>("default");
+  const [viewMode, setViewMode] = useState<ViewMode>("grid");
+
+  useEffect(() => {
+    try {
+      const saved = window.localStorage.getItem(VIEW_MODE_STORAGE_KEY);
+      if (saved === "grid" || saved === "list") setViewMode(saved);
+    } catch {
+      // Storage non disponibile (es. navigazione privata): resta la griglia.
+    }
+  }, []);
+
+  function changeViewMode(mode: ViewMode) {
+    setViewMode(mode);
+    try {
+      window.localStorage.setItem(VIEW_MODE_STORAGE_KEY, mode);
+    } catch {
+      // Ignorato: la scelta vale comunque per la visita corrente.
+    }
+  }
   const { listings, isLoading, error } = useListings({ ...toFilters(applied), sort });
 
   function handleReset() {
@@ -103,27 +148,55 @@ export function ListingList() {
         <p className="text-sm text-slate-600 dark:text-neutral-300" aria-live="polite">
           {isLoading ? t("loading") : error ? "" : t("resultsCount", { count: listings.length })}
         </p>
-        <label className="flex items-center gap-2 text-sm text-slate-600 dark:text-neutral-300">
-          {t("sortBy")}
-          <select
-            value={sort}
-            onChange={(e) => setSort(e.target.value as ListingSort)}
-            className="h-9 rounded-lg border border-slate-200 bg-white px-2 text-sm text-slate-900 outline-none focus:border-brand-500 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-100"
+        <div className="flex items-center gap-3">
+          <label className="flex items-center gap-2 text-sm text-slate-600 dark:text-neutral-300">
+            {t("sortBy")}
+            <select
+              value={sort}
+              onChange={(e) => setSort(e.target.value as ListingSort)}
+              className="h-9 rounded-lg border border-slate-200 bg-white px-2 text-sm text-slate-900 outline-none focus:border-brand-500 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-100"
+            >
+              {SORT_OPTIONS.map((option) => (
+                <option key={option} value={option}>
+                  {t(`sort.${option}`)}
+                </option>
+              ))}
+            </select>
+          </label>
+          <div
+            role="group"
+            aria-label={t("viewMode")}
+            className="flex h-9 items-center rounded-lg border border-slate-200 bg-white p-0.5 dark:border-neutral-700 dark:bg-neutral-800"
           >
-            {SORT_OPTIONS.map((option) => (
-              <option key={option} value={option}>
-                {t(`sort.${option}`)}
-              </option>
+            {(["grid", "list"] as const).map((mode) => (
+              <button
+                key={mode}
+                type="button"
+                onClick={() => changeViewMode(mode)}
+                aria-pressed={viewMode === mode}
+                aria-label={t(mode === "grid" ? "viewGrid" : "viewList")}
+                title={t(mode === "grid" ? "viewGrid" : "viewList")}
+                className={`flex h-full w-8 items-center justify-center rounded-md transition-colors ${
+                  viewMode === mode
+                    ? "bg-brand-50 text-brand-600 dark:bg-brand-500/20 dark:text-brand-100"
+                    : "text-slate-400 hover:text-slate-700 dark:text-neutral-500 dark:hover:text-neutral-200"
+                }`}
+              >
+                <ViewModeIcon mode={mode} />
+              </button>
             ))}
-          </select>
-        </label>
+          </div>
+        </div>
       </div>
 
       <div className="mt-4">
         {isLoading ? (
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className={viewMode === "grid" ? "grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3" : "flex flex-col gap-4"}>
             {[0, 1, 2].map((i) => (
-              <div key={i} className="h-80 animate-pulse rounded-2xl bg-slate-100 dark:bg-neutral-800" />
+              <div
+                key={i}
+                className={`${viewMode === "grid" ? "h-80" : "h-44"} animate-pulse rounded-2xl bg-slate-100 dark:bg-neutral-800`}
+              />
             ))}
           </div>
         ) : error ? (
@@ -142,10 +215,16 @@ export function ListingList() {
               </button>
             )}
           </div>
-        ) : (
+        ) : viewMode === "grid" ? (
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {listings.map((listing) => (
               <ListingCard key={listing.id} listing={listing} />
+            ))}
+          </div>
+        ) : (
+          <div className="flex flex-col gap-4">
+            {listings.map((listing) => (
+              <ListingRow key={listing.id} listing={listing} />
             ))}
           </div>
         )}

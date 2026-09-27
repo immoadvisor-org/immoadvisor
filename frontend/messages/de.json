@@ -548,7 +548,12 @@
       "price_desc": "Preis absteigend",
       "rooms_desc": "Meiste Zimmer",
       "rooms_asc": "Wenigste Zimmer"
-    }
+    },
+    "viewMode": "Ansicht",
+    "viewGrid": "Rasteransicht",
+    "viewList": "Listenansicht",
+    "details": "Details",
+    "photosCount": "{count, plural, one {# Foto} other {# Fotos}}"
   },
   "ListingDetail": {
     "back": "Zurück zu den Inseraten",

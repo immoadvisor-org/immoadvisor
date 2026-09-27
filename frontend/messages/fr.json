@@ -548,7 +548,12 @@
       "price_desc": "Prix décroissant",
       "rooms_desc": "Plus de pièces",
       "rooms_asc": "Moins de pièces"
-    }
+    },
+    "viewMode": "Mode d'affichage",
+    "viewGrid": "Vue en grille",
+    "viewList": "Vue en liste",
+    "details": "Détails",
+    "photosCount": "{count, plural, one {# photo} other {# photos}}"
   },
   "ListingDetail": {
     "back": "Retour aux annonces",

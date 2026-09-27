@@ -548,7 +548,12 @@
       "price_desc": "Price: high to low",
       "rooms_desc": "Most rooms",
       "rooms_asc": "Fewest rooms"
-    }
+    },
+    "viewMode": "View mode",
+    "viewGrid": "Grid view",
+    "viewList": "List view",
+    "details": "Details",
+    "photosCount": "{count, plural, one {# photo} other {# photos}}"
   },
   "ListingDetail": {
     "back": "Back to listings",
