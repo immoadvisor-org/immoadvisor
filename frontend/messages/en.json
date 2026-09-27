@@ -398,7 +398,20 @@
     "save": "Save",
     "saved": "Saved",
     "saveError": "Unable to save",
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "imagesTitle": "Images",
+    "imagesSubtitle": "Shared by all languages. JPG, PNG, WebP or GIF, up to 5 MB.",
+    "mainImageLabel": "Main photo",
+    "mainImageHelp": "Next to the title on the About page and in the About section of the home page.",
+    "ctaImageLabel": "Closing banner background",
+    "ctaImageHelp": "Behind the \"contact us\" banner at the bottom of the About page.",
+    "defaultImageNote": "Default image: upload one to replace it.",
+    "uploadImage": "Upload image",
+    "replaceImage": "Replace",
+    "imageUploading": "Uploading...",
+    "removeImage": "Remove",
+    "removeImageConfirm": "Remove the image? The site will go back to the default one.",
+    "imageError": "Could not upload the image"
   },
   "Admin": {
     "title": "Catalog management",

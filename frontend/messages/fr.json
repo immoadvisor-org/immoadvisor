@@ -398,7 +398,20 @@
     "save": "Enregistrer",
     "saved": "Enregistré",
     "saveError": "Impossible d'enregistrer",
-    "loading": "Chargement..."
+    "loading": "Chargement...",
+    "imagesTitle": "Images",
+    "imagesSubtitle": "Communes à toutes les langues. JPG, PNG, WebP ou GIF, 5 Mo maximum.",
+    "mainImageLabel": "Photo principale",
+    "mainImageHelp": "À côté du titre sur la page Qui sommes-nous et dans la section Qui sommes-nous de l'accueil.",
+    "ctaImageLabel": "Fond de l'encadré final",
+    "ctaImageHelp": "Derrière l'encadré \"contactez-nous\" en bas de la page Qui sommes-nous.",
+    "defaultImageNote": "Image par défaut : téléchargez-en une pour la remplacer.",
+    "uploadImage": "Télécharger une image",
+    "replaceImage": "Remplacer",
+    "imageUploading": "Téléchargement...",
+    "removeImage": "Supprimer",
+    "removeImageConfirm": "Supprimer l'image ? Le site reviendra à l'image par défaut.",
+    "imageError": "Impossible de télécharger l'image"
   },
   "Admin": {
     "title": "Gestion du catalogue",

@@ -4,14 +4,19 @@ import { useEffect, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 
 import { Link } from "@/i18n/navigation";
-import { getAboutContent, type AboutContent } from "@/features/about/aboutApi";
+import {
+  DEFAULT_ABOUT_CTA_IMAGE,
+  DEFAULT_ABOUT_MAIN_IMAGE,
+  getAboutContent,
+  type AboutContentWithImages,
+} from "@/features/about/aboutApi";
 import { Button } from "@/components/ui/Button";
 
 export function AboutClient() {
   const t = useTranslations("ServiceDetail");
   const tAbout = useTranslations("About");
   const locale = useLocale();
-  const [content, setContent] = useState<AboutContent | null>(null);
+  const [content, setContent] = useState<AboutContentWithImages | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -57,7 +62,7 @@ export function AboutClient() {
           </div>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/about-team.webp"
+            src={content.main_image_url || DEFAULT_ABOUT_MAIN_IMAGE}
             alt=""
             aria-hidden="true"
             className="aspect-[3/2] w-full rounded-2xl object-cover"
@@ -87,7 +92,7 @@ export function AboutClient() {
       <section className="relative mt-4 flex min-h-[280px] items-center overflow-hidden">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src="/hero-illustration.svg?v=2"
+          src={content.cta_image_url || DEFAULT_ABOUT_CTA_IMAGE}
           alt=""
           aria-hidden="true"
           className="absolute inset-0 h-full w-full object-cover"

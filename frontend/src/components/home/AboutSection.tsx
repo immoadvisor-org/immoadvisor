@@ -4,12 +4,16 @@ import { useEffect, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 
 import { Link } from "@/i18n/navigation";
-import { getAboutContent, type AboutContent } from "@/features/about/aboutApi";
+import {
+  DEFAULT_ABOUT_MAIN_IMAGE,
+  getAboutContent,
+  type AboutContentWithImages,
+} from "@/features/about/aboutApi";
 
 export function AboutSection() {
   const t = useTranslations("Home");
   const locale = useLocale();
-  const [about, setAbout] = useState<AboutContent | null>(null);
+  const [about, setAbout] = useState<AboutContentWithImages | null>(null);
 
   useEffect(() => {
     let isMounted = true;
@@ -26,8 +30,14 @@ export function AboutSection() {
   return (
     <section className="mx-auto max-w-6xl px-4 py-16">
       <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2">
+        {/* Stessa foto della pagina "Chi siamo", gestita da Admin → Chi siamo. */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/about-illustration.svg?v=2" alt="" aria-hidden="true" className="w-full rounded-2xl" />
+        <img
+          src={about.main_image_url || DEFAULT_ABOUT_MAIN_IMAGE}
+          alt=""
+          aria-hidden="true"
+          className="aspect-[3/2] w-full rounded-2xl object-cover"
+        />
         <div>
           <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-neutral-50 sm:text-3xl">
             {about.title}

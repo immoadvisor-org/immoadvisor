@@ -398,7 +398,20 @@
     "save": "Salva",
     "saved": "Salvato",
     "saveError": "Impossibile salvare",
-    "loading": "Caricamento..."
+    "loading": "Caricamento...",
+    "imagesTitle": "Immagini",
+    "imagesSubtitle": "Valgono per tutte le lingue. JPG, PNG, WebP o GIF, massimo 5 MB.",
+    "mainImageLabel": "Foto principale",
+    "mainImageHelp": "Accanto al titolo nella pagina Chi siamo e nella sezione Chi siamo della home.",
+    "ctaImageLabel": "Sfondo del riquadro finale",
+    "ctaImageHelp": "Dietro al riquadro \"contattaci\" in fondo alla pagina Chi siamo.",
+    "defaultImageNote": "Immagine predefinita: caricane una per sostituirla.",
+    "uploadImage": "Carica immagine",
+    "replaceImage": "Sostituisci",
+    "imageUploading": "Caricamento...",
+    "removeImage": "Rimuovi",
+    "removeImageConfirm": "Rimuovere l'immagine? Il sito tornerà a quella predefinita.",
+    "imageError": "Impossibile caricare l'immagine"
   },
   "Admin": {
     "title": "Gestione catalogo",

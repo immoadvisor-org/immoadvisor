@@ -1,9 +1,11 @@
 import { apiFetch } from "@/lib/apiClient";
-import type { AboutContent } from "@/features/about/aboutApi";
+import type { AboutContent, AboutImages } from "@/features/about/aboutApi";
 
 const BASE = "/api/v1/admin/about";
 
-export interface AboutContentAdmin {
+export type AboutImageSlot = "main" | "cta";
+
+export interface AboutContentAdmin extends AboutImages {
   translations: Record<string, AboutContent>;
 }
 
@@ -20,4 +22,14 @@ export function updateAdminAboutContent(
     accessToken,
     body: JSON.stringify({ translations }),
   });
+}
+
+export function uploadAdminAboutImage(slot: AboutImageSlot, file: File, accessToken: string): Promise<AboutContentAdmin> {
+  const body = new FormData();
+  body.append("file", file);
+  return apiFetch<AboutContentAdmin>(`${BASE}/images/${slot}`, { method: "POST", accessToken, body });
+}
+
+export function removeAdminAboutImage(slot: AboutImageSlot, accessToken: string): Promise<AboutContentAdmin> {
+  return apiFetch<AboutContentAdmin>(`${BASE}/images/${slot}`, { method: "DELETE", accessToken });
 }

@@ -1,4 +1,4 @@
-from sqlalchemy import Integer
+from sqlalchemy import Integer, String
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import Mapped, mapped_column
 
@@ -11,3 +11,7 @@ class AboutContent(Base):
     id: Mapped[int] = mapped_column(Integer, primary_key=True, default=1)
     # { "it": {"title": ..., "intro": ..., "value1_title": ..., ...}, "en": {...}, ... }
     translations: Mapped[dict] = mapped_column(JSONB, default=dict)
+    # Immagini caricate da admin (uguali per tutte le lingue); None = immagine predefinita del frontend.
+    # La foto principale è usata anche nella sezione "Chi siamo" della home.
+    main_image_url: Mapped[str | None] = mapped_column(String, nullable=True)
+    cta_image_url: Mapped[str | None] = mapped_column(String, nullable=True)

@@ -1,4 +1,8 @@
+from typing import Literal
+
 from pydantic import BaseModel
+
+AboutImageSlot = Literal["main", "cta"]
 
 
 class AboutTranslationInput(BaseModel):
@@ -18,9 +22,14 @@ class AboutTranslationInput(BaseModel):
 class AboutContentRead(AboutTranslationInput):
     """Contenuto risolto per una singola lingua, quello che consuma il pubblico."""
 
+    main_image_url: str | None = None
+    cta_image_url: str | None = None
+
 
 class AboutContentAdminRead(BaseModel):
     translations: dict[str, AboutTranslationInput]
+    main_image_url: str | None = None
+    cta_image_url: str | None = None
 
 
 class AboutContentAdminUpdate(BaseModel):

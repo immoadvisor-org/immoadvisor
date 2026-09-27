@@ -14,6 +14,18 @@ export interface AboutContent {
   cta_button: string;
 }
 
-export function getAboutContent(locale: string): Promise<AboutContent> {
-  return apiFetch<AboutContent>(`/api/v1/about?locale=${locale}`);
+export interface AboutImages {
+  // Caricate da Admin → Chi siamo; null = immagine predefinita.
+  main_image_url?: string | null;
+  cta_image_url?: string | null;
+}
+
+export type AboutContentWithImages = AboutContent & AboutImages;
+
+// Immagini usate finché l'admin non ne carica di proprie.
+export const DEFAULT_ABOUT_MAIN_IMAGE = "/about-team.webp";
+export const DEFAULT_ABOUT_CTA_IMAGE = "/hero-illustration.svg?v=2";
+
+export function getAboutContent(locale: string): Promise<AboutContentWithImages> {
+  return apiFetch<AboutContentWithImages>(`/api/v1/about?locale=${locale}`);
 }

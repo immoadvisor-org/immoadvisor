@@ -398,7 +398,20 @@
     "save": "Speichern",
     "saved": "Gespeichert",
     "saveError": "Speichern fehlgeschlagen",
-    "loading": "Wird geladen..."
+    "loading": "Wird geladen...",
+    "imagesTitle": "Bilder",
+    "imagesSubtitle": "Gelten für alle Sprachen. JPG, PNG, WebP oder GIF, maximal 5 MB.",
+    "mainImageLabel": "Hauptfoto",
+    "mainImageHelp": "Neben dem Titel auf der Seite Über uns und im Bereich Über uns der Startseite.",
+    "ctaImageLabel": "Hintergrund des Abschlussbereichs",
+    "ctaImageHelp": "Hinter dem Bereich \"Kontakt\" am Ende der Seite Über uns.",
+    "defaultImageNote": "Standardbild: Laden Sie ein eigenes hoch, um es zu ersetzen.",
+    "uploadImage": "Bild hochladen",
+    "replaceImage": "Ersetzen",
+    "imageUploading": "Wird hochgeladen...",
+    "removeImage": "Entfernen",
+    "removeImageConfirm": "Bild entfernen? Die Website verwendet wieder das Standardbild.",
+    "imageError": "Bild konnte nicht hochgeladen werden"
   },
   "Admin": {
     "title": "Katalogverwaltung",
