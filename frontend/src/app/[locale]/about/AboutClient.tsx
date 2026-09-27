@@ -57,10 +57,10 @@ export function AboutClient() {
           </div>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/about-illustration.svg?v=2"
+            src="/about-team.webp"
             alt=""
             aria-hidden="true"
-            className="w-full rounded-2xl"
+            className="aspect-[3/2] w-full rounded-2xl object-cover"
           />
         </div>
 
