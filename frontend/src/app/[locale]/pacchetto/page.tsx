@@ -135,8 +135,8 @@ function PackageCheckoutContent() {
             </>
           )}
           <div className="flex items-baseline justify-between border-t border-slate-200 pt-2 dark:border-neutral-700">
-            <span className="text-sm font-medium text-slate-700 dark:text-neutral-300">{t("totalLabel")}</span>
-            <PriceTag amountChf={totalPrice} className="text-lg font-semibold text-slate-900 dark:text-neutral-50" />
+            <span className="text-xs text-slate-500 dark:text-neutral-400">{t("totalLabel")}</span>
+            <PriceTag amountChf={totalPrice} className="text-xs font-normal text-slate-500 dark:text-neutral-400" />
           </div>
         </div>
 
