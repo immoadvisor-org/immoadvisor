@@ -1,0 +1,46 @@
+<svg width="800" height="500" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg" role="img" preserveAspectRatio="xMidYMid slice">
+  <title>Medium</title>
+  <defs>
+    <linearGradient id="medium-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#121212" />
+      <stop offset="42%" stop-color="#2b2b2b" />
+      <stop offset="72%" stop-color="#4a4a4a" />
+      <stop offset="100%" stop-color="#f2a866" />
+    </linearGradient>
+    <radialGradient id="medium-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffd9a0" stop-opacity="0.95" />
+      <stop offset="60%" stop-color="#f2a866" stop-opacity="0.36" />
+      <stop offset="100%" stop-color="#f2a866" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <rect width="800" height="500" fill="url(#medium-sky)" />
+
+  <g fill="#ffffff">
+    <circle cx="70" cy="60" r="1.6" opacity="0.65" />
+    <circle cx="150" cy="110" r="1.2" opacity="0.45" />
+    <circle cx="260" cy="45" r="1.8" opacity="0.75" />
+    <circle cx="360" cy="95" r="1.2" opacity="0.4" />
+    <circle cx="540" cy="70" r="1.5" opacity="0.6" />
+    <circle cx="620" cy="115" r="1.1" opacity="0.5" />
+    <circle cx="690" cy="45" r="1.7" opacity="0.7" />
+    <circle cx="750" cy="105" r="1.3" opacity="0.5" />
+  </g>
+
+  <circle cx="400" cy="250" r="125" fill="url(#medium-glow)" />
+  <circle cx="400" cy="250" r="52" fill="#ffe3b8" />
+
+  <path d="M0,320 L120,285 L260,310 L420,270 L580,305 L800,280 L800,500 L0,500 Z" fill="#262626" opacity="0.85" />
+  <path d="M0,360 L150,320 L320,350 L480,305 L640,345 L800,315 L800,500 L0,500 Z" fill="#181818" />
+  <rect x="0" y="480" width="800" height="20" fill="#0d0d0d" />
+
+  <polygon points="300,360 335,300 425,315 410,360" fill="#0d0d0d" />
+  <rect x="313" y="356" width="110" height="70" fill="#141414" />
+  <rect x="336" y="380" width="24" height="46" rx="2" fill="#0d0d0d" />
+  <rect x="370" y="380" width="20" height="20" rx="2" fill="#ffd27a" opacity="0.95" />
+  <rect x="336" y="366" width="18" height="16" rx="2" fill="#ffd27a" opacity="0.8" />
+
+  <polygon points="440,375 462,340 505,348 492,375" fill="#0d0d0d" opacity="0.95" />
+  <rect x="448" y="373" width="52" height="53" fill="#141414" opacity="0.95" />
+  <rect x="460" y="388" width="14" height="14" rx="2" fill="#ffd27a" opacity="0.85" />
+</svg>

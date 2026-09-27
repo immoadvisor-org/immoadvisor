@@ -77,6 +77,9 @@
   },
   "SalesPackages": {
     "loading": "Chargement des forfaits...",
+    "taglineBasic": "Pour les vendeurs autonomes",
+    "taglineMedium": "Le plus choisi par les propriétaires",
+    "taglineAllInclusive": "Accompagnement complet, sans souci",
     "featureColumn": "Prestation",
     "individualPriceColumn": "Prix unitaire",
     "perMonth": "/ mois",

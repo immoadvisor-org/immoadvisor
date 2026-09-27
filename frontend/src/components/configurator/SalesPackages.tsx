@@ -4,7 +4,8 @@ import { useTranslations } from "next-intl";
 
 import { PriceTag } from "@/components/ui/PriceTag";
 import { useSalesPackages } from "@/features/salesPackages/useSalesPackages";
-import { Check, PackageCard } from "@/components/configurator/PackageCard";
+import { Check } from "@/components/configurator/PackageCard";
+import { PackageGalleryRow } from "@/components/configurator/PackageGalleryRow";
 
 // La tabella di confronto (14 righe di funzionalità) è un contenuto fisso a
 // 3 colonne Basic/Medium/All Inclusive, indipendente dal numero di
@@ -49,10 +50,8 @@ export function SalesPackages() {
         <p className="mt-4 text-base leading-relaxed text-slate-600 dark:text-neutral-300">{content.subtitle}</p>
       </div>
 
-      <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-3">
-        {packages.map((pkg) => (
-          <PackageCard key={pkg.id} pkg={pkg} buyLabel={content.buyLabel} />
-        ))}
+      <div className="mt-10">
+        <PackageGalleryRow packages={packages} buyLabel={content.buyLabel} />
       </div>
 
       <div className="mt-12 overflow-x-auto rounded-2xl border border-slate-200 dark:border-neutral-800">

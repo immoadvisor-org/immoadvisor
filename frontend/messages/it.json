@@ -77,6 +77,9 @@
   },
   "SalesPackages": {
     "loading": "Caricamento pacchetti...",
+    "taglineBasic": "Per chi vende in autonomia",
+    "taglineMedium": "Il più scelto dai proprietari",
+    "taglineAllInclusive": "Assistenza completa, senza pensieri",
     "featureColumn": "Prestazione",
     "individualPriceColumn": "Prezzo singolo",
     "perMonth": "/ mese",

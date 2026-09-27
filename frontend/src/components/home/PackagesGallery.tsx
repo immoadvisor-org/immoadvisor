@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 
 import { Link } from "@/i18n/navigation";
 import { useSalesPackages } from "@/features/salesPackages/useSalesPackages";
-import { PackageCard } from "@/components/configurator/PackageCard";
+import { PackageGalleryRow } from "@/components/configurator/PackageGalleryRow";
 import { Button } from "@/components/ui/Button";
 
 export function PackagesGallery() {
@@ -26,10 +26,8 @@ export function PackagesGallery() {
       </div>
 
       {!isLoading && content && (
-        <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-3">
-          {topPackages.map((pkg) => (
-            <PackageCard key={pkg.id} pkg={pkg} buyLabel={content.buyLabel} />
-          ))}
+        <div className="mt-12">
+          <PackageGalleryRow packages={topPackages} buyLabel={content.buyLabel} />
         </div>
       )}
 
