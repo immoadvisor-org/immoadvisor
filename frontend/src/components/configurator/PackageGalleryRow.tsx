@@ -28,6 +28,10 @@ function GalleryArrow({ direction, onClick }: { direction: "left" | "right"; onC
 export function PackageGalleryRow({ packages, buyLabel }: { packages: SalesPackage[]; buyLabel: string }) {
   const scrollerRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  // Il pacchetto più scelto va mostrato per primo: è quello che deve
+  // catturare l'attenzione appena si apre la gallery, specialmente su
+  // mobile dove all'inizio se ne vede solo uno senza scorrere.
+  const orderedPackages = [...packages].sort((a, b) => Number(b.featured) - Number(a.featured));
 
   useEffect(() => {
     const el = scrollerRef.current;
@@ -52,7 +56,7 @@ export function PackageGalleryRow({ packages, buyLabel }: { packages: SalesPacka
     handleScroll();
     el.addEventListener("scroll", handleScroll, { passive: true });
     return () => el.removeEventListener("scroll", handleScroll);
-  }, [packages.length]);
+  }, [orderedPackages.length]);
 
   function scrollByCard(direction: "left" | "right") {
     const el = scrollerRef.current;
@@ -75,7 +79,7 @@ export function PackageGalleryRow({ packages, buyLabel }: { packages: SalesPacka
         ref={scrollerRef}
         className="flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth py-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
-        {packages.map((pkg) => (
+        {orderedPackages.map((pkg) => (
           <div key={pkg.id} className="w-[88vw] flex-shrink-0 snap-start sm:w-[80%] lg:w-[74%]">
             <PackageCard pkg={pkg} buyLabel={buyLabel} />
           </div>
@@ -84,7 +88,7 @@ export function PackageGalleryRow({ packages, buyLabel }: { packages: SalesPacka
       <div className="mt-4 flex items-center justify-center gap-4">
         <GalleryArrow direction="left" onClick={() => scrollByCard("left")} />
         <div className="flex gap-2">
-          {packages.map((pkg, index) => (
+          {orderedPackages.map((pkg, index) => (
             <button
               key={pkg.id}
               type="button"

@@ -31,8 +31,8 @@
   <path d="M0,330 L140,300 L300,325 L500,290 L660,320 L800,295 L800,500 L0,500 Z" fill="#181818" />
   <rect x="0" y="480" width="800" height="20" fill="#0d0d0d" />
 
-  <polygon points="345,330 380,270 470,285 455,330" fill="#0d0d0d" />
-  <rect x="358" y="326" width="110" height="66" fill="#141414" />
-  <rect x="388" y="350" width="26" height="42" rx="2" fill="#0d0d0d" />
-  <rect x="424" y="350" width="24" height="24" rx="2" fill="#ffd27a" opacity="0.95" />
+  <polygon points="495,360 530,300 620,315 605,360" fill="#0d0d0d" />
+  <rect x="508" y="356" width="110" height="66" fill="#141414" />
+  <rect x="538" y="380" width="26" height="42" rx="2" fill="#0d0d0d" />
+  <rect x="574" y="380" width="24" height="24" rx="2" fill="#ffd27a" opacity="0.95" />
 </svg>

@@ -1,0 +1,28 @@
+<svg width="800" height="500" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg" role="img" preserveAspectRatio="xMidYMid slice">
+  <title>Basic</title>
+  <defs>
+    <linearGradient id="basic-light-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="60%" stop-color="#f4f7ff" />
+      <stop offset="100%" stop-color="#e3eaff" />
+    </linearGradient>
+    <radialGradient id="basic-light-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffe9b8" stop-opacity="0.9" />
+      <stop offset="60%" stop-color="#ffd98a" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#ffd98a" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <rect width="800" height="500" fill="url(#basic-light-sky)" />
+
+  <circle cx="400" cy="260" r="110" fill="url(#basic-light-glow)" />
+  <circle cx="400" cy="260" r="42" fill="#ffe9b8" />
+
+  <path d="M0,330 L140,300 L300,325 L500,290 L660,320 L800,295 L800,500 L0,500 Z" fill="#d7e2fb" />
+  <rect x="0" y="480" width="800" height="20" fill="#c4d3f7" />
+
+  <polygon points="495,360 530,300 620,315 605,360" fill="none" stroke="#2547a0" stroke-width="4" stroke-linejoin="round" />
+  <rect x="508" y="356" width="110" height="66" fill="none" stroke="#2547a0" stroke-width="4" />
+  <rect x="538" y="380" width="26" height="42" rx="2" fill="none" stroke="#2547a0" stroke-width="3" />
+  <rect x="574" y="380" width="24" height="24" rx="2" fill="#2f5fdb" opacity="0.9" />
+</svg>
