@@ -12,19 +12,32 @@ logger = logging.getLogger(__name__)
 
 FROM_ADDRESS = "ImmoAdvisor <onboarding@resend.dev>"
 
-# Il logo viene incorporato come data URI (invece che linkato a un URL
-# pubblico) cosi' la firma compare anche se il dominio del frontend cambia o
-# non e' ancora raggiungibile dal client email, e non dipende da un fetch
-# esterno al momento dell'apertura dell'email.
+# Il logo viaggia come allegato inline (Content-ID) invece che come data URI:
+# Gmail, Outlook e la maggior parte dei client bloccano le immagini "data:",
+# mentre un allegato referenziato con "cid:" viene mostrato ovunque e non
+# dipende da un URL pubblico raggiungibile.
 _LOGO_PATH = Path(__file__).parent / "assets" / "logo.png"
-_LOGO_DATA_URI = (
-    f"data:image/png;base64,{base64.b64encode(_LOGO_PATH.read_bytes()).decode()}" if _LOGO_PATH.exists() else ""
+_LOGO_CONTENT_ID = "immoadvisor-logo"
+_LOGO_ATTACHMENT = (
+    {
+        "filename": "logo.png",
+        "content": base64.b64encode(_LOGO_PATH.read_bytes()).decode(),
+        "content_type": "image/png",
+        "content_id": _LOGO_CONTENT_ID,
+    }
+    if _LOGO_PATH.exists()
+    else None
 )
 
 _SIGNATURE_HTML = (
     '<div style="margin-top:32px;padding-top:20px;border-top:1px solid #e2e8f0;">'
-    f'<img src="{_LOGO_DATA_URI}" alt="ImmoAdvisor" width="150" height="44" '
-    'style="display:block;margin-bottom:8px;border:0;" />'
+    + (
+        f'<img src="cid:{_LOGO_CONTENT_ID}" alt="ImmoAdvisor" width="150" height="44" '
+        'style="display:block;margin-bottom:8px;border:0;" />'
+        if _LOGO_ATTACHMENT
+        else ""
+    )
+    +
     '<p style="margin:0;color:#64748b;font-size:13px;">Lo staff di ImmoAdvisor</p>'
     "</div>"
 )
@@ -44,6 +57,8 @@ def _send_email(to: list[str], subject: str, html: str, reply_to: str | None = N
     payload: dict = {"from": FROM_ADDRESS, "to": to, "subject": subject, "html": html + _SIGNATURE_HTML}
     if reply_to:
         payload["reply_to"] = reply_to
+    if _LOGO_ATTACHMENT:
+        payload["attachments"] = [_LOGO_ATTACHMENT]
 
     try:
         response = httpx.post(
