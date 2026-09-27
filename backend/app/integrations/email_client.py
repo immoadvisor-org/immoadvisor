@@ -1,4 +1,6 @@
+import base64
 import logging
+from pathlib import Path
 
 import httpx
 
@@ -9,6 +11,23 @@ from app.models.order import Order
 logger = logging.getLogger(__name__)
 
 FROM_ADDRESS = "ImmoAdvisor <onboarding@resend.dev>"
+
+# Il logo viene incorporato come data URI (invece che linkato a un URL
+# pubblico) cosi' la firma compare anche se il dominio del frontend cambia o
+# non e' ancora raggiungibile dal client email, e non dipende da un fetch
+# esterno al momento dell'apertura dell'email.
+_LOGO_PATH = Path(__file__).parent / "assets" / "logo.png"
+_LOGO_DATA_URI = (
+    f"data:image/png;base64,{base64.b64encode(_LOGO_PATH.read_bytes()).decode()}" if _LOGO_PATH.exists() else ""
+)
+
+_SIGNATURE_HTML = (
+    '<div style="margin-top:32px;padding-top:20px;border-top:1px solid #e2e8f0;">'
+    f'<img src="{_LOGO_DATA_URI}" alt="ImmoAdvisor" width="150" height="44" '
+    'style="display:block;margin-bottom:8px;border:0;" />'
+    '<p style="margin:0;color:#64748b;font-size:13px;">Lo staff di ImmoAdvisor</p>'
+    "</div>"
+)
 
 
 def _send_email(to: list[str], subject: str, html: str, reply_to: str | None = None) -> None:
@@ -22,7 +41,7 @@ def _send_email(to: list[str], subject: str, html: str, reply_to: str | None = N
         logger.warning("Invio email saltato (RESEND_API_KEY o destinatari non configurati): %s", subject)
         return
 
-    payload: dict = {"from": FROM_ADDRESS, "to": to, "subject": subject, "html": html}
+    payload: dict = {"from": FROM_ADDRESS, "to": to, "subject": subject, "html": html + _SIGNATURE_HTML}
     if reply_to:
         payload["reply_to"] = reply_to
 

@@ -1,0 +1,11 @@
+<svg width="270" height="80" viewBox="0 0 270 80" xmlns="http://www.w3.org/2000/svg" role="img">
+  <title>ImmoAdvisor</title>
+  <text x="16" y="60" font-family="'Space Grotesk', 'Segoe UI', Arial, sans-serif" font-weight="700" font-size="40" letter-spacing="-1" fill="#0f172a">Immo</text>
+  <path d="M119.7,60 L132.65,33 L145.6,60" fill="none" stroke="#0f172a" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M125.43,60 V44.34 H139.87 V60" fill="none" stroke="#0f172a" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" />
+  <polygon points="136.5,30.03 140.5,38.37 140.5,49.37 136.5,41.03" fill="#0f172a" />
+  <circle cx="142.4" cy="29.5" r="2.1" fill="#0f172a" opacity="0.55" />
+  <circle cx="145.1" cy="24.6" r="1.6" fill="#0f172a" opacity="0.38" />
+  <circle cx="147.1" cy="20.2" r="1.2" fill="#0f172a" opacity="0.24" />
+  <text x="147.094" y="60" font-family="'Space Grotesk', 'Segoe UI', Arial, sans-serif" font-weight="700" font-size="40" letter-spacing="-1" fill="#0f172a">dvisor</text>
+</svg>

@@ -277,6 +277,7 @@
   "AdminSalesPackages": {
     "title": "Verkaufspakete",
     "subtitle": "Erstellen, bearbeiten, ausblenden und ordnen Sie die direkt auf der Website kaufbaren Pakete.",
+    "showIntro": "Einführungsbanner oben auf der Konfigurator-Seite anzeigen",
     "newItem": "Neues Paket",
     "edit": "Bearbeiten",
     "save": "Speichern",
@@ -557,7 +558,8 @@
     "shortDescription": "Kurzbeschreibung (in der Vorschau angezeigt)",
     "fullDescription": "Ausführliche Beschreibung (beim Öffnen des Inserats angezeigt)",
     "roomsValue": "{rooms} Zimmer",
-    "sectionEnabled": "Inserate-Bereich auf der Website anzeigen (Menü und Startseite)"
+    "sectionEnabled": "Inserate-Bereich auf der Website anzeigen (Menü und Startseite)",
+    "showIntro": "Einführungsbanner oben auf der Inserate-Seite anzeigen"
   },
   "AdminHowItWorks": {
     "title": "Bereich \"So funktioniert's\"",

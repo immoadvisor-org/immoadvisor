@@ -15,6 +15,8 @@ import {
   updateAdminSalesPackage,
   updateAdminSalesPackagesContent,
 } from "@/features/admin/salesPackagesAdminApi";
+import { getAdminPageIntroSettings, updateAdminPageIntroSettings } from "@/features/admin/pageIntroAdminApi";
+import type { PageIntroSettings } from "@/features/pageIntro/pageIntroApi";
 import type {
   AdminSalesPackage,
   AdminSalesPackagePayload,
@@ -54,6 +56,9 @@ export default function AdminSalesPackagesPage() {
   const [isSavingContent, setIsSavingContent] = useState(false);
   const [contentSaveState, setContentSaveState] = useState<"idle" | "saved" | "error">("idle");
 
+  const [introSettings, setIntroSettings] = useState<PageIntroSettings | null>(null);
+  const [isUpdatingIntro, setIsUpdatingIntro] = useState(false);
+
   const loadPackages = useCallback(() => {
     if (!accessToken) return;
     setIsLoadingPackages(true);
@@ -69,7 +74,23 @@ export default function AdminSalesPackagesPage() {
     getAdminSalesPackagesContent(accessToken)
       .then((data) => setPageContent(data.translations))
       .finally(() => setIsLoadingContent(false));
+    getAdminPageIntroSettings(accessToken).then(setIntroSettings);
   }, [isAdmin, accessToken, loadPackages]);
+
+  async function handleToggleIntro(show: boolean) {
+    if (!accessToken || !introSettings) return;
+    const previous = introSettings;
+    const next = { ...introSettings, show_configurator_intro: show };
+    setIntroSettings(next);
+    setIsUpdatingIntro(true);
+    try {
+      await updateAdminPageIntroSettings(next, accessToken);
+    } catch {
+      setIntroSettings(previous);
+    } finally {
+      setIsUpdatingIntro(false);
+    }
+  }
 
   if (isLoadingUser) {
     return <p className="mx-auto max-w-6xl px-4 py-12 text-sm text-slate-500 dark:text-neutral-400">{tAdmin("loading")}</p>;
@@ -162,6 +183,18 @@ export default function AdminSalesPackagesPage() {
         </div>
         <Button onClick={() => setEditingId("new")}>{t("newItem")}</Button>
       </div>
+
+      {introSettings && (
+        <label className="mt-6 flex items-center gap-2 rounded-xl border border-slate-200 bg-white p-4 text-sm text-slate-700 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-300">
+          <input
+            type="checkbox"
+            checked={introSettings.show_configurator_intro}
+            disabled={isUpdatingIntro}
+            onChange={(e) => handleToggleIntro(e.target.checked)}
+          />
+          {t("showIntro")}
+        </label>
+      )}
 
       {listError && <p className="mt-4 text-sm text-red-600 dark:text-red-400">{listError}</p>}
 

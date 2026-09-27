@@ -277,6 +277,7 @@
   "AdminSalesPackages": {
     "title": "Forfaits de vente",
     "subtitle": "Créez, modifiez, masquez et réorganisez les forfaits achetables directement sur le site.",
+    "showIntro": "Afficher la bannière d'introduction en haut de la page Configurateur",
     "newItem": "Nouveau forfait",
     "edit": "Modifier",
     "save": "Enregistrer",
@@ -557,7 +558,8 @@
     "shortDescription": "Description courte (affichée dans l'aperçu)",
     "fullDescription": "Description complète (affichée à l'ouverture de l'annonce)",
     "roomsValue": "{rooms} pièces",
-    "sectionEnabled": "Afficher la section Annonces sur le site (menu et accueil)"
+    "sectionEnabled": "Afficher la section Annonces sur le site (menu et accueil)",
+    "showIntro": "Afficher la bannière d'introduction en haut de la page Annonces"
   },
   "AdminHowItWorks": {
     "title": "Section \"Comment ça marche\"",

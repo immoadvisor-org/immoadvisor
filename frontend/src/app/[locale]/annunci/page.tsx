@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
 
 import type { Locale } from "@/i18n/routing";
 import { buildMetadata } from "@/lib/seo";
 import { Hero } from "@/components/home/Hero";
 import { ListingList } from "@/components/listings/ListingList";
+import { getPageIntroSettings } from "@/features/pageIntro/pageIntroApi";
 
 interface PageProps {
   params: Promise<{ locale: Locale }>;
@@ -22,12 +22,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   });
 }
 
-export default function ListingsPage() {
-  const t = useTranslations("Listings");
+export default async function ListingsPage() {
+  const t = await getTranslations("Listings");
+  const introSettings = await getPageIntroSettings();
 
   return (
     <div>
-      <Hero title={t("title")} subtitle={t("subtitle")} />
+      {introSettings.show_listings_intro && <Hero title={t("title")} subtitle={t("subtitle")} />}
       <div className="mx-auto max-w-6xl px-4 py-12">
         <ListingList />
       </div>

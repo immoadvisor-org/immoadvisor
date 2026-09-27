@@ -277,6 +277,7 @@
   "AdminSalesPackages": {
     "title": "Sales packages",
     "subtitle": "Create, edit, hide and reorder the packages customers can buy directly on the site.",
+    "showIntro": "Show the introductory banner at the top of the Configurator page",
     "newItem": "New package",
     "edit": "Edit",
     "save": "Save",
@@ -557,7 +558,8 @@
     "shortDescription": "Short description (shown in the preview)",
     "fullDescription": "Full description (shown when opening the listing)",
     "roomsValue": "{rooms} rooms",
-    "sectionEnabled": "Show the Listings section on the site (menu and home)"
+    "sectionEnabled": "Show the Listings section on the site (menu and home)",
+    "showIntro": "Show the introductory banner at the top of the Listings page"
   },
   "AdminHowItWorks": {
     "title": "\"How it works\" section",

@@ -277,6 +277,7 @@
   "AdminSalesPackages": {
     "title": "Pacchetti di vendita",
     "subtitle": "Crea, modifica, nascondi e riordina i pacchetti acquistabili direttamente sul sito.",
+    "showIntro": "Mostra il banner introduttivo in cima alla pagina Configuratore",
     "newItem": "Nuovo pacchetto",
     "edit": "Modifica",
     "save": "Salva",
@@ -557,7 +558,8 @@
     "shortDescription": "Descrizione breve (mostrata nell'anteprima)",
     "fullDescription": "Descrizione estesa (mostrata aprendo l'annuncio)",
     "roomsValue": "{rooms} locali",
-    "sectionEnabled": "Mostra la sezione Annunci sul sito (menu e home)"
+    "sectionEnabled": "Mostra la sezione Annunci sul sito (menu e home)",
+    "showIntro": "Mostra il banner introduttivo in cima alla pagina Annunci"
   },
   "AdminHowItWorks": {
     "title": "Sezione \"Come funziona\"",

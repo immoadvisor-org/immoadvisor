@@ -14,7 +14,9 @@ import {
   updateAdminListing,
   updateAdminListingsSettings,
 } from "@/features/admin/listingsAdminApi";
+import { getAdminPageIntroSettings, updateAdminPageIntroSettings } from "@/features/admin/pageIntroAdminApi";
 import type { AdminListing, AdminListingPayload } from "@/features/admin/listingTypes";
+import type { PageIntroSettings } from "@/features/pageIntro/pageIntroApi";
 import { AdminLayout } from "@/components/admin/AdminLayout";
 import { ListingRow } from "@/components/admin/ListingRow";
 import { ListingEditor } from "@/components/admin/ListingEditor";
@@ -32,6 +34,8 @@ export default function AdminListingsPage() {
   const [error, setError] = useState<string | null>(null);
   const [sectionEnabled, setSectionEnabled] = useState(false);
   const [isUpdatingSectionEnabled, setIsUpdatingSectionEnabled] = useState(false);
+  const [introSettings, setIntroSettings] = useState<PageIntroSettings | null>(null);
+  const [isUpdatingIntro, setIsUpdatingIntro] = useState(false);
 
   const accessToken = session?.access_token;
 
@@ -50,6 +54,7 @@ export default function AdminListingsPage() {
   useEffect(() => {
     if (!accessToken) return;
     getAdminListingsSettings(accessToken).then((data) => setSectionEnabled(data.enabled));
+    getAdminPageIntroSettings(accessToken).then(setIntroSettings);
   }, [accessToken]);
 
   async function handleToggleSectionEnabled(enabled: boolean) {
@@ -62,6 +67,21 @@ export default function AdminListingsPage() {
       setSectionEnabled(!enabled);
     } finally {
       setIsUpdatingSectionEnabled(false);
+    }
+  }
+
+  async function handleToggleIntro(show: boolean) {
+    if (!accessToken || !introSettings) return;
+    const previous = introSettings;
+    const next = { ...introSettings, show_listings_intro: show };
+    setIntroSettings(next);
+    setIsUpdatingIntro(true);
+    try {
+      await updateAdminPageIntroSettings(next, accessToken);
+    } catch {
+      setIntroSettings(previous);
+    } finally {
+      setIsUpdatingIntro(false);
     }
   }
 
@@ -149,6 +169,18 @@ export default function AdminListingsPage() {
         />
         {t("sectionEnabled")}
       </label>
+
+      {introSettings && (
+        <label className="mt-3 flex items-center gap-2 rounded-xl border border-slate-200 bg-white p-4 text-sm text-slate-700 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-300">
+          <input
+            type="checkbox"
+            checked={introSettings.show_listings_intro}
+            disabled={isUpdatingIntro}
+            onChange={(e) => handleToggleIntro(e.target.checked)}
+          />
+          {t("showIntro")}
+        </label>
+      )}
 
       {error && <p className="mt-4 text-sm text-red-600 dark:text-red-400">{error}</p>}
 

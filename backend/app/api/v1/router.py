@@ -11,6 +11,7 @@ from app.api.v1.endpoints import (
     admin_listings,
     admin_notifications,
     admin_orders,
+    admin_page_intro_settings,
     admin_sales_packages,
     admin_services,
     admin_users,
@@ -21,6 +22,7 @@ from app.api.v1.endpoints import (
     legal,
     listings,
     orders,
+    page_intro_settings,
     sales_packages,
     services,
     webhooks,
@@ -38,6 +40,7 @@ api_router.include_router(how_it_works.router)
 api_router.include_router(sales_packages.router)
 api_router.include_router(home_layout.router)
 api_router.include_router(legal.router)
+api_router.include_router(page_intro_settings.router)
 api_router.include_router(account.router)
 api_router.include_router(admin_services.router)
 api_router.include_router(admin_listings.router)
@@ -47,6 +50,7 @@ api_router.include_router(admin_how_it_works.router)
 api_router.include_router(admin_sales_packages.router)
 api_router.include_router(admin_home_layout.router)
 api_router.include_router(admin_orders.router)
+api_router.include_router(admin_page_intro_settings.router)
 api_router.include_router(admin_notifications.router)
 api_router.include_router(admin_legal.router)
 api_router.include_router(admin_users.router)

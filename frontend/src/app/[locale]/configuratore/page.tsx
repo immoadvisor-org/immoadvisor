@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
 
 import type { Locale } from "@/i18n/routing";
@@ -7,6 +6,7 @@ import { buildMetadata } from "@/lib/seo";
 import { Hero } from "@/components/home/Hero";
 import { SalesPackages } from "@/components/configurator/SalesPackages";
 import { ServiceList } from "@/components/configurator/ServiceList";
+import { getPageIntroSettings } from "@/features/pageIntro/pageIntroApi";
 
 interface PageProps {
   params: Promise<{ locale: Locale }>;
@@ -23,12 +23,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   });
 }
 
-export default function ConfiguratorPage() {
-  const t = useTranslations("Configurator");
+export default async function ConfiguratorPage() {
+  const t = await getTranslations("Configurator");
+  const introSettings = await getPageIntroSettings();
 
   return (
     <div>
-      <Hero title={t("title")} subtitle={t("subtitle")} />
+      {introSettings.show_configurator_intro && <Hero title={t("title")} subtitle={t("subtitle")} />}
       <div className="mx-auto max-w-6xl px-4 py-12">
         <SalesPackages />
 
