@@ -549,9 +549,6 @@
       "rooms_desc": "Plus de pièces",
       "rooms_asc": "Moins de pièces"
     },
-    "viewMode": "Mode d'affichage",
-    "viewGrid": "Vue en grille",
-    "viewList": "Vue en liste",
     "details": "Détails",
     "photosCount": "{count, plural, one {# photo} other {# photos}}"
   },
@@ -745,5 +742,10 @@
       "rate_totali": "Nombre total d'échéances",
       "servizi": "Liste des services achetés avec prix"
     }
+  },
+  "ViewMode": {
+    "label": "Mode d'affichage",
+    "grid": "Vue en grille",
+    "list": "Vue en liste"
   }
 }

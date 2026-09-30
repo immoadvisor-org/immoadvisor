@@ -549,9 +549,6 @@
       "rooms_desc": "Più locali",
       "rooms_asc": "Meno locali"
     },
-    "viewMode": "Modalità di visualizzazione",
-    "viewGrid": "Vista a griglia",
-    "viewList": "Vista a lista",
     "details": "Dettagli",
     "photosCount": "{count, plural, one {# foto} other {# foto}}"
   },
@@ -745,5 +742,10 @@
       "rate_totali": "Numero totale di rate",
       "servizi": "Elenco dei servizi acquistati con prezzo"
     }
+  },
+  "ViewMode": {
+    "label": "Modalità di visualizzazione",
+    "grid": "Vista a griglia",
+    "list": "Vista a lista"
   }
 }

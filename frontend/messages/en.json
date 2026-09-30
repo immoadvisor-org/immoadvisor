@@ -549,9 +549,6 @@
       "rooms_desc": "Most rooms",
       "rooms_asc": "Fewest rooms"
     },
-    "viewMode": "View mode",
-    "viewGrid": "Grid view",
-    "viewList": "List view",
     "details": "Details",
     "photosCount": "{count, plural, one {# photo} other {# photos}}"
   },
@@ -745,5 +742,10 @@
       "rate_totali": "Total number of instalments",
       "servizi": "List of purchased services with price"
     }
+  },
+  "ViewMode": {
+    "label": "View mode",
+    "grid": "Grid view",
+    "list": "List view"
   }
 }

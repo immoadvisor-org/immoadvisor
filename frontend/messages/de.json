@@ -549,9 +549,6 @@
       "rooms_desc": "Meiste Zimmer",
       "rooms_asc": "Wenigste Zimmer"
     },
-    "viewMode": "Ansicht",
-    "viewGrid": "Rasteransicht",
-    "viewList": "Listenansicht",
     "details": "Details",
     "photosCount": "{count, plural, one {# Foto} other {# Fotos}}"
   },
@@ -745,5 +742,10 @@
       "rate_totali": "Gesamtzahl der Raten",
       "servizi": "Liste der gekauften Dienstleistungen mit Preis"
     }
+  },
+  "ViewMode": {
+    "label": "Ansicht",
+    "grid": "Rasteransicht",
+    "list": "Listenansicht"
   }
 }
