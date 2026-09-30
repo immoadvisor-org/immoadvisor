@@ -10,7 +10,9 @@ import { ViewModeToggle, useViewMode } from "@/components/ui/ViewModeToggle";
 export function ServiceList() {
   const t = useTranslations("ServiceList");
   const { services, isLoading, error } = useServices();
-  const [viewMode, setViewMode] = useViewMode("services-view-mode");
+  // Chiave "-v2": la vista predefinita è passata da griglia a lista, così
+  // riparte dalla lista anche chi aveva già scelto con la versione precedente.
+  const [viewMode, setViewMode] = useViewMode("services-view-mode-v2", "list");
 
   if (isLoading) {
     return <p className="text-sm text-slate-500 dark:text-neutral-400">{t("loading")}</p>;

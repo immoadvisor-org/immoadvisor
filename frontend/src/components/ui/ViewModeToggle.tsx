@@ -7,15 +7,18 @@ export type ViewMode = "grid" | "list";
 
 // Vista scelta dal singolo visitatore, ricordata tra una visita e l'altra
 // (una chiave per pagina: annunci e servizi sono indipendenti).
-export function useViewMode(storageKey: string): [ViewMode, (mode: ViewMode) => void] {
-  const [viewMode, setViewMode] = useState<ViewMode>("grid");
+export function useViewMode(
+  storageKey: string,
+  defaultMode: ViewMode = "grid"
+): [ViewMode, (mode: ViewMode) => void] {
+  const [viewMode, setViewMode] = useState<ViewMode>(defaultMode);
 
   useEffect(() => {
     try {
       const saved = window.localStorage.getItem(storageKey);
       if (saved === "grid" || saved === "list") setViewMode(saved);
     } catch {
-      // Storage non disponibile (es. navigazione privata): resta la griglia.
+      // Storage non disponibile (es. navigazione privata): resta la vista predefinita.
     }
   }, [storageKey]);
 
