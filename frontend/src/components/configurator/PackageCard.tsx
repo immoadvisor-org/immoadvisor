@@ -159,7 +159,10 @@ export function PackageCard({ pkg, buyLabel }: { pkg: SalesPackage; buyLabel: st
             </div>
             {effectiveMode === "installments" && pkg.installments > 1 && (
               <p className="mt-1 text-xs text-slate-500 dark:text-white/70">
-                {t("installmentsBreakdown", { count: pkg.installments, total: totalPrice.toLocaleString("de-CH") })}
+                {t.rich("installmentsBreakdown", {
+                  count: pkg.installments,
+                  total: () => <PriceTag amountChf={totalPrice} hideCents />,
+                })}
               </p>
             )}
 

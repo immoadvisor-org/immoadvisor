@@ -1,25 +1,27 @@
 interface PriceTagProps {
   amountChf: number;
   className?: string;
-  // Se indicata, "CHF" viene reso in uno span a parte con questa classe
-  // (es. più piccolo della cifra); altrimenti il prezzo resta un testo unico.
+  // Classe per "CHF", che è sempre in uno span a parte: di default più
+  // piccolo e più tenue della cifra (in proporzione al testo attorno, con un
+  // minimo leggibile), così la cifra resta in primo piano.
   currencyClassName?: string;
   // Prezzi degli immobili: cifre intere, senza ".00".
   hideCents?: boolean;
 }
 
-export function PriceTag({ amountChf, className = "", currencyClassName, hideCents = false }: PriceTagProps) {
-  const formatter = new Intl.NumberFormat("de-CH", {
+const DEFAULT_CURRENCY_CLASS = "mr-[0.15em] text-[length:max(0.7em,10px)] font-medium opacity-70";
+
+export function PriceTag({
+  amountChf,
+  className = "",
+  currencyClassName = DEFAULT_CURRENCY_CLASS,
+  hideCents = false,
+}: PriceTagProps) {
+  const parts = new Intl.NumberFormat("de-CH", {
     style: "currency",
     currency: "CHF",
     ...(hideCents ? { minimumFractionDigits: 0, maximumFractionDigits: 0 } : {}),
-  });
-
-  if (!currencyClassName) {
-    return <span className={className}>{formatter.format(amountChf)}</span>;
-  }
-
-  const parts = formatter.formatToParts(amountChf);
+  }).formatToParts(amountChf);
   const currency = parts.find((part) => part.type === "currency")?.value ?? "CHF";
   const amount = parts
     .filter((part) => part.type !== "currency")

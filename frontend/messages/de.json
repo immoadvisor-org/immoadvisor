@@ -90,7 +90,7 @@
     "paymentModeInstallments": "Ratenzahlung ({count})",
     "paymentModeSingle": "Einmalzahlung",
     "oneTime": "einmalig",
-    "installmentsBreakdown": "{count} monatliche Raten — Gesamt CHF {total}",
+    "installmentsBreakdown": "{count} monatliche Raten — Gesamt <total></total>",
     "checkoutTitle": "Zusammenfassung Ihres Kaufs",
     "checkoutSubtitle": "Prüfen Sie alle Details, bevor Sie zur sicheren Zahlung über Stripe weitergehen.",
     "notFound": "Paket nicht gefunden.",

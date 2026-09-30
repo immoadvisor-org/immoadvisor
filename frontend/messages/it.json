@@ -90,7 +90,7 @@
     "paymentModeInstallments": "Rateale ({count} rate)",
     "paymentModeSingle": "Unica soluzione",
     "oneTime": "in un'unica volta",
-    "installmentsBreakdown": "{count} rate mensili — totale CHF {total}",
+    "installmentsBreakdown": "{count} rate mensili — totale <total></total>",
     "checkoutTitle": "Riepilogo del tuo acquisto",
     "checkoutSubtitle": "Controlla tutti i dettagli prima di procedere al pagamento sicuro su Stripe.",
     "notFound": "Pacchetto non trovato.",

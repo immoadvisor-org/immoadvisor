@@ -90,7 +90,7 @@
     "paymentModeInstallments": "Instalments ({count})",
     "paymentModeSingle": "Pay in full",
     "oneTime": "one-time",
-    "installmentsBreakdown": "{count} monthly instalments — total CHF {total}",
+    "installmentsBreakdown": "{count} monthly instalments — total <total></total>",
     "checkoutTitle": "Review your purchase",
     "checkoutSubtitle": "Check all the details before proceeding to secure payment on Stripe.",
     "notFound": "Package not found.",
