@@ -652,12 +652,14 @@
     "groups": {
       "signature": "Signature",
       "admin": "Staff notifications",
+      "customer_contact": "Customer — message confirmation",
       "customer_payment": "Customer — payment",
       "customer_fulfillment": "Customer — order processing"
     },
     "groupDescriptions": {
       "signature": "Added at the bottom of every email.",
       "admin": "Sent to the addresses configured in Messages and Orders.",
+      "customer_contact": "Sent to whoever writes to us, confirming receipt.",
       "customer_payment": "Sent to the customer when the payment status changes.",
       "customer_fulfillment": "Sent to the customer when you change the order's processing status."
     },
@@ -673,6 +675,14 @@
       "contact_admin_listing": {
         "name": "Listing enquiry",
         "description": "When someone asks about a listing."
+      },
+      "contact_customer": {
+        "name": "Contact message confirmation",
+        "description": "To the customer writing from the Contact us form."
+      },
+      "contact_customer_listing": {
+        "name": "Listing enquiry confirmation",
+        "description": "To the customer asking about a listing."
       },
       "order_admin": {
         "name": "Order update",

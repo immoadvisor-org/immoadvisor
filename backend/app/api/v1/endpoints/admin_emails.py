@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 
 from app.api.deps import get_current_admin_user, get_db
-from app.integrations.email_client import LOGO_PREVIEW_SRC, render_signature_html
+from app.services.email_service import LOGO_PREVIEW_SRC, render_signature_html
 from app.schemas.email_template import EmailPreviewRead, EmailTemplateAdminRead, EmailTemplateUpdate
 from app.services import email_template_service
 from app.services.email_template_service import (

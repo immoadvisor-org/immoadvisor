@@ -2,11 +2,12 @@ import { apiFetch } from "@/lib/apiClient";
 
 const BASE = "/api/v1/admin/emails";
 
-export type EmailTemplateGroup = "signature" | "admin" | "customer_payment" | "customer_fulfillment";
+export type EmailTemplateGroup = "signature" | "admin" | "customer_contact" | "customer_payment" | "customer_fulfillment";
 
 export const EMAIL_TEMPLATE_GROUPS: EmailTemplateGroup[] = [
   "signature",
   "admin",
+  "customer_contact",
   "customer_payment",
   "customer_fulfillment",
 ];

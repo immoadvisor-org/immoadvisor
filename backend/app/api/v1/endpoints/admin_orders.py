@@ -4,11 +4,10 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 
 from app.api.deps import get_current_admin_user, get_db
-from app.integrations.email_client import send_customer_payment_status_email, send_customer_fulfillment_status_email
 from app.integrations.stripe_client import cancel_subscription, create_refund
 from app.models.order import OrderPaymentStatus
 from app.schemas.order import AdminOrderRead, FulfillmentStatusUpdate
-from app.services import order_service
+from app.services import email_notifications, order_service
 from app.services.exceptions import InvalidFulfillmentTransitionError, OrderNotFoundError
 
 router = APIRouter(
@@ -47,7 +46,7 @@ def update_fulfillment_status(
     except InvalidFulfillmentTransitionError as exc:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
 
-    send_customer_fulfillment_status_email(db, order)
+    email_notifications.order_fulfillment_status_changed(db, order)
     return AdminOrderRead.model_validate(order)
 
 
@@ -66,7 +65,8 @@ def refund_order(order_id: uuid.UUID, db: Session = Depends(get_db)) -> AdminOrd
 
     refund = create_refund(order.stripe_payment_intent)
     order = order_service.mark_refund_pending(db, order, refund.id)
-    send_customer_payment_status_email(db, order)
+    # Il rimborso lo avvia l'admin stesso: basta avvisare il cliente.
+    email_notifications.order_payment_status_changed(db, order, notify_staff=False)
     return AdminOrderRead.model_validate(order)
 
 

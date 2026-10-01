@@ -33,10 +33,13 @@ class Settings(BaseSettings):
     immoscout_api_key: str = ""
     immoscout_api_base_url: str = ""
 
-    # Resend (resend.com) per l'invio della notifica email dei messaggi di
-    # contatto. Se vuota, il messaggio viene comunque salvato nel database
-    # ma la notifica email viene saltata.
+    # Resend (resend.com) per l'invio di tutte le email del sito. Se vuota,
+    # i dati vengono comunque salvati nel database ma le email vengono saltate.
     resend_api_key: str = ""
+    # Mittente delle email. onboarding@resend.dev è l'indirizzo di prova di
+    # Resend e consegna SOLO all'email del proprietario dell'account Resend:
+    # in produzione va usato un indirizzo di un dominio verificato su Resend.
+    email_from: str = "ImmoAdvisor <onboarding@resend.dev>"
 
 
 @lru_cache

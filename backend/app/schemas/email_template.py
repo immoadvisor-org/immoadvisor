@@ -2,7 +2,7 @@ from typing import Literal
 
 from pydantic import BaseModel
 
-EmailTemplateGroup = Literal["signature", "admin", "customer_payment", "customer_fulfillment"]
+EmailTemplateGroup = Literal["signature", "admin", "customer_contact", "customer_payment", "customer_fulfillment"]
 
 
 class EmailTemplateAdminRead(BaseModel):

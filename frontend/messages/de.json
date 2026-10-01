@@ -652,12 +652,14 @@
     "groups": {
       "signature": "Signatur",
       "admin": "Benachrichtigungen ans Team",
+      "customer_contact": "Kunde — Nachrichtenbestätigung",
       "customer_payment": "Kunde — Zahlung",
       "customer_fulfillment": "Kunde — Auftragsbearbeitung"
     },
     "groupDescriptions": {
       "signature": "Wird am Ende jeder E-Mail angefügt.",
       "admin": "An die unter Nachrichten und Bestellungen konfigurierten Adressen.",
+      "customer_contact": "An die Person, die uns schreibt, als Eingangsbestätigung.",
       "customer_payment": "An den Kunden, wenn sich der Zahlungsstatus ändert.",
       "customer_fulfillment": "An den Kunden, wenn Sie den Bearbeitungsstatus der Bestellung ändern."
     },
@@ -673,6 +675,14 @@
       "contact_admin_listing": {
         "name": "Anfrage zu einem Inserat",
         "description": "Wenn jemand Informationen zu einem Inserat anfragt."
+      },
+      "contact_customer": {
+        "name": "Bestätigung Kontaktnachricht",
+        "description": "An den Kunden, der über das Kontaktformular schreibt."
+      },
+      "contact_customer_listing": {
+        "name": "Bestätigung Anfrage zu einem Inserat",
+        "description": "An den Kunden, der Informationen zu einem Inserat anfragt."
       },
       "order_admin": {
         "name": "Bestellaktualisierung",

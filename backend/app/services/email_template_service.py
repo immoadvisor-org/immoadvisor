@@ -77,6 +77,25 @@ TEMPLATES: dict[str, TemplateDefinition] = {
         ),
         placeholders=("nome", "cognome", "email", "telefono", "annuncio", "messaggio"),
     ),
+    "contact_customer": TemplateDefinition(
+        group="customer_contact",
+        subject="ImmoAdvisor — Abbiamo ricevuto il tuo messaggio",
+        body=(
+            "Ciao {nome},\n\ngrazie per averci scritto! Abbiamo ricevuto il tuo messaggio e ti "
+            "risponderemo il prima possibile.\n\n**Il tuo messaggio:**\n{messaggio}"
+        ),
+        placeholders=("nome", "cognome", "messaggio"),
+    ),
+    "contact_customer_listing": TemplateDefinition(
+        group="customer_contact",
+        subject="ImmoAdvisor — Richiesta ricevuta per l'annuncio {annuncio}",
+        body=(
+            "Ciao {nome},\n\ngrazie per l'interesse! Abbiamo ricevuto la tua richiesta di informazioni "
+            "sull'annuncio **{annuncio}** e ti ricontatteremo il prima possibile.\n\n"
+            "**Il tuo messaggio:**\n{messaggio}"
+        ),
+        placeholders=("nome", "cognome", "annuncio", "messaggio"),
+    ),
     "order_admin": TemplateDefinition(
         group="admin",
         subject="Ordine {stato}: CHF {totale} da {cliente}",

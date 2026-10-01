@@ -5,14 +5,13 @@ from fastapi import APIRouter, Depends, HTTPException, Request, status
 from sqlalchemy.orm import Session
 
 from app.api.deps import get_db
-from app.integrations.email_client import send_customer_payment_status_email, send_order_notification
 from app.integrations.stripe_client import (
     construct_webhook_event,
     extract_order_id_from_session,
     limit_subscription_to_fixed_cycles,
 )
 from app.models.order import OrderPaymentStatus
-from app.services import notification_service, order_service
+from app.services import email_notifications, order_service
 from app.services.exceptions import OrderNotFoundError
 from app.services.fulfillment_service import orchestrate_post_payment
 
@@ -22,9 +21,7 @@ router = APIRouter(prefix="/webhooks", tags=["webhooks"])
 
 
 def _notify(db: Session, order) -> None:
-    recipients = notification_service.list_recipient_emails(db, "order")
-    send_order_notification(db, order, recipients)
-    send_customer_payment_status_email(db, order)
+    email_notifications.order_payment_status_changed(db, order)
 
 
 @router.post("/stripe", status_code=status.HTTP_200_OK)

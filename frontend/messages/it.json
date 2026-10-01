@@ -652,12 +652,14 @@
     "groups": {
       "signature": "Firma",
       "admin": "Notifiche allo staff",
+      "customer_contact": "Cliente — conferma messaggio",
       "customer_payment": "Cliente — pagamento",
       "customer_fulfillment": "Cliente — lavorazione ordine"
     },
     "groupDescriptions": {
       "signature": "Aggiunta in fondo a tutte le email.",
       "admin": "Inviate agli indirizzi configurati in Messaggi e Ordini.",
+      "customer_contact": "Inviate a chi ci scrive, come conferma di ricezione.",
       "customer_payment": "Inviate al cliente quando cambia lo stato del pagamento.",
       "customer_fulfillment": "Inviate al cliente quando cambi lo stato di lavorazione dell'ordine."
     },
@@ -673,6 +675,14 @@
       "contact_admin_listing": {
         "name": "Richiesta su un annuncio",
         "description": "Quando qualcuno chiede informazioni su un annuncio."
+      },
+      "contact_customer": {
+        "name": "Conferma messaggio di contatto",
+        "description": "Al cliente che scrive dal modulo Contattaci."
+      },
+      "contact_customer_listing": {
+        "name": "Conferma richiesta su un annuncio",
+        "description": "Al cliente che chiede informazioni su un annuncio."
       },
       "order_admin": {
         "name": "Aggiornamento ordine",

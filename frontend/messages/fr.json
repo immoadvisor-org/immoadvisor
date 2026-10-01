@@ -652,12 +652,14 @@
     "groups": {
       "signature": "Signature",
       "admin": "Notifications à l'équipe",
+      "customer_contact": "Client — confirmation du message",
       "customer_payment": "Client — paiement",
       "customer_fulfillment": "Client — traitement de la commande"
     },
     "groupDescriptions": {
       "signature": "Ajoutée en bas de chaque e-mail.",
       "admin": "Envoyées aux adresses configurées dans Messages et Commandes.",
+      "customer_contact": "Envoyées à la personne qui nous écrit, pour confirmer la réception.",
       "customer_payment": "Envoyées au client lorsque le statut du paiement change.",
       "customer_fulfillment": "Envoyées au client lorsque vous changez le statut de traitement de la commande."
     },
@@ -673,6 +675,14 @@
       "contact_admin_listing": {
         "name": "Demande sur une annonce",
         "description": "Quand quelqu'un demande des informations sur une annonce."
+      },
+      "contact_customer": {
+        "name": "Confirmation du message de contact",
+        "description": "Au client qui écrit via le formulaire Contactez-nous."
+      },
+      "contact_customer_listing": {
+        "name": "Confirmation de demande sur une annonce",
+        "description": "Au client qui demande des informations sur une annonce."
       },
       "order_admin": {
         "name": "Mise à jour de commande",
