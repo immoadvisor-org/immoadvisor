@@ -6,6 +6,12 @@ export const SERVICE_CATEGORIES_CONFIG = {
   // false = servizi in un unico elenco, come prima.
   groupByCategory: true,
 
+  // Solo vista a lista, con i gruppi attivi:
+  // "single" = un'unica tabella, con il nome della categoria come riga di intestazione;
+  // "separate" = una tabella per categoria, con il titolo sopra ognuna.
+  // (La vista a blocchi usa sempre i titoli sopra ogni gruppo.)
+  listGroupLayout: "single" as "single" | "separate",
+
   // Ordine dei gruppi. Una categoria non elencata qui finisce in fondo, nell'ordine
   // dei servizi definito in admin.
   order: ["legale", "consulenza", "media", "documentazione", "marketing"],

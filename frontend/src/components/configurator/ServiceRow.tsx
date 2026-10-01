@@ -13,11 +13,13 @@ interface ServiceRowProps {
   service: Service;
   // "large": riga più alta, con immagine e testo più grandi (es. in home).
   size?: "default" | "large";
+  // false quando la categoria è già indicata da un'intestazione sopra la riga.
+  showCategory?: boolean;
 }
 
 // Variante "lista" di ServiceCard: una riga compatta, quasi da tabella, con
 // il pulsante per aggiungere il servizio sempre sulla destra.
-export function ServiceRow({ service, size = "default" }: ServiceRowProps) {
+export function ServiceRow({ service, size = "default", showCategory = true }: ServiceRowProps) {
   const isLarge = size === "large";
   const t = useTranslations("ServiceCard");
   const locale = useLocale();
@@ -48,11 +50,13 @@ export function ServiceRow({ service, size = "default" }: ServiceRowProps) {
           )}
         </div>
         <div className="min-w-0 flex-1">
-          <span className="inline-block rounded-full bg-brand-50 px-2 py-0.5 text-[11px] font-medium uppercase tracking-wide text-brand-600 dark:bg-brand-500/20 dark:text-brand-100">
-            {serviceCategoryLabel(service.category, locale)}
-          </span>
+          {showCategory && (
+            <span className="inline-block rounded-full bg-brand-50 px-2 py-0.5 text-[11px] font-medium uppercase tracking-wide text-brand-600 dark:bg-brand-500/20 dark:text-brand-100">
+              {serviceCategoryLabel(service.category, locale)}
+            </span>
+          )}
           <h3
-            className={`mt-1 font-semibold text-slate-900 group-hover:text-brand-600 dark:text-neutral-50 dark:group-hover:text-brand-100 ${
+            className={`${showCategory ? "mt-1" : ""} font-semibold text-slate-900 group-hover:text-brand-600 dark:text-neutral-50 dark:group-hover:text-brand-100 ${
               isLarge ? "text-base sm:text-lg" : "text-sm sm:text-base"
             }`}
           >

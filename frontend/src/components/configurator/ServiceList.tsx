@@ -11,6 +11,7 @@ import {
   SERVICE_CATEGORIES_CONFIG,
   groupServicesByCategory,
   serviceCategoryLabel,
+  type ServiceGroup,
 } from "@/config/serviceCategories";
 
 function ServicesView({ services, viewMode }: { services: Service[]; viewMode: ViewMode }) {
@@ -27,6 +28,27 @@ function ServicesView({ services, viewMode }: { services: Service[]; viewMode: V
     <div className="divide-y divide-slate-200 overflow-hidden rounded-2xl border border-slate-200 bg-white dark:divide-neutral-800 dark:border-neutral-800 dark:bg-neutral-900">
       {services.map((service) => (
         <ServiceRow key={service.id} service={service} />
+      ))}
+    </div>
+  );
+}
+
+// Tutti i gruppi in un'unica tabella: la categoria è una riga di intestazione.
+function GroupedServicesTable({ groups, locale }: { groups: ServiceGroup[]; locale: string }) {
+  return (
+    <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white dark:border-neutral-800 dark:bg-neutral-900">
+      {groups.map((group, index) => (
+        <section key={group.category} className={index > 0 ? "border-t border-slate-200 dark:border-neutral-800" : ""}>
+          <h3 className="flex items-baseline gap-2 bg-slate-50 px-4 py-2.5 text-xs font-semibold uppercase tracking-wide text-slate-500 dark:bg-neutral-800/60 dark:text-neutral-400 sm:px-5">
+            {serviceCategoryLabel(group.category, locale)}
+            <span className="font-normal text-slate-400 dark:text-neutral-500">{group.services.length}</span>
+          </h3>
+          <div className="divide-y divide-slate-200 border-t border-slate-200 dark:divide-neutral-800 dark:border-neutral-800">
+            {group.services.map((service) => (
+              <ServiceRow key={service.id} service={service} showCategory={false} />
+            ))}
+          </div>
+        </section>
       ))}
     </div>
   );
@@ -54,7 +76,11 @@ export function ServiceList() {
         <ViewModeToggle value={viewMode} onChange={setViewMode} />
       </div>
 
-      {SERVICE_CATEGORIES_CONFIG.groupByCategory ? (
+      {SERVICE_CATEGORIES_CONFIG.groupByCategory &&
+      viewMode === "list" &&
+      SERVICE_CATEGORIES_CONFIG.listGroupLayout === "single" ? (
+        <GroupedServicesTable groups={groupServicesByCategory(services)} locale={locale} />
+      ) : SERVICE_CATEGORIES_CONFIG.groupByCategory ? (
         <div className="flex flex-col gap-10">
           {groupServicesByCategory(services).map((group) => (
             <section key={group.category}>
