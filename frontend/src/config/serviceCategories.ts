@@ -3,7 +3,7 @@ import type { Service } from "@/features/services/types";
 // Configurazione dei gruppi di servizi nel configuratore. Le categorie sono
 // quelle impostate in Admin → Servizi (campo "Categoria").
 export const SERVICE_CATEGORIES_CONFIG = {
-  // false = servizi in un unico elenco, come prima.
+  // Solo vista a lista (la griglia non si raggruppa mai). false = servizi in un unico elenco, come prima.
   groupByCategory: true,
 
   // Solo vista a lista, con i gruppi attivi:
