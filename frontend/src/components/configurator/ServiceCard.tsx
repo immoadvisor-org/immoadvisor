@@ -1,13 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 import { Link } from "@/i18n/navigation";
 import { useCartStore } from "@/features/cart/cartStore";
 import { PriceTag } from "@/components/ui/PriceTag";
 import { AddToCartButton } from "@/components/ui/AddToCartButton";
 import type { Service } from "@/features/services/types";
+import { serviceCategoryLabel } from "@/config/serviceCategories";
 
 interface ServiceCardProps {
   service: Service;
@@ -15,6 +16,7 @@ interface ServiceCardProps {
 
 export function ServiceCard({ service }: ServiceCardProps) {
   const t = useTranslations("ServiceCard");
+  const locale = useLocale();
   const isInCart = useCartStore((state) => state.isInCart(service.id));
   const toggleService = useCartStore((state) => state.toggleService);
   const [activeImage, setActiveImage] = useState(0);
@@ -58,7 +60,7 @@ export function ServiceCard({ service }: ServiceCardProps) {
       )}
       <Link href={detailHref} className="flex flex-1 flex-col p-5">
         <span className="inline-block w-fit rounded-full bg-brand-50 px-2.5 py-0.5 text-xs font-medium uppercase tracking-wide text-brand-600 dark:bg-brand-500/20 dark:text-brand-100">
-          {service.category}
+          {serviceCategoryLabel(service.category, locale)}
         </span>
         <h3 className="mt-2 text-base font-semibold text-slate-900 dark:text-neutral-50">{service.name}</h3>
         <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-slate-600 dark:text-neutral-300">

@@ -1,6 +1,6 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 import { Link } from "@/i18n/navigation";
 import { useServices } from "@/features/services/useServices";
@@ -9,11 +9,15 @@ import { PriceTag } from "@/components/ui/PriceTag";
 import { Button } from "@/components/ui/Button";
 import { AddToCartButton } from "@/components/ui/AddToCartButton";
 import type { Service } from "@/features/services/types";
+import { ServiceRow } from "@/components/configurator/ServiceRow";
+import { ViewModeToggle, useViewMode } from "@/components/ui/ViewModeToggle";
+import { serviceCategoryLabel } from "@/config/serviceCategories";
 
 const TILTS = ["-rotate-2", "rotate-1", "-rotate-1"];
 
 function GalleryCard({ service, tilt }: { service: Service; tilt: string }) {
   const t = useTranslations("ServiceCard");
+  const locale = useLocale();
   const isInCart = useCartStore((state) => state.isInCart(service.id));
   const toggleService = useCartStore((state) => state.toggleService);
   const detailHref = `/services/${service.slug}`;
@@ -37,7 +41,7 @@ function GalleryCard({ service, tilt }: { service: Service; tilt: string }) {
           <div className="h-full w-full" />
         )}
         <span className="absolute left-3 top-3 rounded-full bg-slate-950/80 px-2.5 py-0.5 font-mono text-[0.65rem] uppercase tracking-wide text-amber-400 backdrop-blur">
-          {service.category}
+          {serviceCategoryLabel(service.category, locale)}
         </span>
       </Link>
       <Link href={detailHref} className="flex flex-1 flex-col p-5">
@@ -63,6 +67,7 @@ export function ServicesGallery() {
   const t = useTranslations("Home");
   const { services, isLoading } = useServices();
   const topServices = services.slice(0, 3);
+  const [viewMode, setViewMode] = useViewMode("home-services-view-mode", "list");
 
   if (!isLoading && topServices.length === 0) return null;
 
@@ -78,11 +83,24 @@ export function ServicesGallery() {
       </div>
 
       {!isLoading && (
-        <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-3 sm:gap-6">
-          {topServices.map((service, index) => (
-            <GalleryCard key={service.id} service={service} tilt={TILTS[index % TILTS.length]} />
-          ))}
-        </div>
+        <>
+          <div className="mt-10 flex justify-end">
+            <ViewModeToggle value={viewMode} onChange={setViewMode} />
+          </div>
+          {viewMode === "grid" ? (
+            <div className="mt-6 grid grid-cols-1 gap-8 sm:grid-cols-3 sm:gap-6">
+              {topServices.map((service, index) => (
+                <GalleryCard key={service.id} service={service} tilt={TILTS[index % TILTS.length]} />
+              ))}
+            </div>
+          ) : (
+            <div className="mt-4 divide-y divide-slate-200 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm dark:divide-neutral-800 dark:border-neutral-800 dark:bg-neutral-900">
+              {topServices.map((service) => (
+                <ServiceRow key={service.id} service={service} size="large" />
+              ))}
+            </div>
+          )}
+        </>
       )}
 
       <div className="mt-10 text-center">
