@@ -33,7 +33,7 @@ export function ListingsCarousel() {
   if (!listingsEnabled || (!isLoading && listings.length === 0)) return null;
 
   return (
-    <section className="mx-auto max-w-6xl px-4 py-16">
+    <section className="page-container py-16">
       <div className="text-center">
         <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-neutral-50 sm:text-3xl">
           {t("listingsTitle")}
@@ -46,8 +46,12 @@ export function ListingsCarousel() {
           ref={scrollerRef}
           className="mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth pb-4 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
+          {/* Schede in proporzione alla larghezza: 2, 3 o 4 per riga (gap-4 = 1rem). */}
           {listings.map((listing) => (
-            <div key={listing.id} className="w-72 flex-shrink-0 snap-start">
+            <div
+              key={listing.id}
+              className="w-72 flex-shrink-0 snap-start sm:w-[calc((100%-1rem)/2)] lg:w-[calc((100%-2rem)/3)] xl:w-[calc((100%-3rem)/4)]"
+            >
               <ListingCard listing={listing} />
             </div>
           ))}

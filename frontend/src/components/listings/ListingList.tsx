@@ -127,7 +127,7 @@ export function ListingList() {
 
       <div className="mt-4">
         {isLoading ? (
-          <div className={viewMode === "grid" ? "grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3" : "flex flex-col gap-4"}>
+          <div className={viewMode === "grid" ? "grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4" : "flex flex-col gap-4"}>
             {[0, 1, 2].map((i) => (
               <div
                 key={i}
@@ -152,7 +152,7 @@ export function ListingList() {
             )}
           </div>
         ) : viewMode === "grid" ? (
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
             {listings.map((listing) => (
               <ListingCard key={listing.id} listing={listing} />
             ))}

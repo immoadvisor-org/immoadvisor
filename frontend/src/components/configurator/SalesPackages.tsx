@@ -34,7 +34,7 @@ export function SalesPackages() {
   const { packages, content, isLoading, error } = useSalesPackages();
 
   if (isLoading) {
-    return <p className="mx-auto max-w-6xl px-4 text-sm text-slate-500 dark:text-neutral-400">{t("loading")}</p>;
+    return <p className="page-container text-sm text-slate-500 dark:text-neutral-400">{t("loading")}</p>;
   }
 
   if (error || !content || packages.length === 0) {
@@ -56,7 +56,7 @@ export function SalesPackages() {
         <PackageGalleryRow packages={packages} buyLabel={content.buyLabel} />
       </div>
 
-      <div className="mx-auto max-w-6xl px-4">
+      <div className="page-container">
         <div className="mt-12 overflow-x-auto rounded-2xl border border-slate-200 dark:border-neutral-800">
           <table className="w-full min-w-[640px] border-collapse text-left text-sm">
             <thead>

@@ -72,7 +72,7 @@ export function ServicesGallery() {
   if (!isLoading && topServices.length === 0) return null;
 
   return (
-    <section className="mx-auto max-w-6xl px-4 py-16">
+    <section className="page-container py-16">
       <div className="text-center">
         <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-neutral-50 sm:text-3xl">
           {t("servicesGalleryTitle")}

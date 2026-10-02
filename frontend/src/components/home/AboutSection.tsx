@@ -28,7 +28,7 @@ export function AboutSection() {
   if (!about) return null;
 
   return (
-    <section className="mx-auto max-w-6xl px-4 py-16">
+    <section className="page-container py-16">
       <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2">
         {/* Stessa foto della pagina "Chi siamo", gestita da Admin → Chi siamo. */}
         {/* eslint-disable-next-line @next/next/no-img-element */}

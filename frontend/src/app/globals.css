@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  /* Margini laterali delle sezioni pubbliche, uguali alla galleria dei
+     pacchetti: come su Tesla il contenuto cresce con lo schermo invece di
+     restare in una colonna fissa al centro. */
+  .page-gutter {
+    @apply px-4 sm:px-8 lg:px-12;
+  }
+
+  .page-container {
+    @apply page-gutter mx-auto w-full;
+  }
+}
+
 html,
 body {
   height: 100%;

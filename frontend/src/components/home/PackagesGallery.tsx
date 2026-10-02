@@ -16,7 +16,7 @@ export function PackagesGallery() {
 
   return (
     <section className="py-16">
-      <div className="mx-auto max-w-6xl px-4 text-center">
+      <div className="page-container text-center">
         <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-neutral-50 sm:text-3xl">
           {t("packagesGalleryTitle")}
         </h2>

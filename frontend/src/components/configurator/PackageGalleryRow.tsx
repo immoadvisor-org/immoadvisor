@@ -93,7 +93,7 @@ export function PackageGalleryRow({ packages, buyLabel }: { packages: SalesPacka
     <div>
       <div
         ref={scrollerRef}
-        className="flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth scroll-px-4 px-4 py-2 sm:scroll-px-8 sm:px-8 lg:scroll-px-12 lg:px-12 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className="flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth page-gutter scroll-px-4 py-2 sm:scroll-px-8 lg:scroll-px-12 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         {packages.map((pkg) => (
           <div key={pkg.id} className="w-[88vw] flex-shrink-0 snap-start sm:w-[80%] lg:w-[74%]">

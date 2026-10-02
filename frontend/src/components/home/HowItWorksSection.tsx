@@ -45,7 +45,7 @@ export function HowItWorksSection() {
       </div>
 
       {howItWorks.steps.length > 0 && (
-        <div className="mx-auto mt-14 grid max-w-5xl grid-cols-1 gap-10 px-4 sm:grid-cols-3">
+        <div className="page-container mt-14 grid grid-cols-1 gap-10 sm:grid-cols-3">
           {howItWorks.steps.map((step, index) => (
             <div key={index} className="border-t border-slate-200 pt-5 dark:border-neutral-800">
               <span className="font-mono text-sm text-amber-600 dark:text-amber-400">

@@ -29,7 +29,7 @@ export default async function ListingsPage() {
   return (
     <div>
       {introSettings.show_listings_intro && <Hero title={t("title")} subtitle={t("subtitle")} />}
-      <div className="mx-auto max-w-6xl px-4 py-12">
+      <div className="page-container py-12">
         <ListingList />
       </div>
     </div>

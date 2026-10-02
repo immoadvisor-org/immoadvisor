@@ -18,7 +18,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-30 border-b border-slate-200 bg-white/90 backdrop-blur dark:border-neutral-800 dark:bg-neutral-950/90">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
+      <div className="page-container flex items-center justify-between py-4">
         <div className="flex items-baseline gap-1.5">
           <Link
             href="/"
