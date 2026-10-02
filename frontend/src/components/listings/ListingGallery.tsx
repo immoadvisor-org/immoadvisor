@@ -35,7 +35,7 @@ export function ListingGallery({ title, images, videoUrl }: ListingGalleryProps)
 
   return (
     <div>
-      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-slate-100 dark:bg-neutral-800">
+      <div className="relative aspect-[4/3] w-full overflow-hidden xl:aspect-[3/2] rounded-2xl bg-slate-100 dark:bg-neutral-800">
         {current.type === "image" ? (
           <button
             type="button"

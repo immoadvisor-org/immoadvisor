@@ -34,13 +34,13 @@ export function ListingDetailClient() {
 
   if (listing === undefined) {
     return (
-      <p className="mx-auto max-w-6xl px-4 py-12 text-sm text-slate-500 dark:text-neutral-400">{t("loading")}</p>
+      <p className="page-container py-12 text-sm text-slate-500 dark:text-neutral-400">{t("loading")}</p>
     );
   }
 
   if (listing === null) {
     return (
-      <div className="mx-auto max-w-6xl px-4 py-12 text-center">
+      <div className="page-container py-12 text-center">
         <p className="text-slate-600 dark:text-neutral-300">{t("notFound")}</p>
         <Link href="/annunci" className="mt-4 inline-block text-brand-600 hover:underline dark:text-brand-100">
           {t("back")}
@@ -50,12 +50,13 @@ export function ListingDetailClient() {
   }
 
   return (
-    <div className="mx-auto max-w-5xl px-4 py-12">
+    <div className="page-container py-12">
       <Link href="/annunci" className="text-sm text-brand-600 hover:underline dark:text-brand-100">
         ← {t("back")}
       </Link>
 
-      <div className="mt-6 grid grid-cols-1 gap-10 lg:grid-cols-2">
+      {/* Su schermi larghi la galleria prende più spazio della colonna dei dettagli. */}
+      <div className="mt-6 grid grid-cols-1 gap-10 lg:grid-cols-2 xl:grid-cols-[3fr_2fr] xl:gap-14">
         <ListingGallery title={listing.title} images={listing.image_urls} videoUrl={listing.video_url} />
 
         <div>
@@ -63,13 +64,13 @@ export function ListingDetailClient() {
             {listing.city}
             {listing.canton ? ` — ${listing.canton}` : ""}
           </span>
-          <h1 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-neutral-50 sm:text-3xl">
+          <h1 className="mt-3 text-2xl font-semibold text-slate-900 dark:text-neutral-50 sm:text-3xl 2xl:text-4xl">
             {listing.title}
           </h1>
           <p className="mt-2 text-sm text-slate-500 dark:text-neutral-400">
             {t("roomsValue", { rooms: listing.rooms })}
           </p>
-          <p className="mt-4 whitespace-pre-line text-base leading-relaxed text-slate-600 dark:text-neutral-300">
+          <p className="mt-4 whitespace-pre-line text-base leading-relaxed text-slate-600 dark:text-neutral-300 2xl:text-lg">
             {listing.full_description}
           </p>
 
