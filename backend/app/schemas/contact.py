@@ -13,6 +13,7 @@ class ContactMessageCreate(BaseModel):
     phone: str | None = Field(default=None, max_length=30)
     message: str = Field(min_length=1, max_length=5000)
     listing_reference: str | None = Field(default=None, max_length=300)
+    locale: str | None = Field(default=None, max_length=5)
 
 
 class ContactMessageRead(BaseModel):

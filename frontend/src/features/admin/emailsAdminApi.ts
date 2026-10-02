@@ -15,6 +15,11 @@ export const EMAIL_TEMPLATE_GROUPS: EmailTemplateGroup[] = [
 export interface EmailTemplateAdmin {
   key: string;
   group: EmailTemplateGroup;
+  // Lingua di questi testi e lingue in cui il modello si scrive (le
+  // notifiche allo staff solo in quella predefinita).
+  locale: string;
+  locales: string[];
+  customized_locales: string[];
   // La firma non ha oggetto: subject e default_subject sono null.
   subject: string | null;
   body: string;
@@ -36,36 +41,42 @@ export interface EmailPreview {
   html: string;
 }
 
-export function listAdminEmailTemplates(accessToken: string): Promise<EmailTemplateAdmin[]> {
-  return apiFetch<EmailTemplateAdmin[]>(BASE, { accessToken });
+function withLocale(path: string, locale?: string): string {
+  return locale ? `${path}?locale=${encodeURIComponent(locale)}` : path;
 }
 
-export function getAdminEmailTemplate(key: string, accessToken: string): Promise<EmailTemplateAdmin> {
-  return apiFetch<EmailTemplateAdmin>(`${BASE}/${key}`, { accessToken });
+export function listAdminEmailTemplates(accessToken: string, locale?: string): Promise<EmailTemplateAdmin[]> {
+  return apiFetch<EmailTemplateAdmin[]>(withLocale(BASE, locale), { accessToken });
+}
+
+export function getAdminEmailTemplate(key: string, locale: string, accessToken: string): Promise<EmailTemplateAdmin> {
+  return apiFetch<EmailTemplateAdmin>(withLocale(`${BASE}/${key}`, locale), { accessToken });
 }
 
 export function saveAdminEmailTemplate(
   key: string,
+  locale: string,
   input: EmailTemplateInput,
   accessToken: string
 ): Promise<EmailTemplateAdmin> {
-  return apiFetch<EmailTemplateAdmin>(`${BASE}/${key}`, {
+  return apiFetch<EmailTemplateAdmin>(withLocale(`${BASE}/${key}`, locale), {
     method: "PUT",
     accessToken,
     body: JSON.stringify(input),
   });
 }
 
-export function resetAdminEmailTemplate(key: string, accessToken: string): Promise<EmailTemplateAdmin> {
-  return apiFetch<EmailTemplateAdmin>(`${BASE}/${key}`, { method: "DELETE", accessToken });
+export function resetAdminEmailTemplate(key: string, locale: string, accessToken: string): Promise<EmailTemplateAdmin> {
+  return apiFetch<EmailTemplateAdmin>(withLocale(`${BASE}/${key}`, locale), { method: "DELETE", accessToken });
 }
 
 export function previewAdminEmailTemplate(
   key: string,
+  locale: string,
   input: EmailTemplateInput,
   accessToken: string
 ): Promise<EmailPreview> {
-  return apiFetch<EmailPreview>(`${BASE}/${key}/preview`, {
+  return apiFetch<EmailPreview>(withLocale(`${BASE}/${key}/preview`, locale), {
     method: "POST",
     accessToken,
     body: JSON.stringify(input),

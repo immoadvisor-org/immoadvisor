@@ -76,12 +76,12 @@ export default function AdminEmailsPage() {
                         </p>
                         <span
                           className={`flex-shrink-0 rounded-full px-2 py-0.5 text-xs ${
-                            template.is_customized
+                            template.customized_locales.length > 0
                               ? "bg-brand-50 text-brand-600 dark:bg-brand-500/20 dark:text-brand-100"
                               : "bg-slate-100 text-slate-500 dark:bg-neutral-800 dark:text-neutral-400"
                           }`}
                         >
-                          {template.is_customized ? t("customized") : t("default")}
+                          {template.customized_locales.length > 0 ? t("customized") : t("default")}
                         </span>
                       </div>
                       <p className="mt-1 text-sm text-slate-500 dark:text-neutral-400">

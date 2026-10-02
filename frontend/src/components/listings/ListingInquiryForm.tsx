@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 import { submitContactMessage } from "@/features/contact/contactApi";
 import { Button } from "@/components/ui/Button";
@@ -24,6 +24,7 @@ const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 export function ListingInquiryForm({ listingReference, defaultMessage }: ListingInquiryFormProps) {
   const t = useTranslations("ListingDetail");
   const tContact = useTranslations("Contact");
+  const locale = useLocale();
   const [isOpen, setIsOpen] = useState(false);
   const [values, setValues] = useState<FormValues>({
     firstName: "",
@@ -71,6 +72,7 @@ export function ListingInquiryForm({ listingReference, defaultMessage }: Listing
         phone: values.phone.trim() || undefined,
         message: values.message.trim(),
         listing_reference: listingReference,
+        locale,
       });
       setIsSent(true);
     } catch (err) {

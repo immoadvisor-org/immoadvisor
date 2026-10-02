@@ -29,6 +29,8 @@ class ContactMessage(Base):
     # Riferimento testuale (non FK) all'annuncio a cui si riferisce la
     # richiesta, se inviata dalla pagina di dettaglio annuncio.
     listing_reference: Mapped[str | None] = mapped_column(String, nullable=True)
+    # Lingua del sito al momento dell'invio: la conferma al cliente usa questa.
+    locale: Mapped[str | None] = mapped_column(String, nullable=True)
     status: Mapped[ContactMessageStatus] = mapped_column(
         SAEnum(
             ContactMessageStatus,

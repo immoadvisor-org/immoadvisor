@@ -7,13 +7,15 @@ from sqlalchemy.orm import Session
 from app.models.contact import ContactMessage
 from app.schemas.contact import ContactMessageAdminUpdate, ContactMessageCreate
 from app.services.exceptions import ContactMessageNotFoundError
+from app.services.i18n import resolve_locale
 
 
 def create_message(db: Session, payload: ContactMessageCreate) -> ContactMessage:
     message = ContactMessage(
         id=uuid.uuid4(),
         created_at=datetime.now(timezone.utc),
-        **payload.model_dump(),
+        **payload.model_dump(exclude={"locale"}),
+        locale=resolve_locale(payload.locale),
     )
     db.add(message)
     db.commit()

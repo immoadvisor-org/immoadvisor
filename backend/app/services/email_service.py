@@ -13,7 +13,7 @@ from sqlalchemy.orm import Session
 from app.integrations import email_client
 from app.integrations.email_client import EmailAttachment, EmailMessage
 from app.services import email_template_service
-from app.services.email_template_service import SIGNATURE_KEY, render_body_html, render_subject
+from app.services.email_template_service import SIGNATURE_KEY, TEMPLATES, render_body_html, render_subject
 
 # Il logo viaggia come allegato inline (Content-ID) invece che come data URI:
 # Gmail, Outlook e la maggior parte dei client bloccano le immagini "data:",
@@ -41,6 +41,8 @@ class TemplateEmail:
     to: list[str]
     values: dict[str, str]
     reply_to: str | None = None
+    # Lingua del destinatario; se il modello non la prevede si usa quella predefinita.
+    locale: str | None = None
     # Valori alternativi per l'oggetto, quando deve leggere diversamente dal testo.
     subject_values: dict[str, str] | None = None
 
@@ -57,8 +59,10 @@ def render_signature_html(body: str, show_logo: bool, logo_src: str = f"cid:{_LO
 
 
 def compose(db: Session, email: TemplateEmail) -> EmailMessage:
-    template = email_template_service.get_template(db, email.template_key)
-    signature = email_template_service.get_template(db, SIGNATURE_KEY)
+    template = email_template_service.get_template(db, email.template_key, email.locale)
+    # La firma nella stessa lingua del messaggio.
+    locale = email_template_service.template_locale(TEMPLATES[email.template_key], email.locale)
+    signature = email_template_service.get_template(db, SIGNATURE_KEY, locale)
     attach_logo = signature.show_logo and _LOGO_ATTACHMENT is not None
     return EmailMessage(
         to=email.to,

@@ -12,7 +12,9 @@ from app.models.contact import ContactMessage
 from app.models.order import Order
 from app.services import email_service, notification_service
 from app.services.email_service import TemplateEmail
+from app.services.email_template_defaults import INSTALLMENTS_LINE
 from app.services.email_template_service import TEMPLATES
+from app.services.i18n import resolve_locale
 
 logger = logging.getLogger(__name__)
 
@@ -65,18 +67,26 @@ def contact_message_received(db: Session, message: ContactMessage) -> None:
             values=values,
             reply_to=message.email,
         ),
-        TemplateEmail(template_key=f"contact_customer{suffix}", to=_customer(message.email), values=values),
+        TemplateEmail(
+            template_key=f"contact_customer{suffix}",
+            to=_customer(message.email),
+            values=values,
+            locale=message.locale,
+        ),
     )
 
 
 # --- Ordini ---------------------------------------------------------------
 
 
-def _order_values(order: Order) -> dict[str, str]:
+def _order_values(order: Order, locale: str | None) -> dict[str, str]:
     has_installments = order.payment_mode == "installments" and order.installments_total is not None
+    installments_line = INSTALLMENTS_LINE[resolve_locale(locale)]
     return {
         "totale": str(order.total_chf),
-        "rate": f"Rate pagate: {order.installments_paid} di {order.installments_total}" if has_installments else "",
+        "rate": installments_line.format(paid=order.installments_paid, total=order.installments_total)
+        if has_installments
+        else "",
         "rate_pagate": str(order.installments_paid),
         "rate_totali": str(order.installments_total or ""),
         "servizi": "\n".join(
@@ -87,13 +97,22 @@ def _order_values(order: Order) -> dict[str, str]:
 
 def _staff_order_email(db: Session, order: Order) -> TemplateEmail:
     status_label = PAYMENT_STATUS_LABELS.get(order.payment_status.value, order.payment_status.value)
-    values = {**_order_values(order), "stato": status_label, "cliente": order.email or "-"}
+    values = {**_order_values(order, None), "stato": status_label, "cliente": order.email or "-"}
     return TemplateEmail(
         template_key="order_admin",
         to=notification_service.list_recipient_emails(db, "order"),
         values=values,
         # L'oggetto predefinito usa lo stato in minuscolo ("Ordine pagato: ...").
         subject_values={**values, "stato": status_label.lower(), "cliente": order.email or "utente"},
+    )
+
+
+def _customer_order_email(order: Order, template_key: str) -> TemplateEmail:
+    return TemplateEmail(
+        template_key=template_key,
+        to=_customer(order.email),
+        values=_order_values(order, order.locale),
+        locale=order.locale,
     )
 
 
@@ -110,11 +129,11 @@ def order_payment_status_changed(db: Session, order: Order, notify_staff: bool =
     emails: list[TemplateEmail] = [_staff_order_email(db, order)] if notify_staff else []
     key = _customer_payment_template(order)
     if key:
-        emails.append(TemplateEmail(template_key=key, to=_customer(order.email), values=_order_values(order)))
+        emails.append(_customer_order_email(order, key))
     email_service.send(db, *emails)
 
 
 def order_fulfillment_status_changed(db: Session, order: Order) -> None:
     key = _existing_template(f"customer_fulfillment_{order.fulfillment_status.value}")
     if key:
-        email_service.send(db, TemplateEmail(template_key=key, to=_customer(order.email), values=_order_values(order)))
+        email_service.send(db, _customer_order_email(order, key))

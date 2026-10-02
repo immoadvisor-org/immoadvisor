@@ -39,7 +39,7 @@ export function EmailTemplatesNav({ templates, activeKey }: EmailTemplatesNavPro
                     }`}
                   >
                     <span>{t(`templates.${template.key}.name`)}</span>
-                    {template.is_customized && (
+                    {template.customized_locales.length > 0 && (
                       <span
                         className="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-brand-500"
                         title={t("customized")}

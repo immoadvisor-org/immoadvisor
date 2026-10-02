@@ -46,6 +46,8 @@ class Order(Base):
     # elencare gli ordini in admin senza dover interrogare lo schema auth,
     # e resta corretta anche se l'utente cambia poi la propria email.
     email: Mapped[str | None] = mapped_column(String, nullable=True)
+    # Lingua del sito al checkout: le email al cliente usano questa.
+    locale: Mapped[str | None] = mapped_column(String, nullable=True)
     # Stato del pagamento (gestito dal sistema via Stripe: checkout e
     # rimborsi) e stato di lavorazione dell'ordine (gestito manualmente
     # dall'admin) sono concetti separati: un ordine pagato può essere "in

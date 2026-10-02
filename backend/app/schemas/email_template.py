@@ -8,6 +8,11 @@ EmailTemplateGroup = Literal["signature", "admin", "customer_contact", "customer
 class EmailTemplateAdminRead(BaseModel):
     key: str
     group: EmailTemplateGroup
+    # Lingua di questi testi e lingue in cui il modello si scrive (le
+    # notifiche allo staff solo nella lingua predefinita).
+    locale: str
+    locales: list[str]
+    customized_locales: list[str]
     # La firma non ha oggetto: subject e default_subject restano None.
     subject: str | None
     body: str

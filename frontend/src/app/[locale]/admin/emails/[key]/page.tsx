@@ -5,6 +5,7 @@ import { useParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 
 import { Link } from "@/i18n/navigation";
+import { routing } from "@/i18n/routing";
 import { useUser } from "@/features/auth/useUser";
 import { useIsAdmin } from "@/features/profile/useIsAdmin";
 import {
@@ -31,6 +32,7 @@ export default function AdminEmailTemplatePage() {
   const accessToken = session?.access_token;
 
   const [templates, setTemplates] = useState<EmailTemplateAdmin[]>([]);
+  const [activeLocale, setActiveLocale] = useState<string>(routing.defaultLocale);
   const [subject, setSubject] = useState("");
   const [body, setBody] = useState("");
   const [showLogo, setShowLogo] = useState(true);
@@ -46,6 +48,10 @@ export default function AdminEmailTemplatePage() {
 
   const template = templates.find((item) => item.key === params.key);
   const isSignature = template?.group === "signature";
+  const isDirty =
+    !!template && (subject !== (template.subject ?? "") || body !== template.body || showLogo !== template.show_logo);
+  // Schede nell'ordine delle lingue del sito, solo quelle previste dal modello.
+  const tabLocales = routing.locales.filter((locale) => template?.locales.includes(locale));
 
   function applyTemplate(next: EmailTemplateAdmin) {
     setSubject(next.subject ?? "");
@@ -56,14 +62,14 @@ export default function AdminEmailTemplatePage() {
   useEffect(() => {
     if (!isAdmin || !accessToken) return;
     setIsLoading(true);
-    listAdminEmailTemplates(accessToken)
+    listAdminEmailTemplates(accessToken, activeLocale)
       .then((items) => {
         setTemplates(items);
         const current = items.find((item) => item.key === params.key);
         if (current) applyTemplate(current);
       })
       .finally(() => setIsLoading(false));
-  }, [isAdmin, accessToken, params.key]);
+  }, [isAdmin, accessToken, params.key, activeLocale]);
 
   // Anteprima aggiornata mentre si scrive, con un piccolo ritardo per non
   // chiamare il backend a ogni tasto.
@@ -72,6 +78,7 @@ export default function AdminEmailTemplatePage() {
     const timeout = setTimeout(() => {
       previewAdminEmailTemplate(
         template.key,
+        template.locale,
         { subject: isSignature ? null : subject, body, show_logo: showLogo },
         accessToken
       )
@@ -111,6 +118,13 @@ export default function AdminEmailTemplatePage() {
     });
   }
 
+  function selectLocale(locale: string) {
+    if (locale === activeLocale) return;
+    if (isDirty && !window.confirm(t("unsavedConfirm"))) return;
+    setSaveState("idle");
+    setActiveLocale(locale);
+  }
+
   async function handleSave() {
     if (!accessToken || !template) return;
     setIsSaving(true);
@@ -118,6 +132,7 @@ export default function AdminEmailTemplatePage() {
     try {
       const updated = await saveAdminEmailTemplate(
         template.key,
+        template.locale,
         { subject: isSignature ? null : subject, body, show_logo: showLogo },
         accessToken
       );
@@ -136,7 +151,7 @@ export default function AdminEmailTemplatePage() {
     setIsSaving(true);
     setSaveState("idle");
     try {
-      replaceTemplate(await resetAdminEmailTemplate(template.key, accessToken));
+      replaceTemplate(await resetAdminEmailTemplate(template.key, template.locale, accessToken));
       setSaveState("reset");
     } catch {
       setSaveState("error");
@@ -173,6 +188,34 @@ export default function AdminEmailTemplatePage() {
             </p>
 
             <div className="mt-6 rounded-xl border border-slate-200 bg-white p-6 dark:border-neutral-800 dark:bg-neutral-900">
+              {tabLocales.length > 1 ? (
+                <div className="mb-5 flex gap-2 border-b border-slate-200 dark:border-neutral-700">
+                  {tabLocales.map((locale) => (
+                    <button
+                      key={locale}
+                      type="button"
+                      onClick={() => selectLocale(locale)}
+                      className={`flex items-center gap-1.5 px-3 py-2 text-sm font-medium uppercase ${
+                        template.locale === locale
+                          ? "border-b-2 border-brand-500 text-brand-600 dark:text-brand-200"
+                          : "text-slate-400 hover:text-slate-700 dark:text-neutral-500 dark:hover:text-neutral-200"
+                      }`}
+                    >
+                      {locale}
+                      {template.customized_locales.includes(locale) && (
+                        <span
+                          className="h-1.5 w-1.5 rounded-full bg-brand-500"
+                          title={t("customized")}
+                          aria-label={t("customized")}
+                        />
+                      )}
+                    </button>
+                  ))}
+                </div>
+              ) : (
+                <p className="mb-5 text-xs text-slate-500 dark:text-neutral-400">{t("staffLocaleNote")}</p>
+              )}
+
               {!isSignature && (
                 <label className="block">
                   <span className="text-sm font-medium text-slate-700 dark:text-neutral-200">{t("subject")}</span>

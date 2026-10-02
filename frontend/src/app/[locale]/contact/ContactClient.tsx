@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 import { Link } from "@/i18n/navigation";
 import { submitContactMessage } from "@/features/contact/contactApi";
@@ -20,6 +20,7 @@ const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export function ContactClient() {
   const t = useTranslations("Contact");
+  const locale = useLocale();
   const [values, setValues] = useState<FormValues>(EMPTY_FORM);
   const [errors, setErrors] = useState<Partial<Record<keyof FormValues, string>>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -60,6 +61,7 @@ export function ContactClient() {
         email: values.email.trim(),
         phone: values.phone.trim() || undefined,
         message: values.message.trim(),
+        locale,
       });
       setIsSent(true);
     } catch (err) {
