@@ -2,7 +2,6 @@
 
 import { useLocale, useTranslations } from "next-intl";
 
-import { useServices } from "@/features/services/useServices";
 import type { Service } from "@/features/services/types";
 import { ServiceCard } from "@/components/configurator/ServiceCard";
 import { ServiceRow } from "@/components/configurator/ServiceRow";
@@ -39,7 +38,7 @@ function GroupedServicesTable({ groups, locale }: { groups: ServiceGroup[]; loca
     <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white dark:border-neutral-800 dark:bg-neutral-900">
       {groups.map((group, index) => (
         <section key={group.category} className={index > 0 ? "border-t border-slate-200 dark:border-neutral-800" : ""}>
-          <h3 className="flex items-baseline gap-2 bg-brand-50 px-4 py-3 text-sm font-bold uppercase tracking-wide text-brand-700 dark:bg-brand-300 dark:text-brand-700 sm:px-5 sm:text-base">
+          <h3 className="flex items-baseline gap-2 bg-brand-50 px-4 py-3 text-sm font-bold uppercase tracking-wide text-brand-700 dark:bg-neutral-700 dark:text-neutral-50 sm:px-5 sm:text-base">
             {serviceCategoryLabel(group.category, locale)}
           </h3>
           <div className="divide-y divide-slate-200 border-t border-slate-200 dark:divide-neutral-800 dark:border-neutral-800">
@@ -53,17 +52,17 @@ function GroupedServicesTable({ groups, locale }: { groups: ServiceGroup[]; loca
   );
 }
 
-export function ServiceList() {
+interface ServiceListProps {
+  services: Service[];
+  error: string | null;
+}
+
+export function ServiceList({ services, error }: ServiceListProps) {
   const t = useTranslations("ServiceList");
   const locale = useLocale();
-  const { services, isLoading, error } = useServices();
   // Chiave "-v2": la vista predefinita è passata da griglia a lista, così
   // riparte dalla lista anche chi aveva già scelto con la versione precedente.
   const [viewMode, setViewMode] = useViewMode("services-view-mode-v2", "list");
-
-  if (isLoading) {
-    return <p className="text-sm text-slate-500 dark:text-neutral-400">{t("loading")}</p>;
-  }
 
   if (error) {
     return <p className="text-sm text-red-600 dark:text-red-400">{t("error", { error })}</p>;

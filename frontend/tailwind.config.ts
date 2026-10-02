@@ -9,8 +9,6 @@ const config: Config = {
         brand: {
           50: "#eef4ff",
           100: "#d9e6ff",
-          // Via di mezzo tra 50 e 500: es. righe di categoria nel tema scuro.
-          300: "#8fa9ed",
           500: "#2f5fdb",
           600: "#2549ab",
           700: "#1c3880",

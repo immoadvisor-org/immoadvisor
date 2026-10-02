@@ -4,8 +4,7 @@ import { getTranslations } from "next-intl/server";
 import type { Locale } from "@/i18n/routing";
 import { buildMetadata } from "@/lib/seo";
 import { Hero } from "@/components/home/Hero";
-import { SalesPackages } from "@/components/configurator/SalesPackages";
-import { ServiceList } from "@/components/configurator/ServiceList";
+import { ConfiguratorContent } from "@/components/configurator/ConfiguratorContent";
 import { getPageIntroSettings } from "@/features/pageIntro/pageIntroApi";
 
 interface PageProps {
@@ -30,24 +29,18 @@ export default async function ConfiguratorPage() {
   return (
     <div>
       {introSettings.show_configurator_intro && <Hero title={t("title")} subtitle={t("subtitle")} />}
-      <div className="py-12">
-        <SalesPackages />
-      </div>
-
-      <div className="page-container pb-12">
-        <div className="mx-auto mt-8 max-w-3xl text-center">
-          <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-neutral-50 sm:text-3xl">
-            {t("buildOwnTitle")}
-          </h2>
-          <p className="mt-4 text-base leading-relaxed text-slate-600 dark:text-neutral-300">
-            {t("buildOwnSubtitle")}
-          </p>
-        </div>
-
-        <div className="mt-10">
-          <ServiceList />
-        </div>
-      </div>
+      <ConfiguratorContent
+        servicesIntro={
+          <div className="mx-auto mt-8 max-w-3xl text-center">
+            <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-neutral-50 sm:text-3xl">
+              {t("buildOwnTitle")}
+            </h2>
+            <p className="mt-4 text-base leading-relaxed text-slate-600 dark:text-neutral-300">
+              {t("buildOwnSubtitle")}
+            </p>
+          </div>
+        }
+      />
     </div>
   );
 }

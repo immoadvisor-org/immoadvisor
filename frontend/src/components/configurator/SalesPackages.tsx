@@ -3,7 +3,7 @@
 import { useTranslations } from "next-intl";
 
 import { PriceTag } from "@/components/ui/PriceTag";
-import { useSalesPackages } from "@/features/salesPackages/useSalesPackages";
+import type { SalesPackage, SalesPackagesContent } from "@/features/salesPackages/salesPackagesApi";
 import { Check } from "@/components/configurator/PackageCard";
 import { PackageGalleryRow } from "@/components/configurator/PackageGalleryRow";
 
@@ -29,15 +29,17 @@ function ComparisonCell({ value }: { value: string }) {
   return <span className="text-sm font-medium text-slate-700 dark:text-neutral-200">{value}</span>;
 }
 
-export function SalesPackages() {
+interface SalesPackagesProps {
+  packages: SalesPackage[];
+  content: SalesPackagesContent | null;
+}
+
+// I dati arrivano già caricati da ConfiguratorContent: così la pagina appare
+// tutta insieme, senza sezioni che compaiono e spingono giù le altre.
+export function SalesPackages({ packages, content }: SalesPackagesProps) {
   const t = useTranslations("SalesPackages");
-  const { packages, content, isLoading, error } = useSalesPackages();
 
-  if (isLoading) {
-    return <p className="page-container text-sm text-slate-500 dark:text-neutral-400">{t("loading")}</p>;
-  }
-
-  if (error || !content || packages.length === 0) {
+  if (!content || packages.length === 0) {
     return null;
   }
 
