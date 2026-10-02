@@ -101,25 +101,27 @@ export function PackageCard({ pkg, buyLabel }: { pkg: SalesPackage; buyLabel: st
       <div className="absolute inset-0 -z-10 hidden dark:block dark:bg-black/35" />
 
       {TAGLINE_KEYS[pkg.slug] && (
-        <p className="absolute left-6 top-5 text-xs font-medium uppercase tracking-wide text-slate-500 dark:text-white/70">
+        <p className="absolute left-6 top-5 text-xs font-medium xl:left-10 xl:top-8 xl:text-sm uppercase tracking-wide text-slate-500 dark:text-white/70">
           {t(TAGLINE_KEYS[pkg.slug])}
         </p>
       )}
 
-      <div className="px-6 pb-6 pt-16 lg:pt-11">
+      <div className="px-6 pb-6 pt-16 lg:pt-11 xl:px-10 xl:pb-10 xl:pt-16">
         {/* Come su Tesla: su schermi larghi la card è più alta, con
             nome/prezzo/pulsante ancorati in basso a sinistra (self-end) e il
             contenuto (features) ancorato in alto a destra (self-start).
             Sotto una certa larghezza torna tutto in colonna singola, testo
             sopra e contenuto sotto, con il pulsante spostato in fondo. */}
-        <div className="flex min-h-[460px] flex-col lg:min-h-[340px] lg:flex-row lg:gap-x-10">
+        {/* L'altezza cresce con lo schermo, così su monitor grandi la card
+            resta proporzionata alla foto in alto invece di restare bassa. */}
+        <div className="flex min-h-[460px] flex-col lg:min-h-[max(340px,48vh)] lg:flex-row lg:gap-x-10 xl:gap-x-16">
           <div className="flex flex-col lg:w-2/5 lg:self-end">
             {pkg.featured && pkg.featured_label && (
               <span className="mb-3 inline-block w-fit rounded-full bg-brand-500 px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wide text-white">
                 {pkg.featured_label}
               </span>
             )}
-            <h3 className="text-lg font-semibold text-slate-900 dark:text-white">{pkg.name}</h3>
+            <h3 className="text-lg font-semibold text-slate-900 dark:text-white xl:text-2xl 2xl:text-3xl">{pkg.name}</h3>
 
             {showPaymentModeToggle && (
               <div className="mt-3 flex rounded-lg border border-slate-200 bg-white/70 p-0.5 text-xs font-medium dark:border-white/25 dark:bg-black/25">
@@ -151,14 +153,14 @@ export function PackageCard({ pkg, buyLabel }: { pkg: SalesPackage; buyLabel: st
             <div className={`flex items-baseline gap-1 ${showPaymentModeToggle ? "mt-3" : "mt-4"}`}>
               <PriceTag
                 amountChf={effectiveMode === "installments" ? monthlyPrice : totalPrice}
-                className="text-2xl font-bold text-slate-900 dark:text-white"
+                className="text-2xl font-bold text-slate-900 dark:text-white xl:text-4xl 2xl:text-5xl"
               />
-              <span className="text-sm text-slate-500 dark:text-white/70">
+              <span className="text-sm text-slate-500 dark:text-white/70 xl:text-base">
                 {effectiveMode === "installments" ? t("perMonth") : t("oneTime")}
               </span>
             </div>
             {effectiveMode === "installments" && pkg.installments > 1 && (
-              <p className="mt-1 text-xs text-slate-500 dark:text-white/70">
+              <p className="mt-1 text-xs text-slate-500 dark:text-white/70 xl:text-sm">
                 {t.rich("installmentsBreakdown", {
                   count: pkg.installments,
                   total: () => <PriceTag amountChf={totalPrice} hideCents />,
@@ -171,14 +173,14 @@ export function PackageCard({ pkg, buyLabel }: { pkg: SalesPackage; buyLabel: st
 
           <div className="mt-10 flex flex-1 flex-col lg:mt-0 lg:self-start">
             {pkg.includes_label && (
-              <p className="text-xs font-medium uppercase tracking-wide text-slate-400 dark:text-white/60">
+              <p className="text-xs font-medium uppercase tracking-wide text-slate-400 dark:text-white/60 xl:text-sm">
                 {pkg.includes_label}
               </p>
             )}
 
-            <ul className={`space-y-2 ${pkg.includes_label ? "mt-3" : ""}`}>
+            <ul className={`space-y-2 xl:space-y-3 ${pkg.includes_label ? "mt-3" : ""}`}>
               {pkg.features.map((feature, index) => (
-                <li key={index} className="flex items-start gap-2 text-sm text-slate-600 dark:text-white/90">
+                <li key={index} className="flex items-start gap-2 text-sm text-slate-600 dark:text-white/90 xl:text-base 2xl:text-lg">
                   <span className="mt-0.5 flex-shrink-0">
                     <Check />
                   </span>

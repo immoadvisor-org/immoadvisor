@@ -34,7 +34,7 @@ export function SalesPackages() {
   const { packages, content, isLoading, error } = useSalesPackages();
 
   if (isLoading) {
-    return <p className="text-sm text-slate-500 dark:text-neutral-400">{t("loading")}</p>;
+    return <p className="mx-auto max-w-6xl px-4 text-sm text-slate-500 dark:text-neutral-400">{t("loading")}</p>;
   }
 
   if (error || !content || packages.length === 0) {
@@ -43,79 +43,83 @@ export function SalesPackages() {
 
   return (
     <section>
-      <div className="mx-auto max-w-3xl text-center">
+      <div className="mx-auto max-w-3xl px-4 text-center">
         <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-neutral-50 sm:text-3xl">
           {content.title}
         </h2>
         <p className="mt-4 text-base leading-relaxed text-slate-600 dark:text-neutral-300">{content.subtitle}</p>
       </div>
 
+      {/* Come su Tesla la gallery usa tutta la larghezza dello schermo e cresce
+          con lui; titolo, tabella e note restano nel contenitore centrale. */}
       <div className="mt-10">
         <PackageGalleryRow packages={packages} buyLabel={content.buyLabel} />
       </div>
 
-      <div className="mt-12 overflow-x-auto rounded-2xl border border-slate-200 dark:border-neutral-800">
-        <table className="w-full min-w-[640px] border-collapse text-left text-sm">
-          <thead>
-            <tr className="border-b border-slate-200 bg-slate-50 dark:border-neutral-800 dark:bg-neutral-900">
-              <th className="px-4 py-3 font-medium text-slate-700 dark:text-neutral-200">{t("featureColumn")}</th>
-              <th className="px-4 py-3 text-center font-medium text-slate-700 dark:text-neutral-200">
-                {t("individualPriceColumn")}
-              </th>
-              {COMPARISON_COLUMNS.map((col) => (
-                <th key={col.key} className="px-4 py-3 text-center font-medium text-slate-700 dark:text-neutral-200">
-                  {packages.find((pkg) => pkg.slug === col.slug)?.name ?? col.fallback}
+      <div className="mx-auto max-w-6xl px-4">
+        <div className="mt-12 overflow-x-auto rounded-2xl border border-slate-200 dark:border-neutral-800">
+          <table className="w-full min-w-[640px] border-collapse text-left text-sm">
+            <thead>
+              <tr className="border-b border-slate-200 bg-slate-50 dark:border-neutral-800 dark:bg-neutral-900">
+                <th className="px-4 py-3 font-medium text-slate-700 dark:text-neutral-200">{t("featureColumn")}</th>
+                <th className="px-4 py-3 text-center font-medium text-slate-700 dark:text-neutral-200">
+                  {t("individualPriceColumn")}
                 </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {content.comparisonRows.map((row, index) => (
-              <tr
-                key={index}
-                className="border-b border-slate-100 last:border-0 dark:border-neutral-800/60"
-              >
-                <td className="px-4 py-3">
-                  <p className="font-medium text-slate-900 dark:text-neutral-50">{row.name}</p>
-                  {row.description && (
-                    <p className="text-xs text-slate-500 dark:text-neutral-400">{row.description}</p>
-                  )}
-                </td>
-                <td className="px-4 py-3 text-center text-slate-600 dark:text-neutral-300">{row.individualPrice}</td>
                 {COMPARISON_COLUMNS.map((col) => (
-                  <td key={col.key} className="px-4 py-3 text-center">
-                    <ComparisonCell value={row[col.key]} />
-                  </td>
+                  <th key={col.key} className="px-4 py-3 text-center font-medium text-slate-700 dark:text-neutral-200">
+                    {packages.find((pkg) => pkg.slug === col.slug)?.name ?? col.fallback}
+                  </th>
                 ))}
               </tr>
-            ))}
-            <tr className="bg-slate-50 dark:bg-neutral-900">
-              <td className="px-4 py-3 font-semibold text-slate-900 dark:text-neutral-50">
-                {content.monthlyFeeLabel}
-              </td>
-              <td className="px-4 py-3" />
-              {COMPARISON_COLUMNS.map((col) => {
-                const matched = packages.find((pkg) => pkg.slug === col.slug);
-                return (
-                  <td key={col.key} className="px-4 py-3 text-center font-semibold text-slate-900 dark:text-neutral-50">
-                    {matched ? <PriceTag amountChf={Number(matched.monthly_price_chf)} /> : "–"}
+            </thead>
+            <tbody>
+              {content.comparisonRows.map((row, index) => (
+                <tr
+                  key={index}
+                  className="border-b border-slate-100 last:border-0 dark:border-neutral-800/60"
+                >
+                  <td className="px-4 py-3">
+                    <p className="font-medium text-slate-900 dark:text-neutral-50">{row.name}</p>
+                    {row.description && (
+                      <p className="text-xs text-slate-500 dark:text-neutral-400">{row.description}</p>
+                    )}
                   </td>
-                );
-              })}
-            </tr>
-          </tbody>
-        </table>
-      </div>
+                  <td className="px-4 py-3 text-center text-slate-600 dark:text-neutral-300">{row.individualPrice}</td>
+                  {COMPARISON_COLUMNS.map((col) => (
+                    <td key={col.key} className="px-4 py-3 text-center">
+                      <ComparisonCell value={row[col.key]} />
+                    </td>
+                  ))}
+                </tr>
+              ))}
+              <tr className="bg-slate-50 dark:bg-neutral-900">
+                <td className="px-4 py-3 font-semibold text-slate-900 dark:text-neutral-50">
+                  {content.monthlyFeeLabel}
+                </td>
+                <td className="px-4 py-3" />
+                {COMPARISON_COLUMNS.map((col) => {
+                  const matched = packages.find((pkg) => pkg.slug === col.slug);
+                  return (
+                    <td key={col.key} className="px-4 py-3 text-center font-semibold text-slate-900 dark:text-neutral-50">
+                      {matched ? <PriceTag amountChf={Number(matched.monthly_price_chf)} /> : "–"}
+                    </td>
+                  );
+                })}
+              </tr>
+            </tbody>
+          </table>
+        </div>
 
-      {content.notes.length > 0 && (
-        <ul className="mt-6 space-y-1.5">
-          {content.notes.map((note, index) => (
-            <li key={index} className="text-xs leading-relaxed text-slate-500 dark:text-neutral-500">
-              {note}
-            </li>
-          ))}
-        </ul>
-      )}
+        {content.notes.length > 0 && (
+          <ul className="mt-6 space-y-1.5">
+            {content.notes.map((note, index) => (
+              <li key={index} className="text-xs leading-relaxed text-slate-500 dark:text-neutral-500">
+                {note}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
     </section>
   );
 }

@@ -15,8 +15,8 @@ export function PackagesGallery() {
   if (!isLoading && (topPackages.length === 0 || !content)) return null;
 
   return (
-    <section className="mx-auto max-w-6xl px-4 py-16">
-      <div className="text-center">
+    <section className="py-16">
+      <div className="mx-auto max-w-6xl px-4 text-center">
         <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-neutral-50 sm:text-3xl">
           {t("packagesGalleryTitle")}
         </h2>
@@ -31,7 +31,7 @@ export function PackagesGallery() {
         </div>
       )}
 
-      <div className="mt-10 text-center">
+      <div className="mt-10 px-4 text-center">
         <Link href="/configuratore">
           <Button variant="secondary">{t("packagesGalleryCta")}</Button>
         </Link>

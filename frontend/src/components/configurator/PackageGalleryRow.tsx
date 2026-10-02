@@ -20,11 +20,17 @@ function GalleryArrow({ direction, onClick }: { direction: "left" | "right"; onC
   );
 }
 
-// Gallery scorrevole in stile Tesla: su mobile le schede occupano quasi
-// tutta la larghezza e si scorrono con swipe (snap netto). Su desktop ogni
-// scheda occupa gran parte del container (una sola a schermo intero, con un
-// pezzo della successiva che sbircia). Sotto la gallery: i pallini che
+// Gallery scorrevole in stile Tesla, a tutta larghezza dello schermo: su
+// mobile le schede occupano quasi tutta la larghezza e si scorrono con swipe
+// (snap netto). Su desktop ogni scheda occupa gran parte dello schermo (una
+// sola intera, con un pezzo della successiva che sbircia) e cresce con lui. Sotto la gallery: i pallini che
 // indicano la scheda attiva (cliccabili) e due frecce minimali per scorrere.
+// Posizione di scorrimento che allinea la scheda al margine sinistro della
+// gallery (offsetLeft include il padding laterale del contenitore).
+function cardScrollLeft(el: HTMLElement, card: HTMLElement): number {
+  return card.offsetLeft - parseFloat(getComputedStyle(el).paddingLeft);
+}
+
 export function PackageGalleryRow({ packages, buyLabel }: { packages: SalesPackage[]; buyLabel: string }) {
   const scrollerRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -37,7 +43,9 @@ export function PackageGalleryRow({ packages, buyLabel }: { packages: SalesPacka
     const featuredIndex = packages.findIndex((pkg) => pkg.featured);
     if (!el || featuredIndex <= 0) return;
     const card = el.children[featuredIndex] as HTMLElement | undefined;
-    if (card) el.scrollLeft = card.offsetLeft;
+    // "instant": con la classe scroll-smooth un'assegnazione a scrollLeft
+    // partirebbe come animazione, che può interrompersi a metà.
+    if (card) el.scrollTo({ left: cardScrollLeft(el, card), behavior: "instant" });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -78,14 +86,14 @@ export function PackageGalleryRow({ packages, buyLabel }: { packages: SalesPacka
     const el = scrollerRef.current;
     const card = el?.children[index] as HTMLElement | undefined;
     if (!el || !card) return;
-    el.scrollTo({ left: card.offsetLeft, behavior: "smooth" });
+    el.scrollTo({ left: cardScrollLeft(el, card), behavior: "smooth" });
   }
 
   return (
     <div>
       <div
         ref={scrollerRef}
-        className="flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth px-1 py-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        className="flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth scroll-px-4 px-4 py-2 sm:scroll-px-8 sm:px-8 lg:scroll-px-12 lg:px-12 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
       >
         {packages.map((pkg) => (
           <div key={pkg.id} className="w-[88vw] flex-shrink-0 snap-start sm:w-[80%] lg:w-[74%]">

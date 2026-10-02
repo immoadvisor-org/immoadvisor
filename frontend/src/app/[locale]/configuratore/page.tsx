@@ -30,10 +30,12 @@ export default async function ConfiguratorPage() {
   return (
     <div>
       {introSettings.show_configurator_intro && <Hero title={t("title")} subtitle={t("subtitle")} />}
-      <div className="mx-auto max-w-6xl px-4 py-12">
+      <div className="py-12">
         <SalesPackages />
+      </div>
 
-        <div className="mx-auto mt-20 max-w-3xl text-center">
+      <div className="mx-auto max-w-6xl px-4 pb-12">
+        <div className="mx-auto mt-8 max-w-3xl text-center">
           <h2 className="font-display text-2xl font-bold text-slate-900 dark:text-neutral-50 sm:text-3xl">
             {t("buildOwnTitle")}
           </h2>
