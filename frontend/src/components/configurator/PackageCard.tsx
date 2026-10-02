@@ -101,12 +101,15 @@ export function PackageCard({ pkg, buyLabel }: { pkg: SalesPackage; buyLabel: st
       <div className="absolute inset-0 -z-10 hidden dark:block dark:bg-black/35" />
 
       {TAGLINE_KEYS[pkg.slug] && (
-        <p className="absolute left-6 top-5 text-xs font-medium xl:left-10 xl:top-8 xl:text-sm uppercase tracking-wide text-slate-500 dark:text-white/70">
+        <p className="absolute left-6 top-5 text-xs font-medium xl:left-10 xl:top-8 xl:text-sm 2xl:left-14 uppercase tracking-wide text-slate-500 dark:text-white/70">
           {t(TAGLINE_KEYS[pkg.slug])}
         </p>
       )}
 
-      <div className="px-6 pb-6 pt-16 lg:pt-11 xl:px-10 xl:pb-10 xl:pt-16">
+      {/* Il margine destro cresce in proporzione alla card: su schermi molto
+          larghi l'elenco si sposta verso il centro invece di restare
+          attaccato al bordo, riducendo il vuoto in mezzo. */}
+      <div className="px-6 pb-6 pt-16 lg:pt-11 xl:pb-10 xl:pl-10 xl:pr-[6%] xl:pt-16 2xl:pl-14 2xl:pr-[9%]">
         {/* Come su Tesla: su schermi larghi la card è più alta, con
             nome/prezzo/pulsante ancorati in basso a sinistra (self-end) e il
             contenuto (features) ancorato in alto a destra (self-start).
