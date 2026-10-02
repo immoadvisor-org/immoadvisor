@@ -39,7 +39,7 @@ function GroupedServicesTable({ groups, locale }: { groups: ServiceGroup[]; loca
     <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white dark:border-neutral-800 dark:bg-neutral-900">
       {groups.map((group, index) => (
         <section key={group.category} className={index > 0 ? "border-t border-slate-200 dark:border-neutral-800" : ""}>
-          <h3 className="flex items-baseline gap-2 bg-brand-50 px-4 py-3 text-sm font-bold uppercase tracking-wide text-brand-700 dark:bg-brand-500 dark:text-white sm:px-5 sm:text-base">
+          <h3 className="flex items-baseline gap-2 bg-brand-50 px-4 py-3 text-sm font-bold uppercase tracking-wide text-brand-700 dark:bg-brand-300 dark:text-brand-700 sm:px-5 sm:text-base">
             {serviceCategoryLabel(group.category, locale)}
           </h3>
           <div className="divide-y divide-slate-200 border-t border-slate-200 dark:divide-neutral-800 dark:border-neutral-800">
