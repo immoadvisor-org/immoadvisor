@@ -564,7 +564,9 @@
     "inquiryCancel": "Schliessen",
     "inquiryDefaultMessage": "Ich interessiere mich für das Inserat \"{title}\" und hätte gerne weitere Informationen.",
     "previousMedia": "Vorheriges Bild",
-    "nextMedia": "Nächstes Bild"
+    "nextMedia": "Nächstes Bild",
+    "enlargeImage": "Bild vergrössern",
+    "closeImage": "Schliessen"
   },
   "AdminListings": {
     "title": "Inserate",

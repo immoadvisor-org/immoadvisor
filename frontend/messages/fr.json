@@ -564,7 +564,9 @@
     "inquiryCancel": "Fermer",
     "inquiryDefaultMessage": "Je suis intéressé(e) par l'annonce \"{title}\" et souhaiterais obtenir plus d'informations.",
     "previousMedia": "Image précédente",
-    "nextMedia": "Image suivante"
+    "nextMedia": "Image suivante",
+    "enlargeImage": "Agrandir l'image",
+    "closeImage": "Fermer"
   },
   "AdminListings": {
     "title": "Annonces",
