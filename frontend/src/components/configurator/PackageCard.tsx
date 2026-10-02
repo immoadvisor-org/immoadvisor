@@ -171,7 +171,9 @@ export function PackageCard({ pkg, buyLabel }: { pkg: SalesPackage; buyLabel: st
             <div className="hidden lg:block">{buyButton}</div>
           </div>
 
-          <div className="mt-10 flex flex-1 flex-col lg:mt-0 lg:self-start">
+          {/* Su schermi larghi l'elenco resta ancorato al bordo destro della
+              card (ml-auto), anche quando la card diventa molto larga. */}
+          <div className="mt-10 flex flex-1 flex-col lg:ml-auto lg:mt-0 lg:max-w-[50%] lg:flex-none lg:self-start">
             {pkg.includes_label && (
               <p className="text-xs font-medium uppercase tracking-wide text-slate-400 dark:text-white/60 xl:text-sm">
                 {pkg.includes_label}
