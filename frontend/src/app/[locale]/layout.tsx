@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Space_Grotesk } from "next/font/google";
+import { Poppins, Space_Grotesk } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
@@ -19,6 +19,14 @@ const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   weight: ["500", "700"],
   variable: "--font-display",
+  display: "swap",
+});
+
+// Font del logo HomeBlock: "home" leggero, "block" in grassetto.
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["300", "700"],
+  variable: "--font-brand",
   display: "swap",
 });
 
@@ -84,7 +92,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   const messages = await getMessages();
 
   return (
-    <html lang={locale} className={spaceGrotesk.variable} suppressHydrationWarning>
+    <html lang={locale} className={`${spaceGrotesk.variable} ${poppins.variable}`} suppressHydrationWarning>
       <body className="flex min-h-screen flex-col bg-slate-50 text-slate-900 transition-colors dark:bg-neutral-950 dark:text-neutral-50">
         <script dangerouslySetInnerHTML={{ __html: NO_FLASH_THEME_SCRIPT }} />
         <script

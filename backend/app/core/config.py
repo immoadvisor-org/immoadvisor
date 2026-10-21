@@ -39,7 +39,7 @@ class Settings(BaseSettings):
     # Mittente delle email. onboarding@resend.dev è l'indirizzo di prova di
     # Resend e consegna SOLO all'email del proprietario dell'account Resend:
     # in produzione va usato un indirizzo di un dominio verificato su Resend.
-    email_from: str = "ImmoAdvisor <onboarding@resend.dev>"
+    email_from: str = "HomeBlock <onboarding@resend.dev>"
 
 
 @lru_cache

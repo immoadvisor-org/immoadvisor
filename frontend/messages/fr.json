@@ -14,7 +14,7 @@
   },
   "Home": {
     "heroTitle": "La façon la plus simple de vendre votre bien en Suisse",
-    "heroSubtitle": "Faites confiance à ImmoAdvisor : choisissez uniquement les services dont vous avez vraiment besoin, avec des prix transparents et sans engagement.",
+    "heroSubtitle": "Faites confiance à HomeBlock : choisissez uniquement les services dont vous avez vraiment besoin, avec des prix transparents et sans engagement.",
     "heroCta": "Aller au configurateur",
     "discoverMore": "En savoir plus",
     "howItWorksCta": "Aller au configurateur",
@@ -33,7 +33,7 @@
   },
   "About": {
     "title": "À propos",
-    "intro": "ImmoAdvisor est né de l'expérience de terrain de Carmine, professionnel de l'immobilier actif en Suisse depuis des années, qui a vu trop de propriétaires payer des forfaits de services gonflés et peu transparents pour vendre leur bien. D'où l'idée : une plateforme où c'est vous qui choisissez exactement les services dont vous avez besoin — annonce, photographie, documentation, évaluation — sans engagement et avec le total toujours visible.",
+    "intro": "HomeBlock est né de l'expérience de terrain de Carmine, professionnel de l'immobilier actif en Suisse depuis des années, qui a vu trop de propriétaires payer des forfaits de services gonflés et peu transparents pour vendre leur bien. D'où l'idée : une plateforme où c'est vous qui choisissez exactement les services dont vous avez besoin — annonce, photographie, documentation, évaluation — sans engagement et avec le total toujours visible.",
     "valuesTitle": "Nos valeurs",
     "value1Title": "Transparence",
     "value1Text": "Chaque service a un prix clair, défini avant l'achat. Aucune surprise sur la facture.",
@@ -603,12 +603,12 @@
   },
   "Meta": {
     "home": {
-      "title": "ImmoAdvisor — Vendez votre bien immobilier en Suisse sans agence",
+      "title": "HomeBlock — Vendez votre bien immobilier en Suisse sans agence",
       "description": "Configurez uniquement les services dont vous avez besoin pour vendre votre bien en Suisse : annonce, photos, documentation, évaluation. Prix transparents en CHF, sans engagement."
     },
     "about": {
       "title": "Qui sommes-nous",
-      "description": "ImmoAdvisor est né de l'expérience de Carmine, professionnel de l'immobilier en Suisse. Des services transparents, sans forfaits imposés."
+      "description": "HomeBlock est né de l'expérience de Carmine, professionnel de l'immobilier en Suisse. Des services transparents, sans forfaits imposés."
     },
     "contact": {
       "title": "Contactez-nous",
@@ -624,7 +624,7 @@
     },
     "terms": {
       "title": "Conditions générales",
-      "description": "Consultez les conditions générales d'utilisation de la plateforme ImmoAdvisor."
+      "description": "Consultez les conditions générales d'utilisation de la plateforme HomeBlock."
     }
   },
   "AdminEmails": {
@@ -640,7 +640,7 @@
     "body": "Texte",
     "signatureText": "Texte de la signature",
     "formattingHelp": "Une ligne vide sépare les paragraphes. Écrivez **texte** pour le gras.",
-    "showLogo": "Afficher le logo ImmoAdvisor au-dessus de la signature",
+    "showLogo": "Afficher le logo HomeBlock au-dessus de la signature",
     "placeholders": "Variables",
     "placeholdersHelp": "Cliquez pour l'insérer dans le champ sélectionné : elle sera remplacée par les données réelles de chaque e-mail.",
     "save": "Enregistrer",

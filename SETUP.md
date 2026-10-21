@@ -58,10 +58,10 @@ Il frontend **non** usa `SUPABASE_JWKS_URL` né `SUPABASE_SECRET_KEY`: quelle se
 Dipendenze già installate in entrambi i progetti.
 
 ```bash
-cd immo-services-platform/backend && .venv/Scripts/activate && uvicorn app.main:app --reload
+cd homeblock/backend && .venv/Scripts/activate && uvicorn app.main:app --reload
 ```
 ```bash
-cd immo-services-platform/frontend && npm run dev
+cd homeblock/frontend && npm run dev
 ```
 
 ## 4. Primo test end-to-end

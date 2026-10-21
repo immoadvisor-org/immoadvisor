@@ -5,7 +5,7 @@ Piattaforma per la vendita di servizi immobiliari (annuncio ImmoScout24, documen
 ## Architettura
 
 ```
-immo-services-platform/
+homeblock/
 ├── frontend/          Next.js (App Router) + TypeScript + Tailwind — configuratore, carrello, area utente
 ├── backend/           FastAPI (Python) — API, logica di business, integrazioni (Stripe, ImmoScout24)
 └── supabase/          Schema SQL, Row Level Security, migrazioni per Postgres/Auth/Storage

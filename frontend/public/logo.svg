@@ -1,11 +1,5 @@
-<svg width="270" height="80" viewBox="0 0 270 80" xmlns="http://www.w3.org/2000/svg" role="img">
-  <title>ImmoAdvisor</title>
-  <text x="16" y="60" font-family="'Space Grotesk', 'Segoe UI', Arial, sans-serif" font-weight="700" font-size="40" letter-spacing="-1" fill="#0f172a">Immo</text>
-  <path d="M119.7,60 L132.65,33 L145.6,60" fill="none" stroke="#0f172a" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" />
-  <path d="M125.43,60 V44.34 H139.87 V60" fill="none" stroke="#0f172a" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" />
-  <polygon points="136.5,30.03 140.5,38.37 140.5,49.37 136.5,41.03" fill="#0f172a" />
-  <circle cx="142.4" cy="29.5" r="2.1" fill="#0f172a" opacity="0.55" />
-  <circle cx="145.1" cy="24.6" r="1.6" fill="#0f172a" opacity="0.38" />
-  <circle cx="147.1" cy="20.2" r="1.2" fill="#0f172a" opacity="0.24" />
-  <text x="147.094" y="60" font-family="'Space Grotesk', 'Segoe UI', Arial, sans-serif" font-weight="700" font-size="40" letter-spacing="-1" fill="#0f172a">dvisor</text>
+<svg width="330" height="70" viewBox="0 0 330 70" xmlns="http://www.w3.org/2000/svg" role="img">
+  <title>HomeBlock</title>
+  <g transform="translate(4 8) scale(0.53)"><rect x="1.75" y="2.75" width="41.5" height="41.5" fill="none" stroke="#15232e" stroke-width="3.5"/><path d="M55 19 L77.5 0 L100 19 V46 H55 Z" fill="#b8956b"/><rect x="1.75" y="57.75" width="41.5" height="41.5" fill="none" stroke="#15232e" stroke-width="3.5"/><rect x="56.75" y="57.75" width="41.5" height="41.5" fill="none" stroke="#15232e" stroke-width="3.5"/></g>
+  <text x="70" y="49" font-family="Poppins, 'Segoe UI', Arial, sans-serif" font-size="42" letter-spacing="-0.5" fill="#15232e"><tspan font-weight="300">home</tspan><tspan font-weight="700">block</tspan></text>
 </svg>

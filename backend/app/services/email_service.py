@@ -20,7 +20,7 @@ from app.services.email_template_service import SIGNATURE_KEY, TEMPLATES, render
 # mentre un allegato referenziato con "cid:" viene mostrato ovunque e non
 # dipende da un URL pubblico raggiungibile.
 _LOGO_PATH = Path(__file__).resolve().parent.parent / "integrations" / "assets" / "logo.png"
-_LOGO_CONTENT_ID = "immoadvisor-logo"
+_LOGO_CONTENT_ID = "homeblock-logo"
 _LOGO_BASE64 = base64.b64encode(_LOGO_PATH.read_bytes()).decode() if _LOGO_PATH.exists() else None
 _LOGO_ATTACHMENT = (
     EmailAttachment(
@@ -49,7 +49,7 @@ class TemplateEmail:
 
 def render_signature_html(body: str, show_logo: bool, logo_src: str = f"cid:{_LOGO_CONTENT_ID}") -> str:
     logo = (
-        f'<img src="{logo_src}" alt="ImmoAdvisor" width="150" height="44" '
+        f'<img src="{logo_src}" alt="HomeBlock" width="160" height="36" '
         'style="display:block;margin-bottom:8px;border:0;" />'
         if show_logo and _LOGO_BASE64
         else ""

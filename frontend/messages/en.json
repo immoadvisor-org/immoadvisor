@@ -14,7 +14,7 @@
   },
   "Home": {
     "heroTitle": "The simplest way to sell your property in Switzerland",
-    "heroSubtitle": "Rely on ImmoAdvisor: choose only the services you really need, with transparent pricing and no strings attached.",
+    "heroSubtitle": "Rely on HomeBlock: choose only the services you really need, with transparent pricing and no strings attached.",
     "heroCta": "Go to the configurator",
     "discoverMore": "Learn more",
     "howItWorksCta": "Go to the configurator",
@@ -33,7 +33,7 @@
   },
   "About": {
     "title": "About us",
-    "intro": "ImmoAdvisor was born from the hands-on experience of Carmine, a real estate professional active in Switzerland for years, who saw too many property owners pay for bloated, opaque service packages when selling their home. That's where the idea came from: a platform where you choose exactly the services you need — listing, photography, documentation, valuation — with no strings attached and the total always visible.",
+    "intro": "HomeBlock was born from the hands-on experience of Carmine, a real estate professional active in Switzerland for years, who saw too many property owners pay for bloated, opaque service packages when selling their home. That's where the idea came from: a platform where you choose exactly the services you need — listing, photography, documentation, valuation — with no strings attached and the total always visible.",
     "valuesTitle": "Our values",
     "value1Title": "Transparency",
     "value1Text": "Every service has a clear price, set before you buy. No surprises on the invoice.",
@@ -603,12 +603,12 @@
   },
   "Meta": {
     "home": {
-      "title": "ImmoAdvisor — Sell Your Property in Switzerland Without an Agency",
+      "title": "HomeBlock — Sell Your Property in Switzerland Without an Agency",
       "description": "Configure only the services you need to sell your property in Switzerland: listing, photography, documentation, valuation. Transparent CHF pricing, no commitment."
     },
     "about": {
       "title": "About Us",
-      "description": "ImmoAdvisor was built on Carmine's experience as a real estate professional in Switzerland. Transparent services, no forced packages."
+      "description": "HomeBlock was built on Carmine's experience as a real estate professional in Switzerland. Transparent services, no forced packages."
     },
     "contact": {
       "title": "Contact Us",
@@ -624,7 +624,7 @@
     },
     "terms": {
       "title": "Terms & Conditions",
-      "description": "Read the terms and conditions for using the ImmoAdvisor platform."
+      "description": "Read the terms and conditions for using the HomeBlock platform."
     }
   },
   "AdminEmails": {
@@ -640,7 +640,7 @@
     "body": "Text",
     "signatureText": "Signature text",
     "formattingHelp": "A blank line separates paragraphs. Write **text** for bold.",
-    "showLogo": "Show the ImmoAdvisor logo above the signature",
+    "showLogo": "Show the HomeBlock logo above the signature",
     "placeholders": "Placeholders",
     "placeholdersHelp": "Click to insert it into the selected field: it will be replaced with each email's real data.",
     "save": "Save",

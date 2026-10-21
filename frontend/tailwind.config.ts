@@ -34,6 +34,7 @@ const config: Config = {
       },
       fontFamily: {
         display: ["var(--font-display)", "system-ui", "sans-serif"],
+        brand: ["var(--font-brand)", "system-ui", "sans-serif"],
       },
     },
   },

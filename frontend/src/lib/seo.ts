@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { routing, type Locale } from "@/i18n/routing";
 import { BRAND_NAME } from "@/lib/constants";
 
-export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://immoadvisor.vercel.app").replace(/\/$/, "");
+export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://homeblock.vercel.app").replace(/\/$/, "");
 
 /**
  * Costruisce gli alternates (canonical + hreflang) per una pagina dato il suo

@@ -29,7 +29,7 @@ class TemplateDefinition:
 
 
 def _brand(titles: Localized) -> Localized:
-    return {locale: f"ImmoAdvisor — {title}" for locale, title in titles.items()}
+    return {locale: f"HomeBlock — {title}" for locale, title in titles.items()}
 
 
 _ORDER_PLACEHOLDERS = ("totale", "rate", "servizi")
@@ -81,10 +81,10 @@ TEMPLATES: dict[str, TemplateDefinition] = {
         group="signature",
         subject=None,
         body={
-            "it": "Lo staff di ImmoAdvisor",
-            "en": "The ImmoAdvisor team",
-            "de": "Ihr ImmoAdvisor-Team",
-            "fr": "L'équipe ImmoAdvisor",
+            "it": "Lo staff di HomeBlock",
+            "en": "The HomeBlock team",
+            "de": "Ihr HomeBlock-Team",
+            "fr": "L'équipe HomeBlock",
         },
         placeholders=(),
     ),
@@ -198,10 +198,10 @@ TEMPLATES: dict[str, TemplateDefinition] = {
             "fr": "Toutes les mensualités payées",
         },
         {
-            "it": "Complimenti, hai completato il pagamento rateale del tuo pacchetto! Grazie per aver scelto ImmoAdvisor.",
-            "en": "Congratulations, you have completed the instalment plan for your package! Thank you for choosing ImmoAdvisor.",
-            "de": "Herzlichen Glückwunsch, Sie haben die Ratenzahlung Ihres Pakets abgeschlossen! Vielen Dank, dass Sie sich für ImmoAdvisor entschieden haben.",
-            "fr": "Félicitations, vous avez terminé le paiement échelonné de votre forfait ! Merci d'avoir choisi ImmoAdvisor.",
+            "it": "Complimenti, hai completato il pagamento rateale del tuo pacchetto! Grazie per aver scelto HomeBlock.",
+            "en": "Congratulations, you have completed the instalment plan for your package! Thank you for choosing HomeBlock.",
+            "de": "Herzlichen Glückwunsch, Sie haben die Ratenzahlung Ihres Pakets abgeschlossen! Vielen Dank, dass Sie sich für HomeBlock entschieden haben.",
+            "fr": "Félicitations, vous avez terminé le paiement échelonné de votre forfait ! Merci d'avoir choisi HomeBlock.",
         },
     ),
     "customer_payment_cancelled": _customer_payment(
@@ -289,10 +289,10 @@ TEMPLATES: dict[str, TemplateDefinition] = {
     "customer_fulfillment_completed": _customer_fulfillment(
         {"it": "Ordine completato", "en": "Order completed", "de": "Bestellung abgeschlossen", "fr": "Commande terminée"},
         {
-            "it": "Tutti i servizi del tuo ordine sono stati completati. Grazie per aver scelto ImmoAdvisor!",
-            "en": "All the services in your order have been completed. Thank you for choosing ImmoAdvisor!",
-            "de": "Alle Leistungen Ihrer Bestellung sind abgeschlossen. Vielen Dank, dass Sie sich für ImmoAdvisor entschieden haben!",
-            "fr": "Tous les services de votre commande ont été réalisés. Merci d'avoir choisi ImmoAdvisor !",
+            "it": "Tutti i servizi del tuo ordine sono stati completati. Grazie per aver scelto HomeBlock!",
+            "en": "All the services in your order have been completed. Thank you for choosing HomeBlock!",
+            "de": "Alle Leistungen Ihrer Bestellung sind abgeschlossen. Vielen Dank, dass Sie sich für HomeBlock entschieden haben!",
+            "fr": "Tous les services de votre commande ont été réalisés. Merci d'avoir choisi HomeBlock !",
         },
     ),
 }

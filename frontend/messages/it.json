@@ -14,7 +14,7 @@
   },
   "Home": {
     "heroTitle": "Il modo più semplice per vendere il tuo immobile in Svizzera",
-    "heroSubtitle": "Affidati a ImmoAdvisor: scegli solo i servizi che ti servono davvero, con prezzi trasparenti e nessun vincolo.",
+    "heroSubtitle": "Affidati a HomeBlock: scegli solo i servizi che ti servono davvero, con prezzi trasparenti e nessun vincolo.",
     "heroCta": "Vai al configuratore",
     "discoverMore": "Scopri di più",
     "howItWorksCta": "Vai al configuratore",
@@ -33,7 +33,7 @@
   },
   "About": {
     "title": "Chi siamo",
-    "intro": "ImmoAdvisor nasce dall'esperienza sul campo di Carmine, professionista immobiliare attivo in Svizzera da anni, che ha visto troppi proprietari pagare pacchetti di servizi gonfiati e poco trasparenti per vendere casa. Da qui l'idea: una piattaforma dove sei tu a scegliere esattamente i servizi di cui hai bisogno — annuncio, fotografie, documentazione, valutazione — senza vincoli e con il totale sempre visibile.",
+    "intro": "HomeBlock nasce dall'esperienza sul campo di Carmine, professionista immobiliare attivo in Svizzera da anni, che ha visto troppi proprietari pagare pacchetti di servizi gonfiati e poco trasparenti per vendere casa. Da qui l'idea: una piattaforma dove sei tu a scegliere esattamente i servizi di cui hai bisogno — annuncio, fotografie, documentazione, valutazione — senza vincoli e con il totale sempre visibile.",
     "valuesTitle": "I nostri valori",
     "value1Title": "Trasparenza",
     "value1Text": "Ogni servizio ha un prezzo chiaro, definito prima di acquistare. Nessuna sorpresa in fattura.",
@@ -603,12 +603,12 @@
   },
   "Meta": {
     "home": {
-      "title": "ImmoAdvisor — Vendi il tuo immobile in Svizzera senza agenzia",
+      "title": "HomeBlock — Vendi il tuo immobile in Svizzera senza agenzia",
       "description": "Configura solo i servizi che ti servono per vendere casa in Svizzera: annuncio, fotografie, documentazione, valutazione. Prezzi trasparenti in CHF, nessun vincolo."
     },
     "about": {
       "title": "Chi siamo",
-      "description": "ImmoAdvisor nasce dall'esperienza di Carmine, professionista immobiliare in Svizzera. Servizi trasparenti, senza pacchetti imposti."
+      "description": "HomeBlock nasce dall'esperienza di Carmine, professionista immobiliare in Svizzera. Servizi trasparenti, senza pacchetti imposti."
     },
     "contact": {
       "title": "Contattaci",
@@ -624,7 +624,7 @@
     },
     "terms": {
       "title": "Termini e condizioni",
-      "description": "Consulta i termini e le condizioni di utilizzo della piattaforma ImmoAdvisor."
+      "description": "Consulta i termini e le condizioni di utilizzo della piattaforma HomeBlock."
     }
   },
   "AdminEmails": {
@@ -640,7 +640,7 @@
     "body": "Testo",
     "signatureText": "Testo della firma",
     "formattingHelp": "Una riga vuota separa i paragrafi. Scrivi **testo** per il grassetto.",
-    "showLogo": "Mostra il logo ImmoAdvisor sopra la firma",
+    "showLogo": "Mostra il logo HomeBlock sopra la firma",
     "placeholders": "Segnaposto",
     "placeholdersHelp": "Clicca per inserirlo nel campo selezionato: verrà sostituito con i dati reali di ogni email.",
     "save": "Salva",
