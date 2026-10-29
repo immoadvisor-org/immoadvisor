@@ -256,7 +256,8 @@
     "homeLayout": "Mise en page de l'accueil",
     "dailyWorkGroup": "Travail quotidien",
     "siteManagementGroup": "Gestion du site",
-    "emails": "E-mails"
+    "emails": "E-mails",
+    "admins": "Administrateurs"
   },
   "AdminHomeLayout": {
     "title": "Mise en page de l'accueil",
@@ -761,5 +762,39 @@
     "label": "Mode d'affichage",
     "grid": "Vue en grille",
     "list": "Vue en liste"
+  },
+  "AdminAdmins": {
+    "title": "Administrateurs",
+    "subtitle": "Créez de nouveaux comptes administrateur et choisissez les e-mails de l'équipe que chacun reçoit.",
+    "formTitle": "Ajouter un administrateur",
+    "formHint": "Si l'e-mail appartient déjà à un utilisateur inscrit, ce compte devient administrateur et le mot de passe est ignoré. Sinon, un nouveau compte déjà actif est créé avec le mot de passe indiqué (min. 8 caractères).",
+    "field": {
+      "first_name": "Prénom",
+      "last_name": "Nom",
+      "email": "E-mail",
+      "phone": "Téléphone",
+      "password": "Mot de passe"
+    },
+    "subscriptionsTitle": "E-mails à recevoir",
+    "subscription": {
+      "order": "Nouvelles commandes et paiements",
+      "contact": "Messages du formulaire de contact"
+    },
+    "subscriptionShort": {
+      "order": "Commandes",
+      "contact": "Messages"
+    },
+    "submit": "Ajouter l'administrateur",
+    "saving": "Enregistrement...",
+    "created": "Compte {email} créé avec les droits d'administrateur.",
+    "promoted": "L'utilisateur {email} est maintenant administrateur.",
+    "createError": "Impossible d'ajouter l'administrateur",
+    "saveError": "Impossible d'enregistrer les e-mails",
+    "columnName": "Nom",
+    "columnEmail": "E-mail",
+    "you": "Vous",
+    "revoke": "Retirer admin",
+    "revokeConfirm": "Retirer les droits d'administrateur à {email} ? Le compte restera un utilisateur normal.",
+    "revokeError": "Impossible de retirer les droits"
   }
 }

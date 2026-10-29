@@ -26,3 +26,26 @@ def delete_user(user_id: uuid.UUID) -> None:
         timeout=30,
     )
     response.raise_for_status()
+
+
+class EmailAlreadyRegisteredError(Exception):
+    """L'email è già usata da un account esistente."""
+
+
+def create_user(email: str, password: str, metadata: dict[str, str]) -> uuid.UUID:
+    """Crea un utente già confermato in Supabase Auth (Admin API): può
+    accedere subito senza cliccare il link di conferma. Il profilo in
+    public.profiles viene creato dal trigger handle_new_user a partire
+    dai metadata (nome, cognome, telefono...).
+    """
+    settings = get_settings()
+    response = httpx.post(
+        f"{settings.supabase_url}/auth/v1/admin/users",
+        headers=_auth_headers(),
+        json={"email": email, "password": password, "email_confirm": True, "user_metadata": metadata},
+        timeout=30,
+    )
+    if response.status_code == 422 and "already" in response.text.lower():
+        raise EmailAlreadyRegisteredError(email)
+    response.raise_for_status()
+    return uuid.UUID(response.json()["id"])

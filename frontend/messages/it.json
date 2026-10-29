@@ -256,7 +256,8 @@
     "homeLayout": "Layout home",
     "dailyWorkGroup": "Lavoro quotidiano",
     "siteManagementGroup": "Gestione sito",
-    "emails": "Email"
+    "emails": "Email",
+    "admins": "Amministratori"
   },
   "AdminHomeLayout": {
     "title": "Layout home",
@@ -761,5 +762,39 @@
     "label": "Modalità di visualizzazione",
     "grid": "Vista a griglia",
     "list": "Vista a lista"
+  },
+  "AdminAdmins": {
+    "title": "Amministratori",
+    "subtitle": "Crea nuovi account amministratore e scegli quali email dello staff riceve ciascuno.",
+    "formTitle": "Aggiungi amministratore",
+    "formHint": "Se l'email appartiene già a un utente registrato, quell'account diventa amministratore e la password viene ignorata. Altrimenti viene creato un nuovo account, già attivo, con la password indicata (min. 8 caratteri).",
+    "field": {
+      "first_name": "Nome",
+      "last_name": "Cognome",
+      "email": "Email",
+      "phone": "Telefono",
+      "password": "Password"
+    },
+    "subscriptionsTitle": "Email da ricevere",
+    "subscription": {
+      "order": "Nuovi ordini e pagamenti",
+      "contact": "Messaggi dal modulo contatti"
+    },
+    "subscriptionShort": {
+      "order": "Ordini",
+      "contact": "Messaggi"
+    },
+    "submit": "Aggiungi amministratore",
+    "saving": "Salvataggio...",
+    "created": "Account {email} creato con i permessi da amministratore.",
+    "promoted": "L'utente {email} è ora amministratore.",
+    "createError": "Impossibile aggiungere l'amministratore",
+    "saveError": "Impossibile salvare le email",
+    "columnName": "Nome",
+    "columnEmail": "Email",
+    "you": "Tu",
+    "revoke": "Revoca admin",
+    "revokeConfirm": "Revocare i permessi da amministratore a {email}? L'account resterà come utente normale.",
+    "revokeError": "Impossibile revocare i permessi"
   }
 }

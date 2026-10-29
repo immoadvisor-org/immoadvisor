@@ -256,7 +256,8 @@
     "homeLayout": "Startseiten-Layout",
     "dailyWorkGroup": "Tägliche Arbeit",
     "siteManagementGroup": "Website-Verwaltung",
-    "emails": "E-Mails"
+    "emails": "E-Mails",
+    "admins": "Administratoren"
   },
   "AdminHomeLayout": {
     "title": "Startseiten-Layout",
@@ -761,5 +762,39 @@
     "label": "Ansicht",
     "grid": "Rasteransicht",
     "list": "Listenansicht"
+  },
+  "AdminAdmins": {
+    "title": "Administratoren",
+    "subtitle": "Erstellen Sie neue Administratorkonten und wählen Sie, welche Team-E-Mails jeder erhält.",
+    "formTitle": "Administrator hinzufügen",
+    "formHint": "Gehört die E-Mail bereits einem registrierten Benutzer, wird dieses Konto Administrator und das Passwort ignoriert. Andernfalls wird ein neues, sofort aktives Konto mit dem angegebenen Passwort erstellt (mind. 8 Zeichen).",
+    "field": {
+      "first_name": "Vorname",
+      "last_name": "Nachname",
+      "email": "E-Mail",
+      "phone": "Telefon",
+      "password": "Passwort"
+    },
+    "subscriptionsTitle": "Zu empfangende E-Mails",
+    "subscription": {
+      "order": "Neue Bestellungen und Zahlungen",
+      "contact": "Nachrichten aus dem Kontaktformular"
+    },
+    "subscriptionShort": {
+      "order": "Bestellungen",
+      "contact": "Nachrichten"
+    },
+    "submit": "Administrator hinzufügen",
+    "saving": "Wird gespeichert...",
+    "created": "Konto {email} mit Administratorrechten erstellt.",
+    "promoted": "Benutzer {email} ist jetzt Administrator.",
+    "createError": "Administrator konnte nicht hinzugefügt werden",
+    "saveError": "E-Mails konnten nicht gespeichert werden",
+    "columnName": "Name",
+    "columnEmail": "E-Mail",
+    "you": "Sie",
+    "revoke": "Admin entziehen",
+    "revokeConfirm": "Administratorrechte von {email} entziehen? Das Konto bleibt als normaler Benutzer bestehen.",
+    "revokeError": "Rechte konnten nicht entzogen werden"
   }
 }

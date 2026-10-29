@@ -36,6 +36,7 @@ export function AdminLayout({ children }: AdminLayoutProps) {
         { href: "/admin/legal", label: t("legal") },
         { href: "/admin/emails", label: t("emails") },
         { href: "/admin/users", label: t("users") },
+        { href: "/admin/admins", label: t("admins") },
       ],
     },
   ];

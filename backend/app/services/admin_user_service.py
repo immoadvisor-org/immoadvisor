@@ -28,3 +28,21 @@ def list_users(db: Session) -> list[ProfileRead]:
 def is_admin_user(db: Session, user_id: uuid.UUID) -> bool:
     profile = db.get(Profile, user_id)
     return bool(profile and profile.is_admin)
+
+
+def find_user_id_by_email(db: Session, email: str) -> uuid.UUID | None:
+    return db.execute(
+        text("select id from auth.users where lower(email) = lower(:email)"), {"email": email}
+    ).scalar_one_or_none()
+
+
+def set_admin(db: Session, user_id: uuid.UUID, is_admin: bool) -> None:
+    profile = db.get(Profile, user_id)
+    if profile is None:
+        raise LookupError(user_id)
+    profile.is_admin = is_admin
+    db.commit()
+
+
+def email_of(db: Session, user_id: uuid.UUID) -> str | None:
+    return db.execute(text("select email from auth.users where id = :id"), {"id": user_id}).scalar_one_or_none()

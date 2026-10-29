@@ -256,7 +256,8 @@
     "homeLayout": "Home layout",
     "dailyWorkGroup": "Daily work",
     "siteManagementGroup": "Site management",
-    "emails": "Emails"
+    "emails": "Emails",
+    "admins": "Administrators"
   },
   "AdminHomeLayout": {
     "title": "Home layout",
@@ -761,5 +762,39 @@
     "label": "View mode",
     "grid": "Grid view",
     "list": "List view"
+  },
+  "AdminAdmins": {
+    "title": "Administrators",
+    "subtitle": "Create new administrator accounts and choose which staff emails each one receives.",
+    "formTitle": "Add administrator",
+    "formHint": "If the email already belongs to a registered user, that account becomes an administrator and the password is ignored. Otherwise a new, already active account is created with the given password (min. 8 characters).",
+    "field": {
+      "first_name": "First name",
+      "last_name": "Last name",
+      "email": "Email",
+      "phone": "Phone",
+      "password": "Password"
+    },
+    "subscriptionsTitle": "Emails to receive",
+    "subscription": {
+      "order": "New orders and payments",
+      "contact": "Contact form messages"
+    },
+    "subscriptionShort": {
+      "order": "Orders",
+      "contact": "Messages"
+    },
+    "submit": "Add administrator",
+    "saving": "Saving...",
+    "created": "Account {email} created with administrator rights.",
+    "promoted": "User {email} is now an administrator.",
+    "createError": "Could not add the administrator",
+    "saveError": "Could not save the emails",
+    "columnName": "Name",
+    "columnEmail": "Email",
+    "you": "You",
+    "revoke": "Revoke admin",
+    "revokeConfirm": "Revoke administrator rights from {email}? The account will remain as a regular user.",
+    "revokeError": "Could not revoke rights"
   }
 }
